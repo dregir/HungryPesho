@@ -10,7 +10,7 @@ namespace HungryPesho
     {
         static void Main()
         {
-            Console.WriteLine("Hello");
+            Console.WriteLine("Hello, Dregir!");
             Console.WriteLine("Hello to you travaler!");
         }
     }
