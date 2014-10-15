@@ -54,6 +54,7 @@ namespace HungryPesho
                 Console.WriteLine(choices);
                 cursorPos += 2;
             }
+
             cursorPos = 25;
 
             //Menu Logic                  
