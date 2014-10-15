@@ -8,10 +8,9 @@ namespace HungryPesho
 {
     class Program
     {
-        static void Main()
-        {
-            Console.WriteLine("Hello");
-            Console.WriteLine("Hello to you travaler!");
-        }
+       static void Main()
+       {
+           StartMenu.GameInitialize();
+       }
     }
 }
