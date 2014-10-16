@@ -66,6 +66,7 @@
     <Compile Include="Items\Weapon.cs" />
     <Compile Include="Interfaces\IPlayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\Color.cs" />
     <Compile Include="UI\LoadMenu.cs" />
   </ItemGroup>
   <ItemGroup>
