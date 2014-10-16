@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abilities\Ability.cs" />
+    <Compile Include="Creatures\Enemy.cs" />
+    <Compile Include="Engine\TestEngine.cs" />
     <Compile Include="Interfaces\IAbility.cs" />
     <Compile Include="Creatures\Character.cs" />
     <Compile Include="Creatures\Creature.cs" />
