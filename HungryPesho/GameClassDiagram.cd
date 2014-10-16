@@ -67,14 +67,6 @@
       <FileName>Items\Armor.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="HungryPesho.Items.EffectItem" Collapsed="true">
-    <Position X="1.5" Y="1.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Items\EffectItem.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
   <Class Name="HungryPesho.Items.Equipment" Collapsed="true">
     <Position X="13.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
@@ -132,6 +124,14 @@
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>HungryPesho.cs</FileName>
     </TypeIdentifier>
+  </Class>
+  <Class Name="HungryPesho.Items.EffectItem" Collapsed="true">
+    <Position X="1.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Items\EffectItem.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Interface Name="HungryPesho.Abilities.IAbility" Collapsed="true">
     <Position X="9.75" Y="2.75" Width="1.5" />
