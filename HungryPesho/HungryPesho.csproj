@@ -65,6 +65,7 @@
     <Compile Include="Items\Scroll.cs" />
     <Compile Include="Items\Weapon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\Color.cs" />
     <Compile Include="UI\LoadMenu.cs" />
   </ItemGroup>
   <ItemGroup>

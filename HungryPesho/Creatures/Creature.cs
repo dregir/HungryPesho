@@ -1,7 +1,5 @@
 ﻿namespace HungryPesho.Creatures
 {
-    using System;
-
     public abstract class Creature : ICreature
     {
         private string description;
@@ -56,18 +54,11 @@
             }
         }
 
-        public int Energy
-        {
-            get
-            {
-                return this.energy;
-            }
+        public double Attack { get; set; }
+        public double Health { get; set; }
+        public double Mana { get; set; }
+        public double Initiative { get; set; }
 
-            set
-            {
-                this.energy = value;
-            }
-        }
         #endregion
     }
 }

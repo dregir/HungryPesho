@@ -4,7 +4,7 @@
     {
         string Name { get; set; }
 
-        string Description { get; set; }
+        double ManaCost { get; set; }
 
         AbilityEffects AbilityEffect { get; set; }
     }

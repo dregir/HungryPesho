@@ -37,6 +37,8 @@
             }
         }
 
+        public double ManaCost { get; set; }
+
         public string Description
         {
             get
@@ -62,6 +64,8 @@
                 this.abilityEffect = value;
             }
         }
+
+
         #endregion
     }
 }
