@@ -80,7 +80,7 @@
 ");
 
             Console.WriteLine(@"                 
-                                                                           |
+                                                                           
           
 
                                                          ");
@@ -138,15 +138,7 @@
                         }
                         else
                         {
-                            var chanceToUseAbility = random.Next(0, 4);
-
-                            if (chanceToUseAbility == 2)
-                            {
-                                if (enemy.Abilities.Count > 0)
-                                {
-                                    enemy.Abilities[random.Next(0, enemy.Abilities.Count)].Effect(enemy, peshaka);
-                                }
-                            }
+                           
 
                             else
                             {

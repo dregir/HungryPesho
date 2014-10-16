@@ -16,8 +16,6 @@
             : base(name, description, level, stamina, agility, strength, intellect)
         {
             base.Name = MageName;
-            base.Description = MageDescription;
-
             base.Stamina = stamina;
             base.Agility = agility;
             base.Strength = strength;

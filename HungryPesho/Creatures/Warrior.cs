@@ -6,7 +6,6 @@
     {
         private const string WarriorName = "Warrior";
         private const string WarriorDescription = "Strong and powerful character who slay his opponents with brute force!";
-
         private const int stamina = 13;
         private const int agility = 5;
         private const int strength = 15;
@@ -16,8 +15,6 @@
             : base(name, description, level, stamina, agility, strength, intellect)
         {
             base.Name = WarriorName;
-            base.Description = WarriorDescription;
-
             base.Stamina = stamina;
             base.Agility = agility;
             base.Strength = strength;

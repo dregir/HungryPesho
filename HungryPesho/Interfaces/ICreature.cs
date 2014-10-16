@@ -6,6 +6,8 @@ namespace HungryPesho.Creatures
     {
         string Name { get; set; }
 
+        double Attack { get; set; }
+
         double Health { get; set; }
 
         double Mana { get; set; }
