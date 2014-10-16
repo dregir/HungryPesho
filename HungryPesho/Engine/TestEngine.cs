@@ -17,10 +17,6 @@
             Character mage = new Mage();
             Character warrior = new Warrior();
 
-
-
-
-
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write(@"
 
