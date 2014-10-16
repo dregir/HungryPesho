@@ -1,10 +1,8 @@
-﻿using System.Collections.Generic;
-using Abilities;
-using HungryPesho.Creatures;
-using Monsters;
-
-namespace HungryPesho
+﻿namespace HungryPesho
 {
+    using System.Collections.Generic;
+    using HungryPesho.Creatures;
+
     using System;
     using System.Collections;
     using HungryPesho.Characters;
@@ -132,7 +130,7 @@ namespace HungryPesho
 
                         if (currentPlayer == peshaka)  //Currenlty auto play, no implementation of actions to pick from 
                         {
-                            enemy.Health -= damageDone;  
+                            enemy.Health -= damageDone;
 
                             Console.WriteLine(
                                 ColorMe.Color("You raise your weapon and with a swift move deal", ConsoleColor.White),
@@ -143,14 +141,14 @@ namespace HungryPesho
                             currentPlayer = enemy;
                         }
                         else
-                        {       
-                            var chanceToUseAbility = random.Next(0, 4);  
+                        {
+                            var chanceToUseAbility = random.Next(0, 4);
 
                             if (chanceToUseAbility == 2)
                             {
                                 if (enemy.Abilities.Count > 0)
                                 {
-                                   enemy.Abilities[random.Next(0, enemy.Abilities.Count)].Effect(enemy,peshaka);
+                                    enemy.Abilities[random.Next(0, enemy.Abilities.Count)].Effect(enemy, peshaka);
                                 }
                             }
 
@@ -164,7 +162,7 @@ namespace HungryPesho
                                                                              damageDone);
                                 Console.ResetColor();
                             }
-                          
+
                             currentPlayer = peshaka;
                         }
 
@@ -188,7 +186,10 @@ namespace HungryPesho
                 }
                 Console.WriteLine((peshaka.Health > enemy.Health) ? ColorMe.Color("Your enemy fall dead on the ground.\nYou won!", ConsoleColor.Green) :
                    ColorMe.Color("You Lost!", ConsoleColor.Red));
-               
+
                 Console.BackgroundColor = ConsoleColor.Magenta;
-                Console.WriteLine("Current HP: {0}, XP GAIN: {1}", peshaka.Health, awardXp); 
+                Console.WriteLine("Current HP: {0}, XP GAIN: {1}", peshaka.Health, awardXp);
             }
+        }
+    }
+}

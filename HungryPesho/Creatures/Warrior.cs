@@ -12,8 +12,8 @@
         private const int strength = 15;
         private const int intellect = 5;
 
-        public Warrior(string name, string description, int stamina, int agility, int strength, int intellect)
-            : base(name, description, stamina, agility, strength, intellect)
+        public Warrior(string name, string description, int level, int stamina, int agility, int strength, int intellect)
+            : base(name, description, level, stamina, agility, strength, intellect)
         {
             base.Name = WarriorName;
             base.Description = WarriorDescription;

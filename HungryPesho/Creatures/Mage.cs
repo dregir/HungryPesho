@@ -12,9 +12,8 @@
         private const int strength = 5;
         private const int intellect = 15;
 
-
-        public Mage(string name, string description, int stamina, int agility, int strength, int intellect)
-            : base(name, description, stamina, agility, strength, intellect)
+        public Mage(string name, string description, int level, int stamina, int agility, int strength, int intellect)
+            : base(name, description, level, stamina, agility, strength, intellect)
         {
             base.Name = MageName;
             base.Description = MageDescription;
