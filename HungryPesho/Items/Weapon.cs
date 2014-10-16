@@ -50,5 +50,10 @@
             }
         }
         #endregion
+
+        public void CreateNewWeapon()
+        {
+
+        }
     }
 }

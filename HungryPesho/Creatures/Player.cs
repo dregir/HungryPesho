@@ -1,40 +1,16 @@
 ﻿namespace HungryPesho.Creatures
 {
     using System;
+    using System.Collections.Generic;
 
     public class Player : Creature, IPlayer
     {
-        private int playerLevel;
-        private Character playerCharacter;
+        private List<Character> characters;
 
-        public Player(string name, string description, int level, Character character) : base(name, description)
+        public Player(string name, string description, Character character)
+            : base(name, description)
         {
-            this.PlayerLevel = level;
-            this.PlayerCharacter = character;
-        }
-
-        public int PlayerLevel
-        {
-            get
-            {
-                return this.playerLevel;
-            }
-            set
-            {
-                this.playerLevel = value;
-            }
-        }
-
-        public Character PlayerCharacter
-        {
-            get
-            {
-                return this.playerCharacter;
-            }
-            set
-            {
-                this.playerCharacter = value;
-            }
+            this.characters.Add(character);
         }
     }
 }

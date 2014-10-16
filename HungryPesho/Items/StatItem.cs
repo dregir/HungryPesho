@@ -1,20 +1,19 @@
-﻿namespace HungryPesho.Creatures
+﻿namespace HungryPesho.Items
 {
     using System.Collections;
+    using HungryPesho.Creatures;
 
-    public abstract class Character : Creature, IStatable
+    public abstract class StatItem : Item, IStatable
     {
-        private int level;
         private int stamina;
         private int agility;
         private int strength;
         private int intellect;
 
-        public Character(string name, string description, int level, int stamina, int agility, int strength, int intellect) : base(name, description)
+        public StatItem(int id, string name, string description, int stamina, int agility, int strength, int intellect)
+            : base(id, name, description)
         {
-            this.Level = level;
             this.Stamina = stamina;
-            this.Intellect = intellect;
             this.Agility = agility;
             this.Strength = strength;
             this.Intellect = intellect;
@@ -22,26 +21,12 @@
 
         #region Properties
         // TODO: Validate
-        public int Level
-        {
-            get
-            {
-                return this.level;
-            }
-
-            set
-            {
-                this.level = value;
-            }
-        }
-
         public int Stamina
         {
             get
             {
                 return this.stamina;
             }
-
             set
             {
                 this.stamina = value;
@@ -54,7 +39,6 @@
             {
                 return this.agility;
             }
-
             set
             {
                 this.agility = value;
@@ -67,7 +51,6 @@
             {
                 return this.strength;
             }
-
             set
             {
                 this.strength = value;
@@ -80,7 +63,6 @@
             {
                 return this.intellect;
             }
-
             set
             {
                 this.intellect = value;
