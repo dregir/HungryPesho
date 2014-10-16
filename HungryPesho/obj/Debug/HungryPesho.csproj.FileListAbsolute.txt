@@ -1,0 +1,6 @@
+D:\Git\HungryPesho\HungryPesho\bin\Debug\HungryPesho.exe.config
+D:\Git\HungryPesho\HungryPesho\bin\Debug\HungryPesho.exe
+D:\Git\HungryPesho\HungryPesho\bin\Debug\HungryPesho.pdb
+D:\Git\HungryPesho\HungryPesho\obj\Debug\HungryPesho.csprojResolveAssemblyReference.cache
+D:\Git\HungryPesho\HungryPesho\obj\Debug\HungryPesho.exe
+D:\Git\HungryPesho\HungryPesho\obj\Debug\HungryPesho.pdb

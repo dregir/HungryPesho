@@ -41,12 +41,55 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Abilities\Ability.cs" />
+    <Compile Include="Interfaces\IAbility.cs" />
+    <Compile Include="Creatures\Character.cs" />
+    <Compile Include="Creatures\Creature.cs" />
+    <Compile Include="Interfaces\IEffectable.cs" />
+    <Compile Include="Interfaces\IStatable.cs" />
+    <Compile Include="Interfaces\ICreature.cs" />
+    <Compile Include="Creatures\Mage.cs" />
+    <Compile Include="Creatures\Warrior.cs" />
+    <Compile Include="Engine\CombatEngine.cs" />
+    <Compile Include="Engine\GameSettings.cs" />
+    <Compile Include="HungryPesho.cs" />
+    <Compile Include="Items\Armor.cs" />
+    <Compile Include="Items\EffectItem.cs" />
+    <Compile Include="Items\Equipment.cs" />
+    <Compile Include="Interfaces\ICollectible.cs" />
+    <Compile Include="Items\Item.cs" />
+    <Compile Include="Items\StatItem.cs" />
+    <Compile Include="Items\Potion.cs" />
+    <Compile Include="Items\Scroll.cs" />
+    <Compile Include="Items\Weapon.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="Interfaces\IPlayer.cs" />
+    <Compile Include="Creatures\Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StartMenu.cs" />
+    <Compile Include="UI\LoadMenu.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="bin\Debug\HungryPesho.exe.config" />
+    <None Include="bin\Debug\HungryPesho.vshost.exe.config" />
+    <None Include="bin\Debug\HungryPesho.vshost.exe.manifest" />
+    <None Include="GameClassDiagram.cd" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Debug\HungryPesho.csprojResolveAssemblyReference.cache" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\HungryPesho.exe" />
+    <Content Include="bin\Debug\HungryPesho.pdb" />
+    <Content Include="bin\Debug\HungryPesho.vshost.exe" />
+    <Content Include="obj\Debug\HungryPesho.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\HungryPesho.exe" />
+    <Content Include="obj\Debug\HungryPesho.pdb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Release\" />
+    <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
