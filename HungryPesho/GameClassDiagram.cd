@@ -9,7 +9,7 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="HungryPesho.Creatures.Character" Collapsed="true">
-    <Position X="2.75" Y="6" Width="1.5" />
+    <Position X="4.25" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AQAAAAEABAAAAAQBAAAAAQAAAAFAAAABQAAAAAAAAAA=</HashCode>
       <FileName>Creatures\Character.cs</FileName>
@@ -17,7 +17,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="HungryPesho.Creatures.Creature" Collapsed="true">
-    <Position X="1.75" Y="4.5" Width="1.5" />
+    <Position X="3" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAgAAAAIAAAAAQAAAAEAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Creatures\Creature.cs</FileName>
@@ -25,22 +25,14 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="HungryPesho.Creatures.Mage" Collapsed="true">
-    <Position X="3.75" Y="8.75" Width="1.5" />
+    <Position X="5.25" Y="7.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AQAAAAAABAAAAAAAAAAAAQAAAAAAAAAAQAhAAAAAAAA=</HashCode>
       <FileName>Creatures\Mage.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="HungryPesho.Creatures.Player" Collapsed="true">
-    <Position X="2.75" Y="7.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Creatures\Player.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
   <Class Name="HungryPesho.Creatures.Warrior" Collapsed="true">
-    <Position X="1.75" Y="8.75" Width="1.5" />
+    <Position X="3.25" Y="7.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>CQAAAAAEBAAAAAAAAAAAAQAAAAAAAAAAQAAAAAAAAAA=</HashCode>
       <FileName>Creatures\Warrior.cs</FileName>
@@ -82,7 +74,7 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="HungryPesho.Items.Potion" Collapsed="true">
+  <Class Name="HungryPesho.Items.Food" Collapsed="true">
     <Position X="0.75" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAIAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
@@ -134,7 +126,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="HungryPesho.Creatures.Enemy" Collapsed="true">
-    <Position X="0.75" Y="6" Width="1.5" />
+    <Position X="0.75" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Creatures\Enemy.cs</FileName>

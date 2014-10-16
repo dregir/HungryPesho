@@ -9,11 +9,11 @@
         REJUVENATION
     }
 
-    public class Potion : EffectItem
+    public class Food : EffectItem
     {
         private PotionTypes potionType;
 
-        public Potion(int id, string name, string description, PotionTypes potionType)
+        public Food(int id, string name, string description, PotionTypes potionType)
             : base(id, name, description)
         {
             this.PotionType = potionType;

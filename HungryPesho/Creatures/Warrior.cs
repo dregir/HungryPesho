@@ -2,7 +2,7 @@
 {
     using System.Collections;
 
-    public class Warrior : Player
+    public class Warrior : Character
     {
         private const string WarriorName = "Warrior";
         private const string WarriorDescription = "Strong and powerful character who slay his opponents with brute force!";
@@ -13,7 +13,7 @@
         private const int intellect = 5;
 
         public Warrior(string name, string description, int level, int stamina, int agility, int strength, int intellect)
-            : base(name, description)
+            : base(name, description, level, stamina, agility, strength, intellect)
         {
             base.Name = WarriorName;
             base.Description = WarriorDescription;
