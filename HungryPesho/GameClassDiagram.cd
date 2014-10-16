@@ -19,7 +19,7 @@
   <Class Name="HungryPesho.Creatures.Creature" Collapsed="true">
     <Position X="3" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAgAAAAIAAAAAQAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAgAAAAIAAAAAQAAAAEAAAAAAAAAAAAACg=</HashCode>
       <FileName>Creatures\Creature.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -69,7 +69,7 @@
   <Class Name="HungryPesho.Items.Item" Collapsed="true">
     <Position X="4" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAEAAAABACAAAAAgAAAAAAAAAACAAAAAgACAAAAAgA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAgA=</HashCode>
       <FileName>Items\Item.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -77,7 +77,7 @@
   <Class Name="HungryPesho.Items.Food" Collapsed="true">
     <Position X="0.75" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAIAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAIAAAAAAgAAAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Items\Potion.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -146,13 +146,6 @@
       <FileName>Interfaces\ICreature.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="HungryPesho.Creatures.IPlayer" Collapsed="true">
-    <Position X="11.75" Y="3.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAIAABAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Interfaces\IPlayer.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
   <Interface Name="HungryPesho.Creatures.IStatable" Collapsed="true">
     <Position X="13.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
@@ -195,7 +188,7 @@
       <FileName>Items\Item.cs</FileName>
     </TypeIdentifier>
   </Enum>
-  <Enum Name="HungryPesho.Items.PotionTypes" Collapsed="true">
+  <Enum Name="HungryPesho.Items.FoodTypes" Collapsed="true">
     <Position X="10" Y="5.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>CAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>

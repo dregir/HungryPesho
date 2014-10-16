@@ -2,7 +2,7 @@
 {
     using System.Collections;
 
-    public enum PotionTypes
+    private enum FoodTypes
     {
         HELTH,
         MANA,
@@ -11,15 +11,15 @@
 
     public class Food : EffectItem
     {
-        private PotionTypes potionType;
+        private FoodTypes potionType;
 
-        public Food(int id, string name, string description, PotionTypes potionType)
+        public Food(int id, string name, string description, FoodTypes potionType)
             : base(id, name, description)
         {
             this.PotionType = potionType;
         }
 
-        public PotionTypes PotionType
+        public FoodTypes PotionType
         {
             get
             {
@@ -30,6 +30,11 @@
             {
                 this.potionType = value;
             }
+        }
+
+        public void CreateFood()
+        {
+
         }
     }
 }

@@ -4,7 +4,6 @@
 
     public class Mage : Character
     {
-        private const string MageName = "Mage";
         private const string MageDescription = "Using magic to slay his opponents.";
 
         private const int stamina = 6;
@@ -12,13 +11,11 @@
         private const int strength = 5;
         private const int intellect = 15;
 
-        public Mage(string name, string description, int level, int stamina, int agility, int strength, int intellect)
-            : base(name, description, level, stamina, agility, strength, intellect)
+        public Mage(string description, int level, int health, int energy, int agility, int strength, int intellect)
+            : base(description,level,  health, energy, agility, strength, intellect)
         {
-            base.Name = MageName;
             base.Description = MageDescription;
 
-            base.Stamina = stamina;
             base.Agility = agility;
             base.Strength = strength;
             base.Intellect = intellect;

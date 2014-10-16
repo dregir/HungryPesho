@@ -10,8 +10,7 @@
         private int strength;
         private int intellect;
 
-        public StatItem(int id, string name, string description, int stamina, int agility, int strength, int intellect)
-            : base(id, name, description)
+        public StatItem(int stamina, int agility, int strength, int intellect)
         {
             this.Stamina = stamina;
             this.Agility = agility;

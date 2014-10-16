@@ -10,7 +10,7 @@
         SPEED
     }
 
-    public abstract class Ability : IAbility
+    public class Ability : IAbility
     {
         private string name;
         private string description;

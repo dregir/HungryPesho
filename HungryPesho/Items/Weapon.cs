@@ -16,8 +16,8 @@
         private int weaponDamage;
         private WeaponTypes weaponType;
 
-        public Weapon(int id, string name, string description, int stamina, int agility, int strength, int intellect, int damage)
-            : base(id, name, description, stamina, agility, strength, intellect)
+        public Weapon(string name, string description, int stamina, int agility, int strength, int intellect, int damage)
+            : base(stamina, agility, strength, intellect)
         {
             this.WeaponDamage = damage;
         }

@@ -5,16 +5,14 @@
     public abstract class Character : Creature, IStatable
     {
         private int level;
-        private int stamina;
         private int agility;
         private int strength;
         private int intellect;
 
-        public Character(string name, string description, int level, int stamina, int agility, int strength, int intellect)
-            : base(name, description)
+        public Character(string description, int level, int health, int energy, int agility, int strength, int intellect)
+            : base(description, level, health, energy)
         {
             this.Level = level;
-            this.Stamina = stamina;
             this.Intellect = intellect;
             this.Agility = agility;
             this.Strength = strength;
@@ -33,19 +31,6 @@
             set
             {
                 this.level = value;
-            }
-        }
-
-        public int Stamina
-        {
-            get
-            {
-                return this.stamina;
-            }
-
-            set
-            {
-                this.stamina = value;
             }
         }
 
