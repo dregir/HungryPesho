@@ -2,7 +2,7 @@
 {
     using System.Collections;
 
-    public class Mage : Character
+    public class Mage : Player
     {
         private const string MageName = "Mage";
         private const string MageDescription = "Using magic to slay his opponents.";
@@ -13,7 +13,7 @@
         private const int intellect = 15;
 
         public Mage(string name, string description, int level, int stamina, int agility, int strength, int intellect)
-            : base(name, description, level, stamina, agility, strength, intellect)
+            : base(name, description)
         {
             base.Name = MageName;
             base.Description = MageDescription;

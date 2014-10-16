@@ -10,7 +10,8 @@
         private int strength;
         private int intellect;
 
-        public Character(string name, string description, int level, int stamina, int agility, int strength, int intellect) : base(name, description)
+        public Character(string name, string description, int level, int stamina, int agility, int strength, int intellect)
+            : base(name, description)
         {
             this.Level = level;
             this.Stamina = stamina;

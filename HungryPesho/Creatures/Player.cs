@@ -3,7 +3,7 @@
     using System;
     using System.Collections.Generic;
 
-    public class Player : Creature, IPlayer
+    public class Player : Character, IPlayer
     {
         private List<Character> characters;
 
