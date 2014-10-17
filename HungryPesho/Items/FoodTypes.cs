@@ -4,6 +4,7 @@
     {
         Pizza,
         Chicken,
+        Steak,
         Beer
     }
 }
