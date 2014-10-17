@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="HungryPesho.Abilities.Ability" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAgAAIAIAAAQAAAAEAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Abilities\Ability.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="HungryPesho.Creatures.Character" Collapsed="true">
+    <Position X="1.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAEAAAAAAAAFAAAAAQAAAABAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Creatures\Character.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="HungryPesho.Creatures.Creature" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAABAAQAAQAEAAAAAIEAAACBAAAAAAAAAAg=</HashCode>
+      <FileName>Creatures\Creature.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="HungryPesho.Creatures.Enemy" Collapsed="true">
+    <Position X="5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAU=</HashCode>
+      <FileName>Creatures\Enemy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HungryPesho.Creatures.Mage" Collapsed="true">
+    <Position X="2.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAIQAAAAAEgAAAAAAIAAAAAAAABAAgAAAAA=</HashCode>
+      <FileName>Creatures\Mage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HungryPesho.Creatures.Warrior" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAEAAIAAAAAAEgAAAAAAIAAAAAAEAAAAgAAAAA=</HashCode>
+      <FileName>Creatures\Warrior.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HungryPesho.Engine.CombatEngine" Collapsed="true">
+    <Position X="17.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAQAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\CombatEngine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HungryPesho.Engine.GameSettings" Collapsed="true">
+    <Position X="14.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Engine\GameSettings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HungryPesho.GameObject" Collapsed="true">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObject.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="HungryPesho.HungryPeshoTest" Collapsed="true">
+    <Position X="16" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>HungryPesho.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HungryPesho.Items.Armor" Collapsed="true">
+    <Position X="9.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEIAAAACAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Items\Armor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HungryPesho.Items.EffectItem" Collapsed="true">
+    <Position X="7.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Items\EffectItem.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="HungryPesho.Items.Food" Collapsed="true">
+    <Position X="7.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAQAAAAEA=</HashCode>
+      <FileName>Items\Food.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HungryPesho.Items.Item" Collapsed="true">
+    <Position X="9.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Items\Item.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HungryPesho.Items.StatItem" Collapsed="true">
+    <Position X="10.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAEABAAAAAQFAAAAAQAAAABAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Items\StatItem.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="HungryPesho.Items.Weapon" Collapsed="true">
+    <Position X="11.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAIAAAAAAAAAAAEAAAAAAAAAAAAAAAAABAAAAIQAAA=</HashCode>
+      <FileName>Items\Weapon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HungryPesho.UI.Color" Collapsed="true">
+    <Position X="16" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UI\Color.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HungryPesho.UI.LoadMenu" Collapsed="true">
+    <Position X="17.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAgAA=</HashCode>
+      <FileName>UI\LoadMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="HungryPesho.Interfaces.IAbility" Collapsed="true">
+    <Position X="14.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAQAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Interfaces\IAbility.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="HungryPesho.Interfaces.ICreature" Collapsed="true">
+    <Position X="16" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAABAAAAAAAEAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\ICreature.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="HungryPesho.Interfaces.IDescription" Collapsed="true">
+    <Position X="17.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IDescription.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="HungryPesho.Interfaces.IEffectable" Collapsed="true">
+    <Position X="14.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IEffectable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="HungryPesho.Interfaces.IStatable" Collapsed="true">
+    <Position X="16" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAABAAAAAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IStatable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="HungryPesho.Items.ArmorTypes" Collapsed="true">
+    <Position X="16" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAAAAAAgAAAAAAAAAAAAQAAAAAAAAAI=</HashCode>
+      <FileName>Items\ArmorTypes.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="HungryPesho.Items.FoodTypes" Collapsed="true">
+    <Position X="17.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAAIAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>Items\FoodTypes.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="HungryPesho.Items.WeaponTypes" Collapsed="true">
+    <Position X="14.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAICIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Items\WeaponTypes.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="HungryPesho.Abilities.AbilityEffects" Collapsed="true">
+    <Position X="14.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgBAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Abilities\AbilityEffects.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

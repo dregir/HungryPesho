@@ -1,6 +1,5 @@
 ﻿namespace HungryPesho.Items
 {
-    using System.Collections;
     using HungryPesho.Interfaces;
 
     public abstract class StatItem : Item, IStatable

@@ -18,7 +18,7 @@
             }
         }
 
-        public Armor CreareNewArmor()
+        public Armor CreareArmor()
         {
             return new Armor(); // TODO: Implement
         }

@@ -1,7 +1,6 @@
 ﻿namespace HungryPesho.Items
 {
     using System;
-    using System.Collections;
     using System.Text;
 
     public class Weapon : StatItem

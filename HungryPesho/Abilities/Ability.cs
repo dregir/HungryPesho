@@ -1,15 +1,6 @@
 ﻿namespace HungryPesho.Abilities
 {
-    using System;
     using HungryPesho.Interfaces;
-
-    public enum AbilityEffects
-    {
-        DOUBLEDAMAGE,
-        FREEZE,
-        DODGE,
-        SPEED
-    }
 
     public class Ability : IAbility
     {

@@ -1,6 +1,6 @@
 ﻿namespace HungryPesho.Items
 {
-    public class Food
+    public class Food : EffectItem
     {
         private FoodTypes foodType;
 
