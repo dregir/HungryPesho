@@ -126,6 +126,18 @@
             }
         }
 
+        public static void LoadGameInfoScreen() // How to play screen
+        {
+            // TODO: Implement
+            throw new NotImplementedException();
+        }
+
+        public static void LoadSettingsScreen() // Game options
+        {
+            Console.WriteLine("Music");
+            Console.WriteLine("OFF");
+        }
+
         public static void LoadCreditsScreen() // Game credits Screen
         {
             Console.Title = "Hungry Pesho  -=-  Game Credits";
@@ -151,27 +163,14 @@ Game intro...
             //Console.WriteLine("Press Space to go back");
         }
 
-        public static void LoadGameInfoScreen() // How to play screen
+        public static void LoadLooseScreen(int score) // Gave Over screen
         {
-            // TODO: Implement
-            throw new NotImplementedException();
-        }
+            //var music = new SoundPlayer(@"gameover.wav");
+            //music.Play();
 
-        private static void LoadGameOverScreen(int score) // Gave Over screen
-        {
-            var music = new SoundPlayer(@"gameover.wav");
-            music.Play();
-
-            Console.Clear();
             Console.Title = "Hugry pesho!  -=-  You LOOSE!";
-            Console.WriteLine("GAME OVER");
-            Console.WriteLine("Enter your nickname: ");
-
-            Console.ReadLine();
 
             Console.WriteLine(@"
-
-
 
              _                   _
             ( )                 ( )_
@@ -188,34 +187,38 @@ Game intro...
                (_)           (_)
 ");
 
+            
+            Console.WriteLine("GAME OVER");
+            Console.WriteLine("Enter your nickname: ");
+
+            Console.ReadLine();
             //GetScore(score);
         }
 
-        private static void LoadWinScreen() // Win Game screen
+        public static void LoadWinScreen() // Win Game screen
         {
-            var music = new SoundPlayer(@"Win.wav");
-            music.Play();
-            Console.Clear();
+            //var music = new SoundPlayer(@"win.wav");
+            //music.Play();
+
             Console.Title = "Hungry Pesho!  -=-  You WIN!";
+            Console.Clear();
+
+            Console.WriteLine(@"
+
+             ╔╗╔╗╔╗╔╗
+             ║╚╝╚╝║╠╣╔═╦╗
+             ╚╗╔╗╔╝║║║║║║
+              ╚╝╚╝ ╚╝╚╩═╝");
+
+            
             Console.WriteLine("YOU WIN");
             Console.WriteLine("Your score: ");
             Console.WriteLine("Enter your nickname: ");
-            Console.WriteLine(@"
-
-
-
-
-             ╔╗╔╗╔╗╔╗
-             ║╚╝╚╝║╠╣╔═╦╗╔═╦╗╔═╗╔╦╗
-             ╚╗╔╗╔╝║║║║║║║║║║║╩╣║╔╝
-              ╚╝╚╝ ╚╝╚╩═╝╚╩═╝╚═╝╚╝
-");
-
 
             //GetScore(score);
         }
 
-        private static void LoadRankList() // Show current high score
+        public static void LoadRankList() // Show current high score
         {
             Console.Title = "Hungry Pesho!  -=-  Ranklist";
             var highScores = File.ReadAllLines("score.hup");

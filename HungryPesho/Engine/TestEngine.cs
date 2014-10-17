@@ -4,6 +4,7 @@
     using HungryPesho.Abilities;
     using HungryPesho.Creatures;
     using HungryPesho.UI;
+    using System.Threading;
 
     public class TestEngine
     {
@@ -159,8 +160,21 @@
 
                     }
                 }
-                Console.WriteLine((peshaka.Health > enemy.Health) ? Color.ColorMe("Your enemy fall dead on the ground.\nYou won!", ConsoleColor.Green) :
-                   Color.ColorMe("You Lost!", ConsoleColor.Red));
+
+                if (peshaka.Health > enemy.Health)
+                {
+                    Color.ColorMe("Your enemy fall dead on the ground.\nYou won!", ConsoleColor.Green);
+
+                    //Thread.Sleep(2000);
+                    //LoadScreen.LoadWinScreen(); // Show win screen
+                }
+                else
+                {
+                    Color.ColorMe("You Lost!", ConsoleColor.Red);
+
+                    LoadScreen.LoadLooseScreen(peshaka.Level); // Show game over screen
+                }
+
 
                 Console.BackgroundColor = ConsoleColor.Magenta;
                 Console.WriteLine("Current HP: {0}, XP GAIN: {1}", peshaka.Health, awardXp);
