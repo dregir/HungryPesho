@@ -2,6 +2,7 @@
 {
     using HungryPesho.Engine;
     using System;
+    using System.IO;
     using System.Media;
 
     public static class LoadScreen
@@ -99,6 +100,23 @@ Game intro...
 
 
             //GetScore(score);
+        }
+
+        private static void CurrentHighScores() // Show current high score
+        {
+            Console.Title = "Hungry Pesho!  -=-  Ranklist";
+            var highScores = File.ReadAllLines("score.hup");
+
+            for (int i = 0; i < highScores.Length && i <= 10; i++)
+            {
+                Console.SetCursorPosition((Console.WindowWidth / 2) - 7, (Console.WindowHeight - 23) - (i + 1));
+                Console.WriteLine("{0}. {1}", i + 1, highScores[i]);
+            }
+
+            Console.CursorVisible = false;
+            Console.SetCursorPosition((Console.WindowWidth / 2) - 12, Console.WindowHeight - 2);
+            //Console.ForegroundColor = ConsoleColor.Yellow;
+            //Console.WriteLine("Press Space to go back");
         }
     }
 }
