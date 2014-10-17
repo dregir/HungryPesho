@@ -6,10 +6,10 @@
 
     public enum WeaponTypes
     {
-        SWORD,
-        STAFF,
-        DAGGER,
-        BOW
+        Sword,
+        Staff,
+        Dagger,
+        Bow
     }
 
     public class Weapon : StatItem
@@ -61,10 +61,10 @@
 
             switch (weaponType)
             {
-                case 1: weapon.WeaponType = WeaponTypes.SWORD; weapon.Description = "You can chop off heads now!"; break;
-                case 2: weapon.WeaponType = WeaponTypes.STAFF; weapon.Description = "Will make you a bit wiser!"; break;
-                case 3: weapon.WeaponType = WeaponTypes.DAGGER; weapon.Description = "You can cook with this one!"; break;
-                case 4: weapon.WeaponType = WeaponTypes.BOW; weapon.Description = "You can shoot out in a distance!"; break;
+                case 1: weapon.WeaponType = WeaponTypes.Sword; weapon.Description = "You can chop off heads now!"; break;
+                case 2: weapon.WeaponType = WeaponTypes.Staff; weapon.Description = "Will make you a bit wiser!"; break;
+                case 3: weapon.WeaponType = WeaponTypes.Dagger; weapon.Description = "You can cook with this one!"; break;
+                case 4: weapon.WeaponType = WeaponTypes.Bow; weapon.Description = "You can shoot out in a distance!"; break;
 
                 default:
                     break;
