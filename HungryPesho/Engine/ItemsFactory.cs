@@ -80,10 +80,9 @@
             var random = new Random();
             var food = new Food();
 
-            //food. = random.Next(1, 11);
-            //food. = random.Next(1, 11);   //What properties the food would have?
-            //food. = random.Next(1, 11);
-            //food. = random.Next(1, 11);
+            food.HealtGain = random.Next(1, 15);
+            food.EnergyGain = random.Next(1, 5);
+           
 
             var foodType = random.Next(1, 5);
 

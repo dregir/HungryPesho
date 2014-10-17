@@ -24,6 +24,10 @@
             }
         }
 
-      
+
+
+        public int Gain { get; set; }
+
+        public int HealtGain { get; set; }
     }
 }
