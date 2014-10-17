@@ -113,7 +113,7 @@
                         case 0: Console.WriteLine("START"); break;
                         case 1: Console.WriteLine("HOW TO PLAY"); break;
                         case 2: Console.WriteLine("OPTIONS"); break;
-                        case 3: GameSettings.LoadGameInfo(); break;
+                        case 3: LoadScreen.LoadCreditsScreen(); break;
                         case 4: Console.WriteLine("EXIT"); break;
                         default:
                             break;
