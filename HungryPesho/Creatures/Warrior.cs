@@ -6,16 +6,30 @@
     {
         private const string WarriorDescription = "Strong and powerful character who slay his opponents with brute force!";
 
-        private const int Level = 1;
-        private const int Health = 13;
-        private const int Energy = 10;
-        private const int Agility = 5;
-        private const int Strength = 15;
-        private const int Intellect = 5;
+        private const int StartingLevel = 1;
+        private const int StartingHealth = 6;
+        private const int StartingEnergy = 15;
+        private const int StartingAgility = 7;
+        private const int StartingStrength = 5;
+        private const int StartingIntellect = 15;
 
-        private Warrior(string description, int level, int attack, int health, int energy, int initiative, int agility, int strength, int intellect)
-            : base(description, level, attack, health, energy, initiative, agility, strength, intellect)
+        //private Warrior(string description, int level, int attack, int health, int energy, int initiative, int agility, int strength, int intellect)
+        //    : base(description, level, attack, health, energy, initiative, agility, strength, intellect)
+        //{
+        //}
+
+        public static Warrior CreateNewWarrior()
         {
+            var warrior = new Warrior();
+
+            warrior.Level = StartingLevel;
+            warrior.Health = StartingHealth;
+            warrior.Energy = StartingEnergy;
+            warrior.Agility = StartingAgility;
+            warrior.Strength = StartingStrength;
+            warrior.Intellect = StartingIntellect;
+
+            return warrior;
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿namespace HungryPesho.Items
 {
     using System.Collections;
-    using HungryPesho.Interfaces;
+    using HungryPesho.Creatures;
 
     public abstract class StatItem : Item, IStatable
     {
@@ -9,14 +9,6 @@
         private int agility;
         private int strength;
         private int intellect;
-
-        public StatItem(int stamina, int agility, int strength, int intellect)
-        {
-            this.Stamina = stamina;
-            this.Agility = agility;
-            this.Strength = strength;
-            this.Intellect = intellect;
-        }
 
         #region Properties
         // TODO: Validate
@@ -68,5 +60,11 @@
             }
         }
         #endregion
+
+        public override string ToString()
+        {
+            return string.Format("\r\nStamina: {0} \r\nAgility: {1} \r\nStrength: {2} \r\nIntellect: {3}",
+                 this.Stamina, this.Agility, this.Strength, this.Intellect);
+        }
     }
 }

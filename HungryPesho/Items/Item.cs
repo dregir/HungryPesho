@@ -1,7 +1,6 @@
 ﻿namespace HungryPesho.Items
 {
     using System;
-    using HungryPesho.Interfaces;
 
     public enum ItemTypes
     {
@@ -14,9 +13,8 @@
 
     public abstract class Item : GameObject, ICollectible
     {
+        private string name;
         private ItemTypes itemType;
-
-        
 
         #region Properties
         // TODO: Validate
@@ -32,18 +30,18 @@
                 this.itemType = value;
             }
         }
-        #endregion
 
         public string Name
         {
             get
             {
-                throw new NotImplementedException();
+                return this.name;
             }
             set
             {
-                throw new NotImplementedException();
+                this.name = value;
             }
         }
+        #endregion
     }
 }

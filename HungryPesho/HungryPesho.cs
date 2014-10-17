@@ -12,19 +12,21 @@
     {
         public static void Main()
         {
-            // Characters
-            //Character mage = new Mage();
-            //Character warrior = new Warrior();
-
-            //Console.WriteLine(mage.CharacterName);
-            //Console.WriteLine(mage.CharacterDescription + Environment.NewLine);
-
-            //Console.WriteLine(warrior.CharacterName);
-            //Console.WriteLine(warrior.CharacterDescription + Environment.NewLine);
-
             GameSettings.LoadGameSettings();
+
+            // Testing game menu and game info
             //GameSettings.LoadGameInfo();
-            LoadMenu.LoadStartMenu();
+            //LoadMenu.LoadStartMenu();
+
+
+            // Testing character creation
+            //Console.WriteLine(Mage.CreateNewMage());
+            //Console.WriteLine(Warrior.CreateNewWarrior());
+
+
+            // Testing weapon and armor creation
+            Console.WriteLine(Weapon.CreateNewWeapon());
+
         }
     }
 }

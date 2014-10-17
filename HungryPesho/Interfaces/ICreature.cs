@@ -1,7 +1,7 @@
-﻿namespace HungryPesho.Interfaces
-{
-    using System;
+﻿using System;
 
+namespace HungryPesho.Creatures
+{
     interface ICreature
     {
         int Attack { get; set; }

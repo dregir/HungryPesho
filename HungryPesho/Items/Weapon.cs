@@ -1,26 +1,21 @@
 ﻿namespace HungryPesho.Items
 {
+    using System;
     using System.Collections;
+    using System.Text;
 
     public enum WeaponTypes
     {
         SWORD,
         STAFF,
         DAGGER,
-        BOW,
-        SHIELD
+        BOW
     }
 
     public class Weapon : StatItem
     {
         private int weaponDamage;
         private WeaponTypes weaponType;
-
-        public Weapon(string name, string description, int stamina, int agility, int strength, int intellect, int damage)
-            : base(stamina, agility, strength, intellect)
-        {
-            this.WeaponDamage = damage;
-        }
 
         #region Properties
         // TODO: Validate
@@ -51,9 +46,43 @@
         }
         #endregion
 
-        public void CreateNewWeapon()
+        public static Weapon CreateNewWeapon()
         {
+            var random = new Random();
+            var weapon = new Weapon();
 
+            weapon.WeaponDamage = random.Next(1, 100);
+            weapon.Stamina = random.Next(1, 11);
+            weapon.Agility = random.Next(1, 11);
+            weapon.Strength = random.Next(1, 11);
+            weapon.Intellect = random.Next(1, 11);
+
+            var weaponType = random.Next(1, 5);
+
+            switch (weaponType)
+            {
+                case 1: weapon.WeaponType = WeaponTypes.SWORD; weapon.Descriptin = "You can chop off heads now!"; break;
+                case 2: weapon.WeaponType = WeaponTypes.STAFF; weapon.Descriptin = "Will make you a bit wiser!"; break;
+                case 3: weapon.WeaponType = WeaponTypes.DAGGER; weapon.Descriptin = "You can cook with this one!"; break;
+                case 4: weapon.WeaponType = WeaponTypes.BOW; weapon.Descriptin = "You can shoot out in a distance!"; break;
+
+                default:
+                    break;
+            }
+
+            return weapon;
+        }
+
+        public override string ToString()
+        {
+            var print = new StringBuilder();
+
+            print.AppendFormat("{0} - {1} \r\nStats \r\nDamage: {2}",
+                this.WeaponType, this.Descriptin, this.WeaponDamage);
+
+            print.Append(base.ToString());
+
+            return print.ToString();
         }
     }
 }

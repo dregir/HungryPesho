@@ -1,7 +1,6 @@
 ﻿namespace HungryPesho.Creatures
 {
     using System.Collections;
-    using HungryPesho.Interfaces;
 
     public abstract class Character : Creature, IStatable
     {
@@ -9,13 +8,13 @@
         private int strength;
         private int intellect;
 
-        public Character(string description, int level, int attack, int health, int energy, int initiative, int agility, int strength, int intellect)
-            : base(description, level, attack, health, energy, initiative)
-        {
-            this.Agility = agility;
-            this.Strength = strength;
-            this.Intellect = intellect;
-        }
+        //public Character(string description, int level, int attack, int health, int energy, int initiative, int agility, int strength, int intellect)
+        //    : base(description, level, attack, health, energy, initiative)
+        //{
+        //    this.Agility = agility;
+        //    this.Strength = strength;
+        //    this.Intellect = intellect;
+        //}
 
         #region Properties
         // TODO: Validate
@@ -58,5 +57,11 @@
             }
         }
         #endregion
+
+        public override string ToString()
+        {
+            return string.Format("{0} - Level: {1} \r\nHealth: {2} \r\nEnergy: {3} \r\nAgility: {4} \r\nStrength: {5} \r\nIntellect: {6}",
+                this.GetType().Name, this.Level, this.Health, this.Energy, this.Agility, this.Strength, this.Intellect);
+        }
     }
 }

@@ -8,13 +8,13 @@
     {    
         private List<Ability> abilities;
 
-        public Enemy(string description, int level, int attack, int health, int energy, int initiative, Ability ability) 
-            : base(description, level, attack, health, energy, initiative)
-        {
-            this.abilities = new List<Ability>();
+        //public Enemy(string description, int level, int attack, int health, int energy, int initiative, Ability ability) 
+        //    : base(description, level, attack, health, energy, initiative)
+        //{
+        //    this.abilities = new List<Ability>();
 
-            this.Abilities.Add(ability);
-        }
+        //    this.Abilities.Add(ability);
+        //}
 
         public List<Ability> Abilities { get; set; }
          

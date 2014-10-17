@@ -6,12 +6,6 @@
     {
         private int armorProtection;
 
-        public Armor(int id, string name, string description, int stamina, int agility, int strength, int intellect, int protection)
-            : base(stamina, agility, strength, intellect)
-        {
-            this.ArmorProtection = protection;
-        }
-
         // TODO: Validate
         public int ArmorProtection
         {
@@ -26,9 +20,9 @@
             }
         }
 
-        public void CreareNewArmor()
+        public Armor CreareNewArmor()
         {
-
+            return new Armor(); // TODO: Implement
         }
     }
 }
