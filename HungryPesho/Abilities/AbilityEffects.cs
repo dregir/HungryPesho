@@ -2,9 +2,10 @@
 {
     public enum AbilityEffects
     {
-        DoubleDamage,
+        DirectDamage,
+        DamageModificator,
         Freeze,
-        Dodge,
+        Dodge, 
         Speed
     }
 }

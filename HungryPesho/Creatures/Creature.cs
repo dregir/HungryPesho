@@ -87,5 +87,10 @@ namespace HungryPesho.Creatures
         }
 
         #endregion
+
+        public virtual void Action(Creature target)
+        {
+            //Todo Impelment some actions
+        }
     }
 }

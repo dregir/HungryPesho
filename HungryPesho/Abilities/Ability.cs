@@ -4,12 +4,14 @@
 
     public class Ability : IAbility
     {
+        private readonly int energyCost; 
         private string name;
         private string description;
         private AbilityEffects abilityEffect;
 
-        public Ability(string name, string description, AbilityEffects abilityEffect)
+        public Ability(string name, string description, AbilityEffects abilityEffect, int energyCost)
         {
+            this.EnergyCost = energyCost;
             this.Name = name;
         }
 
@@ -28,7 +30,7 @@
             }
         }
 
-        public double ManaCost { get; set; }
+        public int EnergyCost { get; set; }
 
         public string Description
         {
