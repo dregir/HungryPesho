@@ -6,7 +6,7 @@
     using HungryPesho.Items;
     using HungryPesho.UI;
     using HungryPesho.Engine;
-
+    
     // Console test
     public class HungryPeshoTest
     {
@@ -25,7 +25,8 @@
 
 
             // Testing weapon and armor creation
-            Console.WriteLine(Weapon.CreateWeapon());
+            Console.WriteLine(ItemsFactory.CreateItem().GetType());
+            
 
         }
     }

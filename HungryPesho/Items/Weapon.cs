@@ -37,32 +37,32 @@
         }
         #endregion
 
-        public static Weapon CreateWeapon()
-        {
-            var random = new Random();
-            var weapon = new Weapon();
+        //public static Weapon CreateWeapon()
+        //{
+        //    var random = new Random();
+        //    var weapon = new Weapon();
 
-            weapon.WeaponDamage = random.Next(1, 100);
-            weapon.Stamina = random.Next(1, 11);
-            weapon.Agility = random.Next(1, 11);
-            weapon.Strength = random.Next(1, 11);
-            weapon.Intellect = random.Next(1, 11);
+        //    weapon.WeaponDamage = random.Next(1, 100);
+        //    weapon.Stamina = random.Next(1, 11);
+        //    weapon.Agility = random.Next(1, 11);
+        //    weapon.Strength = random.Next(1, 11);
+        //    weapon.Intellect = random.Next(1, 11);
 
-            var weaponType = random.Next(1, 5);
+        //    var weaponType = random.Next(1, 5);
 
-            switch (weaponType)
-            {
-                case 1: weapon.WeaponType = WeaponTypes.Sword; weapon.Description = "You can chop off heads now!"; break;
-                case 2: weapon.WeaponType = WeaponTypes.Staff; weapon.Description = "Will make you a bit wiser!"; break;
-                case 3: weapon.WeaponType = WeaponTypes.Dagger; weapon.Description = "You can cook with this one!"; break;
-                case 4: weapon.WeaponType = WeaponTypes.Bow; weapon.Description = "You can shoot out in a distance!"; break;
+        //    switch (weaponType)
+        //    {
+        //        case 1: weapon.WeaponType = WeaponTypes.Sword; weapon.Description = "You can chop off heads now!"; break;
+        //        case 2: weapon.WeaponType = WeaponTypes.Staff; weapon.Description = "Will make you a bit wiser!"; break;
+        //        case 3: weapon.WeaponType = WeaponTypes.Dagger; weapon.Description = "You can cook with this one!"; break;
+        //        case 4: weapon.WeaponType = WeaponTypes.Bow; weapon.Description = "You can shoot out in a distance!"; break;
 
-                default:
-                    break;
-            }
+        //        default:
+        //            break;
+        //    }
 
-            return weapon;
-        }
+        //    return weapon;
+        //}
 
         public override string ToString()
         {

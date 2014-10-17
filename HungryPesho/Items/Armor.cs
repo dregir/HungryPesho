@@ -4,6 +4,8 @@
     {
         private int armorProtection;
 
+        private ArmorTypes armorType;
+
         // TODO: Validate
         public int ArmorProtection
         {
@@ -18,7 +20,19 @@
             }
         }
 
-        public Armor CreareArmor()
+        public ArmorTypes ArmorType
+        {
+            get
+            {
+                return armorType;
+            }
+
+            set
+            {
+                armorType = value;
+            }
+        }
+        public Armor CreateArmor()
         {
             return new Armor(); // TODO: Implement
         }
