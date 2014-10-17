@@ -13,14 +13,15 @@
         private const int Strength = 15;
         private const int Intellect = 5;
 
-        private Warrior(string description, int level, int health, int energy, int agility, int strength, int intellect)
-            : base(description, level, health, energy, agility, strength, intellect)
+        private Warrior(string description, int level, int attack, int health, int energy, int initiative, int agility, int strength, int intellect)
+            : base(description, level, attack, health, energy, initiative, agility, strength, intellect)
         {
         }
 
+
         public Character CreateNewWarrior()
         {
-            return new Warrior(WarriorDescription, Level, Health, Energy, Agility, Strength, Intellect);
+            //return new Warrior(WarriorDescription, Level, Health, Energy, Agility, Strength, Intellect);
         }
     }
 }

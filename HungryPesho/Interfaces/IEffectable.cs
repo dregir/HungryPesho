@@ -2,6 +2,6 @@
 {
     interface IEffectable
     {
-
+        // TODO: 
     }
 }

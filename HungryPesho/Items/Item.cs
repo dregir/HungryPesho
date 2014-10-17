@@ -11,7 +11,7 @@
         POTION
     }
 
-    public abstract class Item : ICollectible
+    public abstract class Item : GameObject, ICollectible
     {
         private ItemTypes itemType;
 

@@ -5,8 +5,7 @@
 
     public abstract class EffectItem : Item, IEffectable
     {
-        public EffectItem(int id, string name, string description)
-            : base(id, name, description)
+        public EffectItem(string name, string description)
         {
         }
     }

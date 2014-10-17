@@ -1,20 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using HungryPesho.Abilities;
-
-namespace HungryPesho.Creatures
+﻿namespace HungryPesho.Creatures
 {
+    using System;
+    using System.Collections.Generic;
+    using HungryPesho.Abilities;
+
     public class Enemy : Creature
     {    
-        private IList<Ability> abilities;
+        private List<Ability> abilities;
 
-        public Enemy(string name, double attack, double health, double mana, double initiative, IList<Ability> abilities) 
-            : base(name, attack, health, mana, initiative)
+        public Enemy(string description, int level, int attack, int health, int energy, int initiative, Ability ability) 
+            : base(description, level, attack, health, energy, initiative)
         {
-            Abilities = abilities;
+            this.abilities = new List<Ability>();
+
+            this.Abilities.Add(ability);
         }
 
-        public IList<Ability> Abilities { get; set; }
+        public List<Ability> Abilities { get; set; }
          
         public void Action(Creature target)
         {

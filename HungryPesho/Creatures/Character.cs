@@ -4,16 +4,13 @@
 
     public abstract class Character : Creature, IStatable
     {
-        private int level;
         private int agility;
         private int strength;
         private int intellect;
 
-        public Character(string description, int level, int health, int energy, int agility, int strength, int intellect)
-            : base(description, level, health, energy)
+        public Character(string description, int level, int attack, int health, int energy, int initiative, int agility, int strength, int intellect)
+            : base(description, level, attack, health, energy, initiative)
         {
-            this.Level = level;
-            this.Intellect = intellect;
             this.Agility = agility;
             this.Strength = strength;
             this.Intellect = intellect;
@@ -21,19 +18,6 @@
 
         #region Properties
         // TODO: Validate
-        public int Level
-        {
-            get
-            {
-                return this.level;
-            }
-
-            set
-            {
-                this.level = value;
-            }
-        }
-
         public int Agility
         {
             get

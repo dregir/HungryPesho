@@ -1,34 +1,26 @@
 ﻿namespace HungryPesho.Creatures
 {
-    public abstract class Creature : ICreature
+    public abstract class Creature : GameObject, ICreature
     {
         private string description;
         private int level;
+        private int attack;
         private int health;
         private int energy;
+        private int initiative;
 
-        public Creature(string description, int level, int health, int energy)
+        public Creature(string description, int level, int attack, int health, int energy, int initiative)
+            : base(description)
         {
-            this.Description = description;
             this.Level = level;
+            this.Attack = attack;
             this.Health = health;
             this.Energy = energy;
+            this.Initiative = initiative;
         }
 
         #region Properties
         // TODO: Validate
-        public string Description
-        {
-            get
-            {
-                return this.description;
-            }
-            set
-            {
-                this.description = value;
-            }
-        }
-
         public int Level
         {
             get
@@ -54,10 +46,44 @@
             }
         }
 
-        public double Attack { get; set; }
-        public double Health { get; set; }
-        public double Mana { get; set; }
-        public double Initiative { get; set; }
+        public int Attack
+        {
+            get
+            {
+                return this.attack;
+            }
+
+            set
+            {
+                this.attack = value;
+            }
+        }
+
+        public int Energy
+        {
+            get
+            {
+                return this.energy;
+            }
+
+            set
+            {
+                this.energy = value;
+            }
+        }
+
+        public int Initiative
+        {
+            get
+            {
+                return this.Initiative;
+            }
+
+            set
+            {
+                this.initiative = value;
+            }
+        }
 
         #endregion
     }

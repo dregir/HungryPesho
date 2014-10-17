@@ -4,8 +4,8 @@
 
     public class Scroll : EffectItem
     {
-        public Scroll(int id, string name, string description)
-            : base(id, name, description)
+        public Scroll(string name, string description)
+            : base(name, description)
         {
         }
 
