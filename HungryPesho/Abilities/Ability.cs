@@ -14,7 +14,6 @@
     {
         private string name;
         private string description;
-        private int cost;
         private AbilityEffects abilityEffect;
 
         public Ability(string name, string description, AbilityEffects abilityEffect)

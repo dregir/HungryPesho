@@ -15,6 +15,8 @@
     {
         private ItemTypes itemType;
 
+        
+
         #region Properties
         // TODO: Validate
         public ItemTypes ItemType
@@ -30,5 +32,17 @@
             }
         }
         #endregion
+
+        public string Name
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
     }
 }

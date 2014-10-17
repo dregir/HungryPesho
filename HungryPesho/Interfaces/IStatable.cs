@@ -2,8 +2,6 @@
 {
     interface IStatable
     {
-        int Stamina { get; set; }
-
         int Agility { get; set; }
 
         int Strength { get; set; }

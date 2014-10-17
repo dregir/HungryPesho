@@ -2,10 +2,6 @@
 {
     interface ICollectible
     {
-        int ItemId { get; set; }
-
-        string ItemName { get; set; }
-
-        string ItemDescription { get; set; }
+        string Name { get; set; }
     }
 }

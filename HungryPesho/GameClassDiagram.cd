@@ -19,7 +19,7 @@
   <Class Name="HungryPesho.Creatures.Creature" Collapsed="true">
     <Position X="2.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAACAAAAAAhAAQAIQAEAAAAAIEAAACBAAAAAAAAAAg=</HashCode>
+      <HashCode>AAAACAAAAAABAAQAIQAEAAAAAIEAAACBAAAAAAAAAAg=</HashCode>
       <FileName>Creatures\Creature.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -41,7 +41,7 @@
   <Class Name="HungryPesho.Creatures.Warrior" Collapsed="true">
     <Position X="2.75" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAACAEEAAAAAAABAAAEAAAAAABAAAABEAAAAAAAAAA=</HashCode>
+      <HashCode>AAAACAEEAAAAAAABAAAEAAAAAABAAAABAAAAAAAAAAA=</HashCode>
       <FileName>Creatures\Warrior.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -63,7 +63,8 @@
     <Position X="20" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
-      <FileName>Engine\TestEngine.cs</FileName>
+      <FileName>HungryPesho.cs</FileName>
+      <NewMemberFileName>Engine\TestEngine.cs</NewMemberFileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HungryPesho.Items.Armor" Collapsed="true">
@@ -91,7 +92,7 @@
   <Class Name="HungryPesho.Items.Item" Collapsed="true">
     <Position X="10.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAgA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAACAAAAAgA=</HashCode>
       <FileName>Items\Item.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -171,7 +172,7 @@
   <Interface Name="HungryPesho.Items.ICollectible" Collapsed="true">
     <Position X="18.25" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAEAAAAAAAAAAAAgAAAAAAAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Interfaces\ICollectible.cs</FileName>
     </TypeIdentifier>
   </Interface>

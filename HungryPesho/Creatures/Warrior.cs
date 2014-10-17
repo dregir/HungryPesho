@@ -17,11 +17,5 @@
             : base(description, level, attack, health, energy, initiative, agility, strength, intellect)
         {
         }
-
-
-        public Character CreateNewWarrior()
-        {
-            //return new Warrior(WarriorDescription, Level, Health, Energy, Agility, Strength, Intellect);
-        }
     }
 }

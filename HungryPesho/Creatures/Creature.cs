@@ -2,7 +2,6 @@
 {
     public abstract class Creature : GameObject, ICreature
     {
-        private string description;
         private int level;
         private int attack;
         private int health;

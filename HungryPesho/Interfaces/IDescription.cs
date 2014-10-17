@@ -2,6 +2,6 @@
 {
     interface IDescription
     {
-        public string Descriptin { get; set; }
+        string Descriptin { get; set; }
     }
 }

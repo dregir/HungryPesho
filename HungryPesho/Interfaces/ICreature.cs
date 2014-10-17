@@ -4,14 +4,12 @@ namespace HungryPesho.Creatures
 {
     interface ICreature
     {
-        string Name { get; set; }
+        int Attack { get; set; }
 
-        double Attack { get; set; }
+        int Health { get; set; }
 
-        double Health { get; set; }
+        int Energy { get; set; }
 
-        double Mana { get; set; }
-
-        double Initiative { get; set; }
+        int Initiative { get; set; }
     }
 }
