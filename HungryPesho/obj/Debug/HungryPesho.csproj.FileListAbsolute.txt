@@ -4,3 +4,9 @@ D:\Git\HungryPesho\HungryPesho\bin\Debug\HungryPesho.pdb
 D:\Git\HungryPesho\HungryPesho\obj\Debug\HungryPesho.csprojResolveAssemblyReference.cache
 D:\Git\HungryPesho\HungryPesho\obj\Debug\HungryPesho.exe
 D:\Git\HungryPesho\HungryPesho\obj\Debug\HungryPesho.pdb
+D:\SoftUni\OOP\TeamProject\trunk\HungryPesho\bin\Debug\HungryPesho.exe.config
+D:\SoftUni\OOP\TeamProject\trunk\HungryPesho\obj\Debug\HungryPesho.exe
+D:\SoftUni\OOP\TeamProject\trunk\HungryPesho\obj\Debug\HungryPesho.pdb
+D:\SoftUni\OOP\TeamProject\trunk\HungryPesho\bin\Debug\HungryPesho.exe
+D:\SoftUni\OOP\TeamProject\trunk\HungryPesho\bin\Debug\HungryPesho.pdb
+D:\SoftUni\OOP\TeamProject\trunk\HungryPesho\obj\Debug\HungryPesho.csprojResolveAssemblyReference.cache

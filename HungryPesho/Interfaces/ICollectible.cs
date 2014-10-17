@@ -1,4 +1,4 @@
-﻿namespace HungryPesho.Items
+﻿namespace HungryPesho.Interfaces
 {
     interface ICollectible
     {

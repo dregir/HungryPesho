@@ -1,6 +1,7 @@
 ﻿namespace HungryPesho.Items
 {
     using System;
+    using HungryPesho.Interfaces;
 
     public enum ItemTypes
     {

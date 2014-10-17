@@ -1,6 +1,7 @@
 ﻿namespace HungryPesho.Abilities
 {
     using System;
+    using HungryPesho.Interfaces;
 
     public enum AbilityEffects
     {

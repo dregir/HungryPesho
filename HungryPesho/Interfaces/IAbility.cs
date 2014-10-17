@@ -1,5 +1,7 @@
-﻿namespace HungryPesho.Abilities
+﻿namespace HungryPesho.Interfaces
 {
+    using HungryPesho.Abilities;
+
     interface IAbility
     {
         string Name { get; set; }
