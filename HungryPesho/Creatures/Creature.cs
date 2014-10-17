@@ -1,4 +1,6 @@
-﻿namespace HungryPesho.Creatures
+﻿using HungryPesho.Interfaces;
+
+namespace HungryPesho.Creatures
 {
     public abstract class Creature : GameObject, ICreature
     {

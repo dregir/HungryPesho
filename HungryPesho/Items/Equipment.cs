@@ -2,7 +2,7 @@
 {
     using System.Collections;
 
-    public enum EquipmentTypes
+    public enum EquipmentTypes // helmet, chest, rings, legs - armortypes; equipment - delete
     {
         HEAD,
         CHEST,

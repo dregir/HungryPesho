@@ -1,4 +1,4 @@
-﻿namespace HungryPesho.Creatures
+﻿namespace HungryPesho.Interfaces
 {
     interface IStatable
     {

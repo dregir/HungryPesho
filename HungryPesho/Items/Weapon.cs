@@ -61,10 +61,10 @@
 
             switch (weaponType)
             {
-                case 1: weapon.WeaponType = WeaponTypes.SWORD; weapon.Descriptin = "You can chop off heads now!"; break;
-                case 2: weapon.WeaponType = WeaponTypes.STAFF; weapon.Descriptin = "Will make you a bit wiser!"; break;
-                case 3: weapon.WeaponType = WeaponTypes.DAGGER; weapon.Descriptin = "You can cook with this one!"; break;
-                case 4: weapon.WeaponType = WeaponTypes.BOW; weapon.Descriptin = "You can shoot out in a distance!"; break;
+                case 1: weapon.WeaponType = WeaponTypes.SWORD; weapon.Description = "You can chop off heads now!"; break;
+                case 2: weapon.WeaponType = WeaponTypes.STAFF; weapon.Description = "Will make you a bit wiser!"; break;
+                case 3: weapon.WeaponType = WeaponTypes.DAGGER; weapon.Description = "You can cook with this one!"; break;
+                case 4: weapon.WeaponType = WeaponTypes.BOW; weapon.Description = "You can shoot out in a distance!"; break;
 
                 default:
                     break;
@@ -78,7 +78,7 @@
             var print = new StringBuilder();
 
             print.AppendFormat("{0} - {1} \r\nStats \r\nDamage: {2}",
-                this.WeaponType, this.Descriptin, this.WeaponDamage);
+                this.WeaponType, this.Description, this.WeaponDamage);
 
             print.Append(base.ToString());
 

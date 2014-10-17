@@ -1,8 +1,9 @@
 ﻿namespace HungryPesho.Items
 {
     using System;
+    using HungryPesho.Interfaces;
 
-    public enum ItemTypes
+    public enum ItemTypes// delete
     {
         EQUIPMENT,
         WEAPON,

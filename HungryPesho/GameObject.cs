@@ -9,10 +9,10 @@
 
         public GameObject(string description = "")
         {
-            this.Descriptin = description;
+            this.Description = description;
         }   
 
-        public string Descriptin
+        public string Description
         {
             get
             {

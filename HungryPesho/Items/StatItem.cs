@@ -1,7 +1,7 @@
 ﻿namespace HungryPesho.Items
 {
     using System.Collections;
-    using HungryPesho.Creatures;
+    using HungryPesho.Interfaces;
 
     public abstract class StatItem : Item, IStatable
     {

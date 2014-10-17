@@ -1,5 +1,7 @@
-﻿namespace HungryPesho.Items
+﻿namespace HungryPesho.Interfaces
 {
+    using HungryPesho.Items;
+
     interface ICollectible
     {
         string Name { get; set; }
