@@ -7,7 +7,7 @@
 
     public static class LoadScreen
     {
-        public static void LoadStartMenu()
+        public static void LoadStartMenu() // Main menu
         {
             Console.WriteLine(@"
 
@@ -35,11 +35,12 @@
 
             var menuChoices = new[]
             {
-                "   START  ",
+                "   START   ",
                 "HOW TO PLAY",
                 "  OPTIONS  ",
+                "  RANKLIST ",
                 "  CREDITS  ",
-                "   EXIT   "
+                "   EXIT    "
             };
 
             Console.ForegroundColor = ConsoleColor.White;
@@ -115,19 +116,14 @@
                         case 0: TestEngine.StartEngine(); break;
                         case 1: LoadGameInfoScreen(); break;
                         case 2: GameSettings.LoadGameSettings(); break;
-                        case 3: LoadCreditsScreen(); break;
-                        case 4: Environment.Exit(0); break;
+                        case 3: LoadRankList(); break;
+                        case 4: LoadCreditsScreen(); break;
+                        case 5: Environment.Exit(0); break;
                         default:
                             break;
                     }
                 }
             }
-        }
-
-        public static void LoadGameScreen()
-        {
-            // TODO: Implement
-            throw new NotImplementedException();
         }
 
         public static void LoadCreditsScreen() // Game credits Screen
@@ -155,7 +151,7 @@ Game intro...
             //Console.WriteLine("Press Space to go back");
         }
 
-        public static void LoadGameInfoScreen()
+        public static void LoadGameInfoScreen() // How to play screen
         {
             // TODO: Implement
             throw new NotImplementedException();
@@ -219,7 +215,7 @@ Game intro...
             //GetScore(score);
         }
 
-        private static void CurrentHighScores() // Show current high score
+        private static void LoadRankList() // Show current high score
         {
             Console.Title = "Hungry Pesho!  -=-  Ranklist";
             var highScores = File.ReadAllLines("score.hup");

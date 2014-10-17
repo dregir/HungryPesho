@@ -71,7 +71,6 @@
     <Compile Include="Items\WeaponTypes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UI\Color.cs" />
-    <Compile Include="UI\GameMenu.cs" />
     <Compile Include="UI\LoadScreen.cs" />
   </ItemGroup>
   <ItemGroup>
