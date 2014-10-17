@@ -36,7 +36,6 @@
         }
         #endregion
 
-
         public override string ToString()
         {
             var print = new StringBuilder();

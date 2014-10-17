@@ -20,7 +20,6 @@
                 default:
                     return CreateFood();
             }
-            
         }
 
         private static Weapon CreateWeapon()
@@ -101,7 +100,5 @@
 
             return food;
         }
-
-
     }
 }
