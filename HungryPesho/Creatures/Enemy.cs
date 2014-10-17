@@ -31,7 +31,7 @@ namespace HungryPesho.Creatures
             {
                 if (this.Ability != null )
                 {
-                    if (this.Ability.AbilityEffect == AbilityEffects.DIRECTDAMAGE)
+                    if (this.Ability.AbilityEffect == AbilityEffects.DirectDamage)
                     {
                         //var abilityNames = new[]
                         //{

@@ -4,7 +4,6 @@
 
     public class Ability : IAbility
     {
-        private readonly int energyCost; 
         private string name;
         private string description;
         private AbilityEffects abilityEffect;
