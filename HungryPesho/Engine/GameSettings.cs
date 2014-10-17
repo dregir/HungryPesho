@@ -15,30 +15,7 @@
             Console.ForegroundColor = ConsoleColor.Green;
         }
 
-        public static void LoadGameInfo() // Game info and credits
-        {
-            Console.Title = "Hungry Pesho  -=-  Game Credits";
-
-            Console.Write(@"
-Team Dregir:
-
-Pavlin Kostadinov
-Adrian Bozhankov
-Nina Markova
-Mihail Dimitrov
-Valyu Valev
-Karim Hristov
-
-
-In Hungry Pesho!
-
-Game intro...
-               Good luck!");
-
-            Console.SetCursorPosition(Console.WindowWidth - 49, Console.WindowHeight - 1);
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("Press Space to go back");
-        }
+        
 
 
         public static void SaveGameSettings()
