@@ -42,7 +42,7 @@
                 Console.WriteLine("SAVE GAME FAILED!");
                 Thread.Sleep(2000);
                 Console.Clear();
-                GameMenu.LoadStartMenu();
+                LoadScreen.LoadStartMenu();
             }
         }
 
@@ -64,7 +64,7 @@
                 Console.WriteLine("LOAD GAME FAILED!");
                 Thread.Sleep(2000);
                 Console.Clear();
-                GameMenu.LoadStartMenu();
+                LoadScreen.LoadStartMenu();
             }
         }
     }

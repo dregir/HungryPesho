@@ -15,8 +15,8 @@
             GameSettings.LoadGameSettings();
 
             // Testing game menu and game info
-            //GameSettings.LoadGameInfo();
-            //LoadMenu.LoadStartMenu();
+            GameSettings.LoadGameSettings();
+            LoadScreen.LoadStartMenu();
 
 
             // Testing character creation
@@ -25,9 +25,10 @@
 
 
             // Testing weapon and armor creation
-            Console.WriteLine(ItemsFactory.CreateItem().GetType());
+            //Console.WriteLine(ItemsFactory.CreateItem().GetType());
 
-            TestEngine.StartEngine();
+
+            //TestEngine.StartEngine();
         }
     }
 }

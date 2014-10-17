@@ -1,10 +1,10 @@
-﻿using System;
-using HungryPesho.Abilities;
-using HungryPesho.Creatures;
-using HungryPesho.UI;
-
-namespace HungryPesho.Engine
+﻿namespace HungryPesho.Engine
 {
+    using System;
+    using HungryPesho.Abilities;
+    using HungryPesho.Creatures;
+    using HungryPesho.UI;
+
     public class TestEngine
     {
         public static void StartEngine()
