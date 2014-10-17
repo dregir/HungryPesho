@@ -124,11 +124,11 @@
       <FileName>UI\Color.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="HungryPesho.UI.LoadMenu" Collapsed="true">
+  <Class Name="HungryPesho.UI.LoadScreen" Collapsed="true">
     <Position X="14.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAgAA=</HashCode>
-      <FileName>UI\LoadMenu.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAQAAAAAAAgAA=</HashCode>
+      <FileName>UI\LoadScreen.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HungryPesho.GameObject" Collapsed="true">

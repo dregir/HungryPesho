@@ -28,8 +28,6 @@
             Console.WriteLine(ItemsFactory.CreateItem().GetType());
 
             TestEngine.StartEngine();
-
-
         }
     }
 }

@@ -9,7 +9,6 @@ namespace HungryPesho.Engine
     {
         public static void StartEngine()
         {
-
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write(@"
 

@@ -23,18 +23,5 @@
                 this.foodType = value;
             }
         }
-
-        public int FoodCalories
-        {
-            get
-            {
-                return this.foodCalories;
-            }
-
-            set
-            {
-                this.foodCalories = value;
-            }
-        }
     }
 }

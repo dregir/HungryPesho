@@ -1,7 +1,12 @@
 ﻿namespace HungryPesho.Interfaces
 {
+    using HungryPesho.Creatures;
+    using System.Collections.Generic;
+
     interface IEffectable
     {
-        // TODO: 
+        int HealthGain { get; set; }
+
+        int EnergyGain { get; set; }
     }
 }

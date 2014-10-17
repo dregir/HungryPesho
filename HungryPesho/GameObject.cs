@@ -10,7 +10,7 @@
         public GameObject(string description = "")
         {
             this.Description = description;
-        }   
+        }
 
         public string Description
         {
