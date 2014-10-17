@@ -1,7 +1,5 @@
 ﻿namespace HungryPesho.Items
 {
-    using System.Collections;
-
     public class Armor : StatItem
     {
         private int armorProtection;

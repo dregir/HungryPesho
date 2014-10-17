@@ -4,14 +4,6 @@
     using System.Collections;
     using System.Text;
 
-    public enum WeaponTypes
-    {
-        Sword,
-        Staff,
-        Dagger,
-        Bow
-    }
-
     public class Weapon : StatItem
     {
         private int weaponDamage;
@@ -46,7 +38,7 @@
         }
         #endregion
 
-        public static Weapon CreateNewWeapon()
+        public static Weapon CreateWeapon()
         {
             var random = new Random();
             var weapon = new Weapon();

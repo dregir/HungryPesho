@@ -5,7 +5,7 @@
 
     public abstract class EffectItem : Item, IEffectable
     {
-        public EffectItem(string name, string description)
+        public EffectItem()
         {
         }
     }

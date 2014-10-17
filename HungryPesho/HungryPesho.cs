@@ -25,7 +25,7 @@
 
 
             // Testing weapon and armor creation
-            Console.WriteLine(Weapon.CreateNewWeapon());
+            Console.WriteLine(Weapon.CreateWeapon());
 
         }
     }
