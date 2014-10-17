@@ -23,5 +23,7 @@
                 this.foodType = value;
             }
         }
+
+      
     }
 }
