@@ -77,7 +77,7 @@ namespace HungryPesho.Creatures
         {
             get
             {
-                return this.Initiative;
+                return this.initiative; //Previously recursive
             }
 
             set
@@ -85,6 +85,8 @@ namespace HungryPesho.Creatures
                 this.initiative = value;
             }
         }
+
+        public virtual string Name { get; set; } // Need this for the Enemy Class
 
         #endregion
 

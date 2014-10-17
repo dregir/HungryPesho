@@ -6,8 +6,8 @@ namespace HungryPesho.Creatures
     using System.Collections.Generic;
     using HungryPesho.Abilities;
 
-    public class Enemy : Creature 
-    {    
+    public class Enemy : Creature
+    {
         private Ability ability;
 
         //public Enemy(string description, int level, int attack, int health, int energy, int initiative, Ability ability) 
@@ -20,16 +20,16 @@ namespace HungryPesho.Creatures
 
         public Ability Ability { get; set; }
 
-        public string Name { get; set; } 
-         
-        public override void Action(Creature target) 
+        public override string Name { get; set; }
+
+        public override void Action(Creature target)
         {
             var random = new Random();
             var chanceToUseAbility = random.Next(0, 4);
 
             if (chanceToUseAbility == 2 && this.Energy >= this.Ability.EnergyCost)
             {
-                if (this.Ability != null )
+                if (this.Ability != null)
                 {
                     if (this.Ability.AbilityEffect == AbilityEffects.DirectDamage)
                     {

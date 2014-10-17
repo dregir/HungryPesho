@@ -7,11 +7,13 @@
         private string name;
         private string description;
         private AbilityEffects abilityEffect;
+        private int energyCost;
 
         public Ability(string name, string description, AbilityEffects abilityEffect, int energyCost)
         {
             this.EnergyCost = energyCost;
             this.Name = name;
+            this.EnergyCost = energyCost;
         }
 
         #region Properties
