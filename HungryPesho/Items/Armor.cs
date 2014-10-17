@@ -32,9 +32,5 @@
                 armorType = value;
             }
         }
-        public Armor CreateArmor()
-        {
-            return new Armor(); // TODO: Implement
-        }
     }
 }

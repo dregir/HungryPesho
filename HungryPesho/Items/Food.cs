@@ -36,10 +36,5 @@
                 this.foodCalories = value;
             }
         }
-
-        public void CreateFood()
-        {
-
-        }
     }
 }
