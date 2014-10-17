@@ -4,8 +4,6 @@
     {
         private FoodTypes foodType;
 
-        private int foodCalories;
-
         public Food()
         {
             this.FoodType = this.foodType;
