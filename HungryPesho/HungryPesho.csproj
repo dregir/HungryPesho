@@ -59,7 +59,6 @@
     <Compile Include="Items\Armor.cs" />
     <Compile Include="Items\ArmorTypes.cs" />
     <Compile Include="Items\EffectItem.cs" />
-    <Compile Include="Interfaces\ICollectible.cs" />
     <Compile Include="Items\Food.cs" />
     <Compile Include="Items\Item.cs" />
     <Compile Include="Items\StatItem.cs" />

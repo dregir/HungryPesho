@@ -1,48 +1,10 @@
 ﻿namespace HungryPesho.Items
 {
-    using System;
-    using HungryPesho.Interfaces;
-
-    public enum ItemTypes// delete
+    public abstract class Item : GameObject
     {
-        EQUIPMENT,
-        WEAPON,
-        ARMOR,
-        SCROLL,
-        POTION
-    }
-
-    public abstract class Item : GameObject, ICollectible
-    {
-        private string name;
-        private ItemTypes itemType;
-
-        #region Properties
-        // TODO: Validate
-        public ItemTypes ItemType
+        public Item()
         {
-            get
-            {
-                return this.itemType;
-            }
-
-            set
-            {
-                this.itemType = value;
-            }
+            
         }
-
-        public string Name
-        {
-            get
-            {
-                return this.name;
-            }
-            set
-            {
-                this.name = value;
-            }
-        }
-        #endregion
     }
 }
