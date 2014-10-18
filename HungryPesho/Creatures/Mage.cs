@@ -31,6 +31,7 @@
             // All mage abilities
             this.Abilities = new List<Ability>()
             {
+                new Ability("Basic Attack", "Just a hit with your weapon", AbilityEffects.DirectDamage, 0),
                 new Ability("Freeze", "Freeze your opponent missing one turn", AbilityEffects.Freeze, 5)
             };
         }

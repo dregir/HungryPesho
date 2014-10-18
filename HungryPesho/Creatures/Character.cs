@@ -3,6 +3,7 @@
     using System.Collections;
     using System.Collections.Generic;
     using HungryPesho.Interfaces;
+    using HungryPesho.Abilities;
 
     public abstract class Character : Creature, IStatable
     {
@@ -55,6 +56,11 @@
             }
         }
         #endregion
+
+        public override void Action(Creature target)
+        {
+            
+        }
 
         public override string ToString()
         {

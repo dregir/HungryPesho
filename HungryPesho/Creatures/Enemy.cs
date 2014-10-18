@@ -26,7 +26,6 @@ namespace HungryPesho.Creatures
             var chanceToUseAbility = random.Next(0, 4);
             var randomAbility = GetRandomAbility();
 
-
             if (chanceToUseAbility == 2 && this.Energy >= randomAbility.EnergyCost)
             {
                 if (randomAbility.AbilityEffect == AbilityEffects.DirectDamage)

@@ -27,6 +27,7 @@
             // All warrior abilities
             this.Abilities = new List<Ability>()
             {
+                new Ability("Basic Attack", "Just a hit with your weapon", AbilityEffects.DirectDamage, 0),
                 new Ability("Slam", "Slam your opponent with powerfull attack", AbilityEffects.DirectDamage, 5)
             };
         }

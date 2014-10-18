@@ -2,35 +2,19 @@
 {
     using HungryPesho.Interfaces;
 
-    public class Ability : IAbility
+    public class Ability : GameObject, IAbility
     {
-        private string name;
-        private string description;
-        private AbilityEffects abilityEffect;
         private int energyCost;
+        private AbilityEffects abilityEffect;
 
         public Ability(string name, string description, AbilityEffects abilityEffect, int energyCost)
+            : base(name, description)
         {
-            this.EnergyCost = energyCost;
-            this.Name = name;
             this.EnergyCost = energyCost;
         }
 
         #region Properties
         // TODO: Validate
-        public string Name
-        {
-            get
-            {
-                return this.name;
-            }
-
-            set
-            {
-                this.name = value;
-            }
-        }
-
         public int EnergyCost
         {
             get

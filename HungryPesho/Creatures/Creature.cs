@@ -17,6 +17,7 @@
         public Creature()
         {
             this.abilities = new List<Ability>();
+            
         }
 
         #region Properties
@@ -98,10 +99,7 @@
         }
         #endregion
 
-        public virtual void Action(Creature target)
-        {
-            //Todo Impelment some actions
-        }
+        public abstract void Action(Creature target);
 
         public void AddAbilities(Ability[] _abilities)
         {
