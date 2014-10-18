@@ -47,12 +47,12 @@ namespace HungryPesho.Creatures
 
                         target.Health -= damage;
 
-                        Console.WriteLine(Color.ColorMe(Name, ConsoleColor.Cyan),
-                            Color.ColorMe("hit you with", ConsoleColor.Green),
-                            Color.ColorMe(Ability.Name, ConsoleColor.Yellow),
-                            Color.ColorMe("for:", ConsoleColor.Green),
-                            Color.ColorMe(damage.ToString(), ConsoleColor.Red),
-                            Color.ColorMe("damage!", ConsoleColor.Green));
+                        Console.WriteLine(DrawHelper.Color(Name, ConsoleColor.Cyan),
+                            DrawHelper.Color("hit you with", ConsoleColor.Green),
+                            DrawHelper.Color(Ability.Name, ConsoleColor.Yellow),
+                            DrawHelper.Color("for:", ConsoleColor.Green),
+                            DrawHelper.Color(damage.ToString(), ConsoleColor.Red),
+                            DrawHelper.Color("damage!", ConsoleColor.Green));
                     }
                 }
             }

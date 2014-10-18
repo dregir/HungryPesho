@@ -38,7 +38,7 @@
                 "   START   ",
                 "HOW TO PLAY",
                 "  OPTIONS  ",
-                "  RANKLIST ",
+                " RANKLIST ",
                 "  CREDITS  ",
                 "   EXIT    "
             };
@@ -87,8 +87,8 @@
 
             while (true)
             {
-                var input = Console.ReadKey();
-
+                var input = Console.ReadKey(true);   //true prevents player from typing in console.
+                
                 if (input.Key.Equals(ConsoleKey.DownArrow))
                 {
                     consoleAction(ConsoleColor.Black, menuChoices[selection++]);

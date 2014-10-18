@@ -1,85 +1,23 @@
-﻿namespace HungryPesho.Engine
-{
-    using System;
-    using HungryPesho.Abilities;
-    using HungryPesho.Creatures;
-    using HungryPesho.UI;
-    using System.Threading;
+﻿using System;
+using HungryPesho.Abilities;
+using HungryPesho.Creatures;
+using HungryPesho.UI;
 
+namespace HungryPesho.Engine
+{
     public class TestEngine
     {
+        public static Character Pesho;
+
         public static void StartEngine()
         {
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.Write(@"
 
-                                                              ____
-                                                            .'* *.'
-                                                         __/_*_*(_
-                                                        / _______ \
-                                                       _\_)/___\(_/_
-                                                      / _((\- -/))_ \
-                                                      \ \())(-)(()/ /
-                                                       ' \(((()))/ '
-                                                      / ' \)).))/ ' \
-                                                     / _ \ - | - /_  \
-                                                    (   ( .;''';. .'  )
-                                                    _\ __ /    )\ __ /_
-                                                      \/  \   ' /  \/
-                                                       .'  '...' ' )
-                                                        / /  |  \ \
-                                                       / .   .   . \
-                                                      /   .     .   \
-                                                     /   /   |   \   \
-                                                   .'   /    b    '.  '.
-                                               _.-'    /     Bb     '-. '-._
-                                            .-'       |      BBb       '-.  '-.
-                                           (________mrf\____.dBBBb.________)____)
-
-
-
-
-");
-            Console.SetCursorPosition(20, 5);
-            Console.ResetColor();
-            Console.Write(@"
-
-
-         .I.
-        / : \
-        |===|
-        >._.<
-    .=-<     >-=.
-   /.'`(`-+-')'`.\
- _/`.__/  :  \__.'\_
-( `._/\`. : .'/\_.' )
- >-(_) \ `:' / (_)-<
- | |  / \___/ \  | |
- )^( | .' : `. | )^(
-|  _\|`-._:_.-'| \  |
- -<\)| :  |  : |  '-'
-  (\\| : / \ : |
-    \\-:-| |-:-')
-     \\:_/ \_:_/
-     |\\_| |_:_|
-     (;\\/ \__;)
-     |: \\  | :|
-     \: /\\ \ :/
-     |==| \\|==|
-    /v-'(  \\`-v\
-    .-'   \\. \\
-   `-'       \\`-'    
-              \|
-");
-
-            Console.WriteLine(@"                 
-                                                                           
-          
-                                                          ");
+            Pesho = Mage.CreateNewMage();
+            Pesho.Initiative = 4;
 
             //I guess we need Ability and Enemy factory for those as well, hardcoding `em for now.
-            var kebap = new Ability("KebapShot", "Throws Kebap to you", AbilityEffects.DirectDamage, 10);
-            var peshaka = Mage.CreateNewMage();
+            //Todo create ability and enemy factory.
+            var kebap = new Ability("KebapShot", "Throws Kebap to you", AbilityEffects.DirectDamage, 5);
             var monsters = new Creature[]
             {
                 new Enemy{Ability = kebap},
@@ -90,95 +28,116 @@
 
             foreach (var monster in monsters) //Play with stats to test 'em here.
             {
-                monster.Attack = 1;
-                monster.Energy = 10;
+                monster.Attack = 3;
+                monster.Energy = 12;
                 monster.Health = 5;
-                monster.Initiative = 3;
-                monster.Name = "Angry Chef";
-
+                monster.Initiative = 2;
+                monster.Name = "Angry Doner Kebap Chef";
             }
 
-            //Automate Game Simulation Test;
-            var inp = Console.ReadLine();
+            Console.Clear();
+            DrawHelper.DrawStatsWindow();
+            DrawHelper.ReloadStats();      //show stats screen
 
-            if (inp == "start")
-                Console.Clear();
+            var random = new Random();
+            var choiceIsMade = true;
+            var enemy = monsters[random.Next(0, monsters.Length)];
+            var awardXp = enemy.Health / 2;
+            var startingRows = 35;
+            var currentPlayer = (Pesho.Initiative >= enemy.Initiative + 1) ? Pesho : enemy;
+
+            Console.SetCursorPosition(0, startingRows++);
+            Console.WriteLine(
+                DrawHelper.Color("You wake up and suddenly from no-where a giant fucking", ConsoleColor.DarkRed),
+                DrawHelper.Color(enemy.Name, ConsoleColor.Cyan),
+                DrawHelper.Color("apeared infront of you and quickly attacks!", ConsoleColor.DarkRed));
+            startingRows++;
+
+            while (Pesho.Health > 0 && enemy.Health > 0)
             {
-                //Encounter Random enemy 
-                var random = new Random();
-                var enemy = monsters[random.Next(0, monsters.Length)];
-                var awardXp = enemy.Health / 2;
-                Console.WriteLine("You wake up and suddenly from no-where (ye absolutely nowhere) a giant fucking {0} aparead infront of you " +
-                                  "and quickly attacks you! [BATTLE START]", enemy.Name);  //We can implement a class with different scenarios for theese.
-                // Game compares initiative and picks who attacks first, since your enemy attacked you, and not the opposite, the enemy have 1 bonus initiative;
-                var currentPlayer = (peshaka.Initiative >= enemy.Initiative + 1) ? peshaka : enemy; // we can check for initiative modifiers (items scrolls etc. here)
+                //Calculate the odds and print result.
+                // There is 10 % chance to miss and 10 % chance to evade.
+                var result = random.Next(0, 11);
 
-                //Game lasts until one of the opponents health reaches 0;
-                while (peshaka.Health > 0 && enemy.Health > 0)
+                if (result > 1 ) // a hit is land.
                 {
-                    //Calculate the odds and print result.
-                    // There is 10 % chance to miss and 10 % chance to evade.
-                    var result = random.Next(0, 11);
+                    var damageDone = random.Next(1, currentPlayer.Attack + 1); // apply attack modifiers here.
 
-                    if (result > 1) // a hit is land.
+                    if (currentPlayer == Pesho)
                     {
-                        var damageDone = random.Next(1, (int)currentPlayer.Attack + 1); // apply attack modifiers here.
+                        DrawHelper.TextAtPosition("What is your move?", 15, 25, ConsoleColor.White);
+                        DrawHelper.TextAtPosition("-=[ 1 ]  )=={═════> SIMPLE WEAPON ATTACK =-", 5, 27, ConsoleColor.Green);
+                        DrawHelper.TextAtPosition("1", 9, 27, ConsoleColor.Yellow);
+                        var playerChoice = Console.ReadKey(true);
 
-                        if (currentPlayer == peshaka)  //Currenlty auto play, no implementation of actions to pick from 
+                        if (playerChoice.Key.Equals(ConsoleKey.D1))
                         {
-                            enemy.Health -= damageDone;
+                            //Todo implement ability/action choice logic here
 
-                            Console.WriteLine(
-                                Color.ColorMe("You raise your weapon and with a swift move deal", ConsoleColor.White),
-                                Color.ColorMe(damageDone.ToString(), ConsoleColor.Green),
-                                Color.ColorMe("damage to the poor", ConsoleColor.White),
-                                Color.ColorMe(enemy.Name, ConsoleColor.Cyan) + ".");
+                            enemy.Health -= damageDone;
+                            DrawHelper.ReloadStats();
+                            Console.SetCursorPosition(0, startingRows++);
+                            Console.WriteLine
+                                (
+                                    DrawHelper.Color("You raise your weapon and with a swift move deal",
+                                        ConsoleColor.White),
+                                    DrawHelper.Color(damageDone.ToString(), ConsoleColor.Green),
+                                    DrawHelper.Color("damage to the poor", ConsoleColor.White),
+                                    DrawHelper.Color(enemy.Name, ConsoleColor.Cyan));
 
                             currentPlayer = enemy;
                         }
                         else
                         {
-                            enemy.Action(peshaka);
-                            currentPlayer = peshaka;
+                            choiceIsMade = false;
                         }
-
                     }
-                    else // picks result
+
+                    else
                     {
-                        if (currentPlayer == peshaka)
-                        {
-                            Console.WriteLine(result == 0 ? Color.ColorMe("You missed.", ConsoleColor.Gray) :
-                                Color.ColorMe(enemy.Name + " evaded your strike!", ConsoleColor.DarkGray));
-                            currentPlayer = enemy;
-                        }
-                        else if (currentPlayer == enemy)
-                        {
-                            Console.WriteLine(result == 1 ? Color.ColorMe(enemy.Name + " missed you.", ConsoleColor.White) :
-                                Color.ColorMe("You evaded!", ConsoleColor.White));
-                            currentPlayer = peshaka;
-                        }
-
+                        Console.SetCursorPosition(0, startingRows++);
+                        enemy.Action(Pesho);  //Enemy does its thing - cast spell or attack
+                        DrawHelper.ReloadStats();
+                        currentPlayer = Pesho;
                     }
                 }
 
-                if (peshaka.Health > enemy.Health)
+                else if (choiceIsMade)
                 {
-                    Color.ColorMe("Your enemy fall dead on the ground.\nYou won!", ConsoleColor.Green);
+                    Console.SetCursorPosition(0, startingRows++);
+                    if (currentPlayer == Pesho)
+                    {
+                        Console.WriteLine(result == 0 ? DrawHelper.Color("You missed.", ConsoleColor.Gray) :
+                            DrawHelper.Color(enemy.Name + " evaded your strike!", ConsoleColor.DarkGray));
+                        currentPlayer = enemy;
+                    }
 
-                    //Thread.Sleep(2000);
-                    //LoadScreen.LoadWinScreen(); // Show win screen
+                    else if (currentPlayer == enemy)
+                    {
+                        Console.WriteLine(result == 1 ? DrawHelper.Color(enemy.Name + " missed you.", ConsoleColor.White) :
+                            DrawHelper.Color("You evaded!", ConsoleColor.White));
+                        currentPlayer = Pesho;
+                    }
                 }
-                else
-                {
-                    Color.ColorMe("You Lost!", ConsoleColor.Red);
-
-                    LoadScreen.LoadLooseScreen(peshaka.Level); // Show game over screen
-                }
-
-
-                Console.BackgroundColor = ConsoleColor.Magenta;
-                Console.WriteLine("Current HP: {0}, XP GAIN: {1}", peshaka.Health, awardXp);
             }
+
+            if (Pesho.Health > enemy.Health)
+            {
+                DrawHelper.Color("Your enemy fall dead on the ground.\nYou won!", ConsoleColor.Green);
+
+                //Thread.Sleep(2000);
+                //LoadScreen.LoadWinScreen(); // Show win screen
+            }
+
+            else
+            {
+                DrawHelper.TextAtPosition("You Lost!", 0, startingRows, ConsoleColor.Red);
+                LoadScreen.LoadLooseScreen(Pesho.Level); // Show game over screen
+            }
+
+            Console.BackgroundColor = ConsoleColor.Magenta;
+            Console.WriteLine(DrawHelper.Color("\nYou gained " + awardXp + " experience!", ConsoleColor.Yellow));
+            Console.ResetColor();
         }
     }
 }

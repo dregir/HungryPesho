@@ -12,6 +12,7 @@
         private const int StartingAgility = 7;
         private const int StartingStrength = 5;
         private const int StartingIntellect = 15;
+        private const int StartingAttack = 2;
 
         //public Mage(string description, int level, int attack, int health, int energy, int initiative, int agility, int strength, int intellect)
         //    : base(description, level, attack, health, energy, initiative, agility, strength, intellect)
@@ -31,6 +32,7 @@
             mage.Agility = StartingAgility;
             mage.Strength = StartingStrength;
             mage.Intellect = StartingIntellect;
+            mage.Attack = StartingAttack;
 
             return mage;
         }

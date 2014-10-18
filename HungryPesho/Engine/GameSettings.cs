@@ -13,7 +13,7 @@
             // Creating and initializing game window;
             Console.Title = "Hungry Pesho";
             Console.CursorVisible = false;
-            Console.SetWindowSize(100, 50);
+            Console.SetWindowSize(110, 50);
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.Green;
 
