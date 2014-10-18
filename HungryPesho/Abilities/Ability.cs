@@ -43,19 +43,6 @@
             }
         }
 
-        public string Description
-        {
-            get
-            {
-                return this.description;
-            }
-
-            set
-            {
-                this.description = value;
-            }
-        }
-
         public AbilityEffects AbilityEffect
         {
             get
@@ -68,8 +55,6 @@
                 this.abilityEffect = value;
             }
         }
-
-
         #endregion
     }
 }

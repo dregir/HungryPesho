@@ -7,10 +7,10 @@
 
     public static class DrawHelper
     {
-        public static void CreateMenu(string[] menuChoices, List<Action> methods)
+        public static void CreateMenu(string[] menuChoices, List<Action> methods, int cursorPos)
         {
             Console.ForegroundColor = ConsoleColor.White;
-            int cursorPos = 25;
+            int initialPosition = cursorPos;
 
             foreach (var choices in menuChoices)
             {
@@ -19,7 +19,7 @@
                 cursorPos += 2;
             }
 
-            cursorPos = 25;
+            cursorPos = initialPosition;
 
             // Menu Logic                  
             int selection = 0;
@@ -28,14 +28,14 @@
             {
                 if (selection > menuChoices.Length - 1)
                 {
-                    cursorPos = 25;
+                    cursorPos = initialPosition;
                     selection = 0;
                 }
 
                 else if (selection < 0)
                 {
                     selection = menuChoices.Length - 1;
-                    cursorPos = 25 + (menuChoices.Length - 1) * 2;
+                    cursorPos = initialPosition + (menuChoices.Length - 1) * 2;
                 }
 
                 return selection;
@@ -99,10 +99,10 @@
             const int startPos = 4;
             var peshoStats = new[]
                 {
-                    TestEngine.Pesho.Health,
-                    TestEngine.Pesho.Energy,
-                    TestEngine.Pesho.Initiative,
-                    TestEngine.Pesho.Attack
+                    Engine.Pesho.Health,
+                    Engine.Pesho.Energy,
+                    Engine.Pesho.Initiative,
+                    Engine.Pesho.Attack
                 };
 
             var peshoColors = new[]

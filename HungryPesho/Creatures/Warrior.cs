@@ -1,6 +1,8 @@
 ﻿namespace HungryPesho.Creatures
 {
-    using System.Collections;
+    using System.Collections.Generic;
+    using HungryPesho.Abilities;
+    using HungryPesho.Interfaces;
 
     public class Warrior : Character
     {
@@ -21,6 +23,12 @@
             this.Agility = StartingAgility;
             this.Strength = StartingStrength;
             this.Intellect = StartingIntellect;
+
+            // All warrior abilities
+            this.Abilities = new List<Ability>()
+            {
+                new Ability("Slam", "Slam your opponent with powerfull attack", AbilityEffects.DirectDamage, 5)
+            };
         }
     }
 }

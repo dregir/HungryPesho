@@ -1,6 +1,6 @@
 ﻿namespace HungryPesho.Interfaces
 {
-    interface IStatable
+    public interface IStatable
     {
         int Agility { get; set; }
 

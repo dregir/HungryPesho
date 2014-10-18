@@ -1,7 +1,10 @@
-﻿using HungryPesho.Interfaces;
-
-namespace HungryPesho.Creatures
+﻿namespace HungryPesho.Creatures
 {
+    using System;
+    using System.Collections.Generic;
+    using HungryPesho.Abilities;
+    using HungryPesho.Interfaces;
+
     public abstract class Creature : GameObject, ICreature
     {
         private int level;
@@ -9,9 +12,11 @@ namespace HungryPesho.Creatures
         private int health;
         private int energy;
         private int initiative;
+        private List<Ability> abilities;
 
         public Creature()
         {
+            this.abilities = new List<Ability>();
         }
 
         #region Properties
@@ -80,13 +85,30 @@ namespace HungryPesho.Creatures
             }
         }
 
-        public virtual string Name { get; set; } // Need this for the Enemy Class
-
+        public List<Ability> Abilities
+        {
+            get
+            {
+                return this.abilities;
+            }
+            set
+            {
+                this.abilities = value;
+            }
+        }
         #endregion
 
         public virtual void Action(Creature target)
         {
             //Todo Impelment some actions
+        }
+
+        public void AddAbilities(Ability[] _abilities)
+        {
+            foreach (var ability in _abilities)
+            {
+                abilities.Add(ability);
+            }
         }
     }
 }

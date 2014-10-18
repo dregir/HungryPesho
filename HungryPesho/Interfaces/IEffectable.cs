@@ -2,7 +2,7 @@
 {
     using HungryPesho.Creatures;
 
-    interface IEffectable
+    public interface IEffectable
     {
         int HealthGained { get; set; }
 

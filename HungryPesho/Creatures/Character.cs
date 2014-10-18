@@ -1,6 +1,7 @@
 ﻿namespace HungryPesho.Creatures
 {
     using System.Collections;
+    using System.Collections.Generic;
     using HungryPesho.Interfaces;
 
     public abstract class Character : Creature, IStatable

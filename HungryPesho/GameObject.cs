@@ -3,13 +3,30 @@
     using System;
     using HungryPesho.Interfaces;
 
-    public abstract class GameObject : IDescription
+    public abstract class GameObject : IDescribable
     {
+        private string name;
         private string description;
 
-        public GameObject(string description = "")
+        public GameObject(string name = "", string description = "")
         {
+            this.Name = name;
             this.Description = description;
+        }
+
+        #region Properties
+
+        public string Name
+        {
+            get
+            {
+                return this.name;
+            }
+
+            set
+            {
+                this.name = value;
+            }
         }
 
         public string Description
@@ -24,5 +41,6 @@
                 this.description = value;
             }
         }
+        #endregion
     }
 }

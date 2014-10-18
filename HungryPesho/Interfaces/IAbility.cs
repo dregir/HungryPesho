@@ -2,7 +2,7 @@
 {
     using HungryPesho.Abilities;
 
-    interface IAbility
+    public interface IAbility
     {
         string Name { get; set; }
 

@@ -45,13 +45,13 @@
     <Compile Include="Abilities\AbilityEffects.cs" />
     <Compile Include="Creatures\Enemy.cs" />
     <Compile Include="Engine\ItemsFactory.cs" />
-    <Compile Include="Engine\TestEngine.cs" />
+    <Compile Include="Engine\Engine.cs" />
     <Compile Include="ExceptionClasses\ApplicationException.cs" />
     <Compile Include="GameObject.cs" />
     <Compile Include="Interfaces\IAbility.cs" />
     <Compile Include="Creatures\Character.cs" />
     <Compile Include="Creatures\Creature.cs" />
-    <Compile Include="Interfaces\IDescription.cs" />
+    <Compile Include="Interfaces\IDescribable.cs" />
     <Compile Include="Interfaces\IEffectable.cs" />
     <Compile Include="Interfaces\IStatable.cs" />
     <Compile Include="Interfaces\ICreature.cs" />

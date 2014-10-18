@@ -1,6 +1,8 @@
 ﻿namespace HungryPesho.Creatures
 {
-    using System.Collections;
+    using System.Collections.Generic;
+    using HungryPesho.Abilities;
+    using HungryPesho.Interfaces;
 
     public class Mage : Character
     {
@@ -15,7 +17,6 @@
         private const int StartingAttack = 2;
         private const int StartingInitiative = 4;
 
-
         public Mage()
         {
             this.Level = StartingLevel;
@@ -26,6 +27,12 @@
             this.Intellect = StartingIntellect;
             this.Attack = StartingAttack;
             this.Initiative = StartingInitiative;
+
+            // All mage abilities
+            this.Abilities = new List<Ability>()
+            {
+                new Ability("Freeze", "Freeze your opponent missing one turn", AbilityEffects.Freeze, 5)
+            };
         }
     }
 }

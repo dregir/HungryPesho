@@ -25,14 +25,14 @@
 
             var methods = new List<Action>()
             {
-                TestEngine.StartEngine,
+                Engine.StartEngine,
                 LoadGameInfoScreen,
                 GameSettings.LoadGameSettings,
                 LoadRankList,
                 LoadCreditsScreen,
             };
 
-            DrawHelper.CreateMenu(menuChoices, methods);
+            DrawHelper.CreateMenu(menuChoices, methods, 25);
         }
 
         public static void LoadGameInfoScreen() // How to play screen
