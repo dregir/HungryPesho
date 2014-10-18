@@ -6,6 +6,7 @@
     using HungryPesho.UI;
     using HungryPesho.Interfaces;
     using System.Threading;
+    using System.Collections.Generic;
 
     public class Engine
     {
@@ -40,7 +41,7 @@
             {
                 monster.Attack = 3;
                 monster.Energy = 12;
-                monster.Health = 5;
+                monster.Health = 50;
                 monster.Initiative = 2;
                 monster.Name = "Angry Doner Kebap Chef";
             }
@@ -85,7 +86,6 @@
 
                         // Draw all abilities
                         var count = 1;
-                        var playerAbilities = new string[Pesho.Abilities.Count];
 
                         foreach (var ability in Pesho.Abilities)
                         {
@@ -93,32 +93,16 @@
                             count++;
                         }
 
+                        //Todo implement ability/action choice logic here
                         var playerChoice = Console.ReadKey(true);
 
-
-                        if (playerChoice.Key.Equals(ConsoleKey.D1))
+                        try
                         {
-                            //Todo implement ability/action choice logic here
-
-                            // currentPlayer.Action(currentEnemy);
-
-                            currentEnemy.Health -= damageDone;
-                            DrawHelper.ReloadStats();
-                            Console.SetCursorPosition(0, startingRows++);
-                            Console.WriteLine
-                                (
-                                    DrawHelper.Color("You raise your weapon and with a swift move deal", ConsoleColor.White),
-                                    DrawHelper.Color(damageDone.ToString(), ConsoleColor.Green),
-                                    DrawHelper.Color("damage to the poor", ConsoleColor.White),
-                                    DrawHelper.Color(currentEnemy.Name, ConsoleColor.Cyan));
-
-                            currentPlayer = currentEnemy;
-                            Thread.Sleep(2000); // Pause the game for 2 sec after player's turn
-
+                            Pesho.Action(currentEnemy, playerChoice);
                         }
-                        else
+                        catch (ArgumentOutOfRangeException e)
                         {
-                            choiceIsMade = false;
+                            Console.WriteLine(e.Message);
                         }
                     }
 
@@ -139,7 +123,14 @@
                     {
                         Console.WriteLine(result == 0 ? DrawHelper.Color("You missed.", ConsoleColor.Gray) :
                             DrawHelper.Color(currentEnemy.Name + " evaded your strike!", ConsoleColor.DarkGray));
-                        currentPlayer = currentEnemy;
+
+                        if (currentEnemy.Initiative != 0)
+                        {
+                            currentPlayer = currentEnemy;
+                        }
+
+                        currentEnemy.Initiative = currentEnemy.Energy;
+                        
                     }
 
                     else if (currentPlayer == currentEnemy)

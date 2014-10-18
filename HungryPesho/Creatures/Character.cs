@@ -4,6 +4,9 @@
     using System.Collections.Generic;
     using HungryPesho.Interfaces;
     using HungryPesho.Abilities;
+    using System;
+    using HungryPesho.UI;
+    using System.Threading;
 
     public abstract class Character : Creature, IStatable
     {
@@ -57,9 +60,51 @@
         }
         #endregion
 
-        public override void Action(Creature target)
+        public void Action(Creature target, ConsoleKeyInfo action)
         {
-            
+            int key = (int)action.Key - 49;
+            Ability ability = this.Abilities[0];
+            var damageModifier = this.GetType().Name == "Mage" ? this.Intellect : this.Strength;
+
+            if (key < this.Abilities.Count)
+            {
+                ability = this.Abilities[key];
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException("You need to choose action between 1 and " + Abilities.Count);
+            }
+
+            if (ability.AbilityEffect == AbilityEffects.DirectDamage) // Direct damage abilities
+            {
+                var damage = ability.EnergyCost + damageModifier;
+
+                target.Health -= damage;
+                DrawHelper.ReloadStats();
+
+                //Console.SetCursorPosition(0, startingRows++);
+                Console.WriteLine("You preform " + ability.Name + " and hit  " + target.Name + " with " + (ability.EnergyCost += damage).ToString());
+                
+                Console.WriteLine( // TODO: fix
+                        DrawHelper.Color("You preform " + ability.Name + " and hit  " + target.Name + " with ", ConsoleColor.White),
+                        DrawHelper.Color((ability.EnergyCost += damage).ToString(), ConsoleColor.Green));
+            }
+            else if (ability.AbilityEffect == AbilityEffects.Freeze)
+            {
+                Console.WriteLine("You preform " + ability.Name + " hitting " + target.Name + " with " + damageModifier + " damage, freezing him for the next turn!");
+                this.Energy -= ability.EnergyCost;
+                target.Initiative = 0;
+            }
+            //else if (ability.AbilityEffect == AbilityEffects.Dodge) // TODO: Implement logic
+            //{
+            //    Console.WriteLine("You preform " + ability.Name + " and you will dodge the next attack!");
+            //}
+            //else if (ability.AbilityEffect == AbilityEffects.Speed)
+            //{
+            //    Console.WriteLine("You preform " + ability.Name + " and your agility is not double!");
+            //}
+
+            Thread.Sleep(2000); // Pause the game for 2 sec after player's turn
         }
 
         public override string ToString()

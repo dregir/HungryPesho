@@ -23,7 +23,7 @@
                 "   EXIT    "
             };
 
-            var methods = new List<Action>()
+            var startMenuMethods = new List<Action>()
             {
                 Engine.StartEngine,
                 LoadGameInfoScreen,
@@ -32,7 +32,7 @@
                 LoadCreditsScreen,
             };
 
-            DrawHelper.CreateMenu(menuChoices, methods, 25);
+            DrawHelper.CreateMenu(menuChoices, startMenuMethods, 25);
         }
 
         public static void LoadGameInfoScreen() // How to play screen

@@ -19,7 +19,7 @@ namespace HungryPesho.Creatures
 
             return this.Abilities[random.Next(0, Abilities.Count)];
         }
-        
+
         public override void Action(Creature target)
         {
             var random = new Random();

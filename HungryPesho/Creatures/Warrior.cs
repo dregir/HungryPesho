@@ -14,6 +14,8 @@
         private const int StartingAgility = 7;
         private const int StartingStrength = 5;
         private const int StartingIntellect = 15;
+        private const int StartingAttack = 5;
+        private const int StartingInitiative = 3;
 
         private Warrior()
         {
@@ -25,11 +27,10 @@
             this.Intellect = StartingIntellect;
 
             // All warrior abilities
-            this.Abilities = new List<Ability>()
-            {
+            this.AddAbilities(new Ability[] {
                 new Ability("Basic Attack", "Just a hit with your weapon", AbilityEffects.DirectDamage, 0),
                 new Ability("Slam", "Slam your opponent with powerfull attack", AbilityEffects.DirectDamage, 5)
-            };
+            });
         }
     }
 }

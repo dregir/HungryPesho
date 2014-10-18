@@ -99,7 +99,9 @@
         }
         #endregion
 
-        public abstract void Action(Creature target);
+        public virtual void Action(Creature target)
+        {
+        }
 
         public void AddAbilities(Ability[] _abilities)
         {
