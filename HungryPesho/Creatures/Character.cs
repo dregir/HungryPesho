@@ -68,42 +68,49 @@
 
             if (key < this.Abilities.Count)
             {
-                ability = this.Abilities[key];
+                ability = this.Abilities[key]; // TODO: Get proper memeber
             }
             else
             {
                 throw new ArgumentOutOfRangeException("You need to choose action between 1 and " + Abilities.Count);
             }
 
-            if (ability.AbilityEffect == AbilityEffects.DirectDamage) // Direct damage abilities
+            if (this.Energy >= ability.EnergyCost)
             {
-                var damage = ability.EnergyCost + damageModifier;
+                if (ability.AbilityEffect == AbilityEffects.DirectDamage) // Direct damage abilities
+                {
+                    var damage = ability.EnergyCost + damageModifier;
 
-                target.Health -= damage;
-                DrawHelper.ReloadStats();
+                    target.Health -= damage;
 
-                //Console.SetCursorPosition(0, startingRows++);
-                Console.WriteLine("You preform " + ability.Name + " and hit  " + target.Name + " with " + (ability.EnergyCost += damage).ToString());
-                
-                Console.WriteLine( // TODO: fix
-                        DrawHelper.Color("You preform " + ability.Name + " and hit  " + target.Name + " with ", ConsoleColor.White),
-                        DrawHelper.Color((ability.EnergyCost += damage).ToString(), ConsoleColor.Green));
+                    //Console.SetCursorPosition(0, startingRows++);
+                    Console.WriteLine("You preform " + ability.Name + " and hit  " + target.Name + " with " + ability.EnergyCost + damage + "damage!");
+
+                    Console.WriteLine( // TODO: fix it
+                            DrawHelper.Color("You preform " + ability.Name + " and hit  " + target.Name + " with ", ConsoleColor.White),
+                            DrawHelper.Color((ability.EnergyCost += damage).ToString(), ConsoleColor.Green));
+                }
+                else if (ability.AbilityEffect == AbilityEffects.Freeze)
+                {
+                    Console.WriteLine("You preform " + ability.Name + " hitting " + target.Name + " with " + damageModifier + " damage, freezing him for the next turn!");
+                    this.Energy -= ability.EnergyCost;
+                    target.Initiative = 0;
+                }
+                //else if (ability.AbilityEffect == AbilityEffects.Dodge) // TODO: Implement logic
+                //{
+                //    Console.WriteLine("You preform " + ability.Name + " and you will dodge the next attack!");
+                //}
+                //else if (ability.AbilityEffect == AbilityEffects.Speed)
+                //{
+                //    Console.WriteLine("You preform " + ability.Name + " and your agility is not double!");
+                //}
             }
-            else if (ability.AbilityEffect == AbilityEffects.Freeze)
+            else
             {
-                Console.WriteLine("You preform " + ability.Name + " hitting " + target.Name + " with " + damageModifier + " damage, freezing him for the next turn!");
-                this.Energy -= ability.EnergyCost;
-                target.Initiative = 0;
+                throw new ArgumentException("You don't have enough energy!");
             }
-            //else if (ability.AbilityEffect == AbilityEffects.Dodge) // TODO: Implement logic
-            //{
-            //    Console.WriteLine("You preform " + ability.Name + " and you will dodge the next attack!");
-            //}
-            //else if (ability.AbilityEffect == AbilityEffects.Speed)
-            //{
-            //    Console.WriteLine("You preform " + ability.Name + " and your agility is not double!");
-            //}
 
+            DrawHelper.ReloadStats();
             Thread.Sleep(2000); // Pause the game for 2 sec after player's turn
         }
 

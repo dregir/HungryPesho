@@ -11,6 +11,7 @@
             : base(name, description)
         {
             this.EnergyCost = energyCost;
+            this.AbilityEffect = abilityEffect;
         }
 
         #region Properties

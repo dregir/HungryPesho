@@ -26,11 +26,9 @@
             this.Strength = StartingStrength;
             this.Intellect = StartingIntellect;
 
-            // All warrior abilities
-            this.AddAbilities(new Ability[] {
-                new Ability("Basic Attack", "Just a hit with your weapon", AbilityEffects.DirectDamage, 0),
-                new Ability("Slam", "Slam your opponent with powerfull attack", AbilityEffects.DirectDamage, 5)
-            });
+            // Starting warrior abilities
+            this.Abilities.Add(new Ability("Basic Attack", "Just a hit with your weapon", AbilityEffects.DirectDamage, 0));
+            this.Abilities.Add(new Ability("Slam", "Slam your opponent with powerfull attack", AbilityEffects.DirectDamage, 5));
         }
     }
 }

@@ -100,7 +100,7 @@
                         {
                             Pesho.Action(currentEnemy, playerChoice);
                         }
-                        catch (ArgumentOutOfRangeException e)
+                        catch (ArgumentException e)
                         {
                             Console.WriteLine(e.Message);
                         }
