@@ -13,23 +13,14 @@
         private const int StartingStrength = 5;
         private const int StartingIntellect = 15;
 
-        //private Warrior(string description, int level, int attack, int health, int energy, int initiative, int agility, int strength, int intellect)
-        //    : base(description, level, attack, health, energy, initiative, agility, strength, intellect)
-        //{
-        //}
-
-        public static Warrior CreateNewWarrior()
+        private Warrior()
         {
-            var warrior = new Warrior();
-
-            warrior.Level = StartingLevel;
-            warrior.Health = StartingHealth;
-            warrior.Energy = StartingEnergy;
-            warrior.Agility = StartingAgility;
-            warrior.Strength = StartingStrength;
-            warrior.Intellect = StartingIntellect;
-
-            return warrior;
+            this.Level = StartingLevel;
+            this.Health = StartingHealth;
+            this.Energy = StartingEnergy;
+            this.Agility = StartingAgility;
+            this.Strength = StartingStrength;
+            this.Intellect = StartingIntellect;
         }
     }
 }

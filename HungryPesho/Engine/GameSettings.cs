@@ -17,8 +17,8 @@
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.Green;
 
-            var music = new SoundPlayer(@"../../misc/start.wav");
-            music.Play();
+            //var music = new SoundPlayer(@"../../misc/start.wav"); // TODO:
+            //music.Play();
         }
 
         public static void SaveGameSettings()

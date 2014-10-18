@@ -10,15 +10,9 @@ namespace HungryPesho.Creatures
         private int energy;
         private int initiative;
 
-        //public Creature(string description, int level, int attack, int health, int energy, int initiative)
-        //    : base(description)
-        //{
-        //    this.Level = level;
-        //    this.Attack = attack;
-        //    this.Health = health;
-        //    this.Energy = energy;
-        //    this.Initiative = initiative;
-        //}
+        public Creature()
+        {
+        }
 
         #region Properties
         // TODO: Validate

@@ -1,37 +1,17 @@
 ﻿namespace HungryPesho.UI
 {
-    using HungryPesho.Engine;
     using System;
     using System.IO;
     using System.Media;
+    using HungryPesho.Engine;
+    using System.Collections.Generic;
 
     public static class LoadScreen
     {
         public static void LoadStartMenu() // Main menu
         {
-            Console.WriteLine(@"
-
-
-                                                ██╗██
-                                  ██╗        ███╗██╗██╗█╗
-                                  ╚██╗       ██╔╝██╔╝╚██║╚█║
-                                  ╚██╗█████╗██║█████╗█████╗█
-                                  ╚██╔╝╚════╝██║ ██║  ██║ █║
-                                  ██╔╝       ███╗██╗██║█║
-                                                ██╗██
-
-
-
- ██╗  ██╗██╗   ██╗███╗   ██╗ ██████╗ ██████╗ ██╗   ██╗    ██████╗ ███████╗███████╗██╗  ██╗ ██████╗ 
- ██║  ██║██║   ██║████╗  ██║██╔════╝ ██╔══██╗╚██╗ ██╔╝    ██╔══██╗██╔════╝██╔════╝██║  ██║██╔═══██╗
- ███████║██║   ██║██╔██╗ ██║██║  ███╗██████╔╝ ╚████╔╝     ██████╔╝█████╗  ███████╗███████║██║   ██║
- ██╔══██║██║   ██║██║╚██╗██║██║   ██║██╔══██╗  ╚██╔╝      ██╔═══╝ ██╔══╝  ╚════██║██╔══██║██║   ██║
- ██║  ██║╚██████╔╝██║ ╚████║╚██████╔╝██║  ██║   ██║       ██║     ███████╗███████║██║  ██║╚██████╔╝
- ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝ ╚═════╝ ╚═╝  ╚═╝   ╚═╝       ╚═╝     ╚══════╝╚══════╝╚═╝  ╚═╝ ╚═════╝ 
-
-                                  MORE HUNGRY THAN EVER BEFORE!!
-
-                      ");
+            Console.Clear();
+            DrawHelper.DrawStartingWindow();
 
             var menuChoices = new[]
             {
@@ -43,87 +23,16 @@
                 "   EXIT    "
             };
 
-            Console.ForegroundColor = ConsoleColor.White;
-
-            int cursorPos = 25;
-            foreach (var choices in menuChoices)
+            var methods = new List<Action>()
             {
-                Console.SetCursorPosition(45, cursorPos);
-                Console.WriteLine(choices);
-                cursorPos += 2;
-            }
-
-            cursorPos = 25;
-
-            // Menu Logic                  
-            int selection = 0;
-
-            Func<int> check = delegate
-            {
-                if (selection > menuChoices.Length - 1)
-                {
-                    cursorPos = 25;
-                    selection = 0;
-                }
-
-                else if (selection < 0)
-                {
-                    selection = menuChoices.Length - 1;
-                    cursorPos = 25 + (menuChoices.Length - 1) * 2;
-                }
-
-                return selection;
+                TestEngine.StartEngine,
+                LoadGameInfoScreen,
+                GameSettings.LoadGameSettings,
+                LoadRankList,
+                LoadCreditsScreen,
             };
 
-            Action<ConsoleColor, string> consoleAction = (color, text) =>
-            {
-                Console.SetCursorPosition(45, cursorPos);
-                Console.BackgroundColor = color;
-                Console.Write(text);
-                Console.BackgroundColor = ConsoleColor.Black;
-            };
-
-            consoleAction(ConsoleColor.Blue, menuChoices[0]);
-
-            while (true)
-            {
-                var input = Console.ReadKey(true);   //true prevents player from typing in console.
-                
-                if (input.Key.Equals(ConsoleKey.DownArrow))
-                {
-                    consoleAction(ConsoleColor.Black, menuChoices[selection++]);
-                    cursorPos += 2;
-                    selection = check();
-                    consoleAction(ConsoleColor.Blue, menuChoices[selection]);
-                    continue;
-                }
-
-                if (input.Key.Equals(ConsoleKey.UpArrow))
-                {
-                    consoleAction(ConsoleColor.Black, menuChoices[selection--]);
-                    cursorPos -= 2;
-                    selection = check();
-                    consoleAction(ConsoleColor.Blue, menuChoices[selection]);
-                    continue;
-                }
-
-                if (input.Key.Equals(ConsoleKey.Enter))
-                {
-                    Console.Clear();
-
-                    switch (selection)
-                    {
-                        case 0: TestEngine.StartEngine(); break;
-                        case 1: LoadGameInfoScreen(); break;
-                        case 2: GameSettings.LoadGameSettings(); break;
-                        case 3: LoadRankList(); break;
-                        case 4: LoadCreditsScreen(); break;
-                        case 5: Environment.Exit(0); break;
-                        default:
-                            break;
-                    }
-                }
-            }
+            DrawHelper.CreateMenu(menuChoices, methods);
         }
 
         public static void LoadGameInfoScreen() // How to play screen
@@ -134,33 +43,31 @@
 
         public static void LoadSettingsScreen() // Game options
         {
-            Console.WriteLine("Music");
-            Console.WriteLine("OFF");
+            Console.WriteLine("Music OFF");
         }
 
         public static void LoadCreditsScreen() // Game credits Screen
         {
             Console.Title = "Hungry Pesho  -=-  Game Credits";
 
-            Console.Write(@"
-Team Dregir:
+            Console.Write(@"Team Dregir:
 
-Pavlin Kostadinov
-Adrian Bozhankov
-Nina Markova
-Mihail Dimitrov
-Valyu Valev
-Karim Hristov
+                            Pavlin Kostadinov
+                            Adrian Bozhankov
+                            Nina Markova
+                            Mihail Dimitrov
+                            Valyu Valev
+                            Karim Hristov
 
 
-In Hungry Pesho!
+                            In Hungry Pesho!
 
-Game intro...
-               Good luck!");
+                            Game intro...
+                                           Good luck!");
 
-            //Console.SetCursorPosition(Console.WindowWidth - 49, Console.WindowHeight - 1);
-            //Console.ForegroundColor = ConsoleColor.Yellow;
-            //Console.WriteLine("Press Space to go back");
+            Console.SetCursorPosition(Console.WindowWidth - 49, Console.WindowHeight - 1);
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Press Esc to go back");
         }
 
         public static void LoadLooseScreen(int score) // Gave Over screen
@@ -187,7 +94,7 @@ Game intro...
                (_)           (_)
 ");
 
-            
+
             Console.WriteLine("GAME OVER");
             Console.WriteLine("Enter your nickname: ");
 
@@ -210,7 +117,7 @@ Game intro...
              ╚╗╔╗╔╝║║║║║║
               ╚╝╚╝ ╚╝╚╩═╝");
 
-            
+
             Console.WriteLine("YOU WIN");
             Console.WriteLine("Your score: ");
             Console.WriteLine("Enter your nickname: ");
@@ -232,7 +139,7 @@ Game intro...
             Console.CursorVisible = false;
             Console.SetCursorPosition((Console.WindowWidth / 2) - 12, Console.WindowHeight - 2);
             //Console.ForegroundColor = ConsoleColor.Yellow;
-            //Console.WriteLine("Press Space to go back");
+            //Console.WriteLine("Press Esc to go back");
         }
     }
 }

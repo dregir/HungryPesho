@@ -5,9 +5,9 @@
         public string Name;
         public string Armor;
         public string Weapon;
+
         public Item()
         {
-            
         }
     }
 }

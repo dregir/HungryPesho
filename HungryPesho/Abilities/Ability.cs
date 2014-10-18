@@ -31,7 +31,17 @@
             }
         }
 
-        public int EnergyCost { get; set; }
+        public int EnergyCost
+        {
+            get
+            {
+                return this.energyCost;
+            }
+            set
+            {
+                this.energyCost = value;
+            }
+        }
 
         public string Description
         {

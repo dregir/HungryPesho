@@ -9,6 +9,7 @@
         {
             Random randGen = new Random();
             int randomNumber = randGen.Next(1, 4);
+
             switch (randomNumber)
             {
                 case 1:
@@ -80,8 +81,8 @@
             var random = new Random();
             var food = new Food();
 
-            food.HealtGain = random.Next(1, 15);
-            food.EnergyGain = random.Next(1, 5);
+            food.HealthGained = random.Next(1, 15);
+            food.EnergyGained = random.Next(1, 5);
            
 
             var foodType = random.Next(1, 5);

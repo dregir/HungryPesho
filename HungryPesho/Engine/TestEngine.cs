@@ -1,23 +1,22 @@
-﻿using System;
-using HungryPesho.Abilities;
-using HungryPesho.Creatures;
-using HungryPesho.UI;
-
-namespace HungryPesho.Engine
+﻿namespace HungryPesho.Engine
 {
+    using System;
+    using HungryPesho.Abilities;
+    using HungryPesho.Creatures;
+    using HungryPesho.UI;
+
     public class TestEngine
     {
         public static Character Pesho;
 
         public static void StartEngine()
         {
-
-            Pesho = Mage.CreateNewMage();
-            Pesho.Initiative = 4;
+            Pesho = new Mage();
 
             //I guess we need Ability and Enemy factory for those as well, hardcoding `em for now.
             //Todo create ability and enemy factory.
             var kebap = new Ability("KebapShot", "Throws Kebap to you", AbilityEffects.DirectDamage, 5);
+
             var monsters = new Creature[]
             {
                 new Enemy{Ability = kebap},
@@ -26,7 +25,7 @@ namespace HungryPesho.Engine
                 new Enemy{Ability = kebap},
             };
 
-            foreach (var monster in monsters) //Play with stats to test 'em here.
+            foreach (var monster in monsters) // Play with stats to test 'em here.
             {
                 monster.Attack = 3;
                 monster.Energy = 12;
@@ -36,8 +35,8 @@ namespace HungryPesho.Engine
             }
 
             Console.Clear();
-            DrawHelper.DrawStatsWindow();
-            DrawHelper.ReloadStats();      //show stats screen
+            DrawHelper.DrawGameWindow();
+            DrawHelper.ReloadStats();      // Show stats screen
 
             var random = new Random();
             var choiceIsMade = true;
@@ -59,15 +58,18 @@ namespace HungryPesho.Engine
                 // There is 10 % chance to miss and 10 % chance to evade.
                 var result = random.Next(0, 11);
 
-                if (result > 1 ) // a hit is land.
+                // Chance to miss 10% / Agility
+
+                if (result > 1) // a hit is land.
                 {
                     var damageDone = random.Next(1, currentPlayer.Attack + 1); // apply attack modifiers here.
 
-                    if (currentPlayer == Pesho)
+                    if (currentPlayer is Character)
                     {
                         DrawHelper.TextAtPosition("What is your move?", 15, 25, ConsoleColor.White);
                         DrawHelper.TextAtPosition("-=[ 1 ]  )=={═════> SIMPLE WEAPON ATTACK =-", 5, 27, ConsoleColor.Green);
                         DrawHelper.TextAtPosition("1", 9, 27, ConsoleColor.Yellow);
+
                         var playerChoice = Console.ReadKey(true);
 
                         if (playerChoice.Key.Equals(ConsoleKey.D1))
@@ -105,6 +107,7 @@ namespace HungryPesho.Engine
                 else if (choiceIsMade)
                 {
                     Console.SetCursorPosition(0, startingRows++);
+
                     if (currentPlayer == Pesho)
                     {
                         Console.WriteLine(result == 0 ? DrawHelper.Color("You missed.", ConsoleColor.Gray) :

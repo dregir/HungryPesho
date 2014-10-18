@@ -6,7 +6,6 @@
 
         public Food()
         {
-            this.FoodType = this.foodType;
         }
 
         public FoodTypes FoodType
@@ -21,11 +20,5 @@
                 this.foodType = value;
             }
         }
-
-
-
-        public int Gain { get; set; }
-
-        public int HealtGain { get; set; }
     }
 }

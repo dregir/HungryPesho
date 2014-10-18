@@ -13,28 +13,19 @@
         private const int StartingStrength = 5;
         private const int StartingIntellect = 15;
         private const int StartingAttack = 2;
+        private const int StartingInitiative = 4;
 
-        //public Mage(string description, int level, int attack, int health, int energy, int initiative, int agility, int strength, int intellect)
-        //    : base(description, level, attack, health, energy, initiative, agility, strength, intellect)
-        //{
-        //    base.Agility = agility;
-        //    base.Strength = strength;
-        //    base.Intellect = intellect;
-        //}
 
-        public static Mage CreateNewMage()
+        public Mage()
         {
-            var mage = new Mage();
-
-            mage.Level = StartingLevel;
-            mage.Health = StartingHealth;
-            mage.Energy = StartingEnergy;
-            mage.Agility = StartingAgility;
-            mage.Strength = StartingStrength;
-            mage.Intellect = StartingIntellect;
-            mage.Attack = StartingAttack;
-
-            return mage;
+            this.Level = StartingLevel;
+            this.Health = StartingHealth;
+            this.Energy = StartingEnergy;
+            this.Agility = StartingAgility;
+            this.Strength = StartingStrength;
+            this.Intellect = StartingIntellect;
+            this.Attack = StartingAttack;
+            this.Initiative = StartingInitiative;
         }
     }
 }

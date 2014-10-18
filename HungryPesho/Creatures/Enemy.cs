@@ -10,17 +10,22 @@ namespace HungryPesho.Creatures
     {
         private Ability ability;
 
-        //public Enemy(string description, int level, int attack, int health, int energy, int initiative, Ability ability) 
-        //    : base(description, level, attack, health, energy, initiative)
-        //{
-        //    this.abilities = new List<Ability>();
+        public Enemy()
+        {
+        }
 
-        //    this.Abilities.Add(ability);
-        //}
+        public Ability Ability
+        {
+            get
+            {
+                return this.ability;
+            }
 
-        public Ability Ability { get; set; }
-
-        public override string Name { get; set; }
+            set
+            {
+                this.ability = value;
+            }
+        }
 
         public override void Action(Creature target)
         {

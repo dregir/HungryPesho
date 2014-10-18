@@ -4,32 +4,34 @@
 
     public abstract class EffectItem : Item, IEffectable
     {
+        private int healthGained;
+        private int energyGained;
+
         public EffectItem()
         {
-
         }
 
-        public int HealthGain
+        public int HealthGained
         {
             get
             {
-                throw new System.NotImplementedException();
+                return this.healthGained;
             }
             set
             {
-                throw new System.NotImplementedException();
+                this.healthGained = value;
             }
         }
 
-        public int EnergyGain
+        public int EnergyGained
         {
             get
             {
-                throw new System.NotImplementedException();
+                return this.energyGained; 
             }
             set
             {
-                throw new System.NotImplementedException();
+                this.energyGained = value;
             }
         }
     }
