@@ -1,14 +1,12 @@
 ﻿namespace HungryPesho.Items
 {
     using System.Text;
+    using HungryPesho.ExceptionClasses;
 
     public class Armor : StatItem
     {
         private int armorProtection;
-
-        private ArmorTypes armorType;
-
-        // TODO: Validate
+        
         public int ArmorProtection
         {
             get
@@ -18,22 +16,15 @@
 
             set
             {
+                if (value < 0 || value > 100)
+                {
+                    throw new ApplicationException("Protection should be positive!");
+                }
                 armorProtection = value;
             }
         }
 
-        public ArmorTypes ArmorType
-        {
-            get
-            {
-                return armorType;
-            }
-
-            set
-            {
-                armorType = value;
-            }
-        }
+        public ArmorTypes ArmorType { get; set; }
 
         public override string ToString()
         {

@@ -1,5 +1,6 @@
 ﻿namespace HungryPesho.Items
 {
+    using HungryPesho.ExceptionClasses;
     using HungryPesho.Interfaces;
 
     public abstract class StatItem : Item, IStatable
@@ -8,9 +9,7 @@
         private int agility;
         private int strength;
         private int intellect;
-
-        #region Properties
-        // TODO: Validate
+        
         public int Stamina
         {
             get
@@ -19,6 +18,10 @@
             }
             set
             {
+                if (value < 0 || value > 100)
+                {
+                    throw new ApplicationException("Stamina should be positive!");
+                }
                 this.stamina = value;
             }
         }
@@ -31,6 +34,10 @@
             }
             set
             {
+                if (value < 0 || value > 100)
+                {
+                    throw new ApplicationException("Agility should be positive!");
+                }
                 this.agility = value;
             }
         }
@@ -43,6 +50,10 @@
             }
             set
             {
+                if (value < 0 || value > 100)
+                {
+                    throw new ApplicationException("Strength should be positive!");
+                }
                 this.strength = value;
             }
         }
@@ -55,10 +66,14 @@
             }
             set
             {
+                if (value < 0 || value > 100)
+                {
+                    throw new ApplicationException("Intellect should be positive!");
+                }
                 this.intellect = value;
             }
         }
-        #endregion
+       
 
         public override string ToString()
         {

@@ -1,14 +1,12 @@
 ﻿namespace HungryPesho.Items
 {
     using System.Text;
+    using HungryPesho.ExceptionClasses;
 
     public class Weapon : StatItem
     {
         private int weaponDamage;
-        private WeaponTypes weaponType;
 
-        #region Properties
-        // TODO: Validate
         public int WeaponDamage
         {
             get
@@ -18,23 +16,15 @@
 
             set
             {
+                if (value < 0 || value > 100)
+                {
+                    throw new ApplicationException("Damage should be a positive value!");
+                }
                 this.weaponDamage = value;
             }
         }
 
-        public WeaponTypes WeaponType
-        {
-            get
-            {
-                return this.weaponType;
-            }
-
-            set
-            {
-                this.weaponType = value;
-            }
-        }
-        #endregion
+        public WeaponTypes WeaponType { get; set; }
 
         public override string ToString()
         {
