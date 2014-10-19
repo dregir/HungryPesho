@@ -16,6 +16,7 @@
         {
             // Initialize player - TODO: Player's choice
             Pesho = new Mage();
+            Console.WriteLine(Pesho.Health);
 
             //I guess we need Ability and Enemy factory for those as well, hardcoding `em for now.
             //Todo create ability and enemy factory.
@@ -39,7 +40,7 @@
 
             foreach (var monster in enemies) // Play with stats to test 'em here. - TODO: Generate monster accordingly player's level
             {
-                monster.Attack = 3;
+                monster.Attack = 13;
                 monster.Energy = 12;
                 monster.Health = 50;
                 monster.Initiative = 2;
@@ -115,7 +116,7 @@
 
                     if (result > 1)
                     {
-                        currentEnemy.Action(currentPlayer);  // Enemy does its thing - cast spell or attack
+                        currentEnemy.Action(Pesho);  // Enemy does its thing - cast spell or attack
                     }
 
                     else

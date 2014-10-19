@@ -64,6 +64,7 @@ namespace HungryPesho.Creatures
                                                              damage);
                 Console.ResetColor();
             }
+            DrawHelper.ReloadStats();
         }
     }
 }

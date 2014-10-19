@@ -94,7 +94,7 @@
                                 DrawHelper.Color("and hit", ConsoleColor.White),
                                 DrawHelper.Color(target.Name, ConsoleColor.Cyan),
                                 DrawHelper.Color("for", ConsoleColor.White),
-                                DrawHelper.Color((ability.EnergyCost += damage).ToString(), ConsoleColor.Green),
+                                DrawHelper.Color(damage.ToString(), ConsoleColor.Green),
                                 DrawHelper.Color("damage!", ConsoleColor.White));
                     }
                     else if (ability.AbilityEffect == AbilityEffects.Freeze)
@@ -124,7 +124,7 @@
                 throw new ArgumentException("You don't have enough energy!");
             }
 
-            DrawHelper.ReloadStats();
+          
             Thread.Sleep(2000); // Pause the game for 2 sec after player's turn
         }
 
