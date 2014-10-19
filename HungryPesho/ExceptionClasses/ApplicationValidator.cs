@@ -8,7 +8,7 @@
         {
             if (value < min || value > max)
             {
-                throw new GameException("The value: " + value.GetType() + " mist be between " + min + " and " + max);
+                throw new GameException("The value: " + value.GetType().Name + " mist be between " + min + " and " + max);
             }
         }
 
@@ -16,7 +16,7 @@
         {
             if (string.IsNullOrWhiteSpace(value))
             {
-                throw new GameException("The value: " + value.GetType() + " cannot be null or white space!");
+                throw new GameException("The value: " + value.GetType().Name + " cannot be null or white space!");
             }
         }
     }

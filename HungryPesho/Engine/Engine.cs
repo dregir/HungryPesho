@@ -5,6 +5,7 @@
     using System.Threading;
     using HungryPesho.Abilities;
     using HungryPesho.Creatures;
+    using HungryPesho.ExceptionClasses;
     using HungryPesho.Interfaces;
     using HungryPesho.UI;
 
@@ -14,6 +15,8 @@
 
         public static void StartEngine()
         {
+            Console.Clear();
+
             // Initialize player - TODO: Player's choice
             Pesho = new Mage();
             Console.WriteLine(Pesho.Health);
@@ -94,7 +97,7 @@
                             currentPlayer = currentEnemy;
                             startingRows++;
                         }
-                        catch (ApplicationException e)
+                        catch (GameException e)
                         {
                             DrawHelper.TextAtPosition(e.Message, 0, 33, ConsoleColor.DarkGray);
                         }

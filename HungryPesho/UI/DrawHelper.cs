@@ -14,7 +14,7 @@
 
             foreach (var choices in menuChoices)
             {
-                Console.SetCursorPosition(45, cursorPos);
+                Console.SetCursorPosition(50, cursorPos);
                 Console.WriteLine(choices);
                 cursorPos += 2;
             }
@@ -42,7 +42,7 @@
 
             Action<ConsoleColor, string> consoleAction = (color, text) =>
             {
-                Console.SetCursorPosition(45, cursorPos);
+                Console.SetCursorPosition(50, cursorPos);
                 Console.BackgroundColor = color;
                 Console.Write(text);
                 Console.BackgroundColor = ConsoleColor.Black;

@@ -18,7 +18,7 @@
                 "   START   ",
                 "HOW TO PLAY",
                 "  OPTIONS  ",
-                " RANKLIST ",
+                " RANKLIST  ",
                 "  CREDITS  ",
                 "   EXIT    "
             };
@@ -30,6 +30,34 @@
                 GameSettings.LoadGameSettings,
                 LoadRankList,
                 LoadCreditsScreen,
+            };
+
+            DrawHelper.CreateMenu(menuChoices, startMenuMethods, 25);
+        }
+
+        public static void LoadIngameMenu() // Ingame menu
+        {
+            Console.Clear();
+            DrawHelper.DrawStartingWindow();
+
+            var menuChoices = new[]
+            {
+                " CONTINUE  ",
+                "   SAVE    ",
+                "   LOAD    ",
+                "  OPTIONS  ",
+                "HOW TO PLAY",
+                "   EXIT    "
+            };
+
+            var startMenuMethods = new List<Action>()
+            {
+                Engine.StartEngine,
+                GameSettings.SaveGame,
+                GameSettings.LoadGame,
+                GameSettings.LoadGameSettings,
+                LoadGameInfoScreen,
+                LoadCreditsScreen
             };
 
             DrawHelper.CreateMenu(menuChoices, startMenuMethods, 25);

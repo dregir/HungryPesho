@@ -26,7 +26,6 @@
 
             set
             {
-                ApplicationValidator.ValidateStringValue(value);
                 this.name = value;
             }
         }
@@ -40,7 +39,6 @@
 
             set
             {
-                ApplicationValidator.ValidateStringValue(value);
                 this.description = value;
             }
         }

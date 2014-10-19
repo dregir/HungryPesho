@@ -6,6 +6,7 @@
 
     public class Mage : Character
     {
+        private const string MageName = "Mage";
         private const string MageDescription = "Using magic to slay his opponents.";
 
         private const int StartingLevel = 1;
@@ -19,6 +20,9 @@
 
         public Mage()
         {
+            this.Name = MageName;
+            this.Description = MageDescription;
+
             this.Level = StartingLevel;
             this.Health = StartingHealth;
             this.Energy = StartingEnergy;

@@ -6,6 +6,7 @@
 
     public class Warrior : Character
     {
+        private const string WarriorName = "Warrior";
         private const string WarriorDescription = "Strong and powerful character who slay his opponents with brute force!";
 
         private const int StartingLevel = 1;
@@ -19,6 +20,9 @@
 
         private Warrior()
         {
+            this.Name = WarriorName;
+            this.Description = WarriorDescription;
+
             this.Level = StartingLevel;
             this.Health = StartingHealth;
             this.Energy = StartingEnergy;

@@ -4,16 +4,22 @@
     using System.IO;
     using System.Media;
     using System.Threading;
+    using HungryPesho.Engine;
     using HungryPesho.UI;
+
+    using System.Linq;
 
     public static class GameSettings
     {
+        public const int GameWidth = 120;
+        public const int GameHeight = 50;
+
         public static void LoadGameSettings()
         {
             // Creating and initializing game window;
             Console.Title = "Hungry Pesho";
             Console.CursorVisible = false;
-            Console.SetWindowSize(120, 50);
+            Console.SetWindowSize(GameWidth, GameHeight);
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.Green;
 
@@ -23,11 +29,27 @@
 
         public static void SaveGameSettings()
         {
-            // TODO: Implement
-            throw new NotImplementedException();
+            try
+            {
+                var writer = new StreamWriter("settings.hup");
+
+                using (writer)
+                {
+                    // TODO: Save currnet settings
+                }
+            }
+            catch (Exception)
+            {
+                DrawHelper.TextAtPosition("SAVE FILED!", GameWidth / 2, GameHeight / 3, ConsoleColor.Red);
+            }
+
+            DrawHelper.TextAtPosition("SAVED!", GameWidth / 2, GameHeight / 3, ConsoleColor.Green);
+
+            Thread.Sleep(2000);
+            LoadScreen.LoadStartMenu();
         }
 
-        private static void SaveGame() // Save current game
+        public static void SaveGame() // Save current game
         {
             try
             {
@@ -35,29 +57,49 @@
 
                 using (writer)
                 {
-                    // TODO: Save current state
+                    // writer.WriteLine(Engine.Pesho.Abilities.ToString()); // TODO: If there is a chance to earn abilities
+
+                    writer.WriteLine(Engine.Pesho.Agility);
+                    writer.WriteLine(Engine.Pesho.Attack);
+                    writer.WriteLine(Engine.Pesho.Energy);
+                    writer.WriteLine(Engine.Pesho.Health);
+                    writer.WriteLine(Engine.Pesho.Initiative);
+                    writer.WriteLine(Engine.Pesho.Intellect);
+                    writer.WriteLine(Engine.Pesho.Level);
+                    writer.WriteLine(Engine.Pesho.Name);
+                    writer.WriteLine(Engine.Pesho.Strength);
                 }
             }
             catch (Exception)
             {
-                Console.SetCursorPosition(Console.WindowWidth - 40, (Console.WindowHeight / 2) - 6);
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("SAVE GAME FAILED!");
-                Thread.Sleep(2000);
-                Console.Clear();
-                LoadScreen.LoadStartMenu();
+                DrawHelper.TextAtPosition("SAVE GAME FAILED!", GameWidth / 2, GameHeight / 3, ConsoleColor.Red);
             }
+
+            DrawHelper.TextAtPosition("GAME SAVED!", GameWidth / 2, GameHeight / 3, ConsoleColor.Green);
+
+            Thread.Sleep(2000);
+            Engine.StartEngine(); // TODO: Start from currnet progress
         }
 
-        private static void LoadGame() // Load currnet game
+        public static void LoadGame() // Load currnet game
         {
             try
             {
-                StreamReader reader = new StreamReader("SavedGames.ast");
+                StreamReader reader = new StreamReader("saves.hup");
 
                 using (reader)
                 {
-                    // TODO: Load currnet state
+                    // Engine.Pesho.Abilities = reader.ReadLine().ToList();
+
+                    Engine.Pesho.Agility = int.Parse(reader.ReadLine());
+                    Engine.Pesho.Attack = int.Parse(reader.ReadLine());
+                    Engine.Pesho.Energy = int.Parse(reader.ReadLine());
+                    Engine.Pesho.Health = int.Parse(reader.ReadLine());
+                    Engine.Pesho.Initiative = int.Parse(reader.ReadLine());
+                    Engine.Pesho.Intellect = int.Parse(reader.ReadLine());
+                    Engine.Pesho.Level = int.Parse(reader.ReadLine());
+                    Engine.Pesho.Name = reader.ReadLine();
+                    Engine.Pesho.Strength = int.Parse(reader.ReadLine());
                 }
             }
             catch (Exception)
@@ -65,10 +107,12 @@
                 Console.SetCursorPosition(Console.WindowWidth - 33, (Console.WindowHeight / 2) - 6);
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("LOAD GAME FAILED!");
-                Thread.Sleep(2000);
-                Console.Clear();
-                LoadScreen.LoadStartMenu();
             }
+
+            DrawHelper.TextAtPosition("GAME LOADED!", GameWidth / 2, GameHeight / 3, ConsoleColor.Green);
+
+            Thread.Sleep(2000);
+            Engine.StartEngine();
         }
     }
 }

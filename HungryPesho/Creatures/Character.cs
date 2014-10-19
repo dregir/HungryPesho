@@ -70,7 +70,11 @@
             Ability ability = this.Abilities[0];
             var damageModifier = this.GetType().Name == "Mage" ? this.Intellect : this.Strength;
 
-            if (key < this.Abilities.Count)
+            if (action.Key.Equals(ConsoleKey.Escape))
+            {
+                LoadScreen.LoadIngameMenu();
+            }
+            else if (key < this.Abilities.Count && key >= 0)
             {
                 ability = this.Abilities[key];
             }
@@ -110,8 +114,9 @@
                     this.Energy -= ability.EnergyCost;
 
                     Console.WriteLine(result == 0 ?
-                        DrawHelper.Color("You missed.", ConsoleColor.Gray) :
-                        DrawHelper.Color(target.Name + " evaded your " + ability.Name, ConsoleColor.DarkGray));
+                            DrawHelper.Color("You missed.", ConsoleColor.Gray) :
+                            DrawHelper.Color(target.Name + " evaded your " + ability.Name, ConsoleColor.DarkGray)
+                        );
                 }
                 // else if (ability.AbilityEffect == AbilityEffects.Dodge) // TODO: Implement logic
                 // {
