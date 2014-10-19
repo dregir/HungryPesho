@@ -106,9 +106,11 @@
                 }
                 else
                 {
+                    this.Energy -= ability.EnergyCost;
+
                     Console.WriteLine(result == 0 ?
                         DrawHelper.Color("You missed.", ConsoleColor.Gray) :
-                        DrawHelper.Color(target.Name + " evaded your strike!", ConsoleColor.DarkGray));
+                        DrawHelper.Color(target.Name + " evaded your " + ability.Name, ConsoleColor.DarkGray));
                 }
                 //else if (ability.AbilityEffect == AbilityEffects.Dodge) // TODO: Implement logic
                 //{
@@ -124,7 +126,7 @@
                 throw new ArgumentException("You don't have enough energy!");
             }
 
-          
+            DrawHelper.ReloadStats();
             Thread.Sleep(2000); // Pause the game for 2 sec after player's turn
         }
 

@@ -40,7 +40,7 @@
 
             foreach (var monster in enemies) // Play with stats to test 'em here. - TODO: Generate monster accordingly player's level
             {
-                monster.Attack = 13;
+                monster.Attack = 4;
                 monster.Energy = 12;
                 monster.Health = 50;
                 monster.Initiative = 2;
@@ -66,17 +66,11 @@
                 DrawHelper.Color("You wake up and suddenly from no-where a giant fucking", ConsoleColor.DarkRed),
                 DrawHelper.Color(currentEnemy.Name, ConsoleColor.Cyan),
                 DrawHelper.Color("apeared infront of you and quickly attacks!", ConsoleColor.DarkRed));
+
             startingRows++;
 
             while (Pesho.Health > 0 && currentEnemy.Health > 0)
             {
-
-
-                // Chance to miss 10% / Agility
-
-
-                var damageDone = random.Next(1, currentPlayer.Attack + 1); // apply attack modifiers here.
-
                 if (currentPlayer is Character)
                 {
                     DrawHelper.TextAtPosition("What is your move?\r\n", 15, 25, ConsoleColor.White);
@@ -98,7 +92,6 @@
                         try
                         {
                             Pesho.Action(currentEnemy, playerChoice); //if no exception we do the changes
-                            DrawHelper.ReloadStats();
                             currentPlayer = currentEnemy;
                             startingRows++;
                         }
@@ -109,24 +102,34 @@
                         }             
                 }
 
-                else
+                else 
                 {
-                    var result = random.Next(0, 11);
-                    Console.SetCursorPosition(0, startingRows++);
-
-                    if (result > 1)
+                    if (currentEnemy.Initiative != 0)
                     {
-                        currentEnemy.Action(Pesho);  // Enemy does its thing - cast spell or attack
-                    }
+                        var result = random.Next(0, 11);
+                        Console.SetCursorPosition(0, startingRows++);
 
+                        if (result > 1)
+                        {
+                            currentEnemy.Action(Pesho);  // Enemy does its thing - cast spell or attack
+                        }
+
+                        else
+                        {
+                            Console.WriteLine(result == 1 ?
+                                DrawHelper.Color(currentEnemy.Name + " missed you.", ConsoleColor.White) :
+                                DrawHelper.Color("You evaded!", ConsoleColor.White));
+                        }
+                    }
                     else
                     {
-                        Console.WriteLine(result == 1 ? 
-                            DrawHelper.Color(currentEnemy.Name + " missed you.", ConsoleColor.White) :
-                            DrawHelper.Color("You evaded!", ConsoleColor.White));
+                        DrawHelper.TextAtPosition(currentEnemy.Name + " misses it's turn.", 
+                            0,
+                            startingRows++, ConsoleColor.Blue);
                     }
 
                     DrawHelper.ReloadStats();
+                    currentEnemy.Initiative = 1; 
                     currentPlayer = Pesho;
                 }
             }
