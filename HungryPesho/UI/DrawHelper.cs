@@ -115,7 +115,7 @@
 
             for (int i = 0; i < peshoStats.Length; i++)
             {
-                Console.SetCursorPosition(103, startPos + i);
+                Console.SetCursorPosition(100, startPos + i);
                 Console.Write(Color(peshoStats[i].ToString(), peshoColors[i]));
             }
         }
@@ -160,15 +160,15 @@
         public static void DrawGameWindow()
         {
             Console.Write(@"
-                                                                                         +-----------------------+
-                                                                                         |                       |
-                                                                                         |  Pesho 1 Lvl Class    |
-                                                                                         |       Life:           |
-                                                                                         |     Energy:           |       
-                                                                                         | Initiative:           |
-                                                                                         |     Attack:           |
-                                                                                         |                       |
-                                                                                         +-----------------------+
+                                                                                      +-----------------------+
+                                                                                      |                       |
+                                                                                      |  Pesho 1 Lvl Class    |
+                                                                                      |       Life:           |
+                                                                                      |     Energy:           |       
+                                                                                      | Initiative:           |
+                                                                                      |     Attack:           |
+                                                                                      |                       |
+                                                                                      +-----------------------+
 
 ");
         }
