@@ -16,12 +16,6 @@
         public static void StartEngine()
         {
             Console.Clear();
-
-            // Initialize player - TODO: Player's choice
-            Pesho = new Mage();
-            Console.WriteLine(Pesho.Health);
-
-            // I guess we need Ability and Enemy factory for those as well, hardcoding `em for now.
             // TODO: create ability and enemy factory.
 
             // TODO: Initialize all ingame enemies here
@@ -52,7 +46,7 @@
 
             Console.Clear();
             DrawHelper.DrawGameWindow();
-            DrawHelper.ReloadStats(); // Show stats screen
+            DrawHelper.ReloadStats(); 
 
             var random = new Random();
 
@@ -92,7 +86,7 @@
 
                         try
                         {
-                            Pesho.Action(currentEnemy, playerChoice); // If no exception we do the changes
+                            Pesho.Action(currentEnemy, playerChoice); 
                             
                             currentPlayer = currentEnemy;
                             startingRows++;
@@ -102,7 +96,7 @@
                             DrawHelper.TextAtPosition(e.Message, 0, 33, ConsoleColor.DarkGray);
                         }
 
-                        Thread.Sleep(2000); // Pause the game for 2 sec after player's turn
+                        Thread.Sleep(2000); 
                 }
                 else 
                 {

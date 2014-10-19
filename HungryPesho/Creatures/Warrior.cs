@@ -18,7 +18,7 @@
         private const int StartingAttack = 5;
         private const int StartingInitiative = 3;
 
-        private Warrior()
+        public Warrior()
         {
             this.Name = WarriorName;
             this.Description = WarriorDescription;
@@ -29,6 +29,8 @@
             this.Agility = StartingAgility;
             this.Strength = StartingStrength;
             this.Intellect = StartingIntellect;
+            this.Attack = StartingAttack;
+            this.Initiative = StartingInitiative;
 
             // Starting warrior abilities
             this.Abilities.Add(new Ability("Basic Attack", "Just a hit with your weapon", AbilityEffects.DirectDamage, 0));

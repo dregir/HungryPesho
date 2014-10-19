@@ -25,7 +25,7 @@
 
             var startMenuMethods = new List<Action>()
             {
-                Engine.StartEngine,
+                LoadCharacterSelection,
                 LoadGameInfoScreen,
                 GameSettings.LoadGameSettings,
                 LoadRankList,
@@ -33,6 +33,12 @@
             };
 
             DrawHelper.CreateMenu(menuChoices, startMenuMethods, 25);
+        }
+
+        public static void LoadCharacterSelection()
+        {
+            Engine.Pesho = DrawHelper.SelectCharacter();
+            Engine.StartEngine();
         }
 
         public static void LoadIngameMenu() // Ingame menu
