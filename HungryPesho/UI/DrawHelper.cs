@@ -98,6 +98,8 @@ namespace HungryPesho.UI
 
         public static void ReloadStats()
         {
+            string charClass = Engine.Pesho.GetType().Name;
+            int level = Engine.Pesho.Level;
             const int startPos = 4;
             var peshoStats = new[]
                 {
@@ -120,6 +122,11 @@ namespace HungryPesho.UI
                 Console.SetCursorPosition(100, startPos + i);
                 Console.Write(Color(peshoStats[i].ToString(), peshoColors[i]));
             }
+
+            var classColor = charClass == "Mage" ? ConsoleColor.Blue : ConsoleColor.DarkRed;
+
+            TextAtPosition(level + " lvl", 94, 3, ConsoleColor.Yellow);
+            TextAtPosition(charClass + "  ", 101, 3, classColor);
         }
 
         public static void TextAtPosition(string text, int col, int row, ConsoleColor color = ConsoleColor.Green, ConsoleColor bgColor = ConsoleColor.Black)
@@ -163,15 +170,15 @@ namespace HungryPesho.UI
         public static void DrawGameWindow()
         {
             Console.Write(@"
-                                                                                      +-----------------------+
-                                                                                      |                       |
-                                                                                      |  Pesho 1 Lvl Class    |
-                                                                                      |       Life:           |
-                                                                                      |     Energy:           |       
-                                                                                      | Initiative:           |
-                                                                                      |     Attack:           |
-                                                                                      |                       |
-                                                                                      +-----------------------+
+                                                                                      +------------------------+
+                                                                                      |                        |
+                                                                                      | Pesho                  |
+                                                                                      |       Life:            |
+                                                                                      |     Energy:            |       
+                                                                                      | Initiative:            |
+                                                                                      |     Attack:            |
+                                                                                      |                        |
+                                                                                      +------------------------+
 
 ");
         }
