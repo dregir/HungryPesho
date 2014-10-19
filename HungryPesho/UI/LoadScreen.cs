@@ -50,7 +50,16 @@
         {
             Console.Title = "Hungry Pesho  -=-  Game Credits";
 
-            Console.Write(@"Team Dregir:
+            Console.Write(@"
+                                ____  
+               ________         L|eam          __.                              
+               \______ \_______   ____   ____ |__|______ 
+                |    |  \_  __ \_/ __ \ / ___\|  \_  __ \
+                |    `   \  | \/\  ___// /_/  >  ||  | \/
+               /_______  /__|    \___  >___  /|__||__|   
+                       \/            \/_____/       
+
+
 
                             Pavlin Kostadinov
                             Adrian Bozhankov
