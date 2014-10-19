@@ -62,6 +62,9 @@
 
         public void Action(Creature target, ConsoleKeyInfo action)
         {
+            var random = new Random();
+            var result = random.Next(0,11);
+            var attackSucceeded = result > 1;
             int key = (int)action.Key - 49;
             Ability ability = this.Abilities[0];
             var damageModifier = this.GetType().Name == "Mage" ? this.Intellect : this.Strength;
@@ -77,24 +80,35 @@
 
             if (this.Energy >= ability.EnergyCost)
             {
-                if (ability.AbilityEffect == AbilityEffects.DirectDamage) // Direct damage abilities
+                if (attackSucceeded)
                 {
-                    var damage = ability.EnergyCost + damageModifier;
+                    if (ability.AbilityEffect == AbilityEffects.DirectDamage) // Direct damage abilities
+                    {
+                        var damage = ability.EnergyCost + damageModifier;
 
-                    target.Health -= damage;
+                        target.Health -= damage;
 
-                    //Console.SetCursorPosition(0, startingRows++);
-                    Console.WriteLine("You preform " + ability.Name + " and hit  " + target.Name + " with " + ability.EnergyCost + damage + "damage!");
-
-                    Console.WriteLine( // TODO: fix it
-                            DrawHelper.Color("You preform " + ability.Name + " and hit  " + target.Name + " with ", ConsoleColor.White),
-                            DrawHelper.Color((ability.EnergyCost += damage).ToString(), ConsoleColor.Green));
+                        Console.WriteLine(
+                                DrawHelper.Color("You perform", ConsoleColor.White),
+                                DrawHelper.Color(ability.Name, ConsoleColor.Yellow),
+                                DrawHelper.Color("and hit", ConsoleColor.White),
+                                DrawHelper.Color(target.Name, ConsoleColor.Cyan),
+                                DrawHelper.Color("for", ConsoleColor.White),
+                                DrawHelper.Color((ability.EnergyCost += damage).ToString(), ConsoleColor.Green),
+                                DrawHelper.Color("damage!", ConsoleColor.White));
+                    }
+                    else if (ability.AbilityEffect == AbilityEffects.Freeze)
+                    {
+                        Console.WriteLine("You preform " + ability.Name + " hitting " + target.Name + " with " + damageModifier + " damage, freezing him for the next turn!");
+                        this.Energy -= ability.EnergyCost;
+                        target.Initiative = 0;
+                    }
                 }
-                else if (ability.AbilityEffect == AbilityEffects.Freeze)
+                else
                 {
-                    Console.WriteLine("You preform " + ability.Name + " hitting " + target.Name + " with " + damageModifier + " damage, freezing him for the next turn!");
-                    this.Energy -= ability.EnergyCost;
-                    target.Initiative = 0;
+                    Console.WriteLine(result == 0 ?
+                        DrawHelper.Color("You missed.", ConsoleColor.Gray) :
+                        DrawHelper.Color(target.Name + " evaded your strike!", ConsoleColor.DarkGray));
                 }
                 //else if (ability.AbilityEffect == AbilityEffects.Dodge) // TODO: Implement logic
                 //{

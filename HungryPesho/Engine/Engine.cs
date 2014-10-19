@@ -51,7 +51,6 @@
             DrawHelper.ReloadStats(); // Show stats screen
 
             var random = new Random();
-            var choiceIsMade = true;
 
             // TODO: Battle states engine
             //ar combatEngine = new CombatEngine();
@@ -70,75 +69,64 @@
 
             while (Pesho.Health > 0 && currentEnemy.Health > 0)
             {
-                //Calculate the odds and print result.
-                // There is 10 % chance to miss and 10 % chance to evade.
-                var result = random.Next(0, 11);
+
 
                 // Chance to miss 10% / Agility
 
-                if (result > 1) // a hit is land.
+
+                var damageDone = random.Next(1, currentPlayer.Attack + 1); // apply attack modifiers here.
+
+                if (currentPlayer is Character)
                 {
-                    var damageDone = random.Next(1, currentPlayer.Attack + 1); // apply attack modifiers here.
+                    DrawHelper.TextAtPosition("What is your move?\r\n", 15, 25, ConsoleColor.White);
 
-                    if (currentPlayer is Character)
+                    // Draw all abilities
+                    var count = 1;
+
+                    foreach (var ability in Pesho.Abilities)
                     {
-                        DrawHelper.TextAtPosition("What is your move?\r\n", 15, 25, ConsoleColor.White);
+                        Console.WriteLine("\r\n(  {0} -=[ {1} ]  )═════> {2} =-", count, ability.Name, ability.Description);
+                        count++;
+                    }
 
-                        // Draw all abilities
-                        var count = 1;
+                    //Todo implement ability/action choice logic here
+                    var playerChoice = Console.ReadKey(true);
 
-                        foreach (var ability in Pesho.Abilities)
-                        {
-                            Console.WriteLine("\r\n(  {0} -=[ {1} ]  )═════> {2} =-", count, ability.Name, ability.Description);
-                            count++;
-                        }
-
-                        //Todo implement ability/action choice logic here
-                        var playerChoice = Console.ReadKey(true);
+                    Console.SetCursorPosition(0, startingRows);
 
                         try
                         {
-                            Pesho.Action(currentEnemy, playerChoice);
+                            Pesho.Action(currentEnemy, playerChoice); //if no exception we do the changes
+                            DrawHelper.ReloadStats();
+                            currentPlayer = currentEnemy;
+                            startingRows++;
                         }
+
                         catch (ArgumentException e)
                         {
-                            Console.WriteLine(e.Message);
-                        }
+                            DrawHelper.TextAtPosition(e.Message, 0, 33, ConsoleColor.DarkGray);
+                        }             
+                }
+
+                else
+                {
+                    var result = random.Next(0, 11);
+                    Console.SetCursorPosition(0, startingRows++);
+
+                    if (result > 1)
+                    {
+                        currentEnemy.Action(currentPlayer);  // Enemy does its thing - cast spell or attack
                     }
 
                     else
                     {
-                        Console.SetCursorPosition(0, startingRows++);
-                        currentEnemy.Action(currentPlayer);  // Enemy does its thing - cast spell or attack
-                        DrawHelper.ReloadStats();
-                        currentPlayer = Pesho;
-                    }
-                }
-
-                else if (choiceIsMade)
-                {
-                    Console.SetCursorPosition(0, startingRows++);
-
-                    if (currentPlayer == Pesho)
-                    {
-                        Console.WriteLine(result == 0 ? DrawHelper.Color("You missed.", ConsoleColor.Gray) :
-                            DrawHelper.Color(currentEnemy.Name + " evaded your strike!", ConsoleColor.DarkGray));
-
-                        if (currentEnemy.Initiative != 0)
-                        {
-                            currentPlayer = currentEnemy;
-                        }
-
-                        currentEnemy.Initiative = currentEnemy.Energy;
-                        
-                    }
-
-                    else if (currentPlayer == currentEnemy)
-                    {
-                        Console.WriteLine(result == 1 ? DrawHelper.Color(currentEnemy.Name + " missed you.", ConsoleColor.White) :
+                        Console.WriteLine(result == 1 ? 
+                            DrawHelper.Color(currentEnemy.Name + " missed you.", ConsoleColor.White) :
                             DrawHelper.Color("You evaded!", ConsoleColor.White));
-                        currentPlayer = Pesho;
                     }
+
+                    DrawHelper.ReloadStats();
+                    currentPlayer = Pesho;
                 }
             }
 
