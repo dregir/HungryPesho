@@ -18,7 +18,7 @@
             {
                 if (value < 0 || value > 100)
                 {
-                    throw new ApplicationException("Damage should be a positive value!");
+                    throw new HungryPeshoException("Damage should be a positive value!");
                 }
                 this.weaponDamage = value;
             }

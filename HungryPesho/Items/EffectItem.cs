@@ -18,7 +18,7 @@
             {
                 if(value < 0 || value > 100)
                 {
-                    throw  new ApplicationException("Negative health cannot be gained!");
+                    throw  new HungryPeshoException("Negative health cannot be gained!");
                 }
                 this.healthGained = value;
             }
@@ -34,7 +34,7 @@
             {
                 if (value < 0 || value > 100)
                 {
-                    throw new ApplicationException("Negative energy cannot be gained!");
+                    throw new HungryPeshoException("Negative energy cannot be gained!");
                 }
                 this.energyGained = value;
             }

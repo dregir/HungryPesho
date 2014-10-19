@@ -18,7 +18,7 @@
             {
                 if (value < 0 || value > 100)
                 {
-                    throw new ApplicationException("Protection should be positive!");
+                    throw new HungryPeshoException("Protection should be positive!");
                 }
                 armorProtection = value;
             }

@@ -20,7 +20,7 @@
             {
                 if (value < 0 || value > 100)
                 {
-                    throw new ApplicationException("Stamina should be positive!");
+                    throw new HungryPeshoException("Stamina should be positive!");
                 }
                 this.stamina = value;
             }
@@ -36,7 +36,7 @@
             {
                 if (value < 0 || value > 100)
                 {
-                    throw new ApplicationException("Agility should be positive!");
+                    throw new HungryPeshoException("Agility should be positive!");
                 }
                 this.agility = value;
             }
@@ -52,7 +52,7 @@
             {
                 if (value < 0 || value > 100)
                 {
-                    throw new ApplicationException("Strength should be positive!");
+                    throw new HungryPeshoException("Strength should be positive!");
                 }
                 this.strength = value;
             }
@@ -68,7 +68,7 @@
             {
                 if (value < 0 || value > 100)
                 {
-                    throw new ApplicationException("Intellect should be positive!");
+                    throw new HungryPeshoException("Intellect should be positive!");
                 }
                 this.intellect = value;
             }
