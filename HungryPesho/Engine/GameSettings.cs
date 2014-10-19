@@ -13,6 +13,7 @@
     {
         public const int GameWidth = 120;
         public const int GameHeight = 50;
+        public static SoundPlayer Player;
 
         public static void LoadGameSettings()
         {
@@ -23,8 +24,7 @@
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.Green;
 
-            // var music = new SoundPlayer(@"../../misc/start.wav"); // TODO:
-            // music.Play();
+
         }
 
         public static void SaveGameSettings()

@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Threading;
+    using System.Media;
     using HungryPesho.Abilities;
     using HungryPesho.Creatures;
     using HungryPesho.ExceptionClasses;
@@ -16,6 +17,7 @@
         public static void StartEngine()
         {
             Console.Clear();
+            GameSettings.Player.Stop();
             // TODO: create ability and enemy factory.
 
             // TODO: Initialize all ingame enemies here
@@ -58,9 +60,10 @@
 
             Console.SetCursorPosition(0, startingRows++);
             Console.WriteLine(
-                DrawHelper.Color("You wake up and suddenly from no-where a giant fucking", ConsoleColor.DarkRed),
-                DrawHelper.Color(currentEnemy.Name, ConsoleColor.Cyan),
-                DrawHelper.Color("apeared infront of you and quickly attacks!", ConsoleColor.DarkRed));
+                    DrawHelper.Color("You wake up and suddenly from no-where a giant fucking", ConsoleColor.DarkRed),
+                    DrawHelper.Color(currentEnemy.Name, ConsoleColor.Cyan),
+                    DrawHelper.Color("apeared infront of you and quickly attacks!", ConsoleColor.DarkRed)
+                );
 
             startingRows++;
 
@@ -111,6 +114,9 @@
                         }
                         else
                         {
+                            GameSettings.Player = new SoundPlayer(@"../../misc/miss.wav");
+                            GameSettings.Player.Play();
+
                             Console.WriteLine(result == 1 ?
                                 DrawHelper.Color(currentEnemy.Name + " missed you.", ConsoleColor.White) :
                                 DrawHelper.Color("You evaded!", ConsoleColor.White));

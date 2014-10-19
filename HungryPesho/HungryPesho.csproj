@@ -79,7 +79,9 @@
     <None Include="GameClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="misc\miss.wav" />
     <Content Include="misc\start.wav" />
+    <Content Include="misc\strike.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,7 +1,9 @@
 ﻿namespace HungryPesho.Creatures
 {
     using System;
+    using System.Media;
     using HungryPesho.Abilities;
+    using HungryPesho.Engine;
     using HungryPesho.ExceptionClasses;
     using HungryPesho.Interfaces;
     using HungryPesho.UI;
@@ -87,11 +89,17 @@
             {
                 if (attackSucceeded)
                 {
+                    GameSettings.Player = new SoundPlayer(@"../../misc/hit.wav");
+                    GameSettings.Player.Play();
+
                     if (ability.AbilityEffect == AbilityEffects.DirectDamage)
                     { // Direct damage abilities
                         var damage = ability.EnergyCost + damageModifier;
 
-                        target.Health -= damage;
+                        if (target.Health >= damage)
+                        {
+                            target.Health -= damage;
+                        }
 
                         Console.WriteLine(
                                 DrawHelper.Color("You perform", ConsoleColor.White),
@@ -112,6 +120,9 @@
                 else
                 {
                     this.Energy -= ability.EnergyCost;
+
+                    GameSettings.Player = new SoundPlayer(@"../../misc/miss.wav");
+                    GameSettings.Player.Play();
 
                     Console.WriteLine(result == 0 ?
                             DrawHelper.Color("You missed.", ConsoleColor.Gray) :

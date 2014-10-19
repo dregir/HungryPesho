@@ -10,6 +10,9 @@
     {
         public static void LoadStartMenu() // Main menu
         {
+            GameSettings.Player = new SoundPlayer(@"../../misc/start.wav");
+            GameSettings.Player.Play();
+
             Console.Clear();
             DrawHelper.DrawStartingWindow();
 
@@ -43,6 +46,9 @@
 
         public static void LoadIngameMenu() // Ingame menu
         {
+            GameSettings.Player = new SoundPlayer(@"../../misc/start.wav");
+            GameSettings.Player.Play();
+
             Console.Clear();
             DrawHelper.DrawStartingWindow();
 
@@ -82,7 +88,11 @@
 
         public static void LoadCreditsScreen() // Game credits Screen
         {
-            Console.Title = "Hungry Pesho  -=-  Game Credits";
+            GameSettings.Player = new SoundPlayer(@"../../misc/credits.wav");
+            GameSettings.Player.Play();
+
+            Console.Clear();
+            Console.Title = "Hungry Pesho!  -=-  Game Credits";
 
             Console.Write(@"
                                 ____  
@@ -108,16 +118,15 @@
                             Game intro...
                                            Good luck!");
 
-            Console.SetCursorPosition(Console.WindowWidth - 49, Console.WindowHeight - 1);
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("Press Esc to go back");
+            DrawHelper.TextAtPosition("Press Esc to go back", GameSettings.GameWidth / 2, GameSettings.GameHeight / 2, ConsoleColor.Yellow);
         }
 
         public static void LoadLooseScreen(int score) // Gave Over screen
         {
-            // var music = new SoundPlayer(@"gameover.wav");
-            // music.Play();
+            GameSettings.Player = new SoundPlayer(@"../../misc/over.wav");
+            GameSettings.Player.Play();
 
+            Console.Clear();
             Console.Title = "Hugry pesho!  -=-  You LOOSE!";
 
             Console.WriteLine(@"
@@ -146,11 +155,11 @@
 
         public static void LoadWinScreen() // Win Game screen
         {
-            // var music = new SoundPlayer(@"win.wav");
-            // music.Play();
+            GameSettings.Player = new SoundPlayer(@"../../misc/win.wav");
+            GameSettings.Player.Play();
 
-            Console.Title = "Hungry Pesho!  -=-  You WIN!";
             Console.Clear();
+            Console.Title = "Hungry Pesho!  -=-  You WIN!";
 
             Console.WriteLine(@"
 
@@ -168,8 +177,13 @@
 
         public static void LoadRankList() // Show current high score
         {
+            GameSettings.Player = new SoundPlayer(@"../../misc/ranklist.wav");
+            GameSettings.Player.Play();
+
+            Console.Clear();
             Console.Title = "Hungry Pesho!  -=-  Ranklist";
-            var highScores = File.ReadAllLines("score.hup");
+
+            var highScores = File.ReadAllLines("score.hup"); // TODO: Catch exceptions
 
             for (int i = 0; i < highScores.Length && i <= 10; i++)
             {
@@ -177,10 +191,7 @@
                 Console.WriteLine("{0}. {1}", i + 1, highScores[i]);
             }
 
-            Console.CursorVisible = false;
-            Console.SetCursorPosition((Console.WindowWidth / 2) - 12, Console.WindowHeight - 2);
-            // Console.ForegroundColor = ConsoleColor.Yellow;
-            // Console.WriteLine("Press Esc to go back");
+            DrawHelper.TextAtPosition("Press Esc to go back", GameSettings.GameWidth / 2, GameSettings.GameHeight / 2, ConsoleColor.Yellow);
         }
     }
 }

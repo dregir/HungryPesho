@@ -12,8 +12,6 @@
     {
         public static void Main()
         {
-            GameSettings.LoadGameSettings();
-
             // Testing game menu and game info
             GameSettings.LoadGameSettings();
             LoadScreen.LoadStartMenu();
@@ -25,7 +23,8 @@
             // Testing weapon and armor creation
             // Console.WriteLine(ItemsFactory.CreateItem().GetType());
 
-            // TestEngine.StartEngine();
+            // Testing Engine
+            // Engine.StartEngine();
         }
     }
 }

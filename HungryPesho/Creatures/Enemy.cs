@@ -1,10 +1,12 @@
 ﻿namespace HungryPesho.Creatures
 {
     using System;
+    using System.Media;
     using System.Collections.Generic;
     using HungryPesho.Abilities;
     using HungryPesho.Interfaces;
     using HungryPesho.UI;
+    using HungryPesho.Engine;
 
     public class Enemy : Creature
     {
@@ -54,8 +56,16 @@
             }
             else
             {
+                GameSettings.Player = new SoundPlayer(@"../../misc/strike.wav");
+                GameSettings.Player.Play();
+
                 damage = random.Next(1, this.Attack);
-                target.Health -= damage;
+
+                if (target.Health >= damage)
+                {
+                    target.Health -= damage;
+                }
+                
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("The nasty {0} inflicts {1} damage to your skinny body.", this.Name, damage);
                 Console.ResetColor();
