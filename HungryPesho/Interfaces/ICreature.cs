@@ -1,8 +1,8 @@
 ﻿namespace HungryPesho.Interfaces
 {
     using System;
-    using HungryPesho.Abilities;
     using System.Collections.Generic;
+    using HungryPesho.Abilities;
 
     public interface ICreature
     {

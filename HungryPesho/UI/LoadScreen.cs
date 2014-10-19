@@ -1,10 +1,10 @@
 ﻿namespace HungryPesho.UI
 {
     using System;
+    using System.Collections.Generic;
     using System.IO;
     using System.Media;
     using HungryPesho.Engine;
-    using System.Collections.Generic;
 
     public static class LoadScreen
     {
@@ -81,8 +81,8 @@
 
         public static void LoadLooseScreen(int score) // Gave Over screen
         {
-            //var music = new SoundPlayer(@"gameover.wav");
-            //music.Play();
+            // var music = new SoundPlayer(@"gameover.wav");
+            // music.Play();
 
             Console.Title = "Hugry pesho!  -=-  You LOOSE!";
 
@@ -103,18 +103,17 @@
                (_)           (_)
 ");
 
-
             Console.WriteLine("GAME OVER");
             Console.WriteLine("Enter your nickname: ");
 
             Console.ReadLine();
-            //GetScore(score);
+            // GetScore(score);
         }
 
         public static void LoadWinScreen() // Win Game screen
         {
-            //var music = new SoundPlayer(@"win.wav");
-            //music.Play();
+            // var music = new SoundPlayer(@"win.wav");
+            // music.Play();
 
             Console.Title = "Hungry Pesho!  -=-  You WIN!";
             Console.Clear();
@@ -126,12 +125,11 @@
              ╚╗╔╗╔╝║║║║║║
               ╚╝╚╝ ╚╝╚╩═╝");
 
-
             Console.WriteLine("YOU WIN");
             Console.WriteLine("Your score: ");
             Console.WriteLine("Enter your nickname: ");
 
-            //GetScore(score);
+            // GetScore(score);
         }
 
         public static void LoadRankList() // Show current high score
@@ -147,8 +145,8 @@
 
             Console.CursorVisible = false;
             Console.SetCursorPosition((Console.WindowWidth / 2) - 12, Console.WindowHeight - 2);
-            //Console.ForegroundColor = ConsoleColor.Yellow;
-            //Console.WriteLine("Press Esc to go back");
+            // Console.ForegroundColor = ConsoleColor.Yellow;
+            // Console.WriteLine("Press Esc to go back");
         }
     }
 }

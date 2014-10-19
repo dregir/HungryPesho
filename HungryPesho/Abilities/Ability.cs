@@ -1,5 +1,6 @@
 ﻿namespace HungryPesho.Abilities
 {
+    using HungryPesho.ExceptionClasses;
     using HungryPesho.Interfaces;
 
     public class Ability : GameObject, IAbility
@@ -22,8 +23,10 @@
             {
                 return this.energyCost;
             }
+
             set
             {
+                ApplicationValidator.ValidateNumberValue(value);
                 this.energyCost = value;
             }
         }

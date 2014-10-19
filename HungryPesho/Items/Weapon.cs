@@ -16,10 +16,7 @@
 
             set
             {
-                if (value < 0 || value > 100)
-                {
-                    throw new HungryPeshoException("Damage should be a positive value!");
-                }
+                ApplicationValidator.ValidateNumberValue(value, 1, 100);
                 this.weaponDamage = value;
             }
         }
@@ -30,8 +27,7 @@
         {
             var print = new StringBuilder();
 
-            print.AppendFormat("{0} - {1} \r\nStats \r\nDamage: {2}",
-                this.WeaponType, this.Description, this.WeaponDamage);
+            print.AppendFormat("{0} - {1} \r\nStats \r\nDamage: {2}", this.WeaponType, this.Description, this.WeaponDamage);
 
             print.Append(base.ToString());
 

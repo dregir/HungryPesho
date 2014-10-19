@@ -14,12 +14,10 @@
             {
                 return this.healthGained;
             }
+
             set
             {
-                if(value < 0 || value > 100)
-                {
-                    throw  new HungryPeshoException("Negative health cannot be gained!");
-                }
+                ApplicationValidator.ValidateNumberValue(value, 1, 500);
                 this.healthGained = value;
             }
         }
@@ -30,12 +28,10 @@
             {
                 return this.energyGained; 
             }
+
             set
             {
-                if (value < 0 || value > 100)
-                {
-                    throw new HungryPeshoException("Negative energy cannot be gained!");
-                }
+                ApplicationValidator.ValidateNumberValue(value, 1, 500);
                 this.energyGained = value;
             }
         }

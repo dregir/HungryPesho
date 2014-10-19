@@ -2,6 +2,7 @@
 {
     public enum WeaponTypes
     {
+        Unarmed,
         Sword,
         Staff,
         Dagger,

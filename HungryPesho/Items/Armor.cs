@@ -11,16 +11,13 @@
         {
             get
             {
-                return armorProtection;
+                return this.armorProtection;
             }
 
             set
             {
-                if (value < 0 || value > 100)
-                {
-                    throw new HungryPeshoException("Protection should be positive!");
-                }
-                armorProtection = value;
+                ApplicationValidator.ValidateNumberValue(value, 1, 100);
+                this.armorProtection = value;
             }
         }
 
@@ -30,9 +27,7 @@
         {
             var print = new StringBuilder();
 
-            print.AppendFormat("{0} - {1} \r\nStats \r\nDamage: {2}",
-                this.ArmorType, this.Description, this.ArmorProtection);
-
+            print.AppendFormat("{0} - {1} \r\nStats \r\nDamage: {2}", this.ArmorType, this.Description, this.ArmorProtection);
             print.Append(base.ToString());
 
             return print.ToString();

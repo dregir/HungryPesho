@@ -1,12 +1,10 @@
 ﻿namespace HungryPesho.Creatures
 {
-    using System.Collections;
-    using System.Collections.Generic;
-    using HungryPesho.Interfaces;
-    using HungryPesho.Abilities;
     using System;
+    using HungryPesho.Abilities;
+    using HungryPesho.ExceptionClasses;
+    using HungryPesho.Interfaces;
     using HungryPesho.UI;
-    using System.Threading;
 
     public abstract class Character : Creature, IStatable
     {
@@ -19,7 +17,7 @@
         }
 
         #region Properties
-        // TODO: Validate
+
         public int Agility
         {
             get
@@ -29,6 +27,7 @@
 
             set
             {
+                ApplicationValidator.ValidateNumberValue(value, 1, 100);
                 this.agility = value;
             }
         }
@@ -42,6 +41,7 @@
 
             set
             {
+                ApplicationValidator.ValidateNumberValue(value, 1, 100);
                 this.strength = value;
             }
         }
@@ -55,6 +55,7 @@
 
             set
             {
+                ApplicationValidator.ValidateNumberValue(value, 1, 100);
                 this.intellect = value;
             }
         }
@@ -63,7 +64,7 @@
         public void Action(Creature target, ConsoleKeyInfo action)
         {
             var random = new Random();
-            var result = random.Next(0,11);
+            var result = random.Next(0, 11);
             var attackSucceeded = result > 1;
             int key = (int)action.Key - 49;
             Ability ability = this.Abilities[0];
@@ -71,19 +72,19 @@
 
             if (key < this.Abilities.Count)
             {
-                ability = this.Abilities[key]; // TODO: Get proper memeber
+                ability = this.Abilities[key];
             }
             else
             {
-                throw new ArgumentOutOfRangeException("You need to choose action between 1 and " + Abilities.Count);
+                throw new GameException("You need to choose action between 1 and " + Abilities.Count);
             }
 
             if (this.Energy >= ability.EnergyCost)
             {
                 if (attackSucceeded)
                 {
-                    if (ability.AbilityEffect == AbilityEffects.DirectDamage) // Direct damage abilities
-                    {
+                    if (ability.AbilityEffect == AbilityEffects.DirectDamage)
+                    { // Direct damage abilities
                         var damage = ability.EnergyCost + damageModifier;
 
                         target.Health -= damage;
@@ -98,7 +99,7 @@
                                 DrawHelper.Color("damage!", ConsoleColor.White));
                     }
                     else if (ability.AbilityEffect == AbilityEffects.Freeze)
-                    {
+                    { // Effect abilities
                         Console.WriteLine("You preform " + ability.Name + " hitting " + target.Name + " with " + damageModifier + " damage, freezing him for the next turn!");
                         this.Energy -= ability.EnergyCost;
                         target.Initiative = 0;
@@ -112,22 +113,21 @@
                         DrawHelper.Color("You missed.", ConsoleColor.Gray) :
                         DrawHelper.Color(target.Name + " evaded your " + ability.Name, ConsoleColor.DarkGray));
                 }
-                //else if (ability.AbilityEffect == AbilityEffects.Dodge) // TODO: Implement logic
-                //{
-                //    Console.WriteLine("You preform " + ability.Name + " and you will dodge the next attack!");
-                //}
-                //else if (ability.AbilityEffect == AbilityEffects.Speed)
-                //{
-                //    Console.WriteLine("You preform " + ability.Name + " and your agility is not double!");
-                //}
+                // else if (ability.AbilityEffect == AbilityEffects.Dodge) // TODO: Implement logic
+                // {
+                //     Console.WriteLine("You preform " + ability.Name + " and you will dodge the next attack!");
+                // }
+                // else if (ability.AbilityEffect == AbilityEffects.Speed)
+                // {
+                //     Console.WriteLine("You preform " + ability.Name + " and your agility is not double!");
+                // }
             }
             else
             {
-                throw new ArgumentException("You don't have enough energy!");
+                throw new GameException("You don't have enough energy!");
             }
 
             DrawHelper.ReloadStats();
-            Thread.Sleep(2000); // Pause the game for 2 sec after player's turn
         }
 
         public override string ToString()

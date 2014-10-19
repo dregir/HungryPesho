@@ -46,7 +46,8 @@
     <Compile Include="Creatures\Enemy.cs" />
     <Compile Include="Engine\ItemsFactory.cs" />
     <Compile Include="Engine\Engine.cs" />
-    <Compile Include="ExceptionClasses\HungryPeshoException.cs" />
+    <Compile Include="ExceptionClasses\ApplicationValidator.cs" />
+    <Compile Include="ExceptionClasses\GameException.cs" />
     <Compile Include="GameObject.cs" />
     <Compile Include="Interfaces\IAbility.cs" />
     <Compile Include="Creatures\Character.cs" />
@@ -77,7 +78,9 @@
     <None Include="App.config" />
     <None Include="GameClassDiagram.cd" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="misc\start.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

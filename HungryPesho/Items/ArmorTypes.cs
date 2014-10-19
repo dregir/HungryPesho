@@ -2,6 +2,7 @@
 {
     public enum ArmorTypes
     {
+        Naked,
         Helmet,
         Chest,
         Legs,

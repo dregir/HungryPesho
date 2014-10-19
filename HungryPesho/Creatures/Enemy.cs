@@ -1,11 +1,10 @@
-﻿using HungryPesho.UI;
-
-namespace HungryPesho.Creatures
+﻿namespace HungryPesho.Creatures
 {
     using System;
     using System.Collections.Generic;
     using HungryPesho.Abilities;
     using HungryPesho.Interfaces;
+    using HungryPesho.UI;
 
     public class Enemy : Creature
     {
@@ -24,46 +23,44 @@ namespace HungryPesho.Creatures
         {
             var random = new Random();
             var chanceToUseAbility = random.Next(0, 4);
-            var randomAbility = GetRandomAbility();
+            var randomAbility = this.GetRandomAbility();
+            var damage = 0;
 
             if (chanceToUseAbility == 2 && this.Energy >= randomAbility.EnergyCost)
             {
                 if (randomAbility.AbilityEffect == AbilityEffects.DirectDamage)
                 {
-                    //var abilityNames = new[]
-                    //{
-                    // "Fireball", 
-                    // "Fireblast", 
-                    // "Arcaneblast", 
-                    // "Kebapshot", 
-                    // "Rotten Egg Strike"
-                    //};
+                    // var abilityNames = new[]
+                    // {
+                    //  "Fireball", 
+                    //  "Fireblast", 
+                    //  "Arcaneblast", 
+                    //  "Kebapshot", 
+                    //  "Rotten Egg Strike"
+                    // };
 
-                    var damage = randomAbility.EnergyCost;
+                    damage = randomAbility.EnergyCost;
                     this.Energy -= randomAbility.EnergyCost;
 
                     target.Health -= damage;
 
-                    Console.WriteLine(DrawHelper.Color(Name, ConsoleColor.Cyan),
+                    Console.WriteLine(DrawHelper.Color(this.Name, ConsoleColor.Cyan),
                         DrawHelper.Color("hit you with", ConsoleColor.Green),
                         DrawHelper.Color(randomAbility.Name, ConsoleColor.Yellow),
                         DrawHelper.Color("for:", ConsoleColor.Green),
                         DrawHelper.Color(damage.ToString(), ConsoleColor.Red),
                         DrawHelper.Color("damage!", ConsoleColor.Green));
                 }
-
             }
             else
             {
-                var damage = random.Next(1, Attack);
+                damage = random.Next(1, this.Attack);
                 target.Health -= damage;
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine(
-                "The nasty {0} inflicts {1} damage to your skinny body.",
-                                                             this.Name,
-                                                             damage);
+                Console.WriteLine("The nasty {0} inflicts {1} damage to your skinny body.", this.Name, damage);
                 Console.ResetColor();
             }
+
             DrawHelper.ReloadStats();
         }
     }

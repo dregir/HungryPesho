@@ -1,9 +1,9 @@
 ﻿namespace HungryPesho.UI
 {
     using System;
+    using System.Collections.Generic;
     using HungryPesho.Creatures;
     using HungryPesho.Engine;
-    using System.Collections.Generic;
 
     public static class DrawHelper
     {
@@ -31,7 +31,6 @@
                     cursorPos = initialPosition;
                     selection = 0;
                 }
-
                 else if (selection < 0)
                 {
                     selection = menuChoices.Length - 1;
@@ -91,12 +90,13 @@
             Console.ForegroundColor = color;
             Console.Write(text + " ");
             Console.ResetColor();
-            return "";
+            return string.Empty;
         }
 
         public static void ReloadStats()
         {
-            const int startPos = 4;
+            const int StartPos = 4;
+
             var peshoStats = new[]
                 {
                     Engine.Pesho.Health,
@@ -115,7 +115,7 @@
 
             for (int i = 0; i < peshoStats.Length; i++)
             {
-                Console.SetCursorPosition(100, startPos + i);
+                Console.SetCursorPosition(100, StartPos + i);
                 Console.Write(Color(peshoStats[i].ToString(), peshoColors[i]));
             }
         }

@@ -1,12 +1,12 @@
 ﻿namespace HungryPesho.Engine
 {
     using System;
+    using System.Collections.Generic;
+    using System.Threading;
     using HungryPesho.Abilities;
     using HungryPesho.Creatures;
-    using HungryPesho.UI;
     using HungryPesho.Interfaces;
-    using System.Threading;
-    using System.Collections.Generic;
+    using HungryPesho.UI;
 
     public class Engine
     {
@@ -18,8 +18,8 @@
             Pesho = new Mage();
             Console.WriteLine(Pesho.Health);
 
-            //I guess we need Ability and Enemy factory for those as well, hardcoding `em for now.
-            //Todo create ability and enemy factory.
+            // I guess we need Ability and Enemy factory for those as well, hardcoding `em for now.
+            // TODO: create ability and enemy factory.
 
             // TODO: Initialize all ingame enemies here
             var enemies = new Creature[]
@@ -38,8 +38,8 @@
                 enemy.AddAbilities(enemyAbilities);
             }
 
-            foreach (var monster in enemies) // Play with stats to test 'em here. - TODO: Generate monster accordingly player's level
-            {
+            foreach (var monster in enemies)
+            { // Play with stats to test 'em here. - TODO: Generate monster accordingly player's level
                 monster.Attack = 4;
                 monster.Energy = 12;
                 monster.Health = 50;
@@ -53,9 +53,7 @@
 
             var random = new Random();
 
-            // TODO: Battle states engine
-            //ar combatEngine = new CombatEngine();
-
+            // TODO: Battle states engine at combatEngine = new CombatEngine();
             var currentEnemy = enemies[random.Next(0, enemies.Length)]; // TODO: Player's choice ??
             var awardXp = currentEnemy.Health / 2;
             var startingRows = 35;
@@ -84,24 +82,25 @@
                         count++;
                     }
 
-                    //Todo implement ability/action choice logic here
+                    // TODO: implement ability/action choice logic here
                     var playerChoice = Console.ReadKey(true);
 
                     Console.SetCursorPosition(0, startingRows);
 
                         try
                         {
-                            Pesho.Action(currentEnemy, playerChoice); //if no exception we do the changes
+                            Pesho.Action(currentEnemy, playerChoice); // If no exception we do the changes
+                            
                             currentPlayer = currentEnemy;
                             startingRows++;
                         }
-
-                        catch (ArgumentException e)
+                        catch (ApplicationException e)
                         {
                             DrawHelper.TextAtPosition(e.Message, 0, 33, ConsoleColor.DarkGray);
-                        }             
-                }
+                        }
 
+                        Thread.Sleep(2000); // Pause the game for 2 sec after player's turn
+                }
                 else 
                 {
                     if (currentEnemy.Initiative != 0)
@@ -113,7 +112,6 @@
                         {
                             currentEnemy.Action(Pesho);  // Enemy does its thing - cast spell or attack
                         }
-
                         else
                         {
                             Console.WriteLine(result == 1 ?
@@ -123,9 +121,7 @@
                     }
                     else
                     {
-                        DrawHelper.TextAtPosition(currentEnemy.Name + " misses it's turn.", 
-                            0,
-                            startingRows++, ConsoleColor.Blue);
+                        DrawHelper.TextAtPosition(currentEnemy.Name + " misses it's turn.",  0, startingRows++, ConsoleColor.Blue);
                     }
 
                     DrawHelper.ReloadStats();
@@ -137,11 +133,8 @@
             if (Pesho.Health > currentEnemy.Health)
             {
                 DrawHelper.Color("Your enemy fall dead on the ground.\nYou won!", ConsoleColor.Green);
-
-                //Thread.Sleep(2000);
-                //LoadScreen.LoadWinScreen(); // Show win screen
+                // LoadScreen.LoadWinScreen();
             }
-
             else
             {
                 DrawHelper.TextAtPosition("You Lost!", 0, startingRows, ConsoleColor.Red);

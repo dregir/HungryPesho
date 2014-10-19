@@ -16,12 +16,10 @@
             {
                 return this.stamina;
             }
+
             set
             {
-                if (value < 0 || value > 100)
-                {
-                    throw new HungryPeshoException("Stamina should be positive!");
-                }
+                ApplicationValidator.ValidateNumberValue(value, 1, 100);
                 this.stamina = value;
             }
         }
@@ -32,12 +30,10 @@
             {
                 return this.agility;
             }
+
             set
             {
-                if (value < 0 || value > 100)
-                {
-                    throw new HungryPeshoException("Agility should be positive!");
-                }
+                ApplicationValidator.ValidateNumberValue(value, 1, 100);
                 this.agility = value;
             }
         }
@@ -48,12 +44,10 @@
             {
                 return this.strength;
             }
+
             set
             {
-                if (value < 0 || value > 100)
-                {
-                    throw new HungryPeshoException("Strength should be positive!");
-                }
+                ApplicationValidator.ValidateNumberValue(value, 1, 100);
                 this.strength = value;
             }
         }
@@ -64,16 +58,13 @@
             {
                 return this.intellect;
             }
+
             set
             {
-                if (value < 0 || value > 100)
-                {
-                    throw new HungryPeshoException("Intellect should be positive!");
-                }
+                ApplicationValidator.ValidateNumberValue(value, 1, 100);
                 this.intellect = value;
             }
         }
-       
 
         public override string ToString()
         {

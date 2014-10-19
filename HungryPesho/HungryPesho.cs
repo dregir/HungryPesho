@@ -4,8 +4,8 @@
     using System.Collections;
     using HungryPesho.Creatures;
     using HungryPesho.Items;
-    using HungryPesho.UI;
     using HungryPesho.Engine;
+    using HungryPesho.UI;
 
     // Console test
     public class HungryPeshoTest
@@ -18,17 +18,14 @@
             GameSettings.LoadGameSettings();
             LoadScreen.LoadStartMenu();
 
-
             // Testing character creation
-            //Console.WriteLine(Mage.CreateNewMage());
-            //Console.WriteLine(Warrior.CreateNewWarrior());
-
+            // Console.WriteLine(Mage.CreateNewMage());
+            // Console.WriteLine(Warrior.CreateNewWarrior());
 
             // Testing weapon and armor creation
-            //Console.WriteLine(ItemsFactory.CreateItem().GetType());
+            // Console.WriteLine(ItemsFactory.CreateItem().GetType());
 
-
-            //TestEngine.StartEngine();
+            // TestEngine.StartEngine();
         }
     }
 }

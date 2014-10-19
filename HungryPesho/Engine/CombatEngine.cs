@@ -22,7 +22,7 @@
 
         private void Update()
         {
-            switch (currnetState)
+            switch (this.currnetState)
             {
                 case BattleStates.START:
                     this.currnetState = BattleStates.PLAYER;
@@ -39,11 +39,6 @@
                 default:
                     break;
             }
-        }
-
-        public void OnAction()
-        {
-            // TODO: Make action switch
         }
     }
 }

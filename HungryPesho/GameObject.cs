@@ -1,6 +1,7 @@
 ﻿namespace HungryPesho
 {
     using System;
+    using HungryPesho.ExceptionClasses;
     using HungryPesho.Interfaces;
 
     public abstract class GameObject : IDescribable
@@ -25,6 +26,7 @@
 
             set
             {
+                ApplicationValidator.ValidateStringValue(value);
                 this.name = value;
             }
         }
@@ -38,6 +40,7 @@
 
             set
             {
+                ApplicationValidator.ValidateStringValue(value);
                 this.description = value;
             }
         }

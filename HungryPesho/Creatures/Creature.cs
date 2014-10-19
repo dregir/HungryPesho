@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using HungryPesho.Abilities;
+    using HungryPesho.ExceptionClasses;
     using HungryPesho.Interfaces;
 
     public abstract class Creature : GameObject, ICreature
@@ -17,19 +18,20 @@
         public Creature()
         {
             this.abilities = new List<Ability>();
-            
         }
 
         #region Properties
-        // TODO: Validate
+
         public int Level
         {
             get
             {
                 return this.level;
             }
+
             set
             {
+                ApplicationValidator.ValidateNumberValue(value, 1, 10);
                 this.level = value;
             }
         }
@@ -43,6 +45,7 @@
 
             set
             {
+                ApplicationValidator.ValidateNumberValue(value, 1, 1000);
                 this.health = value;
             }
         }
@@ -56,6 +59,7 @@
 
             set
             {
+                ApplicationValidator.ValidateNumberValue(value, 1, 10000);
                 this.attack = value;
             }
         }
@@ -69,6 +73,7 @@
 
             set
             {
+                ApplicationValidator.ValidateNumberValue(value, 1, 1000);
                 this.energy = value;
             }
         }
@@ -77,11 +82,12 @@
         {
             get
             {
-                return this.initiative; //Previously recursive
+                return this.initiative;
             }
 
             set
             {
+                ApplicationValidator.ValidateNumberValue(value, 1, 10);
                 this.initiative = value;
             }
         }
@@ -92,6 +98,7 @@
             {
                 return this.abilities;
             }
+
             set
             {
                 this.abilities = value;
@@ -107,7 +114,7 @@
         {
             foreach (var ability in _abilities)
             {
-                abilities.Add(ability);
+                this.abilities.Add(ability);
             }
         }
     }
