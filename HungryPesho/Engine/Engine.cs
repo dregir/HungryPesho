@@ -1,24 +1,28 @@
 ﻿namespace HungryPesho.Engine
 {
     using System;
-    using System.Collections.Generic;
     using System.Threading;
-    using System.Media;
     using HungryPesho.Abilities;
     using HungryPesho.Creatures;
     using HungryPesho.ExceptionClasses;
-    using HungryPesho.Interfaces;
     using HungryPesho.UI;
 
     public class Engine
     {
         public static Character Pesho;
 
+        public static void StartGame()
+        {
+            GameSettings.LoadGameSettings();
+            LoadScreen.LoadStartMenu();
+        }
+
         public static void StartEngine()
         {
             Console.Clear();
 
             // TODO: create ability and enemy factory.
+            // TODO: validate player / enemy health for negative numbers
 
             // TODO: Initialize all ingame enemies here
             var enemies = new Creature[]
@@ -82,7 +86,6 @@
                         count++;
                     }
 
-                    // TODO: implement ability/action choice logic here
                     var playerChoice = Console.ReadKey(true);
 
                     Console.SetCursorPosition(0, startingRows);

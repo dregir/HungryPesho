@@ -12,7 +12,7 @@
     {
         public static void LoadStartMenu() // Main menu
         {
-            MediaPlayer.Play(Sound.START);
+            MediaPlayer.Play(Sound.INTRO);
 
             Console.Clear();
             DrawHelper.DrawGameWindow();
@@ -42,7 +42,7 @@
 
         public static void LoadIngameMenu() // Ingame menu
         {
-            MediaPlayer.Play(Sound.START);
+            MediaPlayer.Play(Sound.INTRO);
 
             Console.Clear();
             DrawHelper.DrawGameWindow();
@@ -210,11 +210,15 @@
         public static void LoadGameInfoScreen() // TODO: How to play screen
         {
             Console.WriteLine("How to play goes here");
+
+            DrawHelper.TextAtPosition("Press Esc to go back", GameSettings.GameWidth / 2, GameSettings.GameHeight / 2, ConsoleColor.Yellow);
         }
 
         public static void LoadOptionsScreen() // TODO: Game options
         {
             Console.WriteLine("Music OFF");
+
+            DrawHelper.TextAtPosition("Press Esc to go back", GameSettings.GameWidth / 2, GameSettings.GameHeight / 2, ConsoleColor.Yellow);
         }
 
         public static void LoadCreditsScreen() // Game credits Screen

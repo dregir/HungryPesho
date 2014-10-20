@@ -6,7 +6,7 @@
 
     public enum Sound
     {
-        START,
+        INTRO,
         HIT,
         MISS,
         STRIKE,
