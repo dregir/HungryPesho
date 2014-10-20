@@ -19,7 +19,7 @@
 
             set
             {
-                ApplicationValidator.ValidateNumberValue(value, 1, 100);
+                ApplicationValidator.ValidateNumberValue(value, 1, 100, "Stamina");
                 this.stamina = value;
             }
         }
@@ -33,7 +33,7 @@
 
             set
             {
-                ApplicationValidator.ValidateNumberValue(value, 1, 100);
+                ApplicationValidator.ValidateNumberValue(value, 1, 100, "Agility");
                 this.agility = value;
             }
         }
@@ -47,7 +47,7 @@
 
             set
             {
-                ApplicationValidator.ValidateNumberValue(value, 1, 100);
+                ApplicationValidator.ValidateNumberValue(value, 1, 100, "Strength");
                 this.strength = value;
             }
         }
@@ -61,7 +61,7 @@
 
             set
             {
-                ApplicationValidator.ValidateNumberValue(value, 1, 100);
+                ApplicationValidator.ValidateNumberValue(value, 1, 100, "Intellect");
                 this.intellect = value;
             }
         }

@@ -17,7 +17,7 @@
 
             set
             {
-                ApplicationValidator.ValidateNumberValue(value, 1, 500);
+                ApplicationValidator.ValidateNumberValue(value, 1, 500, "HealthGained");
                 this.healthGained = value;
             }
         }
@@ -31,7 +31,7 @@
 
             set
             {
-                ApplicationValidator.ValidateNumberValue(value, 1, 500);
+                ApplicationValidator.ValidateNumberValue(value, 1, 500, "EnergyGained");
                 this.energyGained = value;
             }
         }

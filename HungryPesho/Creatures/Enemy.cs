@@ -30,6 +30,9 @@
 
             if (chanceToUseAbility == 2 && this.Energy >= randomAbility.EnergyCost)
             {
+                MediaPlayer.Play(Sound.SLAM);
+                this.Energy -= randomAbility.EnergyCost;
+
                 if (randomAbility.AbilityEffect == AbilityEffects.DirectDamage)
                 {
                     // var abilityNames = new[]
@@ -42,8 +45,6 @@
                     // };
 
                     damage = randomAbility.EnergyCost;
-                    this.Energy -= randomAbility.EnergyCost;
-
                     target.Health -= damage;
 
                     Console.WriteLine(DrawHelper.Color(this.Name, ConsoleColor.Cyan),
@@ -63,6 +64,10 @@
                 if (target.Health >= damage)
                 {
                     target.Health -= damage;
+                }
+                else
+                {
+                    target.Health = 0;
                 }
                 
                 Console.ForegroundColor = ConsoleColor.Red;

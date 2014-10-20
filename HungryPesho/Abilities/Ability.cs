@@ -26,7 +26,7 @@
 
             set
             {
-                ApplicationValidator.ValidateNumberValue(value);
+                ApplicationValidator.ValidateNumberValue(value, name: "EnergyCost");
                 this.energyCost = value;
             }
         }

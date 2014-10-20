@@ -69,36 +69,33 @@
             var result = random.Next(0, 11);
             var attackSucceeded = result > 1;
             int key = (int)action.Key - 49;
-            Ability ability = this.Abilities[0];
+            
             var damageModifier = this.GetType().Name == "Mage" ? this.Intellect : this.Strength;
 
             if (action.Key.Equals(ConsoleKey.Escape))
             {
                 LoadScreen.LoadIngameMenu();
             }
-            else if (key < this.Abilities.Count && key >= 0)
-            {
-                ability = this.Abilities[key];
-            }
-            else
+            else if (key > this.Abilities.Count && key < 0)
             {
                 throw new GameException("You need to choose action between 1 and " + Abilities.Count);
             }
-
-            if (this.Energy >= ability.EnergyCost)
+            else if (this.Energy < this.Abilities[key].EnergyCost)
             {
+                throw new GameException("You don't have enough energy for this ability!");
+            }
+            else
+            {
+                Ability ability = this.Abilities[key];
+                this.Energy -= ability.EnergyCost;
+                var damage = ability.EnergyCost + damageModifier;
+
                 if (attackSucceeded)
                 {
-                    MediaPlayer.Play(Sound.HIT);
-
                     if (ability.AbilityEffect == AbilityEffects.DirectDamage)
                     { // Direct damage abilities
-                        var damage = ability.EnergyCost + damageModifier;
 
-                        if (target.Health >= damage)
-                        {
-                            target.Health -= damage;
-                        }
+                        MediaPlayer.Play(Sound.HIT);
 
                         Console.WriteLine(
                                 DrawHelper.Color("You perform", ConsoleColor.White),
@@ -113,16 +110,30 @@
                     { // Effect abilities
 
                         MediaPlayer.Play(Sound.FREEZE);
-
                         Console.WriteLine("You preform " + ability.Name + " hitting " + target.Name + " with " + damageModifier + " damage, freezing him for the next turn!");
-                        this.Energy -= ability.EnergyCost;
                         target.Initiative = 0;
+                    }
+
+                    // else if (ability.AbilityEffect == AbilityEffects.Dodge) // TODO: Implement logic
+                    // {
+                    //     Console.WriteLine("You preform " + ability.Name + " and you will dodge the next attack!");
+                    // }
+                    // else if (ability.AbilityEffect == AbilityEffects.Speed)
+                    // {
+                    //     Console.WriteLine("You preform " + ability.Name + " and your agility is not double!");
+                    // }
+
+                    if (target.Health < damage)
+                    {
+                        target.Health = 0;
+                    }
+                    else
+                    {
+                        target.Health -= damage;
                     }
                 }
                 else
                 {
-                    this.Energy -= ability.EnergyCost;
-
                     MediaPlayer.Play(Sound.MISS);
 
                     Console.WriteLine(result == 0 ?
@@ -130,18 +141,6 @@
                             DrawHelper.Color(target.Name + " evaded your " + ability.Name, ConsoleColor.DarkGray)
                         );
                 }
-                // else if (ability.AbilityEffect == AbilityEffects.Dodge) // TODO: Implement logic
-                // {
-                //     Console.WriteLine("You preform " + ability.Name + " and you will dodge the next attack!");
-                // }
-                // else if (ability.AbilityEffect == AbilityEffects.Speed)
-                // {
-                //     Console.WriteLine("You preform " + ability.Name + " and your agility is not double!");
-                // }
-            }
-            else
-            {
-                throw new GameException("You don't have enough energy!");
             }
 
             DrawHelper.ReloadStats();

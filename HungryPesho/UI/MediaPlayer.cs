@@ -16,7 +16,9 @@
         RANKLIST,
         CLICK,
         ENTER,
-        FREEZE
+        FREEZE,
+        DEATH,
+        SLAM
     }
 
     public static class MediaPlayer
@@ -27,8 +29,15 @@
         {
             if (true) // TODO: If Sound is on in settings
             {
-                player = new SoundPlayer(GameSettings.FilePath + sound + ".wav");
-                player.Play();
+                try
+                {
+                    player = new SoundPlayer(GameSettings.FilePath + sound + ".wav");
+                    player.Play();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("File {0} not found or cannot be opened!", sound);
+                }
             }
         }
     }

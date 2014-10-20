@@ -71,7 +71,7 @@
 
             startingRows++;
 
-            while (Pesho.Health > 0 && currentEnemy.Health > 0)
+            while (Pesho.Health > 0)
             {
                 if (currentPlayer is Character)
                 {
@@ -103,6 +103,14 @@
                         }
 
                         Thread.Sleep(2000);
+
+                        if (currentEnemy.Health == 0)
+                        {
+                            DrawHelper.Color("Your enemy fall dead on the ground.\nYou won!", ConsoleColor.Green);
+                            Console.BackgroundColor = ConsoleColor.Magenta;
+                            Console.WriteLine(DrawHelper.Color("\nYou gained " + awardXp + " experience!", ConsoleColor.Yellow));
+                            Console.ResetColor();
+                        }
                 }
                 else 
                 {
@@ -133,25 +141,18 @@
                     currentEnemy.Initiative = 1; 
                     currentPlayer = Pesho;
                 }
+
+                if (enemies.Length == 0) // TODO: If list of enemies is empty show win game screen and save score
+                {
+                    LoadScreen.LoadWinScreen();
+                }
             }
 
-            if (Pesho.Health > currentEnemy.Health)
-            {
-                DrawHelper.Color("Your enemy fall dead on the ground.\nYou won!", ConsoleColor.Green);
-                LoadScreen.LoadWinScreen();
-            }
-            else
-            {
-                DrawHelper.TextAtPosition("You Lost!", 0, startingRows, ConsoleColor.Red);
-                LoadScreen.LoadLooseScreen(); // Show game over screen
-                GameSettings.SaveScore();
-            }
-
-            // TODO: If list of enemies is empty show win game screen and save score
-
-            Console.BackgroundColor = ConsoleColor.Magenta;
-            Console.WriteLine(DrawHelper.Color("\nYou gained " + awardXp + " experience!", ConsoleColor.Yellow));
-            Console.ResetColor();
+            Thread.Sleep(1000);
+            MediaPlayer.Play(Sound.DEATH);
+            DrawHelper.TextAtPosition("You Lost!", 0, startingRows, ConsoleColor.Red);
+            LoadScreen.LoadLooseScreen(); // Show game over screen
+            GameSettings.SaveScore();
         }
     }
 }

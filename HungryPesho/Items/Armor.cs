@@ -16,7 +16,7 @@
 
             set
             {
-                ApplicationValidator.ValidateNumberValue(value, 1, 100);
+                ApplicationValidator.ValidateNumberValue(value, 1, 100, "ArmorProtection");
                 this.armorProtection = value;
             }
         }

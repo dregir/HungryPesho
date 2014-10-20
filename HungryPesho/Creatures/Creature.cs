@@ -31,7 +31,7 @@
 
             set
             {
-                ApplicationValidator.ValidateNumberValue(value, 1, 10);
+                ApplicationValidator.ValidateNumberValue(value, 1, 10, "Level");
                 this.level = value;
             }
         }
@@ -45,7 +45,7 @@
 
             set
             {
-                ApplicationValidator.ValidateNumberValue(value, 0, 1000);
+                ApplicationValidator.ValidateNumberValue(value, 0, 1000, "Health");
                 this.health = value;
             }
         }
@@ -59,7 +59,7 @@
 
             set
             {
-                ApplicationValidator.ValidateNumberValue(value, 1, 10000);
+                ApplicationValidator.ValidateNumberValue(value, 1, 10000, "Attack");
                 this.attack = value;
             }
         }
@@ -73,7 +73,7 @@
 
             set
             {
-                ApplicationValidator.ValidateNumberValue(value, 0, 1000);
+                ApplicationValidator.ValidateNumberValue(value, 0, 1000, "Energy");
                 this.energy = value;
             }
         }
@@ -87,7 +87,7 @@
 
             set
             {
-                ApplicationValidator.ValidateNumberValue(value, 0, 10);
+                ApplicationValidator.ValidateNumberValue(value, 0, 10, "Initiative");
                 this.initiative = value;
             }
         }
