@@ -17,7 +17,7 @@
         {
             if (string.IsNullOrWhiteSpace(value))
             {
-                throw new GameException("The value: " + name + " cannot be null or white space!");
+                throw new GameException("The value: " + name + " can not be null or white space!");
             }
         }
     }
