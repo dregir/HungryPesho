@@ -79,7 +79,7 @@
             {
                 LoadScreen.LoadIngameMenu();
             }
-            else if (key > this.Abilities.Count && key < 0)
+            else if (key > this.Abilities.Count || key < 0)
             {
                 throw new GameException("You need to choose action between 1 and " + Abilities.Count);
             }
@@ -90,7 +90,7 @@
             else
             {
                 Ability ability = this.Abilities[key];
-                this.Energy -= ability.EnergyCost;
+                this.Energy -= ability.AbilityEffect.Equals(AbilityEffects.Ultimate) ? Energy : ability.EnergyCost;
                 var damage = ability.EnergyCost + damageModifier;
 
                 if (attackSucceeded)
@@ -153,9 +153,6 @@
                 }
                 else
                 {
-
-                    this.Energy -= ability.AbilityEffect.Equals(AbilityEffects.Ultimate) ? Energy : ability.EnergyCost;
-
                     MediaPlayer.Play(Sound.MISS);
 
                     Console.WriteLine(result == 0 ?

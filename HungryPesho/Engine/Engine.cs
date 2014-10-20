@@ -100,6 +100,7 @@
                         catch (GameException e)
                         {
                             DrawHelper.TextAtPosition(e.Message, 0, 33, ConsoleColor.DarkGray);
+                            continue;
                         }
 
                         DrawHelper.BlockInputAndWaitFor(2);

@@ -15,6 +15,7 @@
         public const int GameWidth = 120;
         public const int GameHeight = 50;
         public const string FilePath = "../../misc/";
+        public static bool SoundStatus = true;
 
         public static void LoadGameSettings() // Load default game settings
         {
@@ -58,23 +59,23 @@
                 {
                     // writer.WriteLine(Engine.Pesho.Abilities.ToString()); // TODO: If there is a chance to earn abilities
 
-                    writer.WriteLine(Engine.Pesho.Agility);
+                    writer.WriteLine(Engine.Pesho.Name);
+                    writer.WriteLine(Engine.Pesho.Level);
                     writer.WriteLine(Engine.Pesho.Attack);
                     writer.WriteLine(Engine.Pesho.Energy);
                     writer.WriteLine(Engine.Pesho.Health);
                     writer.WriteLine(Engine.Pesho.Initiative);
+                    writer.WriteLine(Engine.Pesho.Agility);
                     writer.WriteLine(Engine.Pesho.Intellect);
-                    writer.WriteLine(Engine.Pesho.Level);
-                    writer.WriteLine(Engine.Pesho.Name);
                     writer.WriteLine(Engine.Pesho.Strength);
                 }
             }
             catch (Exception)
             {
-                DrawHelper.TextAtPosition("SAVE GAME FAILED!", GameWidth / 2, GameHeight / 3, ConsoleColor.Red);
+                DrawHelper.TextAtPosition("SAVE GAME FAILED!", GameWidth / 3, GameHeight / 3, ConsoleColor.Red);
             }
 
-            DrawHelper.TextAtPosition("GAME SAVED!", GameWidth / 2, GameHeight / 3, ConsoleColor.Green);
+            DrawHelper.TextAtPosition("GAME SAVED!", GameWidth / 3, GameHeight / 3, ConsoleColor.Green);
 
             Thread.Sleep(2000);
             Engine.StartEngine(); // TODO: Start from currnet progress
@@ -90,25 +91,27 @@
                 {
                     // Engine.Pesho.Abilities = reader.ReadLine().ToList();
 
-                    Engine.Pesho.Agility = int.Parse(reader.ReadLine());
-                    Engine.Pesho.Attack = int.Parse(reader.ReadLine());
-                    Engine.Pesho.Energy = int.Parse(reader.ReadLine());
-                    Engine.Pesho.Health = int.Parse(reader.ReadLine());
-                    Engine.Pesho.Initiative = int.Parse(reader.ReadLine());
-                    Engine.Pesho.Intellect = int.Parse(reader.ReadLine());
-                    Engine.Pesho.Level = int.Parse(reader.ReadLine());
-                    Engine.Pesho.Name = reader.ReadLine();
-                    Engine.Pesho.Strength = int.Parse(reader.ReadLine());
+                    if (reader.ReadLine() == "Mage")
+                    {
+                        Engine.Pesho = new Mage();
+                        Engine.Pesho.Name = "Mage";
+                        Engine.Pesho.Level = int.Parse(reader.ReadLine());
+                        Engine.Pesho.Attack = int.Parse(reader.ReadLine());
+                        Engine.Pesho.Energy = int.Parse(reader.ReadLine());
+                        Engine.Pesho.Health = int.Parse(reader.ReadLine());
+                        Engine.Pesho.Initiative = int.Parse(reader.ReadLine());
+                        Engine.Pesho.Agility = int.Parse(reader.ReadLine());
+                        Engine.Pesho.Intellect = int.Parse(reader.ReadLine());
+                        Engine.Pesho.Strength = int.Parse(reader.ReadLine());
+                    }
                 }
             }
             catch (Exception)
             {
-                Console.SetCursorPosition(Console.WindowWidth - 33, (Console.WindowHeight / 2) - 6);
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("LOAD GAME FAILED!");
+                DrawHelper.TextAtPosition("LOAD GAME FAILED!", GameWidth / 3, GameHeight / 3, ConsoleColor.Red);
             }
 
-            DrawHelper.TextAtPosition("GAME LOADED!", GameWidth / 2, GameHeight / 3, ConsoleColor.Green);
+            DrawHelper.TextAtPosition("GAME LOADED!", GameWidth / 3, GameHeight / 3, ConsoleColor.Green);
 
             Thread.Sleep(2000);
             Engine.StartEngine();
@@ -119,9 +122,9 @@
             Console.WriteLine("Enter your nickname: ");
             Engine.Pesho.Name = Console.ReadLine();
 
-            var score = Engine.Pesho.Level;
+            var score = 12;
 
-            try 
+            try
             {
                 var scores = File.ReadAllLines(FilePath + "scores.hup").ToList();
                 int currnetScore = int.MaxValue;

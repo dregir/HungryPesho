@@ -19,17 +19,19 @@
 
             var menuChoices = new[]
             {
-                "   START   ",
-                "HOW TO PLAY",
-                "  OPTIONS  ",
-                " RANKLIST  ",
-                "  CREDITS  ",
-                "   EXIT    "
+                "    START     ",
+                "LOAD LAST GAME",
+                " HOW TO PLAY  ",
+                "   OPTIONS    ",
+                "   RANKLIST   ",
+                "   CREDITS    ",
+                "     EXIT     "
             };
 
             var startMenuMethods = new List<Action>()
             {
                 LoadCharacterSelection,
+                GameSettings.LoadGame,
                 LoadGameInfoScreen,
                 LoadOptionsScreen,
                 LoadScoreScreen,
@@ -244,7 +246,21 @@
 
         public static void LoadOptionsScreen() // TODO: Game options
         {
-            Console.WriteLine("Music OFF");
+            DrawHelper.TextAtPosition("Sound", (GameSettings.GameWidth / 3) - 2, 8, ConsoleColor.Green);
+
+            var optionsChoices = new[]
+            {
+                "ON",
+                "OFF",
+            };
+
+            var optionsMethods = new List<Action>()
+            {
+                //GameSettings.SoundStatus = true,
+                //GameSettings.SoundStatus = false,
+            };
+
+            DrawHelper.CreateMenu(optionsChoices, optionsMethods, 7);
 
             DrawHelper.TextAtPosition("Press Esc to go back", GameSettings.GameWidth / 2, GameSettings.GameHeight / 2, ConsoleColor.Yellow);
         }

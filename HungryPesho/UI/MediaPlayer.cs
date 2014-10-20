@@ -27,7 +27,7 @@
 
         internal static void Play(UI.Sound sound)
         {
-            if (true) // TODO: If Sound is on in settings
+            if (GameSettings.SoundStatus)
             {
                 try
                 {
@@ -36,7 +36,7 @@
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("File {0} not found or cannot be opened!", sound);
+                    Console.WriteLine("File {0} not found or cannot be opened! \r\n{1}", sound, e.Message);
                 }
             }
         }
