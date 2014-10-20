@@ -78,11 +78,21 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="GameClassDiagram.cd" />
+    <None Include="misc\saves.hup" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="misc\click.wav" />
+    <Content Include="misc\credits.wav" />
+    <Content Include="misc\death.wav" />
+    <Content Include="misc\enter.wav" />
+    <Content Include="misc\freeze.wav" />
+    <Content Include="misc\hit.wav" />
+    <Content Include="misc\intro.wav" />
     <Content Include="misc\miss.wav" />
-    <Content Include="misc\start.wav" />
+    <Content Include="misc\ranklist.wav" />
+    <Content Include="misc\slam.wav" />
     <Content Include="misc\strike.wav" />
+    <Content Include="misc\win.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

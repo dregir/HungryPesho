@@ -106,6 +106,7 @@
 
                         if (currentEnemy.Health == 0)
                         {
+                            MediaPlayer.Play(Sound.WIN);
                             DrawHelper.Color("Your enemy fall dead on the ground.\nYou won!", ConsoleColor.Green);
                             Console.BackgroundColor = ConsoleColor.Magenta;
                             Console.WriteLine(DrawHelper.Color("\nYou gained " + awardXp + " experience!", ConsoleColor.Yellow));
