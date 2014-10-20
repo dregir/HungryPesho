@@ -1,6 +1,4 @@
-﻿using System.Security.Cryptography.X509Certificates;
-
-namespace HungryPesho.UI
+﻿namespace HungryPesho.UI
 {
     using System;
     using HungryPesho.Creatures;
@@ -59,6 +57,7 @@ namespace HungryPesho.UI
 
                 if (input.Key.Equals(ConsoleKey.DownArrow))
                 {
+                    MediaPlayer.Play(Sound.CLICK);
                     consoleAction(ConsoleColor.Black, menuChoices[selection++]);
                     cursorPos += 2;
                     selection = check();
@@ -68,6 +67,7 @@ namespace HungryPesho.UI
 
                 if (input.Key.Equals(ConsoleKey.UpArrow))
                 {
+                    MediaPlayer.Play(Sound.CLICK);
                     consoleAction(ConsoleColor.Black, menuChoices[selection--]);
                     cursorPos -= 2;
                     selection = check();
@@ -77,6 +77,7 @@ namespace HungryPesho.UI
 
                 if (input.Key.Equals(ConsoleKey.Enter))
                 {
+                    MediaPlayer.Play(Sound.ENTER);
                     Console.Clear();
                     methods[selection]();
                 }
@@ -86,6 +87,15 @@ namespace HungryPesho.UI
                     LoadScreen.LoadStartMenu();
                 }
             }
+        }
+
+        public static void TextAtPosition(string text, int col, int row, ConsoleColor color = ConsoleColor.Green, ConsoleColor bgColor = ConsoleColor.Black)
+        {
+            Console.ForegroundColor = color;
+            Console.BackgroundColor = bgColor;
+            Console.SetCursorPosition(col, row);
+            Console.Write(text);
+            Console.ResetColor();
         }
 
         public static string Color(string text, ConsoleColor color)
@@ -129,18 +139,7 @@ namespace HungryPesho.UI
             TextAtPosition(charClass + "  ", 101, 3, classColor);
         }
 
-        public static void TextAtPosition(string text, int col, int row, ConsoleColor color = ConsoleColor.Green, ConsoleColor bgColor = ConsoleColor.Black)
-        {
-            Console.ForegroundColor = color;
-            Console.BackgroundColor = bgColor;
-            Console.SetCursorPosition(col, row);
-            Console.Write(text);
-            Console.ResetColor();
-        }
-
-        #region ASCII Drawnings
-
-        public static void DrawStartingWindow()
+        public static void DrawGameWindow()
         {
             Console.WriteLine(@"
 
@@ -163,11 +162,10 @@ namespace HungryPesho.UI
      ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝ ╚═════╝ ╚═╝  ╚═╝   ╚═╝       ╚═╝     ╚══════╝╚══════╝╚═╝  ╚═╝ ╚═════╝ 
 
                                       MORE HUNGRY THAN EVER BEFORE!!
-
-                      ");
+            ");
         }
 
-        public static void DrawGameWindow()
+        public static void DrawStatsWindow()
         {
             Console.Write(@"
                                                                                       +------------------------+
@@ -179,136 +177,7 @@ namespace HungryPesho.UI
                                                                                       |     Attack:            |
                                                                                       |                        |
                                                                                       +------------------------+
-
-");
-        }
-
-        public static Character SelectCharacter()
-        {
-            DrawHelper.Color(@"
-                    ____    __        __                             __           
-                   / __/__ / /__ ____/ /_  __ _____  __ ______  ____/ /__ ____ ___
-                  _\ \/ -_) / -_) __/ __/ / // / _ \/ // / __/ / __/ / _ `(_-<(_-<
-                 /___/\__/_/\__/\__/\__/  \_, /\___/\_,_/_/    \__/_/\_,_/___/___/
-                                         /___/                                    
-",
- ConsoleColor.Blue);
-
-            TextAtPosition("Warrior", 15, 38, ConsoleColor.White, ConsoleColor.DarkRed);
-            TextAtPosition("Mage", 70, 38, ConsoleColor.White);
-            var selection = 0;
-
-            Action<int> switchClass = (pos) =>
-            {
-                ConsoleColor warColor;
-                ConsoleColor mageColor;
-
-                if (pos == 0)
-                {
-                    warColor = ConsoleColor.White;
-                    mageColor = ConsoleColor.DarkGray;
-                }
-
-                else
-                {
-                    warColor = ConsoleColor.DarkGray;
-                    mageColor = ConsoleColor.White;
-                }
-
-                TextAtPosition(@"
-                                                                        ____
-                                                                      .'* *.'
-                                                                   __/_*_*(_
-                                                                  / _______ \
-                                                                 _\_)/___\(_/_
-                                                                / _((\- -/))_ \
-                                                                \ \())(-)(()/ /
-                                                                 ' \(((()))/ '
-                                                                / ' \)).))/ ' \
-                                                               / _ \ - | - /_  \
-                                                              (   ( .;''';. .'  )
-                                                              _\ __ /    )\ __ /_
-                                                                \/  \   ' /  \/
-                                                                 .'  '...' ' )
-                                                                  / /  |  \ \
-                                                                 / .   .   . \
-                                                                /   .     .   \
-                                                               /   /   |   \   \
-                                                             .'   /    b    '.  '.
-                                                         _.-'    /     Bb     '-. '-._
-                                                      .-'       |      BBb       '-.  '-.
-                                                     (________mrf\____.dBBBb.________)____)", 0, 10, mageColor);
-
-
-
-                TextAtPosition
-                (@"
-                  .I.
-                 / : \
-                 |===|
-                 >._.<
-             .=-<     >-=.
-            /.'`(`-+-')'`.\
-          _/`.__/  :  \__.'\_
-         ( `._/\`. : .'/\_.' )
-          >-(_) \ `:' / (_)-<
-          | |  / \___/ \  | |
-          )^( | .' : `. | )^(
-         |  _\|`-._:_.-'| \  |
-          -<\)| :  |  : |  '-'
-           (\\| : / \ : |
-             \\-:-| |-:-')
-              \\:_/ \_:_/
-              |\\_| |_:_|
-              (;\\/ \__;)
-              |: \\  | :|
-              \: /\\ \ :/
-              |==| \\|==|
-             /v-'(  \\`-v\
-            /  .-'   \\. \\
-            `-'       \\`-'    
-                       \|"
-                    , 0, 10, warColor);
-            };
-        #endregion
-
-            switchClass(selection);
-
-            while (true)
-            {
-                var input = Console.ReadKey(true);
-
-                if (input.Key.Equals(ConsoleKey.LeftArrow) ||
-                    input.Key.Equals(ConsoleKey.RightArrow))
-                {
-                    if (selection == 0)
-                    {
-                        TextAtPosition("Warrior", 15, 38, ConsoleColor.White);
-                        TextAtPosition("Mage", 70, 38, ConsoleColor.White, ConsoleColor.Blue);
-                        selection++;
-                    }
-                    else
-                    {
-                        TextAtPosition("Warrior", 15, 38, ConsoleColor.White, ConsoleColor.DarkRed);
-                        TextAtPosition("Mage", 70, 38, ConsoleColor.White);
-                        selection--;
-                    }
-                    switchClass(selection);
-                    continue;
-                }
-
-
-                if (input.Key.Equals(ConsoleKey.Enter))
-                {
-                    Console.Clear();
-                    return selection == 1 ? new Mage() : (Character)new Warrior();
-                }
-
-                if (input.Key.Equals(ConsoleKey.Escape))
-                {
-                    LoadScreen.LoadStartMenu();
-                }
-            }
+            ");
         }
     }
 }

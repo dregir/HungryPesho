@@ -17,7 +17,7 @@
         public static void StartEngine()
         {
             Console.Clear();
-            GameSettings.Player.Stop();
+
             // TODO: create ability and enemy factory.
 
             // TODO: Initialize all ingame enemies here
@@ -47,7 +47,7 @@
             }
 
             Console.Clear();
-            DrawHelper.DrawGameWindow();
+            DrawHelper.DrawStatsWindow();
             DrawHelper.ReloadStats(); 
 
             var random = new Random();
@@ -99,7 +99,7 @@
                             DrawHelper.TextAtPosition(e.Message, 0, 33, ConsoleColor.DarkGray);
                         }
 
-                        Thread.Sleep(2000); 
+                        Thread.Sleep(2000);
                 }
                 else 
                 {
@@ -114,8 +114,7 @@
                         }
                         else
                         {
-                            GameSettings.Player = new SoundPlayer(@"../../misc/miss.wav");
-                            GameSettings.Player.Play();
+                            MediaPlayer.Play(Sound.MISS);
 
                             Console.WriteLine(result == 1 ?
                                 DrawHelper.Color(currentEnemy.Name + " missed you.", ConsoleColor.White) :
@@ -136,13 +135,16 @@
             if (Pesho.Health > currentEnemy.Health)
             {
                 DrawHelper.Color("Your enemy fall dead on the ground.\nYou won!", ConsoleColor.Green);
-                // LoadScreen.LoadWinScreen();
+                LoadScreen.LoadWinScreen();
             }
             else
             {
                 DrawHelper.TextAtPosition("You Lost!", 0, startingRows, ConsoleColor.Red);
-                LoadScreen.LoadLooseScreen(Pesho.Level); // Show game over screen
+                LoadScreen.LoadLooseScreen(); // Show game over screen
+                GameSettings.SaveScore();
             }
+
+            // TODO: If list of enemies is empty show win game screen and save score
 
             Console.BackgroundColor = ConsoleColor.Magenta;
             Console.WriteLine(DrawHelper.Color("\nYou gained " + awardXp + " experience!", ConsoleColor.Yellow));

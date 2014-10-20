@@ -89,8 +89,7 @@
             {
                 if (attackSucceeded)
                 {
-                    GameSettings.Player = new SoundPlayer(@"../../misc/hit.wav");
-                    GameSettings.Player.Play();
+                    MediaPlayer.Play(Sound.HIT);
 
                     if (ability.AbilityEffect == AbilityEffects.DirectDamage)
                     { // Direct damage abilities
@@ -121,8 +120,7 @@
                 {
                     this.Energy -= ability.EnergyCost;
 
-                    GameSettings.Player = new SoundPlayer(@"../../misc/miss.wav");
-                    GameSettings.Player.Play();
+                    MediaPlayer.Play(Sound.MISS);
 
                     Console.WriteLine(result == 0 ?
                             DrawHelper.Color("You missed.", ConsoleColor.Gray) :

@@ -8,14 +8,15 @@
     using HungryPesho.UI;
 
     using System.Linq;
+    using HungryPesho.Creatures;
 
     public static class GameSettings
     {
         public const int GameWidth = 120;
         public const int GameHeight = 50;
-        public static SoundPlayer Player;
+        public const string FilePath = "../../misc/";
 
-        public static void LoadGameSettings()
+        public static void LoadGameSettings() // Load default game settings
         {
             // Creating and initializing game window;
             Console.Title = "Hungry Pesho";
@@ -23,11 +24,9 @@
             Console.SetWindowSize(GameWidth, GameHeight);
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.Green;
-
-
         }
 
-        public static void SaveGameSettings()
+        public static void SaveGameSettings() // Saves game settings
         {
             try
             {
@@ -53,7 +52,7 @@
         {
             try
             {
-                var writer = new StreamWriter("saves.hup");
+                var writer = new StreamWriter(FilePath + "saves.hup");
 
                 using (writer)
                 {
@@ -85,7 +84,7 @@
         {
             try
             {
-                StreamReader reader = new StreamReader("saves.hup");
+                var reader = new StreamReader(FilePath + "saves.hup");
 
                 using (reader)
                 {
@@ -113,6 +112,44 @@
 
             Thread.Sleep(2000);
             Engine.StartEngine();
+        }
+
+        public static void SaveScore() // Save player's score
+        {
+            Console.WriteLine("Enter your nickname: ");
+            Engine.Pesho.Name = Console.ReadLine();
+
+            var maxScore = 0;
+
+            try 
+            {
+                var reader = new StreamReader(FilePath + "scores.hup");
+                var writer = new StreamWriter(FilePath + "scores.hup");
+
+                using (reader)
+                { // Read scores
+                    string[] lineFromFile = reader.ReadLine().Split(' ');
+                    maxScore = int.Parse(lineFromFile[lineFromFile.Length - 1]);
+                }
+
+                using (writer)
+                { // Export the score to file
+                    if (Engine.Pesho.Level > maxScore)
+                    {
+                        writer.WriteLine(Engine.Pesho.Name + " " + Engine.Pesho.Level);
+                    }
+                    else
+                    {
+                        // TODO: Write score below others
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                DrawHelper.TextAtPosition("Your score is not saved!", GameWidth / 2, GameHeight / 2, ConsoleColor.Red);
+            }
+
+            DrawHelper.TextAtPosition("You have new high score!", GameWidth / 2, GameHeight / 2, ConsoleColor.Green);
         }
     }
 }

@@ -56,8 +56,7 @@
             }
             else
             {
-                GameSettings.Player = new SoundPlayer(@"../../misc/strike.wav");
-                GameSettings.Player.Play();
+                MediaPlayer.Play(Sound.STRIKE);
 
                 damage = random.Next(1, this.Attack);
 
