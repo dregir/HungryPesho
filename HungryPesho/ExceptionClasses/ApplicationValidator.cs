@@ -9,7 +9,7 @@
         {
             if (value < min || value > max)
             {
-                throw new GameException("The value: " + name + " mist be between " + min + " and " + max);
+                throw new GameException("The value: " + name + " must be between " + min + " and " + max);
             }
         }
 
