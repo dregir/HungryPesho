@@ -119,37 +119,29 @@
             Console.WriteLine("Enter your nickname: ");
             Engine.Pesho.Name = Console.ReadLine();
 
-            var maxScore = 0;
+            var score = Engine.Pesho.Level;
 
             try 
             {
-                var reader = new StreamReader(FilePath + "scores.hup");
-                var writer = new StreamWriter(FilePath + "scores.hup");
+                var scores = File.ReadAllLines(FilePath + "scores.hup").ToList();
+                int currnetScore = int.MaxValue;
 
-                using (reader)
-                { // Read scores
-                    string[] lineFromFile = reader.ReadLine().Split(' ');
-                    maxScore = int.Parse(lineFromFile[lineFromFile.Length - 1]);
-                }
+                for (int i = 0; i < scores.Count; i++)
+                {
+                    currnetScore = int.Parse(scores[i].Split(' ')[1]);
 
-                using (writer)
-                { // Export the score to file
-                    if (Engine.Pesho.Level > maxScore)
+                    if (currnetScore < score)
                     {
-                        writer.WriteLine(Engine.Pesho.Name + " " + Engine.Pesho.Level);
-                    }
-                    else
-                    {
-                        // TODO: Write score below others
+                        scores.Insert(i, Engine.Pesho.Name + " " + score);
+                        File.WriteAllLines(FilePath + "scores.hup", scores.ToArray());
+                        break;
                     }
                 }
             }
             catch (Exception)
             {
-                DrawHelper.TextAtPosition("Your score is not saved!", GameWidth / 2, GameHeight / 2, ConsoleColor.Red);
+                DrawHelper.TextAtPosition("Your score cannot be saved!", GameWidth / 2, GameHeight / 2, ConsoleColor.Red);
             }
-
-            DrawHelper.TextAtPosition("You have new high score!", GameWidth / 2, GameHeight / 2, ConsoleColor.Green);
         }
     }
 }

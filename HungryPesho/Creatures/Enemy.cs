@@ -45,6 +45,13 @@
                     // };
 
                     damage = randomAbility.EnergyCost;
+
+                    if (target.Health < damage)
+                    {
+                        target.Health = 0;
+                        return;
+                    }
+
                     target.Health -= damage;
 
                     Console.WriteLine(DrawHelper.Color(this.Name, ConsoleColor.Cyan),

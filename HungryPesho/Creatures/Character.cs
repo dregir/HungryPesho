@@ -69,7 +69,7 @@
             var result = random.Next(0, 11);
             var attackSucceeded = result > 1;
             int key = (int)action.Key - 49;
-            
+
             var damageModifier = this.GetType().Name == "Mage" ? this.Intellect : this.Strength;
 
             if (action.Key.Equals(ConsoleKey.Escape))
@@ -114,23 +114,23 @@
                         target.Initiative = 0;
                     }
 
-                  else if (ability.AbilityEffect == AbilityEffects.Ultimate)
+                    else if (ability.AbilityEffect == AbilityEffects.Ultimate)
                     {
                         if (this.GetType().Name == "Mage")
                         {
                             this.Energy = 0;
-                                              
+
                             Console.WriteLine(
                                 DrawHelper.Color("► You gaze deep into your opponent's eyes and and slowly but steadly drain all his and yours remaining energy dealing", ConsoleColor.Magenta),
                                 DrawHelper.Color(target.Energy.ToString(), ConsoleColor.Yellow),
                                 DrawHelper.Color("damage!", ConsoleColor.Magenta)
                                              );
 
-                            target.Health -= target.Energy;  
+                            target.Health -= target.Energy;
                             target.Energy = 0;
                         }
                     }
-                
+
                     // else if (ability.AbilityEffect == AbilityEffects.Dodge) // TODO: Implement logic
                     // {
                     //     Console.WriteLine("You preform " + ability.Name + " and you will dodge the next attack!");
@@ -143,11 +143,10 @@
                     if (target.Health < damage)
                     {
                         target.Health = 0;
+                        return;
                     }
-                    else
-                    {
-                        target.Health -= damage;
-                    }
+
+                    target.Health -= damage;
                 }
                 else
                 {

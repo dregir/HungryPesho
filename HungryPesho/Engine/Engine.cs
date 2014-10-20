@@ -154,6 +154,7 @@
             DrawHelper.TextAtPosition("You Lost!", 0, startingRows, ConsoleColor.Red);
             LoadScreen.LoadLooseScreen(); // Show game over screen
             GameSettings.SaveScore();
+            LoadScreen.LoadScoreScreen();
         }
     }
 }

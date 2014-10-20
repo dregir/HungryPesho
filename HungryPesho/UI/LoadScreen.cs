@@ -32,7 +32,7 @@
                 LoadCharacterSelection,
                 LoadGameInfoScreen,
                 LoadOptionsScreen,
-                LoadRankListScreen,
+                LoadScoreScreen,
                 LoadCreditsScreen,
                 ExitGame
             };
@@ -324,20 +324,24 @@
             ");
         }
 
-        public static void LoadRankListScreen() // Show current high score
+        public static void LoadScoreScreen() // Show current high score
         {
             MediaPlayer.Play(Sound.RANKLIST);
 
             Console.Clear();
-            Console.Title = "Hungry Pesho!  -=-  Ranklist";
+            Console.Title = "Hungry Pesho!  -=-  High Scores";
 
             try
             {
-                StreamReader reader = new StreamReader(GameSettings.FilePath + "scores.hup");
-
-                using (reader)
+                using (var reader = new StreamReader(GameSettings.FilePath + "scores.hup"))
                 {
-                    
+                    string line;
+                    int row = 3;
+
+                    while ((line = reader.ReadLine()) != null)
+                    {
+                        DrawHelper.TextAtPosition(line + " Level", GameSettings.GameWidth / 3, row += 2, ConsoleColor.Yellow);
+                    }
                 }
             }
             catch (Exception)
