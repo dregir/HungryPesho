@@ -78,7 +78,7 @@
                   _\ \/ -_) / -_) __/ __/ / // / _ \/ // / __/ / __/ / _ `(_-<(_-<
                  /___/\__/_/\__/\__/\__/  \_, /\___/\_,_/_/    \__/_/\_,_/___/___/
                                          /___/                                    
-            ", ConsoleColor.Blue);
+            ", ConsoleColor.Green);
 
             DrawHelper.TextAtPosition("Warrior", 15, 38, ConsoleColor.White, ConsoleColor.DarkRed);
             DrawHelper.TextAtPosition("Mage", 70, 38, ConsoleColor.White);
@@ -159,27 +159,55 @@
 
             switchClass(selection);
 
+            DrawHelper.TextAtPosition("Warriors are melee fighters highly trained in the art of weaponry.", 15, 43, ConsoleColor.Red);
+            DrawHelper.TextAtPosition("\"For as long as war has raged, heroes from every race have aimed to master the art of battle.  " +
+                           "\n      Warriors combine strength, leadership, and a vast knowledge of arms and armor to wreak havoc" +
+                           "\n      in glorious combat.\"",
+                           5,
+                           45,
+                           ConsoleColor.DarkRed);
+
             while (true)
             {
                 var input = Console.ReadKey(true);
 
-                if (input.Key.Equals(ConsoleKey.LeftArrow) || input.Key.Equals(ConsoleKey.RightArrow))
+                if (input.Key.Equals(ConsoleKey.LeftArrow) ||
+                    input.Key.Equals(ConsoleKey.RightArrow))
                 {
-                    MediaPlayer.Play(Sound.CLICK);
-
                     if (selection == 0)
                     {
                         DrawHelper.TextAtPosition("Warrior", 15, 38, ConsoleColor.White);
                         DrawHelper.TextAtPosition("Mage", 70, 38, ConsoleColor.White, ConsoleColor.Blue);
+                        DrawHelper.TextAtPosition("Mages are ranged class specializing in casting powerful spells.   ",
+                            15,
+                            43,
+                            ConsoleColor.Cyan);
+                        DrawHelper.TextAtPosition(
+                            "\"Students gifted with a keen intellect and unwavering discipline may walk the path of the Mage." +
+                            "\n      The arcane magic available to magi is both great and dangerous, and thus is revealed only to the" +
+                            "\n      most devoted practitioners.\"",
+                            5,
+                            45,
+                            ConsoleColor.DarkCyan);
                         selection++;
                     }
                     else
                     {
                         DrawHelper.TextAtPosition("Warrior", 15, 38, ConsoleColor.White, ConsoleColor.DarkRed);
                         DrawHelper.TextAtPosition("Mage", 70, 38, ConsoleColor.White);
+                        DrawHelper.TextAtPosition("Warriors are melee fighters highly trained in the art of weaponry.",
+                            15,
+                            43,
+                            ConsoleColor.Red);
+                        DrawHelper.TextAtPosition(
+                            "\"For as long as war has raged, heroes from every race have aimed to master the art of battle.  " +
+                            "\n      Warriors combine strength, leadership, and a vast knowledge of arms and armor to wreak havoc    " +
+                            "\n      in glorious combat.\"          ",
+                            5,
+                            45,
+                            ConsoleColor.DarkRed);
                         selection--;
                     }
-
                     switchClass(selection);
                     continue;
                 }
