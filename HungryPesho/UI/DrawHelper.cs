@@ -139,6 +139,15 @@
             TextAtPosition(charClass + "  ", 101, 3, classColor);
         }
 
+        public static void BlockInputAndWaitFor(int seconds)
+        {
+            var startTime = DateTime.Now;
+            while (startTime.AddSeconds(seconds) > DateTime.Now)           //prevents from key spamming while waiting!
+            {
+                while (Console.KeyAvailable) Console.ReadKey(true);
+            };
+        }
+
         public static void DrawGameWindow()
         {
             Console.WriteLine(@"
@@ -168,16 +177,15 @@
         public static void DrawStatsWindow()
         {
             Console.Write(@"
-                                                                                      +------------------------+
-                                                                                      |                        |
-                                                                                      | Pesho                  |
-                                                                                      |       Life:            |
-                                                                                      |     Energy:            |       
-                                                                                      | Initiative:            |
-                                                                                      |     Attack:            |
-                                                                                      |                        |
-                                                                                      +------------------------+
-            ");
+                                                                                      ╔════════════════════════╗
+                                                                                      ║                        ║
+                                                                                      ║ Pesho                  ║
+                                                                                      ║       Life:            ║
+                                                                                      ║     Energy:            ║       
+                                                                                      ║ Initiative:            ║
+                                                                                      ║     Attack:            ║
+                                                                                      ║                        ║
+                                                                                      ╚════════════════════════╝");
         }
     }
 }

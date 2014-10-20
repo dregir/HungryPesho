@@ -114,6 +114,23 @@
                         target.Initiative = 0;
                     }
 
+                  else if (ability.AbilityEffect == AbilityEffects.Ultimate)
+                    {
+                        if (this.GetType().Name == "Mage")
+                        {
+                            this.Energy = 0;
+                                              
+                            Console.WriteLine(
+                                DrawHelper.Color("► You gaze deep into your opponent's eyes and and slowly but steadly drain all his and yours remaining energy dealing", ConsoleColor.Magenta),
+                                DrawHelper.Color(target.Energy.ToString(), ConsoleColor.Yellow),
+                                DrawHelper.Color("damage!", ConsoleColor.Magenta)
+                                             );
+
+                            target.Health -= target.Energy;  
+                            target.Energy = 0;
+                        }
+                    }
+                
                     // else if (ability.AbilityEffect == AbilityEffects.Dodge) // TODO: Implement logic
                     // {
                     //     Console.WriteLine("You preform " + ability.Name + " and you will dodge the next attack!");
@@ -134,6 +151,9 @@
                 }
                 else
                 {
+
+                    this.Energy -= ability.AbilityEffect.Equals(AbilityEffects.Ultimate) ? Energy : ability.EnergyCost;
+
                     MediaPlayer.Play(Sound.MISS);
 
                     Console.WriteLine(result == 0 ?

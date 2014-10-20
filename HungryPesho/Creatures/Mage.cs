@@ -35,6 +35,12 @@
             // Starting mage abilities
             this.Abilities.Add(new Ability("Basic Attack", "Just a hit with your magic", AbilityEffects.DirectDamage, 0));
             this.Abilities.Add(new Ability("Freeze", "Freeze your opponent missing one turn", AbilityEffects.Freeze, 5));
+            //Ultimates
+            if (Level == 5)
+            {
+                this.Abilities.Add(new Ability("Energy Burn", "Burns all your's and your opponent's energy and deal damage equal to his current energy.",
+              AbilityEffects.Ultimate, 1));
+            }
         }
     }
 }

@@ -6,6 +6,7 @@
         DamageModificator,
         Freeze,
         Dodge, 
-        Speed
+        Speed,
+        Ultimate
     }
 }

@@ -102,7 +102,7 @@
                             DrawHelper.TextAtPosition(e.Message, 0, 33, ConsoleColor.DarkGray);
                         }
 
-                        Thread.Sleep(2000);
+                        DrawHelper.BlockInputAndWaitFor(2);
 
                         if (currentEnemy.Health == 0)
                         {
