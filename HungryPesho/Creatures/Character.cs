@@ -1,11 +1,13 @@
 ﻿namespace HungryPesho.Creatures
 {
     using System;
+    using System.Collections.Generic;
     using System.Media;
     using HungryPesho.Abilities;
     using HungryPesho.Engine;
     using HungryPesho.ExceptionClasses;
     using HungryPesho.Interfaces;
+    using HungryPesho.Items;
     using HungryPesho.UI;
 
     public abstract class Character : Creature, IStatable
@@ -13,6 +15,7 @@
         private int agility;
         private int strength;
         private int intellect;
+        private Dictionary<string, Item> items = new Dictionary<string, Item>(); 
 
         public Character()
         {
@@ -163,6 +166,39 @@
             }
 
             DrawHelper.ReloadStats();
+        }
+
+        public void AddItem(Item item)
+        {
+            switch (item.GetType().Name)
+            {
+                case "Armor":
+                    Armor armorItem = item as Armor;
+                    if (this.items.ContainsKey("Armor" + armorItem.ArmorType))
+                    {
+                        throw new GameException(String.Format("Pesho already has Armor {0}", armorItem.ArmorType));
+                    }
+                    this.items.Add("Armor" + armorItem.ArmorType, item);
+                    break;
+                case "Weapon":
+                    Weapon weaponItem = item as Weapon;
+                    if (this.items.ContainsKey("Weapon" + weaponItem.WeaponType))
+                    {
+                        throw new GameException(String.Format("Pesho already has Weapon {0}", weaponItem.WeaponType));
+                    }
+                    this.items.Add("Weapon" + weaponItem.WeaponType, item);
+                    break;
+                case "Food":
+                    Food foodItem = item as Food;
+                    if (this.items.ContainsKey("Food" + foodItem.FoodType))
+                    {
+                        throw new GameException(String.Format("Pesho already has Food {0}", foodItem.FoodType));
+                    }
+                    this.items.Add("Food" + foodItem.FoodType, item);
+                    break;
+                default:
+                    throw new GameException("No item of this type exists!");
+            }
         }
 
         public override string ToString()
