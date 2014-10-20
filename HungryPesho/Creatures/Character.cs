@@ -111,6 +111,9 @@
                     }
                     else if (ability.AbilityEffect == AbilityEffects.Freeze)
                     { // Effect abilities
+
+                        MediaPlayer.Play(Sound.FREEZE);
+
                         Console.WriteLine("You preform " + ability.Name + " hitting " + target.Name + " with " + damageModifier + " damage, freezing him for the next turn!");
                         this.Energy -= ability.EnergyCost;
                         target.Initiative = 0;

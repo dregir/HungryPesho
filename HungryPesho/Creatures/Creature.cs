@@ -45,7 +45,7 @@
 
             set
             {
-                ApplicationValidator.ValidateNumberValue(value, 1, 1000);
+                ApplicationValidator.ValidateNumberValue(value, 0, 1000);
                 this.health = value;
             }
         }
@@ -73,7 +73,7 @@
 
             set
             {
-                ApplicationValidator.ValidateNumberValue(value, 1, 1000);
+                ApplicationValidator.ValidateNumberValue(value, 0, 1000);
                 this.energy = value;
             }
         }
@@ -87,7 +87,7 @@
 
             set
             {
-                ApplicationValidator.ValidateNumberValue(value, 1, 10);
+                ApplicationValidator.ValidateNumberValue(value, 0, 10);
                 this.initiative = value;
             }
         }

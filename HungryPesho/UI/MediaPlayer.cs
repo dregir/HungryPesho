@@ -15,7 +15,8 @@
         CREDITS,
         RANKLIST,
         CLICK,
-        ENTER
+        ENTER,
+        FREEZE
     }
 
     public static class MediaPlayer
