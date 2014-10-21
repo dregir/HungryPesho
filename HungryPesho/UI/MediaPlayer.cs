@@ -4,23 +4,6 @@
     using System.Media;
     using HungryPesho.Engine;
 
-    public enum Sound
-    {
-        Intro,
-        Hit,
-        Miss,
-        Strike,
-        Win,
-        Lose,
-        Credits,
-        Ranklist,
-        Click,
-        Enter,
-        Freeze,
-        Death,
-        Slam
-    }
-
     public static class MediaPlayer
     {
         private static SoundPlayer player;

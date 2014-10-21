@@ -62,7 +62,7 @@
     <Compile Include="Creatures\Warrior.cs" />
     <Compile Include="Engine\CombatEngine.cs" />
     <Compile Include="Engine\GameSettings.cs" />
-    <Compile Include="HungryPesho.cs" />
+    <Compile Include="HungryPeshoStartGame.cs" />
     <Compile Include="Items\Armor.cs" />
     <Compile Include="Items\ArmorTypes.cs" />
     <Compile Include="Items\EffectItem.cs" />
@@ -76,6 +76,7 @@
     <Compile Include="UI\DrawHelper.cs" />
     <Compile Include="UI\LoadScreen.cs" />
     <Compile Include="UI\MediaPlayer.cs" />
+    <Compile Include="UI\Sound.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
