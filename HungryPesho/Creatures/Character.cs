@@ -176,35 +176,44 @@
 
         public void AddItem(Item item)
         {
+            string key = GetItemKey(item);
+            switch (item.GetType().Name)
+            {
+                case "Food":
+                    Food foodItem = item as Food;
+                    this.Health += foodItem.HealthGained;
+                    this.Energy += foodItem.EnergyGained;
+                    break;
+                default:
+                      if (this.items.ContainsKey(key))
+                    {
+                        this.items.Remove(key);
+                    }
+                    this.items.Add(key, item);
+                    break;
+            }
+        }
+
+        public Dictionary<string, Item> GetItems()
+        {
+            return new Dictionary<string, Item>(this.items);
+        }
+
+        private string GetItemKey(Item item)
+        {
+            var result = item.GetType().Name;
             switch (item.GetType().Name)
             {
                 case "Armor":
                     Armor armorItem = item as Armor;
-                    if (this.items.ContainsKey("Armor" + armorItem.ArmorType))
-                    {
-                        throw new GameException(String.Format("Pesho already has Armor {0}", armorItem.ArmorType));
-                    }
-                    this.items.Add("Armor" + armorItem.ArmorType, item);
+                    result = "Armor" + armorItem.ArmorType;
                     break;
                 case "Weapon":
                     Weapon weaponItem = item as Weapon;
-                    if (this.items.ContainsKey("Weapon" + weaponItem.WeaponType))
-                    {
-                        throw new GameException(String.Format("Pesho already has Weapon {0}", weaponItem.WeaponType));
-                    }
-                    this.items.Add("Weapon" + weaponItem.WeaponType, item);
+                    result = "Weapon" + weaponItem.WeaponType;
                     break;
-                case "Food":
-                    Food foodItem = item as Food;
-                    if (this.items.ContainsKey("Food" + foodItem.FoodType))
-                    {
-                        throw new GameException(String.Format("Pesho already has Food {0}", foodItem.FoodType));
-                    }
-                    this.items.Add("Food" + foodItem.FoodType, item);
-                    break;
-                default:
-                    throw new GameException("No item of this type exists!");
             }
+            return result;
         }
 
         public override string ToString()
