@@ -1,4 +1,6 @@
-﻿namespace HungryPesho.UI
+﻿using HungryPesho.Creatures;
+
+namespace HungryPesho.UI
 {
     using System;
     using HungryPesho.Engine;
@@ -52,7 +54,7 @@
 
             while (true)
             {
-                var input = Console.ReadKey(true);   // true prevents player from typing in console.
+                var input = Console.ReadKey(true); // true prevents player from typing in console.
 
                 if (input.Key.Equals(ConsoleKey.DownArrow))
                 {
@@ -88,7 +90,8 @@
             }
         }
 
-        public static void TextAtPosition(string text, int col, int row, ConsoleColor color = ConsoleColor.Green, ConsoleColor bgColor = ConsoleColor.Black)
+        public static void TextAtPosition(string text, int col, int row, ConsoleColor color = ConsoleColor.Green,
+            ConsoleColor bgColor = ConsoleColor.Black)
         {
             Console.ForegroundColor = color;
             Console.BackgroundColor = bgColor;
@@ -105,43 +108,59 @@
             return "";
         }
 
-        public static void ReloadStats()
+        public static void ReloadStats(Creature enemy)
         {
             string charClass = Engine.Pesho.GetType().Name;
             int level = Engine.Pesho.Level;
-            const int StartPos = 4;
+            const int startPos = 7;
             var peshoStats = new[]
-                {
-                    Engine.Pesho.Health,
-                    Engine.Pesho.Energy,
-                    Engine.Pesho.Initiative,
-                    Engine.Pesho.Attack
-                };
+            {
+               new { stat = Engine.Pesho.Health, color = ConsoleColor.Magenta },
+               new { stat = Engine.Pesho.Energy, color = ConsoleColor.Cyan },
+               new { stat = Engine.Pesho.Initiative, color = ConsoleColor.DarkGreen },
+               new { stat = Engine.Pesho.Attack, color = ConsoleColor.Red },             
+            };
 
-            var peshoColors = new[]
-                {
-                    ConsoleColor.Magenta,
-                    ConsoleColor.Cyan,
-                    ConsoleColor.DarkGreen,
-                    ConsoleColor.Red,
-                };
+            var enemyStats = new[]
+            {
+                new {stat = enemy.Health, color = ConsoleColor.Magenta},
+                new {stat = enemy.Energy, color = ConsoleColor.Cyan},
+                new {stat = enemy.Initiative, color = ConsoleColor.DarkGreen},
+                new {stat = enemy.Attack, color = ConsoleColor.Red},
+            };
 
             for (int i = 0; i < peshoStats.Length; i++)
             {
-                Console.SetCursorPosition(100, StartPos + i);
-                Console.Write(Color(peshoStats[i].ToString(), peshoColors[i]));
+                Console.SetCursorPosition(100, startPos + i);
+                Console.Write(Color(peshoStats[i].stat.ToString(), peshoStats[i].color));
+                Console.SetCursorPosition(25, startPos + i);
+                Console.Write(Color(enemyStats[i].stat.ToString(), enemyStats[i].color));
             }
 
             var classColor = charClass == "Mage" ? ConsoleColor.Blue : ConsoleColor.DarkRed;
 
-            TextAtPosition(level + " lvl", 94, 3, ConsoleColor.Yellow);
-            TextAtPosition(charClass + "  ", 101, 3, classColor);
+            TextAtPosition(level + " lvl", 94, 5, ConsoleColor.Yellow);
+            TextAtPosition(charClass + "  ", 101, 5, classColor);
+
+            if (enemy.Name.Length > 10)
+            {
+                TextAtPosition(enemy.Name, 17, 5, ConsoleColor.DarkCyan);
+            }
+            else if (enemy.Name.Length > 6)
+            {
+                TextAtPosition(enemy.Name, 19, 5, ConsoleColor.DarkCyan);
+            }
+            else
+            {
+                TextAtPosition(enemy.Name, 21, 5, ConsoleColor.DarkCyan);
+            }
+
         }
 
         public static void BlockInputAndWaitFor(int seconds)
         {
             var startTime = DateTime.Now;
-            while (startTime.AddSeconds(seconds) > DateTime.Now)// Prevents from key spamming while waiting!
+            while (startTime.AddSeconds(seconds) > DateTime.Now) // Prevents from key spamming while waiting!
             {
                 while (Console.KeyAvailable) Console.ReadKey(true);
             }
@@ -176,15 +195,42 @@
         public static void DrawStatsWindow()
         {
             Console.Write(@"
-                                                                                      ╔════════════════════════╗
-                                                                                      ║                        ║
-                                                                                      ║ Pesho                  ║
-                                                                                      ║       Life:            ║
-                                                                                      ║     Energy:            ║       
-                                                                                      ║ Initiative:            ║
-                                                                                      ║     Attack:            ║
-                                                                                      ║                        ║
-                                                                                      ╚════════════════════════╝");
+
+                                              |\                     /)
+                                            /\_\\__               (_//               ╔════════════════════════╗
+                                           |   `>\-`     _._       //`)              ║                        ║
+                                            \ /` \\  _.-`:::`-._  //                 ║  Pesho                 ║
+                                             `    \|`    :::    `|/                  ║                        ║
+                                                   |     :::     |                   ║       Life:            ║
+                                                   |.....:::.....|                   ║     Energy:            ║       
+                                                   |:::::::::::::|                   ║ Initiative:            ║
+                                                   |     :::     |                   ║     Attack:            ║
+                                                   |     :::     |                   ║                        ║
+                                                   |     :::     |                   ╚════════════════════════╝
+                                                   |     :::     |
+                                                   \     :::     /
+                                                    \    :::    / 
+                                                     `-. ::: .-' 
+                                                      //`:::`\\
+                                                     //   '   \\
+                                                    |/         \|   
+");
+                                                                
+
+            TextAtPosition(@"
+          ╔════════════════════════╗ 
+          ║                        ║
+          ║                        ║
+          ║                        ║
+          ║       Life:            ║
+          ║     Energy:            ║
+          ║ Initiative:            ║
+          ║     Attack:            ║
+          ║                        ║
+          ╚════════════════════════╝ 
+
+
+", 0, 2, ConsoleColor.Red);
         }
     }
 }

@@ -73,15 +73,17 @@
                 monster.Name = enemyNames[random.Next(0, enemyNames.Length)];
             }
 
-            Console.Clear();
-            DrawHelper.DrawStatsWindow();
-            DrawHelper.ReloadStats();
+            
 
             // TODO: Battle states engine at combatEngine = new CombatEngine();
             var currentEnemy = enemies[random.Next(0, enemies.Length)]; // TODO: Player's choice ??
             var awardXp = currentEnemy.Health / 2;
             var startingRows = 35;
             var currentPlayer = (Pesho.Initiative >= currentEnemy.Initiative + 1) ? Pesho : currentEnemy;
+
+            Console.Clear();
+            DrawHelper.DrawStatsWindow();
+            DrawHelper.ReloadStats(currentEnemy);
 
             Console.SetCursorPosition(0, startingRows++);
             Console.WriteLine(
@@ -95,7 +97,7 @@
             {
                 if (currentPlayer is Character)
                 {
-                    DrawHelper.TextAtPosition("What is your move?\r\n", 15, 25, ConsoleColor.White);
+                    DrawHelper.TextAtPosition("What is your move?\r\n", 15, 23, ConsoleColor.White);
 
                     // Draw all abilities
                     var count = 1;
@@ -159,7 +161,7 @@
                         DrawHelper.TextAtPosition(currentEnemy.Name + " misses it's turn.", 0, startingRows++, ConsoleColor.Blue);
                     }
 
-                    DrawHelper.ReloadStats();
+                    DrawHelper.ReloadStats(currentEnemy);
                     currentEnemy.Initiative = 1;
                     currentPlayer = Pesho;
                 }

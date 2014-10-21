@@ -88,19 +88,22 @@ namespace HungryPesho.Engine
                 //Todo something else
             };
 
-            var input = Console.ReadKey(true);
+            while (true)
+            {
+                var input = Console.ReadKey(true);
 
-            if (input.Key.Equals(ConsoleKey.D1))
-            {
-                scenarios[(random.Next(0, scenarios.Length))]();
-            }
-            else if (input.Key.Equals(ConsoleKey.D2))
-            {
-                scenarios[(random.Next(0, scenarios.Length))]();
-            }
-            else if (input.Key.Equals(ConsoleKey.D3))
-            {
-                Engine.StartEngine();
+                if (input.Key.Equals(ConsoleKey.D1))
+                {
+                    scenarios[(random.Next(0, scenarios.Length))]();
+                }
+                else if (input.Key.Equals(ConsoleKey.D2))
+                {
+                    scenarios[(random.Next(0, scenarios.Length))]();
+                }
+                else if (input.Key.Equals(ConsoleKey.D3))
+                {
+                    Engine.StartEngine();
+                }
             }
         }
     }
