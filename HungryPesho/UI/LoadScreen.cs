@@ -227,7 +227,8 @@
                         Engine.Pesho = new Warrior();
                     }
 
-                    Engine.StartEngine();
+                    //Engine.StartEngine();
+                    StoryEngine.Intro();
                 }
 
                 if (input.Key.Equals(ConsoleKey.Escape))
