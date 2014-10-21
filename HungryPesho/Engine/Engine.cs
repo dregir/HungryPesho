@@ -37,14 +37,14 @@
                 "Rabit Dog",
                 "Grizly Bear",
                 "Mad Bunny",
-                "Angry French Restourant Chef",
+                "Angry French Chef",
                 "Spaska The Dragon",
                 "StackOverflow",
                 "Forest Troll",
                 "Alf",
                 "Joey From Friends",
                 "Garfield",
-                "Uncle Gosho the excavator",
+                "Uncle Gosho",
                 "Evil Harpy",
                 "Invsible Man"
             };
@@ -97,14 +97,18 @@
             {
                 if (currentPlayer is Character)
                 {
-                    DrawHelper.TextAtPosition("What is your move?\r\n", 15, 23, ConsoleColor.White);
+                    DrawHelper.TextAtPosition("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ What is your move? ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓\n\n", 0, 23, ConsoleColor.White);
 
                     // Draw all abilities
                     var count = 1;
 
                     foreach (var ability in Pesho.Abilities)
                     {
-                        Console.WriteLine("\r\n(  {0} -=[ {1} ]  )═════> {2} =-", count, ability.Name, ability.Description);
+                        Console.WriteLine(
+                            DrawHelper.Color(">>", ConsoleColor.Cyan),
+                            DrawHelper.Color(count + ".", ConsoleColor.Yellow),
+                            DrawHelper.Color(ability.Name, ConsoleColor.Green),
+                            DrawHelper.Color(" → " + ability.Description, ConsoleColor.Gray));
                         count++;
                     }
 
@@ -145,7 +149,7 @@
 
                         if (result > 1)
                         {
-                            currentEnemy.Action(Pesho);  // Enemy does its thing - cast spell or attack
+                            currentEnemy.Action(Pesho);  
                         }
                         else
                         {

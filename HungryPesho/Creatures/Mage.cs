@@ -31,9 +31,9 @@
             this.Initiative = StartingInitiative;
 
             // Starting mage abilities
-            this.Abilities.Add(new Ability("Basic Attack", "Just a hit with your magic", AbilityEffects.DirectDamage, 0));
-            this.Abilities.Add(new Ability("Freeze", "Freeze your opponent missing one turn", AbilityEffects.Freeze, 5));
-
+            this.Abilities.Add(new Ability("Basic Attack", "Normal weapon attack.", AbilityEffects.DirectDamage, 0));
+            this.Abilities.Add(new Ability("Frostbolt", "Damages and freezes your opponent for one turn.", AbilityEffects.Freeze, 5));
+            this.Abilities.Add(new Ability("Meteor", "Inflicts massive damage to your enemy.", AbilityEffects.DirectDamage, 15));
             // Ultimates
             if (Level == 5)
             {
