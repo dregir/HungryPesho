@@ -69,7 +69,7 @@
                 monster.Attack = random.Next(Pesho.Level * 2, Pesho.Level * 4);
                 monster.Energy = random.Next(Pesho.Energy / 2, Pesho.Energy * 2);
                 monster.Health = random.Next(Pesho.Health - (3 * Pesho.Level), Pesho.Health + (5 * Pesho.Level));
-                monster.Initiative = random.Next(0, 6);
+                monster.Initiative = random.Next(1, 6);
                 monster.Name = enemyNames[random.Next(0, enemyNames.Length)];
             }
 

@@ -33,6 +33,14 @@
             // Starting warrior abilities
             this.Abilities.Add(new Ability("Basic Attack", "Just a hit with your weapon", AbilityEffects.DirectDamage, 0));
             this.Abilities.Add(new Ability("Slam", "Slam your opponent with powerfull attack", AbilityEffects.DirectDamage, 5));
+            this.Abilities.Add(new Ability("Frozen Blade", "Damages and freezes your opponent for one round", AbilityEffects.Freeze, 5));
+
+            // Ultimates
+            if (Level == 5)
+            {
+                this.Abilities.Add(new Ability("Death Wish", "Does double damage at cost of 10% of your health.",
+              AbilityEffects.Ultimate, 1));
+            }
         }
     }
 }
