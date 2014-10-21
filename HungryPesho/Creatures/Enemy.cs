@@ -54,7 +54,7 @@
 
                     target.Health -= damage;
 
-                    Console.WriteLine(DrawHelper.Color(this.Name, ConsoleColor.Cyan),
+                    Console.WriteLine(DrawHelper.Color("► " + this.Name, ConsoleColor.Cyan),
                         DrawHelper.Color("hit you with", ConsoleColor.Green),
                         DrawHelper.Color(randomAbility.Name, ConsoleColor.Yellow),
                         DrawHelper.Color("for:", ConsoleColor.Green),
@@ -78,7 +78,7 @@
                 }
                 
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("The nasty {0} inflicts {1} damage to your skinny body.", this.Name, damage);
+                Console.WriteLine("► The nasty {0} inflicts {1} damage to your skinny body.", this.Name, damage);
                 Console.ResetColor();
             }
 

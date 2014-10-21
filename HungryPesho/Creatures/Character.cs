@@ -101,7 +101,7 @@
                         MediaPlayer.Play(Sound.HIT);
 
                         Console.WriteLine(
-                                DrawHelper.Color("You perform", ConsoleColor.White),
+                                DrawHelper.Color("► You perform", ConsoleColor.White),
                                 DrawHelper.Color(ability.Name, ConsoleColor.Yellow),
                                 DrawHelper.Color("and hit", ConsoleColor.White),
                                 DrawHelper.Color(target.Name, ConsoleColor.Cyan),
@@ -110,10 +110,19 @@
                                 DrawHelper.Color("damage!", ConsoleColor.White));
                     }
                     else if (ability.AbilityEffect == AbilityEffects.Freeze)
-                    { // Effect abilities
-
+                    { 
                         MediaPlayer.Play(Sound.FREEZE);
-                        Console.WriteLine("You preform " + ability.Name + " hitting " + target.Name + " with " + damageModifier + " damage, freezing him for the next turn!");
+
+                        Console.WriteLine(
+                    DrawHelper.Color("► You cast", ConsoleColor.White),
+                    DrawHelper.Color(ability.Name, ConsoleColor.Blue),
+                    DrawHelper.Color("on", ConsoleColor.White),
+                    DrawHelper.Color(target.Name, ConsoleColor.Cyan),
+                    DrawHelper.Color("dealing", ConsoleColor.White),
+                    DrawHelper.Color(damage.ToString(), ConsoleColor.Yellow),
+                    DrawHelper.Color("damage", ConsoleColor.White),
+                     DrawHelper.Color("freezing him for the next turn.", ConsoleColor.Blue));
+
                         target.Initiative = 0;
                     }
 

@@ -20,6 +20,7 @@
         public static void StartEngine()
         {
             Console.Clear();
+             var random = new Random();
 
             // TODO: create ability and enemy factory.
             // TODO: validate player / enemy health for negative numbers
@@ -30,10 +31,33 @@
                 new Enemy()
             };
 
+
+            var enemyNames = new[]
+            {
+                "Yeti",
+                "Rabit Dog",
+                "Grizly Bear",
+                "Mad Bunny",
+                "Angry French Restourant Chef",
+                "Spaska The Dragon",
+                "StackOverflow",
+                "Forest Troll",
+                "Alf",
+                "Joey From Friends",
+                "Garfield",
+                "Uncle Gosho the excavator",
+                "Evil Harpy",
+                "Invsible Man"
+            };
+
             // TODO: Initialize all enemy abilities
             var enemyAbilities = new Ability[]
             {
-                new Ability("KebapShot", "Throws Kebap to you", AbilityEffects.DirectDamage, 5)
+                new Ability("KebapShot", "Throws Kebap at you", AbilityEffects.DirectDamage, 5),
+                new Ability("Fireball", "Fireballs u", AbilityEffects.DirectDamage, 7),
+                new Ability("Fireblast", "Fireblast u", AbilityEffects.DirectDamage, 2),
+                new Ability("Spectral Hit", "Spectral hits u", AbilityEffects.DirectDamage, random.Next(1, 21)),
+                //new Ability("Frost Nova", "Freeze you at place", AbilityEffects.Freeze, 4)
             };
 
             foreach (var enemy in enemies)
@@ -43,18 +67,18 @@
 
             foreach (var monster in enemies)
             { // Play with stats to test 'em here. - TODO: Generate monster accordingly player's level
-                monster.Attack = 4;
-                monster.Energy = 12;
-                monster.Health = 50;
-                monster.Initiative = 2;
-                monster.Name = "Angry Doner Kebap Chef";
+                monster.Attack = random.Next(Pesho.Level * 2, Pesho.Level * 4);
+                monster.Energy = random.Next(Pesho.Energy / 2 , Pesho.Energy * 2);
+                monster.Health = random.Next(Pesho.Health - (3 * Pesho.Level), Pesho.Health + (5 * Pesho.Level));
+                monster.Initiative = random.Next(0, 6);
+                monster.Name = enemyNames[random.Next(0, enemyNames.Length)];
             }
 
             Console.Clear();
             DrawHelper.DrawStatsWindow();
             DrawHelper.ReloadStats(); 
 
-            var random = new Random();
+          
 
             // TODO: Battle states engine at combatEngine = new CombatEngine();
             var currentEnemy = enemies[random.Next(0, enemies.Length)]; // TODO: Player's choice ??
@@ -112,6 +136,7 @@
                             Console.BackgroundColor = ConsoleColor.Magenta;
                             Console.WriteLine(DrawHelper.Color("\nYou gained " + awardXp + " experience!", ConsoleColor.Yellow));
                             Console.ResetColor();
+                           
                         }
                 }
                 else 
