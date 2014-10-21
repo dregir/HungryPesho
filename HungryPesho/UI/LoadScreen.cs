@@ -256,8 +256,8 @@
 
             var optionsMethods = new List<Action>()
             {
-                //GameSettings.SoundStatus = true,
-                //GameSettings.SoundStatus = false,
+                // GameSettings.SoundStatus = true,
+                // GameSettings.SoundStatus = false,
             };
 
             DrawHelper.CreateMenu(optionsChoices, optionsMethods, 7);
@@ -306,8 +306,8 @@
             Console.Clear();
             Console.Title = "Hugry pesho!  -=-  You LOOSE!";
 
-            Console.WriteLine(@"GAME OVER
-
+            Console.WriteLine(@"
+                   GAME OVER
              _                   _
             ( )                 ( )_
            (_, |      __ __      | _)

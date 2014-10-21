@@ -117,10 +117,10 @@
 
         public static void SaveScore() // Save player's score
         {
-            Console.WriteLine("Enter your nickname: ");
+            Console.Write("Enter your nickname: ");
             Engine.Pesho.Name = Console.ReadLine();
 
-            var score = 12;
+            var score = int.MaxValue;
 
             try
             {

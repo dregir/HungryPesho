@@ -141,7 +141,7 @@
         public static void BlockInputAndWaitFor(int seconds)
         {
             var startTime = DateTime.Now;
-            while (startTime.AddSeconds(seconds) > DateTime.Now)           //prevents from key spamming while waiting!
+            while (startTime.AddSeconds(seconds) > DateTime.Now)// Prevents from key spamming while waiting!
             {
                 while (Console.KeyAvailable) Console.ReadKey(true);
             }
