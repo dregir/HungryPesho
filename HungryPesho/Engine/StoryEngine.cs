@@ -69,7 +69,7 @@ namespace HungryPesho.Engine
                                                     "\n  for someone brave enough or just desperetly hungry." +
                                                     "\n\n  You stand up and look around. At east there is a deep lurky looking forst. Hey, maybe there is something to eat," +
                                                     "\n  a rabit would be nice, oh wait no, a dozen of rabits maybe or, or a BEAR?!? Arrrrrr, have you ever tried a bear meat??         \n  Well if you wanna go I wont stop you so just press 1 and hold your breath until I told you to stop." +
-                                                    "\n  You can go North! There is a waterfall and maybe fish or a bear that that is stealing your fish.." +
+                                                    "\n  Or you can go North, there is a waterfall and maybe fish or a bear that is stealing your fish.." +
                                                     "\n  So if you want to go there press 2 and only god knows what you will find there...",
                                                                                            conditions[random.Next(0, conditions.Length)],
                                                                                                                             dayTime[0]),
