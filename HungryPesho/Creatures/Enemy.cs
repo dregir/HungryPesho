@@ -79,7 +79,7 @@
                 Console.ResetColor();
             }
 
-            DrawHelper.ReloadStats();
+            DrawHelper.ReloadStats(target);
         }
     }
 }

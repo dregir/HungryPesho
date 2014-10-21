@@ -169,7 +169,7 @@
                 }
             }
 
-            DrawHelper.ReloadStats();
+            DrawHelper.ReloadStats(target);
         }
 
         public void AddItem(Item item)
