@@ -1,12 +1,9 @@
 ﻿namespace HungryPesho.Creatures
 {
     using System;
-    using System.Media;
-    using System.Collections.Generic;
     using HungryPesho.Abilities;
     using HungryPesho.Interfaces;
     using HungryPesho.UI;
-    using HungryPesho.Engine;
 
     public class Enemy : Creature
     {
@@ -30,7 +27,7 @@
 
             if (chanceToUseAbility == 2 && this.Energy >= randomAbility.EnergyCost)
             {
-                MediaPlayer.Play(Sound.SLAM);
+                MediaPlayer.Play(Sound.Slam);
                 this.Energy -= randomAbility.EnergyCost;
 
                 if (randomAbility.AbilityEffect == AbilityEffects.DirectDamage)
@@ -64,7 +61,7 @@
             }
             else
             {
-                MediaPlayer.Play(Sound.STRIKE);
+                MediaPlayer.Play(Sound.Strike);
 
                 damage = random.Next(1, this.Attack);
 

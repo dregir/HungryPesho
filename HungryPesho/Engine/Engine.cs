@@ -20,7 +20,7 @@
         public static void StartEngine()
         {
             Console.Clear();
-             var random = new Random();
+            var random = new Random();
 
             // TODO: create ability and enemy factory.
             // TODO: validate player / enemy health for negative numbers
@@ -30,7 +30,6 @@
             {
                 new Enemy()
             };
-
 
             var enemyNames = new[]
             {
@@ -57,7 +56,7 @@
                 new Ability("Fireball", "Fireballs u", AbilityEffects.DirectDamage, 7),
                 new Ability("Fireblast", "Fireblast u", AbilityEffects.DirectDamage, 2),
                 new Ability("Spectral Hit", "Spectral hits u", AbilityEffects.DirectDamage, random.Next(1, 21)),
-                //new Ability("Frost Nova", "Freeze you at place", AbilityEffects.Freeze, 4)
+                ////new Ability("Frost Nova", "Freeze you at place", AbilityEffects.Freeze, 4)
             };
 
             foreach (var enemy in enemies)
@@ -68,7 +67,7 @@
             foreach (var monster in enemies)
             { // Play with stats to test 'em here. - TODO: Generate monster accordingly player's level
                 monster.Attack = random.Next(Pesho.Level * 2, Pesho.Level * 4);
-                monster.Energy = random.Next(Pesho.Energy / 2 , Pesho.Energy * 2);
+                monster.Energy = random.Next(Pesho.Energy / 2, Pesho.Energy * 2);
                 monster.Health = random.Next(Pesho.Health - (3 * Pesho.Level), Pesho.Health + (5 * Pesho.Level));
                 monster.Initiative = random.Next(0, 6);
                 monster.Name = enemyNames[random.Next(0, enemyNames.Length)];
@@ -76,9 +75,7 @@
 
             Console.Clear();
             DrawHelper.DrawStatsWindow();
-            DrawHelper.ReloadStats(); 
-
-          
+            DrawHelper.ReloadStats();
 
             // TODO: Battle states engine at combatEngine = new CombatEngine();
             var currentEnemy = enemies[random.Next(0, enemies.Length)]; // TODO: Player's choice ??
@@ -90,8 +87,7 @@
             Console.WriteLine(
                     DrawHelper.Color("You wake up and suddenly from no-where a giant fucking", ConsoleColor.DarkRed),
                     DrawHelper.Color(currentEnemy.Name, ConsoleColor.Cyan),
-                    DrawHelper.Color("apeared infront of you and quickly attacks!", ConsoleColor.DarkRed)
-                );
+                    DrawHelper.Color("apeared infront of you and quickly attacks!", ConsoleColor.DarkRed));
 
             startingRows++;
 
@@ -114,32 +110,31 @@
 
                     Console.SetCursorPosition(0, startingRows);
 
-                        try
-                        {
-                            Pesho.Action(currentEnemy, playerChoice); 
-                            
-                            currentPlayer = currentEnemy;
-                            startingRows++;
-                        }
-                        catch (GameException e)
-                        {
-                            DrawHelper.TextAtPosition(e.Message, 0, 33, ConsoleColor.DarkGray);
-                            continue;
-                        }
+                    try
+                    {
+                        Pesho.Action(currentEnemy, playerChoice);
 
-                        DrawHelper.BlockInputAndWaitFor(2);
+                        currentPlayer = currentEnemy;
+                        startingRows++;
+                    }
+                    catch (GameException e)
+                    {
+                        DrawHelper.TextAtPosition(e.Message, 0, 33, ConsoleColor.DarkGray);
+                        continue;
+                    }
 
-                        if (currentEnemy.Health == 0)
-                        {
-                            MediaPlayer.Play(Sound.WIN);
-                            DrawHelper.Color("Your enemy fall dead on the ground.\nYou won!", ConsoleColor.Green);
-                            Console.BackgroundColor = ConsoleColor.Magenta;
-                            Console.WriteLine(DrawHelper.Color("\nYou gained " + awardXp + " experience!", ConsoleColor.Yellow));
-                            Console.ResetColor();
-                           
-                        }
+                    DrawHelper.BlockInputAndWaitFor(2);
+
+                    if (currentEnemy.Health == 0)
+                    {
+                        MediaPlayer.Play(Sound.Win);
+                        DrawHelper.Color("Your enemy fall dead on the ground.\nYou won!", ConsoleColor.Green);
+                        Console.BackgroundColor = ConsoleColor.Magenta;
+                        Console.WriteLine(DrawHelper.Color("\nYou gained " + awardXp + " experience!", ConsoleColor.Yellow));
+                        Console.ResetColor();
+                    }
                 }
-                else 
+                else
                 {
                     if (currentEnemy.Initiative != 0)
                     {
@@ -152,7 +147,7 @@
                         }
                         else
                         {
-                            MediaPlayer.Play(Sound.MISS);
+                            MediaPlayer.Play(Sound.Miss);
 
                             Console.WriteLine(result == 1 ?
                                 DrawHelper.Color(currentEnemy.Name + " missed you.", ConsoleColor.White) :
@@ -161,11 +156,11 @@
                     }
                     else
                     {
-                        DrawHelper.TextAtPosition(currentEnemy.Name + " misses it's turn.",  0, startingRows++, ConsoleColor.Blue);
+                        DrawHelper.TextAtPosition(currentEnemy.Name + " misses it's turn.", 0, startingRows++, ConsoleColor.Blue);
                     }
 
                     DrawHelper.ReloadStats();
-                    currentEnemy.Initiative = 1; 
+                    currentEnemy.Initiative = 1;
                     currentPlayer = Pesho;
                 }
 
@@ -176,7 +171,7 @@
             }
 
             Thread.Sleep(1000);
-            MediaPlayer.Play(Sound.DEATH);
+            MediaPlayer.Play(Sound.Death);
             DrawHelper.TextAtPosition("You Lost!", 0, startingRows, ConsoleColor.Red);
             LoadScreen.LoadLooseScreen(); // Show game over screen
             GameSettings.SaveScore();

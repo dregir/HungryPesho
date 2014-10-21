@@ -16,6 +16,6 @@
 
         List<Ability> Abilities { get; set; }
 
-        void AddAbilities(Ability[] _abilities);
+        void AddAbilities(Ability[] abilities);
     }
 }

@@ -1,8 +1,6 @@
 ﻿namespace HungryPesho.Creatures
 {
-    using System.Collections.Generic;
     using HungryPesho.Abilities;
-    using HungryPesho.Interfaces;
 
     public class Warrior : Character
     {

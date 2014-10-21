@@ -2,11 +2,11 @@
 {
     public enum BattleStates
     {
-        START,
-        PLAYER,
-        ENEMY,
-        LOSE,
-        WIN
+        Start,
+        Player,
+        Enemy,
+        Lose,
+        Win
     }
 
     public class CombatEngine
@@ -15,7 +15,7 @@
 
         public CombatEngine()
         {
-            this.currnetState = BattleStates.START;
+            this.currnetState = BattleStates.Start;
         }
 
         public BattleStates BattleStates { get; set; }
@@ -24,17 +24,17 @@
         {
             switch (this.currnetState)
             {
-                case BattleStates.START:
-                    this.currnetState = BattleStates.PLAYER;
+                case BattleStates.Start:
+                    this.currnetState = BattleStates.Player;
                     break;
-                case BattleStates.PLAYER:
-                    this.currnetState = BattleStates.ENEMY;
+                case BattleStates.Player:
+                    this.currnetState = BattleStates.Enemy;
                     break;
-                case BattleStates.ENEMY:
+                case BattleStates.Enemy:
                     break;
-                case BattleStates.LOSE:
+                case BattleStates.Lose:
                     break;
-                case BattleStates.WIN:
+                case BattleStates.Win:
                     break;
                 default:
                     break;

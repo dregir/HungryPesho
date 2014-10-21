@@ -2,9 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Media;
     using HungryPesho.Abilities;
-    using HungryPesho.Engine;
     using HungryPesho.ExceptionClasses;
     using HungryPesho.Interfaces;
     using HungryPesho.Items;
@@ -98,7 +96,7 @@
                     if (ability.AbilityEffect == AbilityEffects.DirectDamage)
                     { // Direct damage abilities
 
-                        MediaPlayer.Play(Sound.HIT);
+                        MediaPlayer.Play(Sound.Hit);
 
                         Console.WriteLine(
                                 DrawHelper.Color("► You perform", ConsoleColor.White),
@@ -111,7 +109,7 @@
                     }
                     else if (ability.AbilityEffect == AbilityEffects.Freeze)
                     { 
-                        MediaPlayer.Play(Sound.FREEZE);
+                        MediaPlayer.Play(Sound.Freeze);
 
                         Console.WriteLine(
                     DrawHelper.Color("► You cast", ConsoleColor.White),
@@ -162,7 +160,7 @@
                 }
                 else
                 {
-                    MediaPlayer.Play(Sound.MISS);
+                    MediaPlayer.Play(Sound.Miss);
 
                     Console.WriteLine(result == 0 ?
                             DrawHelper.Color("You missed.", ConsoleColor.Gray) :

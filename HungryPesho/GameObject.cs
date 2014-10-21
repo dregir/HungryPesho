@@ -1,7 +1,5 @@
 ﻿namespace HungryPesho
 {
-    using System;
-    using HungryPesho.ExceptionClasses;
     using HungryPesho.Interfaces;
 
     public abstract class GameObject : IDescribable

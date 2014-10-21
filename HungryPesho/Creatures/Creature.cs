@@ -110,9 +110,9 @@
         {
         }
 
-        public void AddAbilities(Ability[] _abilities)
+        public void AddAbilities(Ability[] abilities)
         {
-            foreach (var ability in _abilities)
+            foreach (var ability in abilities)
             {
                 this.abilities.Add(ability);
             }

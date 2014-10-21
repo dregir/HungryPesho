@@ -6,19 +6,19 @@
 
     public enum Sound
     {
-        INTRO,
-        HIT,
-        MISS,
-        STRIKE,
-        WIN,
-        LOSE,
-        CREDITS,
-        RANKLIST,
-        CLICK,
-        ENTER,
-        FREEZE,
-        DEATH,
-        SLAM
+        Intro,
+        Hit,
+        Miss,
+        Strike,
+        Win,
+        Lose,
+        Credits,
+        Ranklist,
+        Click,
+        Enter,
+        Freeze,
+        Death,
+        Slam
     }
 
     public static class MediaPlayer

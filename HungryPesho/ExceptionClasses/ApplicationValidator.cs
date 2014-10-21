@@ -1,7 +1,5 @@
 ﻿namespace HungryPesho.ExceptionClasses
 {
-    using System;
-    using System.Reflection;
 
     public static class ApplicationValidator
     {

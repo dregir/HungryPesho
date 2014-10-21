@@ -3,7 +3,6 @@
     using System;
     using System.Collections.Generic;
     using System.IO;
-    using System.Media;
     using System.Threading;
     using HungryPesho.Creatures;
     using HungryPesho.Engine;
@@ -12,7 +11,7 @@
     {
         public static void LoadStartMenu() // Main menu
         {
-            MediaPlayer.Play(Sound.INTRO);
+            MediaPlayer.Play(Sound.Intro);
 
             Console.Clear();
             DrawHelper.DrawGameWindow();
@@ -44,7 +43,7 @@
 
         public static void LoadIngameMenu() // Ingame menu
         {
-            MediaPlayer.Play(Sound.INTRO);
+            MediaPlayer.Play(Sound.Intro);
 
             Console.Clear();
             DrawHelper.DrawGameWindow();
@@ -216,7 +215,7 @@
 
                 if (input.Key.Equals(ConsoleKey.Enter))
                 {
-                    MediaPlayer.Play(Sound.ENTER);
+                    MediaPlayer.Play(Sound.Enter);
 
                     if (selection == 1)
                     {
@@ -268,7 +267,7 @@
 
         public static void LoadCreditsScreen() // Game credits Screen
         {
-            MediaPlayer.Play(Sound.CREDITS);
+            MediaPlayer.Play(Sound.Credits);
 
             Console.Clear();
             Console.Title = "Hungry Pesho!  -=-  Game Credits";
@@ -302,7 +301,7 @@
 
         public static void LoadLooseScreen() // Gave Over screen
         {
-            MediaPlayer.Play(Sound.LOSE);
+            MediaPlayer.Play(Sound.Lose);
 
             Console.Clear();
             Console.Title = "Hugry pesho!  -=-  You LOOSE!";
@@ -327,7 +326,7 @@
 
         public static void LoadWinScreen() // Win Game screen
         {
-            MediaPlayer.Play(Sound.WIN);
+            MediaPlayer.Play(Sound.Win);
 
             Console.Clear();
             Console.Title = "Hungry Pesho!  -=-  You WIN!";
@@ -343,7 +342,7 @@
 
         public static void LoadScoreScreen() // Show current high score
         {
-            MediaPlayer.Play(Sound.RANKLIST);
+            MediaPlayer.Play(Sound.Ranklist);
 
             Console.Clear();
             Console.Title = "Hungry Pesho!  -=-  High Scores";

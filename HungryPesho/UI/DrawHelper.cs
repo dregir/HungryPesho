@@ -1,7 +1,6 @@
 ﻿namespace HungryPesho.UI
 {
     using System;
-    using HungryPesho.Creatures;
     using HungryPesho.Engine;
     using System.Collections.Generic;
 
@@ -57,7 +56,7 @@
 
                 if (input.Key.Equals(ConsoleKey.DownArrow))
                 {
-                    MediaPlayer.Play(Sound.CLICK);
+                    MediaPlayer.Play(Sound.Click);
                     consoleAction(ConsoleColor.Black, menuChoices[selection++]);
                     cursorPos += 2;
                     selection = check();
@@ -67,7 +66,7 @@
 
                 if (input.Key.Equals(ConsoleKey.UpArrow))
                 {
-                    MediaPlayer.Play(Sound.CLICK);
+                    MediaPlayer.Play(Sound.Click);
                     consoleAction(ConsoleColor.Black, menuChoices[selection--]);
                     cursorPos -= 2;
                     selection = check();
@@ -77,7 +76,7 @@
 
                 if (input.Key.Equals(ConsoleKey.Enter))
                 {
-                    MediaPlayer.Play(Sound.ENTER);
+                    MediaPlayer.Play(Sound.Enter);
                     Console.Clear();
                     methods[selection]();
                 }
@@ -110,7 +109,7 @@
         {
             string charClass = Engine.Pesho.GetType().Name;
             int level = Engine.Pesho.Level;
-            const int startPos = 4;
+            const int StartPos = 4;
             var peshoStats = new[]
                 {
                     Engine.Pesho.Health,
@@ -129,7 +128,7 @@
 
             for (int i = 0; i < peshoStats.Length; i++)
             {
-                Console.SetCursorPosition(100, startPos + i);
+                Console.SetCursorPosition(100, StartPos + i);
                 Console.Write(Color(peshoStats[i].ToString(), peshoColors[i]));
             }
 
@@ -145,7 +144,7 @@
             while (startTime.AddSeconds(seconds) > DateTime.Now)           //prevents from key spamming while waiting!
             {
                 while (Console.KeyAvailable) Console.ReadKey(true);
-            };
+            }
         }
 
         public static void DrawGameWindow()

@@ -2,9 +2,7 @@
 {
     using System;
     using System.IO;
-    using System.Media;
     using System.Threading;
-    using HungryPesho.Engine;
     using HungryPesho.UI;
 
     using System.Linq;
