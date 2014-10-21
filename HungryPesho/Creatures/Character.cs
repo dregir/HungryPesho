@@ -13,15 +13,26 @@
         private int agility;
         private int strength;
         private int intellect;
-        private Dictionary<string, Item> items = new Dictionary<string, Item>(); 
+        private int experience;
 
-        public Character()
-        {
-        }
+        private Dictionary<string, Item> items = new Dictionary<string, Item>();
 
         #region Properties
+        public int Experience
+        {
+            get
+            {
+                return this.experience;
+            }
 
-        public int Agility
+            set
+            {
+                ApplicationValidator.ValidateNumberValue(value, 0, 100);
+                this.experience = value;
+            }
+        }
+
+           public int Agility
         {
             get
             {
@@ -88,17 +99,15 @@
             else
             {
                 Ability ability = this.Abilities[key];
-                this.Energy -= ability.AbilityEffect.Equals(AbilityEffects.Ultimate) ? Energy : ability.EnergyCost;
-                var damage = ability.EnergyCost + damageModifier;
+                var damage = Attack + damageModifier;
 
                 if (attackSucceeded)
                 {
-                    if (ability.AbilityEffect == AbilityEffects.DirectDamage)
-                    { // Direct damage abilities
-
-                        MediaPlayer.Play(Sound.Hit);
-
-                        Console.WriteLine(
+                    switch (ability.AbilityEffect)
+                    {
+                        case AbilityEffects.DirectDamage:
+                            MediaPlayer.Play(Sound.Hit);
+                            Console.WriteLine(
                                 DrawHelper.Color("► You perform", ConsoleColor.White),
                                 DrawHelper.Color(ability.Name, ConsoleColor.Yellow),
                                 DrawHelper.Color("and hit", ConsoleColor.White),
@@ -106,39 +115,57 @@
                                 DrawHelper.Color("for", ConsoleColor.White),
                                 DrawHelper.Color(damage.ToString(), ConsoleColor.Green),
                                 DrawHelper.Color("damage!", ConsoleColor.White));
-                    }
-                    else if (ability.AbilityEffect == AbilityEffects.Freeze)
-                    { 
-                        MediaPlayer.Play(Sound.Freeze);
-
-                        Console.WriteLine(
-                    DrawHelper.Color("► You cast", ConsoleColor.White),
-                    DrawHelper.Color(ability.Name, ConsoleColor.Blue),
-                    DrawHelper.Color("on", ConsoleColor.White),
-                    DrawHelper.Color(target.Name, ConsoleColor.Cyan),
-                    DrawHelper.Color("dealing", ConsoleColor.White),
-                    DrawHelper.Color(damage.ToString(), ConsoleColor.Yellow),
-                    DrawHelper.Color("damage", ConsoleColor.White),
-                     DrawHelper.Color("freezing him for the next turn.", ConsoleColor.Blue));
-
-                        target.Initiative = 0;
-                    }
-
-                    else if (ability.AbilityEffect == AbilityEffects.Ultimate)
-                    {
-                        if (this.GetType().Name == "Mage")
-                        {
-                            this.Energy = 0;
-
+                            break;
+                        case AbilityEffects.Freeze:
+                            MediaPlayer.Play(Sound.Freeze);
                             Console.WriteLine(
-                                DrawHelper.Color("► You gaze deep into your opponent's eyes and and slowly but steadly drain all his and yours remaining energy dealing", ConsoleColor.Magenta),
-                                DrawHelper.Color(target.Energy.ToString(), ConsoleColor.Yellow),
-                                DrawHelper.Color("damage!", ConsoleColor.Magenta)
-                                             );
+                                DrawHelper.Color("► You cast", ConsoleColor.White),
+                                DrawHelper.Color(ability.Name, ConsoleColor.Blue),
+                                DrawHelper.Color("on", ConsoleColor.White),
+                                DrawHelper.Color(target.Name, ConsoleColor.Cyan),
+                                DrawHelper.Color("dealing", ConsoleColor.White),
+                                DrawHelper.Color(damage.ToString(), ConsoleColor.Yellow),
+                                DrawHelper.Color("damage", ConsoleColor.White),
+                                DrawHelper.Color("freezing him for the next turn.", ConsoleColor.Blue));
+                            target.Initiative = 0;
+                            break;
+                        case AbilityEffects.Ultimate:
+                            if (this.GetType().Name == "Mage")
+                            {
+                                this.Energy = 0;
+                                damage = target.Energy;
+                                target.Energy = 0;
 
-                            target.Health -= target.Energy;
-                            target.Energy = 0;
-                        }
+                                Console.WriteLine(
+                                    DrawHelper.Color(
+                                        "► You gaze deep into your opponent's eyes and and slowly but steadly drain all his and yours remaining energy dealing",
+                                        ConsoleColor.Magenta),
+                                    DrawHelper.Color(damage.ToString(), ConsoleColor.Yellow),
+                                    DrawHelper.Color("damage!", ConsoleColor.Magenta)
+                                    );                                                       
+                            }
+
+                            else
+                            {
+                                if (this.Health >= 10)
+                                {
+                                    damage = (this.Attack + damageModifier) * 2;
+                                    this.Health -= Health / 10;
+                                    Console.WriteLine(
+                                        DrawHelper.Color(
+                                            "► You strike ferouciously thursting your blade through", ConsoleColor.Magenta),
+                                        DrawHelper.Color(target.Name + "'s", ConsoleColor.Cyan),
+                                        DrawHelper.Color("dark and corupted flesh, inflicting", ConsoleColor.Magenta),
+                                        DrawHelper.Color(damage.ToString(), ConsoleColor.Yellow),
+                                        DrawHelper.Color("damage!", ConsoleColor.Magenta)
+                                        );
+                                }
+                                else
+                                {
+                                    throw new GameException("You can not use this ability when you are below 10 hp.");
+                                }
+                            }
+                            break;
                     }
 
                     // else if (ability.AbilityEffect == AbilityEffects.Dodge) // TODO: Implement logic
@@ -183,7 +210,7 @@
                     this.Energy += foodItem.EnergyGained;
                     break;
                 default:
-                      if (this.items.ContainsKey(key))
+                    if (this.items.ContainsKey(key))
                     {
                         this.items.Remove(key);
                     }

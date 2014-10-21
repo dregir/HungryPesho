@@ -6,15 +6,15 @@
     {
         private const string MageName = "Mage";
         private const string MageDescription = "Using magic to slay his opponents.";
-
         private const int StartingLevel = 1;
         private const int StartingHealth = 6;
-        private const int StartingEnergy = 30;
-        private const int StartingAgility = 7;
+        private const int StartingEnergy = 10;
+        private const int StartingAgility = 5;
         private const int StartingStrength = 5;
-        private const int StartingIntellect = 15;
-        private const int StartingAttack = 2;
-        private const int StartingInitiative = 4;
+        private const int StartingIntellect = 8;
+        private const int StartingAttack = 3;
+        private const int StartingInitiative = 3;
+        private const int StartingExperience = 0;
 
         public Mage()
         {
@@ -22,6 +22,7 @@
             this.Description = MageDescription;
 
             this.Level = StartingLevel;
+            this.Experience = StartingExperience; 
             this.Health = StartingHealth;
             this.Energy = StartingEnergy;
             this.Agility = StartingAgility;
@@ -29,7 +30,12 @@
             this.Intellect = StartingIntellect;
             this.Attack = StartingAttack;
             this.Initiative = StartingInitiative;
+         
+            LoadAbilities();
+        }
 
+        public void LoadAbilities()
+        {
             // Starting mage abilities
             this.Abilities.Add(new Ability("Basic Attack", "Normal weapon attack.", AbilityEffects.DirectDamage, 0));
             this.Abilities.Add(new Ability("Frostbolt", "Damages and freezes your opponent for one turn.", AbilityEffects.Freeze, 5));

@@ -1,4 +1,6 @@
-﻿namespace HungryPesho.Creatures
+﻿using System.Security.Cryptography.X509Certificates;
+
+namespace HungryPesho.Creatures
 {
     using HungryPesho.Abilities;
 
@@ -8,19 +10,19 @@
         private const string WarriorDescription = "Strong and powerful character who slay his opponents with brute force!";
 
         private const int StartingLevel = 1;
-        private const int StartingHealth = 6;
-        private const int StartingEnergy = 15;
-        private const int StartingAgility = 7;
-        private const int StartingStrength = 5;
-        private const int StartingIntellect = 15;
-        private const int StartingAttack = 5;
-        private const int StartingInitiative = 3;
+        private const int StartingHealth = 10;
+        private const int StartingEnergy = 5;
+        private const int StartingAgility = 6;
+        private const int StartingStrength = 7;
+        private const int StartingIntellect = 5;
+        private const int StartingAttack = 4;
+        private const int StartingInitiative = 2;
+        private const int StartingExperience = 0;
 
         public Warrior()
         {
             this.Name = WarriorName;
             this.Description = WarriorDescription;
-
             this.Level = StartingLevel;
             this.Health = StartingHealth;
             this.Energy = StartingEnergy;
@@ -29,7 +31,13 @@
             this.Intellect = StartingIntellect;
             this.Attack = StartingAttack;
             this.Initiative = StartingInitiative;
+            this.Experience = StartingExperience;
 
+            LoadAbilities();
+        }
+
+        public void LoadAbilities()
+        {
             // Starting warrior abilities
             this.Abilities.Add(new Ability("Basic Attack", "Just a hit with your weapon", AbilityEffects.DirectDamage, 0));
             this.Abilities.Add(new Ability("Slam", "Slam your opponent with powerfull attack", AbilityEffects.DirectDamage, 5));
@@ -39,7 +47,7 @@
             if (Level == 5)
             {
                 this.Abilities.Add(new Ability("Death Wish", "Does double damage at cost of 10% of your health.",
-              AbilityEffects.Ultimate, 1));
+              AbilityEffects.Ultimate, 0));
             }
         }
     }

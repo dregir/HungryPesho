@@ -73,8 +73,6 @@
                 monster.Name = enemyNames[random.Next(0, enemyNames.Length)];
             }
 
-            
-
             // TODO: Battle states engine at combatEngine = new CombatEngine();
             var currentEnemy = enemies[random.Next(0, enemies.Length)]; // TODO: Player's choice ??
             var awardXp = currentEnemy.Health / 2;
@@ -133,11 +131,15 @@
 
                     if (currentEnemy.Health == 0)
                     {
+
                         MediaPlayer.Play(Sound.Win);
                         DrawHelper.Color("Your enemy fall dead on the ground.\nYou won!", ConsoleColor.Green);
                         Console.BackgroundColor = ConsoleColor.Magenta;
                         Console.WriteLine(DrawHelper.Color("\nYou gained " + awardXp + " experience!", ConsoleColor.Yellow));
                         Console.ResetColor();
+
+                        Pesho.Experience += awardXp;
+                        break;
                     }
                 }
                 else

@@ -32,16 +32,7 @@
 
                 if (randomAbility.AbilityEffect == AbilityEffects.DirectDamage)
                 {
-                    // var abilityNames = new[]
-                    // {
-                    //  "Fireball", 
-                    //  "Fireblast", 
-                    //  "Arcaneblast", 
-                    //  "Kebapshot", 
-                    //  "Rotten Egg Strike"
-                    // };
-
-                    damage = randomAbility.EnergyCost;
+                   damage = randomAbility.EnergyCost;
 
                     if (target.Health < damage)
                     {
