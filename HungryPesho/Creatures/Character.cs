@@ -99,7 +99,7 @@
             else
             {
                 Ability ability = this.Abilities[key];
-                var damage = this.Attack + (damageModifier / 2);
+                var damage = (Attack + damageModifier / 2 + ability.EnergyCost) / 2;
 
                 if (attackSucceeded)
                 {
@@ -172,7 +172,6 @@
                         return;
                     }
 
-                    this.Energy -= ability.EnergyCost;
                     target.Health -= damage;
                 }
                 else
@@ -183,8 +182,10 @@
                             DrawHelper.Color("You missed.", ConsoleColor.Gray) :
                             DrawHelper.Color(target.Name + " evaded your " + ability.Name, ConsoleColor.DarkGray));
                 }
-            }
 
+                this.Energy -= ability.EnergyCost;
+            }
+           
             DrawHelper.ReloadStats(target);
         }
 

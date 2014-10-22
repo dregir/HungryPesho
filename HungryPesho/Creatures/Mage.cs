@@ -8,11 +8,11 @@
         private const string MageDescription = "Using magic to slay his opponents.";
         private const int StartingLevel = 1;
         private const int StartingHealth = 6;
-        private const int StartingEnergy = 10;
+        private const int StartingEnergy = 12;
         private const int StartingAgility = 5;
         private const int StartingStrength = 5;
         private const int StartingIntellect = 8;
-        private const int StartingAttack = 3;
+        private const int StartingAttack = 2;
         private const int StartingInitiative = 3;
         private const int StartingExperience = 0;
 
@@ -38,8 +38,8 @@
         {
             // Starting mage abilities
             this.Abilities.Add(new Ability("Basic Attack", "Normal weapon attack.", AbilityEffects.DirectDamage, 0));
-            this.Abilities.Add(new Ability("Frostbolt", "Damages and freezes your opponent for one turn.", AbilityEffects.Freeze, 5));
-            this.Abilities.Add(new Ability("Meteor", "Inflicts massive damage to your enemy.", AbilityEffects.DirectDamage, 15));
+            this.Abilities.Add(new Ability("Frostbolt", "Damages and freezes your opponent for one turn.", AbilityEffects.Freeze, 6));
+            this.Abilities.Add(new Ability("Meteor", "Inflicts massive damage to your enemy.", AbilityEffects.DirectDamage, 12));
             
             // Ultimates
             if (this.Level == 5)

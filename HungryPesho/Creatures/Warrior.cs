@@ -9,7 +9,7 @@
 
         private const int StartingLevel = 1;
         private const int StartingHealth = 10;
-        private const int StartingEnergy = 5;
+        private const int StartingEnergy = 7;
         private const int StartingAgility = 6;
         private const int StartingStrength = 7;
         private const int StartingIntellect = 5;
