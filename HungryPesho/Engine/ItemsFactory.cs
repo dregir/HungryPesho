@@ -8,16 +8,13 @@
         public static Item CreateItem()
         {
             Random randGen = new Random();
-            int randomNumber = randGen.Next(1, 5);
+            int randomNumber = randGen.Next(1, 11);
 
             switch (randomNumber)
             {
                 case 1:
                     return CreateWeapon();
                 case 2:
-                case 4:
-                    return CreateFood();
-                case 3:
                     return CreateArmor();
                 default:
                     return CreateFood();
