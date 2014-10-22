@@ -12,7 +12,8 @@
         public const int GameWidth = 120;
         public const int GameHeight = 50;
         public const string FilePath = "../../misc/";
-        public const bool SoundStatus = true;
+
+        public static bool SoundStatus { get; set; }
 
         public static void LoadGameSettings() // Load default game settings
         {
@@ -22,6 +23,7 @@
             Console.SetWindowSize(GameWidth, GameHeight);
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.Green;
+            SoundStatus = true;
         }
 
         public static void SaveGameSettings() // Saves game settings
@@ -140,6 +142,18 @@
             {
                 DrawHelper.TextAtPosition("Your score cannot be saved!", GameWidth / 2, GameHeight / 2, ConsoleColor.Red);
             }
+        }
+
+        public static void TurnSoundOn() // Turn sound ON
+        {
+            SoundStatus = true;
+            LoadScreen.LoadStartMenu();
+        }
+
+        public static void TurnSoundOff() // Turn sound OFF
+        {
+            SoundStatus = false;
+            LoadScreen.LoadStartMenu();
         }
     }
 }

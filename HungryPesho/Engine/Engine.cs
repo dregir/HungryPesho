@@ -68,7 +68,7 @@
             { // Play with stats to test 'em here. - TODO: Generate monster accordingly player's level
                 monster.Attack = random.Next(2, Pesho.Attack * 2);
                 monster.Energy = random.Next(Pesho.Energy / 2, Pesho.Energy * 2);
-                monster.Health = random.Next((Pesho.Attack * 2), (Pesho.Attack * 3) + (3 * Pesho.Level));
+                monster.Health = random.Next(Pesho.Attack * 2, (Pesho.Attack * 3) + (3 * Pesho.Level));
                 monster.Initiative = random.Next(1, 6);
                 monster.Name = enemyNames[random.Next(0, enemyNames.Length)];
             }

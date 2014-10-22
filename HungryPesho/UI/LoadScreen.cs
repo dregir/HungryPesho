@@ -248,13 +248,11 @@
 
             var optionsMethods = new List<Action>()
             {
-                // GameSettings.SoundStatus = true,
-                // GameSettings.SoundStatus = false,
+                GameSettings.TurnSoundOn,
+                GameSettings.TurnSoundOff,
             };
 
             DrawHelper.CreateMenu(optionsChoices, optionsMethods, 7);
-
-            DrawHelper.TextAtPosition("Press Esc to go back", GameSettings.GameWidth / 2, GameSettings.GameHeight / 2, ConsoleColor.Yellow);
         }
 
         public static void LoadCreditsScreen() // Game credits Screen

@@ -44,7 +44,7 @@
                 // TODO: something else
             };
 
-            const string realPesho = @"
+            const string RealPesho = @"
 
                            __,='`````'=/__
                           '//  (o) \(o) \ `'         _,-,                                   --''--          --''--
@@ -75,9 +75,9 @@
      |///  \\|/// \\\\|//\\|///\|///  \\\|//                      \\ | |              `--`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\\/^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^";
 
-            DrawHelper.Color(realPesho, ConsoleColor.DarkGreen);
+            DrawHelper.Color(RealPesho, ConsoleColor.DarkGreen);
 
-            const string introStory = "It's a {0} {1} and you my friend are very, very hungry, no words can describe your hunger and thirst for food!" +
+            const string IntroStory = "It's a {0} {1} and you my friend are very, very hungry, no words can describe your hunger and thirst for food!" +
                     "\n You can eat everything and everyone and I really doubt that you will be satisfied. YOU ARE HUNGRY! And because of that" +
                     "\n you need to get up and start kicking some asses, not for money, nor for glory, just for food - the only thing which is" +
                     "\n in your head and not in your stomach obviously. But where to go what to do? It's up to you, but be careful, there are" +
@@ -88,7 +88,7 @@
                     "\n Or you can go North, there is a waterfall and maybe fish or a bear that is stealing your fish.." +
                     "\n So if you want to go there press 2 and only god knows what you will find there...";
 
-            DrawHelper.TextAtPosition(string.Format(introStory, conditions[random.Next(0, conditions.Length)], dayTime[random.Next(0, dayTime.Length)]), 2, 30, ConsoleColor.DarkYellow);
+            DrawHelper.TextAtPosition(string.Format(IntroStory, conditions[random.Next(0, conditions.Length)], dayTime[random.Next(0, dayTime.Length)]), 2, 30, ConsoleColor.DarkYellow);
 
             SetAndDisplayOptions(scenarios, scenes);
         }
@@ -97,13 +97,13 @@
         {
             Console.Clear();
 
-            const string storyAfterBattle = "What a fight! I've never seen anyone fight like that before! Erm.. maybe a couple," +
+            const string StoryAfterBattle = "What a fight! I've never seen anyone fight like that before! Erm.. maybe a couple," +
                                             "\n               anyway this didn't satisfy your urge, am I wrong? Naah, I am never wrong, you are still" +
                                             "\n               hungry as fuck.. Hm lets see if that scary looking monster over there can do the trick," +
                                             "\n               but before that, is anything else you want to do right now?" +
                                             "\n               It's time to chose MR.Freeman.., I mean Pesho!";
 
-            DrawHelper.TextAtPosition(storyAfterBattle, 15, 30, ConsoleColor.DarkYellow);
+            DrawHelper.TextAtPosition(StoryAfterBattle, 15, 30, ConsoleColor.DarkYellow);
 
             Action[] scenarios = { Engine.StartEngine, Engine.StartEngine };
 

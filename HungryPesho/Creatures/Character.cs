@@ -1,10 +1,9 @@
-﻿using HungryPesho.Engine;
-
-namespace HungryPesho.Creatures
+﻿namespace HungryPesho.Creatures
 {
     using System;
     using System.Collections.Generic;
     using HungryPesho.Abilities;
+    using HungryPesho.Engine;
     using HungryPesho.ExceptionClasses;
     using HungryPesho.Interfaces;
     using HungryPesho.Items;
@@ -34,7 +33,7 @@ namespace HungryPesho.Creatures
             }
         }
 
-           public int Agility
+        public int Agility
         {
             get
             {
@@ -101,14 +100,14 @@ namespace HungryPesho.Creatures
             else
             {
                 Ability ability = this.Abilities[key];
-                var damage = (Attack + damageModifier/2 + ability.EnergyCost)/2;
+                var damage = (this.Attack + ((damageModifier / 2) + ability.EnergyCost)) / 2;
                 var storedAgility = this.Agility;
                 this.Energy -= ability.EnergyCost;
 
                 if (ability.AbilityEffect.Equals(AbilityEffects.Speed))
                 {
                     var chancesToEscape = this.Agility + this.Initiative;
-                    bool gotLucky = (random.Next(0, 10) >= 5);
+                    bool gotLucky = random.Next(0, 10) >= 5;
 
                     if (chancesToEscape > target.Initiative && gotLucky)
                     {
@@ -118,7 +117,6 @@ namespace HungryPesho.Creatures
                         this.Agility = storedAgility;
                         DrawHelper.BlockInputAndWaitFor(3);
                         StoryEngine.StateAfterBattle();
-
                     }
                     else
                     {
@@ -127,7 +125,6 @@ namespace HungryPesho.Creatures
                             DrawHelper.Color(target.Name, ConsoleColor.DarkMagenta));
                     }
                 }
-
                 else if (ability.AbilityEffect.Equals(AbilityEffects.Dodge))
                 {
                     if (this.Agility < 50)
@@ -146,7 +143,6 @@ namespace HungryPesho.Creatures
                             "You can not use this ability more than once in a single battle!");
                     }
                 }
-
                 else
                 {
                     if (attackSucceeded)
@@ -178,8 +174,6 @@ namespace HungryPesho.Creatures
                                 target.Initiative = 0;
                                 break;
 
-                                #region Ultimates
-
                             case AbilityEffects.Ultimate:
                                 if (this.GetType().Name == "Mage")
                                 {
@@ -198,8 +192,8 @@ namespace HungryPesho.Creatures
                                 {
                                     if (this.Health >= 10)
                                     {
-                                        damage = (this.Attack + damageModifier)*2;
-                                        this.Health -= Health/10;
+                                        damage = (this.Attack + damageModifier) * 2;
+                                        this.Health -= Health / 10;
                                         Console.WriteLine(
                                             DrawHelper.Color(
                                                 "► You strike ferociously thrusting your blade through",
@@ -217,8 +211,6 @@ namespace HungryPesho.Creatures
                                 }
 
                                 break;
-
-                                #endregion
                         }
 
                         if (target.Health < damage)
@@ -227,9 +219,9 @@ namespace HungryPesho.Creatures
                             DrawHelper.ReloadStats(target);
                             return;
                         }
+
                         target.Health -= damage;
                     }
-
                     else
                     {
                         MediaPlayer.Play(Sound.Miss);
