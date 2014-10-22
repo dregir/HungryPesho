@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using HungryPesho.UI;
 
 namespace HungryPesho.Engine
@@ -9,6 +11,7 @@ namespace HungryPesho.Engine
         {
             Console.Clear();
             var random = new Random();
+
             var dayTime = new[]
             {
                 "day",
@@ -25,11 +28,27 @@ namespace HungryPesho.Engine
                 "plesent",
                 "hungry"
             };
+
+            var scenes = new[]
+            {
+                "1. To the forrest",
+                "2. To the waterfall",
+                "3. Take a nap"
+            };
+
+            Action[] scenarios =
+            {
+                Engine.StartEngine
+                //Todo add find item scenario
+                //Todo add loose hp scenario
+                //Todo something else
+            };
+
             DrawHelper.Color(@"         
 
                            __,='`````'=/__
-                          '//  (o) \(o) \ `'         _,-,
-                          //|     ,_)   (`\      ,-'`_,-\     <--- The real Pesho
+                          '//  (o) \(o) \ `'         _,-,                                   --''--          --''--
+                          //|     ,_)   (`\      ,-'`_,-\     <--- The real Pesho                   --''--
                         ,-~~~\  `'==='  /-,      \==```` \__
                        /        `----'     `\     \       \/
                     ,-`                  ,   \  ,.-\       \                 ,\;`~\,;\;`\,            
@@ -54,55 +73,89 @@ namespace HungryPesho.Engine
       /      Y       \|   \|/   /(_)    \|                         //` '---./`         \ |-..-'`
    \ |     \ |/       | /\ | / \|/       |/                       ||  /|              /\/\             
      |///  \\|/// \\\\|//\\|///\|///  \\\|//                      \\ | |              `--`
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\\/^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-",
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\\/^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+                                                                                                          ConsoleColor.DarkGreen);
+
+            DrawHelper.TextAtPosition(
+                String.Format(
+                    "It's a {0} {1} and you my friend are very, very hungry, no words can describe your hunger and thirst for food!" +
+                    "\n  You can eat everything and everyone and I really doubt that you will be satisfied." +
+                    "\n  YOU ARE HUNGRY and because of that you need to get up and start kicking some asses, not for money," +
+                    "\n  nor for glory, just for fooood - the only thing which is in your head and not in your stomach obviously." +
+                    "\n  But where to go what to do..?! Its up to you, but be carefull there is also realy hungry monsters out there," +
+                    "\n  waiting for someone brave enough or just desperetly hungry." +
+                    "\n\n You stand up and look around. At east there is a deep lurky looking forst. Hey, maybe there is something to eat," +
+                    "\n  a rabit would be nice, oh wait no, a dozen of rabits maybe or, or a BEAR?!? Arrrrrr, have you ever tried a bear meat??" +
+                    "\n  Well if you wanna go I wont stop you so just press 1 and hold your breath until I told you to stop." +
+                    "\n  Or you can go North, there is a waterfall and maybe fish or a bear that is stealing your fish.." +
+                    "\n  So if you want to go there press 2 and only god knows what you will find there...",
+                    conditions[random.Next(0, conditions.Length)],
+                    dayTime[random.Next(0, dayTime.Length)]),
+                5,
+                30, ConsoleColor.DarkYellow);
+
+       
+            SetAndDisplayOptions(scenarios, scenes);
+
+        }
+
+        public static void StateAfterBattle()
+        {
 
 
 
-                                           ConsoleColor.DarkGreen);
 
-            DrawHelper.TextAtPosition(String.Format("It's a {0} {1} and you my friend are very, very hungry, no words can describe your hunger and thirst for food!" +
-                                                    "\n  You can eat everything and everyone and I really doubt that you will be satisfied." +
-                                                    "\n  YOU ARE HUNGRY and because of that you need to get up and start kicking some asses, not for money," +
-                                                    "\n  nor for glory, just for fooood - the only thing which is in your head and not in your stomach obviously." +
-                                                    "\n  But where to go what to do..?! Its up to you, but be carefull there is also realy hungry monsters out there waiting" +
-                                                    "\n  for someone brave enough or just desperetly hungry." +
-                                                    "\n\n  You stand up and look around. At east there is a deep lurky looking forst. Hey, maybe there is something to eat," +
-                                                    "\n  a rabit would be nice, oh wait no, a dozen of rabits maybe or, or a BEAR?!? Arrrrrr, have you ever tried a bear meat??         \n  Well if you wanna go I wont stop you so just press 1 and hold your breath until I told you to stop." +
-                                                    "\n  Or you can go North, there is a waterfall and maybe fish or a bear that is stealing your fish.." +
-                                                    "\n  So if you want to go there press 2 and only god knows what you will find there...",
-                                                                                           conditions[random.Next(0, conditions.Length)],
-                                                                                                                            dayTime[0]),
-                                                                                  5,
-                                                                                  30, ConsoleColor.DarkYellow);
 
-            DrawHelper.TextAtPosition("1. To the Forest", 44, 44, ConsoleColor.White);
-            DrawHelper.TextAtPosition("2. To the WaterFall", 44, 45, ConsoleColor.White);
-            DrawHelper.TextAtPosition("3. Take a nap..", 44, 46, ConsoleColor.White);
+            Console.Clear();
+    
+
+            DrawHelper.TextAtPosition("What a fight! I've never seen anyone fight like that before! Erm.. maybe a couple," +
+                              "\n               anyway this didn't satisfy your urge, am I wrong? Naah, I am never wrong, you are still" +
+                              "\n               hungry as fuck.. Hm lets see if that scary looking monster over there can do the trick," +
+                              "\n               but before that, is anything else you want to do right now?" +
+                              "\n               It's time to chose MR.Freeman.., I mean Pesho!",15,30,ConsoleColor.DarkYellow);
+
 
             Action[] scenarios =
             { 
+                Engine.StartEngine,
                 Engine.StartEngine
-                //Todo add find item scenario
-                //Todo add loose hp scenario
-                //Todo something else
+
             };
+
+            var scenes = new[]
+            {
+                "1. Use item from invetory",
+                "2. Attack the scary monster",
+            };
+
+
+            SetAndDisplayOptions(scenarios, scenes, 40);
+        }
+
+        private static void SetAndDisplayOptions(IList<Action> scenarios, IEnumerable<string> options, int startAtRow = 45)
+        {
+ 
+            foreach (var option in options)
+            {
+                DrawHelper.TextAtPosition(option, 44, startAtRow++, ConsoleColor.White);
+            }
 
             while (true)
             {
-                var input = Console.ReadKey(true);
-
-                if (input.Key.Equals(ConsoleKey.D1))
+                var action = Console.ReadKey(true);
+                var key = (int)action.Key - 49;
+                if (key > scenarios.Count - 1 || key < 0)
                 {
-                    scenarios[(random.Next(0, scenarios.Length))]();
+                    DrawHelper.TextAtPosition("Not hungry enough? IMPOSSIBLE!! Why dont you try with " + scenarios.Count + " ?",
+                        29,
+                        43,
+                        ConsoleColor.DarkGray);
                 }
-                else if (input.Key.Equals(ConsoleKey.D2))
+                else
                 {
-                    scenarios[(random.Next(0, scenarios.Length))]();
-                }
-                else if (input.Key.Equals(ConsoleKey.D3))
-                {
-                    Engine.StartEngine();
+                    scenarios[key]();
+                    break;
                 }
             }
         }

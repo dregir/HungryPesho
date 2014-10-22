@@ -99,7 +99,7 @@
             else
             {
                 Ability ability = this.Abilities[key];
-                var damage = Attack + damageModifier;
+                var damage = Attack + damageModifier / 2;
 
                 if (attackSucceeded)
                 {
@@ -182,7 +182,7 @@
                         target.Health = 0;
                         return;
                     }
-
+                    this.Energy -= ability.EnergyCost;
                     target.Health -= damage;
                 }
                 else

@@ -54,7 +54,7 @@
             {
                 new Ability("KebapShot", "Throws Kebap at you", AbilityEffects.DirectDamage, 5),
                 new Ability("Fireball", "Fireballs u", AbilityEffects.DirectDamage, 7),
-                new Ability("Fireblast", "Fireblast u", AbilityEffects.DirectDamage, 2),
+                new Ability("Fireblast", "Fireblast u", AbilityEffects.DirectDamage, 4),
                 new Ability("Spectral Hit", "Spectral hits u", AbilityEffects.DirectDamage, random.Next(1, 21)),
                 ////new Ability("Frost Nova", "Freeze you at place", AbilityEffects.Freeze, 4)
             };
@@ -66,7 +66,7 @@
 
             foreach (var monster in enemies)
             { // Play with stats to test 'em here. - TODO: Generate monster accordingly player's level
-                monster.Attack = random.Next(Pesho.Level * 2, Pesho.Level * 4);
+                monster.Attack = random.Next(Pesho.Attack / 2, Pesho.Attack * 2);
                 monster.Energy = random.Next(Pesho.Energy / 2, Pesho.Energy * 2);
                 monster.Health = random.Next(Pesho.Health - (3 * Pesho.Level), Pesho.Health + (5 * Pesho.Level));
                 monster.Initiative = random.Next(1, 6);
@@ -136,10 +136,11 @@
                         DrawHelper.Color("Your enemy fall dead on the ground.\nYou won!", ConsoleColor.Green);
                         Console.BackgroundColor = ConsoleColor.Magenta;
                         Console.WriteLine(DrawHelper.Color("\nYou gained " + awardXp + " experience!", ConsoleColor.Yellow));
-                        Console.ResetColor();
 
                         Pesho.Experience += awardXp;
-                        break;
+
+                        DrawHelper.BlockInputAndWaitFor(2);
+                        StoryEngine.StateAfterBattle();
                     }
                 }
                 else
