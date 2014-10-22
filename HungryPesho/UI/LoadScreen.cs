@@ -22,9 +22,9 @@
                 "LOAD LAST GAME",
                 " HOW TO PLAY  ",
                 "   OPTIONS    ",
-                "   RANKLIST   ",
+                "  HIGHSCORE   ",
                 "   CREDITS    ",
-                "     EXIT     "
+                "    EXIT      "
             };
 
             var startMenuMethods = new List<Action>()
@@ -41,7 +41,7 @@
             DrawHelper.CreateMenu(menuChoices, startMenuMethods, 25);
         }
 
-        public static void LoadIngameMenu() // Ingame menu
+        public static void LoadIngameMenu() // In game menu
         {
             MediaPlayer.Play(Sound.Intro);
 
@@ -298,6 +298,8 @@
             Console.Clear();
             Console.Title = "Hugry pesho!  -=-  You LOOSE!";
             DrawHelper.TextAtPosition(@"
+
+
                           ▄████  ▄▄▄       ███▄ ▄███▓▓█████     ▒█████   ██▒   █▓▓█████  ██▀███ 
                          ██▒ ▀█▒▒████▄    ▓██▒▀█▀ ██▒▓█   ▀    ▒██▒  ██▒▓██░   █▒▓█   ▀ ▓██ ▒ ██▒
                         ▒██░▄▄▄░▒██  ▀█▄  ▓██    ▓██░▒███      ▒██░  ██▒ ▓██  █▒░▒███   ▓██ ░▄█ ▒

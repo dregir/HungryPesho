@@ -25,7 +25,7 @@
                 "snowy",
                 "hot",
                 "cold",
-                "plesent",
+                "pleasant",
                 "hungry"
             };
 
@@ -80,11 +80,11 @@
             const string introStory = "It's a {0} {1} and you my friend are very, very hungry, no words can describe your hunger and thirst for food!" +
                     "\n You can eat everything and everyone and I really doubt that you will be satisfied. YOU ARE HUNGRY! And because of that" +
                     "\n you need to get up and start kicking some asses, not for money, nor for glory, just for food - the only thing which is" +
-                    "\n in your head and not in your stomach obviously. But where to go what to do? Its up to you, but be careful, there are" +
+                    "\n in your head and not in your stomach obviously. But where to go what to do? It's up to you, but be careful, there are" +
                     "\n also really hungry monsters out there, waiting for someone brave enough or just desperately hungry." +
-                    "\n\n You stand up and look around. At east there is a deep murky looking forest. Hey, maybe there is something to eat," +
+                    "\n\n You stand up and look around. At East there is a deep murky looking forest. Hey, maybe there is something to eat," +
                     "\n a rabbit would be nice, oh wait no, a dozen of rabbits maybe or, or a BEAR?!? Arr, have you ever tried a bear meat??" +
-                    "\n Well if you wanna go I wont stop you so just press 1 and hold your breath until I told you to stop." +
+                    "\n Well if you wanna go I won't stop you, so just press 1 and hold your breath until I told you to stop." +
                     "\n Or you can go North, there is a waterfall and maybe fish or a bear that is stealing your fish.." +
                     "\n So if you want to go there press 2 and only god knows what you will find there...";
 
@@ -109,8 +109,8 @@
 
             var scenes = new[]
             {
-                "1. Use item from inventory",
-                "2. Attack the scary monster",
+                "1. Use item from inventory.",
+                "2. Attack the scary monster.",
             };
 
             SetAndDisplayOptions(scenarios, scenes, 40);

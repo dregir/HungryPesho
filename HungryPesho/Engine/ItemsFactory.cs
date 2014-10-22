@@ -134,7 +134,7 @@
                 case 2:
                     food.FoodType = FoodTypes.Chicken;
                     food.Name = "Chicken";
-                    food.Description = "Not like steak, but ok!";
+                    food.Description = "Not like steak, but OK!";
                     break;
                 case 3:
                     food.FoodType = FoodTypes.Pizza;

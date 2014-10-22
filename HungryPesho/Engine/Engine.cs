@@ -25,7 +25,7 @@
             // TODO: create ability and enemy factory.
             // TODO: validate player / enemy health for negative numbers
 
-            // TODO: Initialize all ingame enemies here
+            // TODO: Initialize all in game enemies here
             var enemies = new Creature[]
             {
                 new Enemy()
@@ -66,9 +66,9 @@
 
             foreach (var monster in enemies)
             { // Play with stats to test 'em here. - TODO: Generate monster accordingly player's level
-                monster.Attack = random.Next(Pesho.Attack / 2, Pesho.Attack * 2);
+                monster.Attack = random.Next(2, Pesho.Attack * 2);
                 monster.Energy = random.Next(Pesho.Energy / 2, Pesho.Energy * 2);
-                monster.Health = random.Next(Pesho.Health - (3 * Pesho.Level), Pesho.Health + (5 * Pesho.Level));
+                monster.Health = random.Next((Pesho.Attack * 2), (Pesho.Attack * 3) + (3 * Pesho.Level));
                 monster.Initiative = random.Next(1, 6);
                 monster.Name = enemyNames[random.Next(0, enemyNames.Length)];
             }
@@ -77,7 +77,8 @@
             var currentEnemy = enemies[random.Next(0, enemies.Length)]; // TODO: Player's choice ??
             var awardXp = currentEnemy.Health / 2;
             var startingRows = 35;
-            var currentPlayer = (Pesho.Initiative >= currentEnemy.Initiative + 1) ? Pesho : currentEnemy;
+            var currentPlayer = (Pesho.Initiative >= currentEnemy.Initiative) ? Pesho : currentEnemy;
+            var storedAgility = Pesho.Agility; 
 
             Console.Clear();
             DrawHelper.DrawStatsWindow();
@@ -96,8 +97,7 @@
                 if (currentPlayer is Character)
                 {
                     DrawHelper.TextAtPosition("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ What is your move? ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓\n\n", 0, 23, ConsoleColor.White);
-
-                    // Draw all abilities
+                
                     var count = 1;
 
                     foreach (var ability in Pesho.Abilities)
@@ -117,7 +117,6 @@
                     try
                     {
                         Pesho.Action(currentEnemy, playerChoice);
-
                         currentPlayer = currentEnemy;
                         startingRows++;
                     }
@@ -126,19 +125,20 @@
                         DrawHelper.TextAtPosition(e.Message, 0, 33, ConsoleColor.DarkGray);
                         continue;
                     }
-
+                       
                     DrawHelper.BlockInputAndWaitFor(2);
 
                     if (currentEnemy.Health == 0)
                     {
                         MediaPlayer.Play(Sound.Win);
+                        Console.SetCursorPosition(0, startingRows);
                         DrawHelper.Color("Your enemy fall dead on the ground.\nYou won!", ConsoleColor.Green);
-                        Console.BackgroundColor = ConsoleColor.Magenta;
                         Console.WriteLine(DrawHelper.Color("\nYou gained " + awardXp + " experience!", ConsoleColor.Yellow));
 
+                        Pesho.Agility = storedAgility;
                         Pesho.Experience += awardXp;
 
-                        DrawHelper.BlockInputAndWaitFor(2);
+                        DrawHelper.BlockInputAndWaitFor(3);
                         StoryEngine.StateAfterBattle();
                     }
                 }
@@ -146,9 +146,9 @@
                 {
                     if (currentEnemy.Initiative != 0)
                     {
-                        var result = random.Next(0, 11);
+                        var result = random.Next(0, 10 - (Pesho.Agility / 10));
                         Console.SetCursorPosition(0, startingRows++);
-
+                        
                         if (result > 1)
                         {
                             currentEnemy.Action(Pesho);  
