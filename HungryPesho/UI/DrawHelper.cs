@@ -1,10 +1,10 @@
-﻿using HungryPesho.Creatures;
-
-namespace HungryPesho.UI
+﻿namespace HungryPesho.UI
 {
     using System;
-    using HungryPesho.Engine;
     using System.Collections.Generic;
+    using System.Threading;
+    using HungryPesho.Creatures;
+    using HungryPesho.Engine;
 
     public static class DrawHelper
     {
@@ -32,11 +32,10 @@ namespace HungryPesho.UI
                     cursorPos = initialPosition;
                     selection = 0;
                 }
-
                 else if (selection < 0)
                 {
                     selection = menuChoices.Length - 1;
-                    cursorPos = initialPosition + (menuChoices.Length - 1) * 2;
+                    cursorPos = initialPosition + ((menuChoices.Length - 1) * 2);
                 }
 
                 return selection;
@@ -90,14 +89,29 @@ namespace HungryPesho.UI
             }
         }
 
-        public static void TextAtPosition(string text, int col, int row, ConsoleColor color = ConsoleColor.Green,
-            ConsoleColor bgColor = ConsoleColor.Black)
+        public static void TextAtPosition(string text, int col, int row, ConsoleColor color = ConsoleColor.Green, ConsoleColor backgroundColor = ConsoleColor.Black)
         {
             Console.ForegroundColor = color;
-            Console.BackgroundColor = bgColor;
+            Console.BackgroundColor = backgroundColor;
             Console.SetCursorPosition(col, row);
             Console.Write(text);
             Console.ResetColor();
+        }
+
+        public static void ScrollingText(string text, bool pressedKey = false)
+        {
+            for (int i = 0; i < text.Length; i++)
+            {
+                Console.Write(text[i]);
+
+                if (pressedKey)
+                {
+                    Console.WriteLine(text);
+                    break;
+                }
+
+                Thread.Sleep(30);
+            }
         }
 
         public static string Color(string text, ConsoleColor color)
@@ -105,14 +119,16 @@ namespace HungryPesho.UI
             Console.ForegroundColor = color;
             Console.Write(text + " ");
             Console.ResetColor();
-            return "";
+
+            return string.Empty;
         }
 
         public static void ReloadStats(Creature enemy)
         {
             string charClass = Engine.Pesho.GetType().Name;
             int level = Engine.Pesho.Level;
-            const int startPos = 7;
+            const int StartPos = 7;
+
             var peshoStats = new[]
             {
                new { stat = Engine.Pesho.Health, color = ConsoleColor.Magenta },
@@ -123,17 +139,17 @@ namespace HungryPesho.UI
 
             var enemyStats = new[]
             {
-                new {stat = enemy.Health, color = ConsoleColor.Magenta},
-                new {stat = enemy.Energy, color = ConsoleColor.Cyan},
-                new {stat = enemy.Initiative, color = ConsoleColor.DarkGreen},
-                new {stat = enemy.Attack, color = ConsoleColor.Red},
+                new { stat = enemy.Health, color = ConsoleColor.Magenta },
+                new { stat = enemy.Energy, color = ConsoleColor.Cyan },
+                new { stat = enemy.Initiative, color = ConsoleColor.DarkGreen },
+                new { stat = enemy.Attack, color = ConsoleColor.Red },
             };
 
             for (int i = 0; i < peshoStats.Length; i++)
             {
-                Console.SetCursorPosition(100, startPos + i);
+                Console.SetCursorPosition(100, StartPos + i);
                 Console.Write(Color(peshoStats[i].stat.ToString(), peshoStats[i].color));
-                Console.SetCursorPosition(25, startPos + i);
+                Console.SetCursorPosition(25, StartPos + i);
                 Console.Write(Color(enemyStats[i].stat.ToString(), enemyStats[i].color));
             }
 
@@ -154,23 +170,25 @@ namespace HungryPesho.UI
             {
                 TextAtPosition(enemy.Name, 21, 5, ConsoleColor.DarkCyan);
             }
-
         }
 
         public static void BlockInputAndWaitFor(int seconds)
         {
             var startTime = DateTime.Now;
-            while (startTime.AddSeconds(seconds) > DateTime.Now) // Prevents from key spamming while waiting!
-            {
-                while (Console.KeyAvailable) Console.ReadKey(true);
+
+            while (startTime.AddSeconds(seconds) > DateTime.Now)
+            { // Prevents from key spamming while waiting!
+
+                while (Console.KeyAvailable)
+                {
+                    Console.ReadKey(true);
+                }
             }
         }
 
         public static void DrawGameWindow()
         {
             Console.WriteLine(@"
-
-
                                                     ██╗██
                                       ██╗        ███╗██╗██╗█╗
                                       ╚██╗       ██╔╝██╔╝╚██║╚█║
@@ -194,6 +212,18 @@ namespace HungryPesho.UI
 
         public static void DrawStatsWindow()
         {
+            string statsWindows = @"
+          ╔════════════════════════╗ 
+          ║                        ║
+          ║                        ║
+          ║                        ║
+          ║       Life:            ║
+          ║     Energy:            ║
+          ║ Initiative:            ║
+          ║     Attack:            ║
+          ║                        ║
+          ╚════════════════════════╝";
+
             Console.Write(@"
 
                                               |\                     /)
@@ -213,24 +243,8 @@ namespace HungryPesho.UI
                                                      `-. ::: .-' 
                                                       //`:::`\\
                                                      //   '   \\
-                                                    |/         \|   
-");
-                                                                
-
-            TextAtPosition(@"
-          ╔════════════════════════╗ 
-          ║                        ║
-          ║                        ║
-          ║                        ║
-          ║       Life:            ║
-          ║     Energy:            ║
-          ║ Initiative:            ║
-          ║     Attack:            ║
-          ║                        ║
-          ╚════════════════════════╝ 
-
-
-", 0, 2, ConsoleColor.Red);
+                                                    |/         \|");
+            TextAtPosition(statsWindows, 0, 2, ConsoleColor.Red);
         }
     }
 }

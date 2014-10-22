@@ -31,7 +31,7 @@
             this.Attack = StartingAttack;
             this.Initiative = StartingInitiative;
          
-            LoadAbilities();
+            this.LoadAbilities();
         }
 
         public void LoadAbilities()
@@ -40,11 +40,11 @@
             this.Abilities.Add(new Ability("Basic Attack", "Normal weapon attack.", AbilityEffects.DirectDamage, 0));
             this.Abilities.Add(new Ability("Frostbolt", "Damages and freezes your opponent for one turn.", AbilityEffects.Freeze, 5));
             this.Abilities.Add(new Ability("Meteor", "Inflicts massive damage to your enemy.", AbilityEffects.DirectDamage, 15));
+            
             // Ultimates
-            if (Level == 5)
+            if (this.Level == 5)
             {
-                this.Abilities.Add(new Ability("Energy Burn", "Burns all your's and your opponent's energy and deal damage equal to his current energy.",
-              AbilityEffects.Ultimate, 1));
+                this.Abilities.Add(new Ability("Energy Burn", "Burns all your's and your opponent's energy and deal damage equal to his current energy.", AbilityEffects.Ultimate, 1));
             }
         }
     }

@@ -9,7 +9,9 @@
         private int agility;
         private int strength;
         private int intellect;
-        
+
+        #region Properties
+
         public int Stamina
         {
             get
@@ -65,11 +67,11 @@
                 this.intellect = value;
             }
         }
+        #endregion
 
         public override string ToString()
         {
-            return string.Format("\r\nStamina: {0} \r\nAgility: {1} \r\nStrength: {2} \r\nIntellect: {3}",
-                 this.Stamina, this.Agility, this.Strength, this.Intellect);
+            return string.Format("\r\nStamina: {0} \r\nAgility: {1} \r\nStrength: {2} \r\nIntellect: {3}", this.Stamina, this.Agility, this.Strength, this.Intellect);
         }
     }
 }

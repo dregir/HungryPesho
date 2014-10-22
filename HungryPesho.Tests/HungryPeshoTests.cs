@@ -1,9 +1,9 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using HungryPesho.Creatures;
-
-namespace HungryPesho.Tests
+﻿namespace HungryPesho.Tests
 {
+    using System;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using HungryPesho.Creatures;
+
     [TestClass]
     public class HungryPeshoTests
     {

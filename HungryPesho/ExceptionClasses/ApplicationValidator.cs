@@ -1,6 +1,5 @@
 ﻿namespace HungryPesho.ExceptionClasses
 {
-
     public static class ApplicationValidator
     {
         public static void ValidateNumberValue(int value, int min = 0, int max = int.MaxValue, string name = "")

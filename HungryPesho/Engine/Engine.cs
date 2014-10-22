@@ -34,8 +34,8 @@
             var enemyNames = new[]
             {
                 "Yeti",
-                "Rabit Dog",
-                "Grizly Bear",
+                "Rabbit Dog",
+                "Grizzly Bear",
                 "Mad Bunny",
                 "Angry French Chef",
                 "Spaska The Dragon",
@@ -46,7 +46,7 @@
                 "Garfield",
                 "Uncle Gosho",
                 "Evil Harpy",
-                "Invsible Man"
+                "Invisible Man"
             };
 
             // TODO: Initialize all enemy abilities
@@ -87,7 +87,7 @@
             Console.WriteLine(
                     DrawHelper.Color("You wake up and suddenly from no-where a giant fucking", ConsoleColor.DarkRed),
                     DrawHelper.Color(currentEnemy.Name, ConsoleColor.Cyan),
-                    DrawHelper.Color("apeared infront of you and quickly attacks!", ConsoleColor.DarkRed));
+                    DrawHelper.Color("appeared in front of you and quickly attacks!", ConsoleColor.DarkRed));
 
             startingRows++;
 
@@ -131,7 +131,6 @@
 
                     if (currentEnemy.Health == 0)
                     {
-
                         MediaPlayer.Play(Sound.Win);
                         DrawHelper.Color("Your enemy fall dead on the ground.\nYou won!", ConsoleColor.Green);
                         Console.BackgroundColor = ConsoleColor.Magenta;
@@ -173,8 +172,8 @@
                     currentPlayer = Pesho;
                 }
 
-                if (enemies.Length == 0) // TODO: If list of enemies is empty show win game screen and save score
-                {
+                if (enemies.Length == 0)
+                { // TODO: If list of enemies is empty show win game screen and save score
                     LoadScreen.LoadWinScreen();
                 }
             }

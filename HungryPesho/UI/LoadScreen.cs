@@ -73,13 +73,14 @@
 
         public static void LoadCharacterSelection() // Load character selection
         {
-            DrawHelper.Color(@"
+            string selectClass = @"
                     ____    __        __                             __           
                    / __/__ / /__ ____/ /_  __ _____  __ ______  ____/ /__ ____ ___
                   _\ \/ -_) / -_) __/ __/ / // / _ \/ // / __/ / __/ / _ `(_-<(_-<
                  /___/\__/_/\__/\__/\__/  \_, /\___/\_,_/_/    \__/_/\_,_/___/___/
-                                         /___/                                    
-            ", ConsoleColor.Green);
+                                         /___/                                    ";
+
+            DrawHelper.Color(selectClass, ConsoleColor.Green);
 
             DrawHelper.TextAtPosition("Warrior", 15, 38, ConsoleColor.White, ConsoleColor.DarkRed);
             DrawHelper.TextAtPosition("Mage", 70, 38, ConsoleColor.White);
@@ -102,7 +103,7 @@
                     mageColor = ConsoleColor.White;
                 }
 
-                DrawHelper.TextAtPosition(@"
+                string mage = @"
                                                                         ____
                                                                       .'* *.'
                                                                    __/_*_*(_
@@ -124,12 +125,11 @@
                                                              .'   /    b    '.  '.
                                                          _.-'    /     Bb     '-. '-._
                                                       .-'       |      BBb       '-.  '-.
-                                                     (________mrf\____.dBBBb.________)____)", 0, 10, mageColor);
+                                                     (________mrf\____.dBBBb.________)____)";
 
+                DrawHelper.TextAtPosition(mage, 0, 10, mageColor);
 
-
-                DrawHelper.TextAtPosition
-                (@"
+                string warrior = @"
                   .I.
                  / : \
                  |===|
@@ -154,26 +154,24 @@
              /v-'(  \\`-v\
             /  .-'   \\. \\
             `-'       \\`-'    
-                       \|"
-                    , 0, 10, warColor);
+                       \|";
+
+                DrawHelper.TextAtPosition(warrior, 0, 10, warColor);
             };
 
             switchClass(selection);
 
             DrawHelper.TextAtPosition("Warriors are melee fighters highly trained in the art of weaponry.", 15, 43, ConsoleColor.Red);
+
             DrawHelper.TextAtPosition("\"For as long as war has raged, heroes from every race have aimed to master the art of battle.  " +
                            "\n      Warriors combine strength, leadership, and a vast knowledge of arms and armor to wreak havoc" +
-                           "\n      in glorious combat.\"",
-                           5,
-                           45,
-                           ConsoleColor.DarkRed);
+                           "\n      in glorious combat.\"", 5, 45, ConsoleColor.DarkRed);
 
             while (true)
             {
                 var input = Console.ReadKey(true);
 
-                if (input.Key.Equals(ConsoleKey.LeftArrow) ||
-                    input.Key.Equals(ConsoleKey.RightArrow))
+                if (input.Key.Equals(ConsoleKey.LeftArrow) || input.Key.Equals(ConsoleKey.RightArrow))
                 {
                     if (selection == 0)
                     {
@@ -196,19 +194,14 @@
                     {
                         DrawHelper.TextAtPosition("Warrior", 15, 38, ConsoleColor.White, ConsoleColor.DarkRed);
                         DrawHelper.TextAtPosition("Mage", 70, 38, ConsoleColor.White);
-                        DrawHelper.TextAtPosition("Warriors are melee fighters highly trained in the art of weaponry.",
-                            15,
-                            43,
-                            ConsoleColor.Red);
+                        DrawHelper.TextAtPosition("Warriors are melee fighters highly trained in the art of weaponry.", 15, 43, ConsoleColor.Red);
                         DrawHelper.TextAtPosition(
                             "\"For as long as war has raged, heroes from every race have aimed to master the art of battle.  " +
                             "\n      Warriors combine strength, leadership, and a vast knowledge of arms and armor to wreak havoc    " +
-                            "\n      in glorious combat.\"          ",
-                            5,
-                            45,
-                            ConsoleColor.DarkRed);
+                            "\n      in glorious combat.\"          ", 5, 45, ConsoleColor.DarkRed);
                         selection--;
                     }
+
                     switchClass(selection);
                     continue;
                 }
@@ -226,7 +219,6 @@
                         Engine.Pesho = new Warrior();
                     }
 
-                    //Engine.StartEngine();
                     StoryEngine.Intro();
                 }
 
@@ -291,9 +283,9 @@
                             Karim Hristov
 
 
-                            In Hungry Pesho!
+                            Don't stay hungry!
 
-                            Game intro...
+                            Go to eat...
                                            Good luck!");
 
             DrawHelper.TextAtPosition("Press Esc to go back", GameSettings.GameWidth / 2, GameSettings.GameHeight / 2, ConsoleColor.Yellow);
@@ -306,8 +298,6 @@
             Console.Clear();
             Console.Title = "Hugry pesho!  -=-  You LOOSE!";
             DrawHelper.TextAtPosition(@"
-
-
                           ▄████  ▄▄▄       ███▄ ▄███▓▓█████     ▒█████   ██▒   █▓▓█████  ██▀███ 
                          ██▒ ▀█▒▒████▄    ▓██▒▀█▀ ██▒▓█   ▀    ▒██▒  ██▒▓██░   █▒▓█   ▀ ▓██ ▒ ██▒
                         ▒██░▄▄▄░▒██  ▀█▄  ▓██    ▓██░▒███      ▒██░  ██▒ ▓██  █▒░▒███   ▓██ ░▄█ ▒
@@ -333,9 +323,7 @@
                                            /   /     ||--+--|--+-/-|     \   \
                                           |   |     /'\_\_\ | /_/_/`\     |   |
                                            \   \__, \_     `~'     _/ .__/   /
-                                            `-._,-'   `-._______,-'   `-._,-'
-
-", 50, 0, ConsoleColor.DarkRed);
+                                            `-._,-'   `-._______,-'   `-._,-'", 50, 0, ConsoleColor.DarkRed);
         }
 
         public static void LoadWinScreen() // Win Game screen

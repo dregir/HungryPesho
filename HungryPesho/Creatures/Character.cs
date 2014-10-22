@@ -99,7 +99,7 @@
             else
             {
                 Ability ability = this.Abilities[key];
-                var damage = Attack + damageModifier / 2;
+                var damage = this.Attack + (damageModifier / 2);
 
                 if (attackSucceeded)
                 {
@@ -141,10 +141,8 @@
                                         "► You gaze deep into your opponent's eyes and and slowly but steadly drain all his and yours remaining energy dealing",
                                         ConsoleColor.Magenta),
                                     DrawHelper.Color(damage.ToString(), ConsoleColor.Yellow),
-                                    DrawHelper.Color("damage!", ConsoleColor.Magenta)
-                                    );                                                       
+                                    DrawHelper.Color("damage!", ConsoleColor.Magenta));                                                       
                             }
-
                             else
                             {
                                 if (this.Health >= 10)
@@ -153,35 +151,27 @@
                                     this.Health -= Health / 10;
                                     Console.WriteLine(
                                         DrawHelper.Color(
-                                            "► You strike ferouciously thursting your blade through", ConsoleColor.Magenta),
+                                            "► You strike ferociously thrusting your blade through", ConsoleColor.Magenta),
                                         DrawHelper.Color(target.Name + "'s", ConsoleColor.Cyan),
-                                        DrawHelper.Color("dark and corupted flesh, inflicting", ConsoleColor.Magenta),
+                                        DrawHelper.Color("dark and corrupted flesh, inflicting", ConsoleColor.Magenta),
                                         DrawHelper.Color(damage.ToString(), ConsoleColor.Yellow),
-                                        DrawHelper.Color("damage!", ConsoleColor.Magenta)
-                                        );
+                                        DrawHelper.Color("damage!", ConsoleColor.Magenta));
                                 }
                                 else
                                 {
                                     throw new GameException("You can not use this ability when you are below 10 hp.");
                                 }
                             }
+
                             break;
                     }
-
-                    // else if (ability.AbilityEffect == AbilityEffects.Dodge) // TODO: Implement logic
-                    // {
-                    //     Console.WriteLine("You preform " + ability.Name + " and you will dodge the next attack!");
-                    // }
-                    // else if (ability.AbilityEffect == AbilityEffects.Speed)
-                    // {
-                    //     Console.WriteLine("You preform " + ability.Name + " and your agility is not double!");
-                    // }
 
                     if (target.Health < damage)
                     {
                         target.Health = 0;
                         return;
                     }
+
                     this.Energy -= ability.EnergyCost;
                     target.Health -= damage;
                 }
@@ -191,8 +181,7 @@
 
                     Console.WriteLine(result == 0 ?
                             DrawHelper.Color("You missed.", ConsoleColor.Gray) :
-                            DrawHelper.Color(target.Name + " evaded your " + ability.Name, ConsoleColor.DarkGray)
-                        );
+                            DrawHelper.Color(target.Name + " evaded your " + ability.Name, ConsoleColor.DarkGray));
                 }
             }
 
@@ -201,7 +190,8 @@
 
         public void AddItem(Item item)
         {
-            string key = GetItemKey(item);
+            string key = this.GetItemKey(item);
+
             switch (item.GetType().Name)
             {
                 case "Food":
@@ -214,6 +204,7 @@
                     {
                         this.items.Remove(key);
                     }
+
                     this.items.Add(key, item);
                     break;
             }
@@ -222,6 +213,11 @@
         public Dictionary<string, Item> GetItems()
         {
             return new Dictionary<string, Item>(this.items);
+        }
+
+        public override string ToString()
+        {
+            return string.Format("{0} - Level: {1} \r\nHealth: {2} \r\nEnergy: {3} \r\nAgility: {4} \r\nStrength: {5} \r\nIntellect: {6}", this.GetType().Name, this.Level, this.Health, this.Energy, this.Agility, this.Strength, this.Intellect);
         }
 
         private string GetItemKey(Item item)
@@ -238,13 +234,8 @@
                     result = "Weapon" + weaponItem.WeaponType;
                     break;
             }
-            return result;
-        }
 
-        public override string ToString()
-        {
-            return string.Format("{0} - Level: {1} \r\nHealth: {2} \r\nEnergy: {3} \r\nAgility: {4} \r\nStrength: {5} \r\nIntellect: {6}",
-                this.GetType().Name, this.Level, this.Health, this.Energy, this.Agility, this.Strength, this.Intellect);
+            return result;
         }
     }
 }

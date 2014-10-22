@@ -16,7 +16,6 @@
         }
 
         #region Properties
-        // TODO: Validate
         public int EnergyCost
         {
             get

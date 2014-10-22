@@ -2,18 +2,17 @@
 {
     using System;
     using System.IO;
-    using System.Threading;
-    using HungryPesho.UI;
-
     using System.Linq;
+    using System.Threading;
     using HungryPesho.Creatures;
+    using HungryPesho.UI;
 
     public static class GameSettings
     {
         public const int GameWidth = 120;
         public const int GameHeight = 50;
         public const string FilePath = "../../misc/";
-        public static bool SoundStatus = true;
+        public const bool SoundStatus = true;
 
         public static void LoadGameSettings() // Load default game settings
         {
@@ -33,7 +32,7 @@
 
                 using (writer)
                 {
-                    // TODO: Save currnet settings
+                    // TODO: Save current settings
                 }
             }
             catch (Exception)
@@ -56,7 +55,6 @@
                 using (writer)
                 {
                     // writer.WriteLine(Engine.Pesho.Abilities.ToString()); // TODO: If there is a chance to earn abilities
-
                     writer.WriteLine(Engine.Pesho.Name);
                     writer.WriteLine(Engine.Pesho.Level);
                     writer.WriteLine(Engine.Pesho.Attack);
@@ -76,10 +74,10 @@
             DrawHelper.TextAtPosition("GAME SAVED!", GameWidth / 3, GameHeight / 3, ConsoleColor.Green);
 
             Thread.Sleep(2000);
-            Engine.StartEngine(); // TODO: Start from currnet progress
+            Engine.StartEngine(); // TODO: Start from current progress
         }
 
-        public static void LoadGame() // Load currnet game
+        public static void LoadGame() // Load current game
         {
             try
             {
@@ -88,7 +86,6 @@
                 using (reader)
                 {
                     // Engine.Pesho.Abilities = reader.ReadLine().ToList();
-
                     if (reader.ReadLine() == "Mage")
                     {
                         Engine.Pesho = new Mage();

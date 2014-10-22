@@ -45,7 +45,9 @@
     <Compile Include="Abilities\AbilityEffects.cs" />
     <Compile Include="Creatures\Enemy.cs" />
     <Compile Include="Engine\BattleStates.cs" />
-    <Compile Include="Engine\ItemsFactory.cs" />
+    <Compile Include="Engine\ItemsFactory.cs">
+      <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
+    </Compile>
     <Compile Include="Engine\Engine.cs" />
     <Compile Include="Engine\StoryEngine.cs" />
     <Compile Include="ExceptionClasses\ApplicationValidator.cs" />
@@ -74,7 +76,9 @@
     <Compile Include="Items\WeaponTypes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UI\DrawHelper.cs" />
-    <Compile Include="UI\LoadScreen.cs" />
+    <Compile Include="UI\LoadScreen.cs">
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
     <Compile Include="UI\MediaPlayer.cs" />
     <Compile Include="UI\Sound.cs" />
   </ItemGroup>

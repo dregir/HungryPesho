@@ -42,7 +42,8 @@
 
                     target.Health -= damage;
 
-                    Console.WriteLine(DrawHelper.Color("► " + this.Name, ConsoleColor.Cyan),
+                    Console.WriteLine(
+                        DrawHelper.Color("► " + this.Name, ConsoleColor.Cyan),
                         DrawHelper.Color("hit you with", ConsoleColor.Green),
                         DrawHelper.Color(randomAbility.Name, ConsoleColor.Yellow),
                         DrawHelper.Color("for:", ConsoleColor.Green),

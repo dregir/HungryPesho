@@ -2,11 +2,23 @@
 {
     public abstract class Item : GameObject
     {
-        public string Armor;
-        public string Weapon;
+        private string weapon;
+        private string armor;
 
         public Item()
         {
+        }
+
+        public string Weapon
+        {
+            get { return this.weapon; }
+            set { this.weapon = value; }
+        }
+
+        public string Armor
+        {
+            get { return this.armor; }
+            set { this.armor = value; }
         }
     }
 }

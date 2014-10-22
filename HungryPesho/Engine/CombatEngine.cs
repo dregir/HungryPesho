@@ -1,6 +1,5 @@
 ﻿namespace HungryPesho.Engine
 {
-
     public class CombatEngine
     {
         private BattleStates currnetState;
