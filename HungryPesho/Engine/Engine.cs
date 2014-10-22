@@ -127,15 +127,23 @@
 
                     if (currentEnemy.Health == 0)
                     {
+                        var itemDrop = ItemsFactory.CreateItem();
+
                         MediaPlayer.Play(Sound.Win);
                         Console.SetCursorPosition(0, startingRows);
                         DrawHelper.Color("Your enemy fall dead on the ground.\nYou won!", ConsoleColor.Green);
                         Console.WriteLine(DrawHelper.Color("\nYou gained " + awardXp + " experience!", ConsoleColor.Yellow));
+                        Console.WriteLine(
+                            DrawHelper.Color("You found a", ConsoleColor.White),
+                            DrawHelper.Color(itemDrop.Name, ConsoleColor.Blue));
+
+                        DrawHelper.DisplayItemDialog(itemDrop, startingRows);
 
                         Player.Pesho.Agility = storedAgility;
                         Player.Pesho.Experience += awardXp;
 
-                        DrawHelper.BlockInputAndWaitFor(3);
+                        DrawHelper.ReloadStats(currentEnemy);
+                        DrawHelper.BlockInputAndWaitFor(1);
                         StoryEngine.StateAfterBattle();
                     }
                 }

@@ -1,4 +1,6 @@
-﻿namespace HungryPesho.UI
+﻿using HungryPesho.Items;
+
+namespace HungryPesho.UI
 {
     using System;
     using System.Collections.Generic;
@@ -245,6 +247,51 @@
                                                      //   '   \\
                                                     |/         \|");
             TextAtPosition(statsWindows, 0, 2, ConsoleColor.Red);
+        }
+        public static void DisplayItemDialog(Item item, int rowToDisplay)
+        {
+            var itemStats = string.Empty;
+            string option1 = "1. Take and equip the " + item.Name;
+            string option2 = "2. Leave the " + item.Name + " on the ground.";
+
+            if (item is Armor)
+            {
+                itemStats = (item as Armor).ToString();
+            }
+            else if (item is Weapon)
+            {
+                itemStats = (item as Weapon).ToString();
+            }
+            else
+            {
+                option1 = "1. Take and consume the " + item.Name;
+            }
+
+            DrawHelper.TextAtPosition(option1, 44, rowToDisplay + 3, ConsoleColor.White);
+            DrawHelper.TextAtPosition(option2, 44, rowToDisplay + 4, ConsoleColor.White);
+            DrawHelper.TextAtPosition("--------------\n" + itemStats, 0, rowToDisplay + 4, ConsoleColor.DarkYellow);
+
+            while (true)
+            {
+                var action = Console.ReadKey(true);
+
+                if (!action.Key.Equals(ConsoleKey.D1) && !action.Key.Equals(ConsoleKey.D2))
+                {
+                    TextAtPosition("Invalid key option!", 0, 33, ConsoleColor.DarkGray);
+                }
+                else
+                {
+                    if (action.Key.Equals(ConsoleKey.D1))
+                    {
+                        Player.Pesho.AddItem(item);
+                        break;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+            }
         }
     }
 }
