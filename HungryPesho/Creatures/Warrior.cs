@@ -37,11 +37,11 @@
         public void LoadAbilities()
         {
             // Starting warrior abilities
-            this.Abilities.Add(new Ability("Basic Attack", "Just a hit with your weapon", AbilityEffects.DirectDamage, 0));
-            this.Abilities.Add(new Ability("Slam", "Slam your opponent with powerful attack", AbilityEffects.DirectDamage, 5));
-            this.Abilities.Add(new Ability("Frozen Blade", "Damages and freezes your opponent for one round", AbilityEffects.Freeze, 5));
-            this.Abilities.Add(new Ability("Swift Reflexes", "Increase your chance to dodge by 50% for the rest of the battle", AbilityEffects.Dodge, 4));
-            this.Abilities.Add(new Ability("Run!", "Run, Pesho, Run!.",AbilityEffects.Speed, 0));
+            this.Abilities.Add(new Ability("Basic Attack", "Just a hit with your weapon.", AbilityEffects.DirectDamage, 0));
+            this.Abilities.Add(new Ability("Slam", "Slam your opponent with powerful attack.", AbilityEffects.DirectDamage, 5));
+            this.Abilities.Add(new Ability("Frozen Blade", "Damages and freezes your opponent for one round.", AbilityEffects.Freeze, 5));
+            this.Abilities.Add(new Ability("Swift Reflexes", "Increase your chance to dodge by 50% for the rest of the battle.", AbilityEffects.Dodge, 4));
+            this.Abilities.Add(new Ability("Run!", "Run, Pesho, Run!",AbilityEffects.Speed, 0));
 
             // Ultimates
             if (this.Level == 5)

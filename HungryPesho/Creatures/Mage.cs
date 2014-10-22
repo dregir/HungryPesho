@@ -42,7 +42,7 @@
             this.Abilities.Add(new Ability("Meteor", "Inflicts massive damage to your enemy.", AbilityEffects.DirectDamage, 12));
             this.Abilities.Add(new Ability("Slow Time", "Slows time increasing your chance to evade enemy attacks by 50% for the rest of the battle.", 
                 AbilityEffects.Dodge, 4));
-            this.Abilities.Add(new Ability("Run!", "Run, Pesho, Run!.",AbilityEffects.Speed, 0));
+            this.Abilities.Add(new Ability("Run!", "Run, Pesho, Run!",AbilityEffects.Speed, 0));
             
             // Ultimates
             if (this.Level == 5)

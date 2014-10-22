@@ -128,6 +128,25 @@ namespace HungryPesho.Creatures
                     }
                 }
 
+                else if (ability.AbilityEffect.Equals(AbilityEffects.Dodge))
+                {
+                    if (this.Agility < 50)
+                    {
+                        Console.WriteLine(
+                            DrawHelper.Color("► You perform", ConsoleColor.White),
+                            DrawHelper.Color(ability.Name, ConsoleColor.Yellow),
+                            DrawHelper.Color("which increases your chance to dodge by", ConsoleColor.White),
+                            DrawHelper.Color("50%", ConsoleColor.Green));
+                        damage = 0;
+                        this.Agility += 50;
+                    }
+                    else
+                    {
+                        throw new GameException(
+                            "You can not use this ability more than once in a single battle!");
+                    }
+                }
+
                 else
                 {
                     if (attackSucceeded)
@@ -157,23 +176,6 @@ namespace HungryPesho.Creatures
                                     DrawHelper.Color("damage", ConsoleColor.White),
                                     DrawHelper.Color("freezing him for the next turn.", ConsoleColor.Blue));
                                 target.Initiative = 0;
-                                break;
-                            case AbilityEffects.Dodge:
-                                if (this.Agility < 50)
-                                {
-                                    Console.WriteLine(
-                                        DrawHelper.Color("► You perform", ConsoleColor.White),
-                                        DrawHelper.Color(ability.Name, ConsoleColor.Yellow),
-                                        DrawHelper.Color("which increases your chance to dodge by", ConsoleColor.White),
-                                        DrawHelper.Color("50%", ConsoleColor.Green));
-                                    damage = 0;
-                                    this.Agility += 50;
-                                }
-                                else
-                                {
-                                    throw new GameException(
-                                        "You can not use this ability more than once in a single battle!");
-                                }
                                 break;
 
                                 #region Ultimates
