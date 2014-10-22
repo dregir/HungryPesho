@@ -125,16 +125,16 @@
 
         public static void ReloadStats(Creature enemy)
         {
-            string charClass = Engine.Pesho.GetType().Name;
-            int level = Engine.Pesho.Level;
+            string charClass = Player.Pesho.GetType().Name;
+            int level = Player.Pesho.Level;
             const int StartPos = 7;
 
             var peshoStats = new[]
             {
-               new { stat = Engine.Pesho.Health, color = ConsoleColor.Magenta },
-               new { stat = Engine.Pesho.Energy, color = ConsoleColor.Cyan },
-               new { stat = Engine.Pesho.Initiative, color = ConsoleColor.DarkGreen },
-               new { stat = Engine.Pesho.Attack, color = ConsoleColor.Red },             
+               new { stat = Player.Pesho.Health, color = ConsoleColor.Magenta },
+               new { stat = Player.Pesho.Energy, color = ConsoleColor.Cyan },
+               new { stat = Player.Pesho.Initiative, color = ConsoleColor.DarkGreen },
+               new { stat = Player.Pesho.Attack, color = ConsoleColor.Red },             
             };
 
             var enemyStats = new[]

@@ -8,7 +8,7 @@
     {
         private static SoundPlayer player;
 
-        internal static void Play(UI.Sound sound)
+        public static void Play(UI.Sound sound)
         {
             if (GameSettings.SoundStatus)
             {

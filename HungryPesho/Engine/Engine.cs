@@ -9,8 +9,6 @@
 
     public class Engine
     {
-        public static Character Pesho;
-
         public static void StartGame()
         {
             GameSettings.LoadGameSettings();
@@ -49,14 +47,14 @@
                 "Invisible Man"
             };
 
-            // TODO: Initialize all enemy abilities
+            // Initialize all enemy abilities
             var enemyAbilities = new Ability[]
             {
                 new Ability("KebapShot", "Throws Kebap at you", AbilityEffects.DirectDamage, 5),
                 new Ability("Fireball", "Fireballs u", AbilityEffects.DirectDamage, 7),
                 new Ability("Fireblast", "Fireblast u", AbilityEffects.DirectDamage, 4),
                 new Ability("Spectral Hit", "Spectral hits u", AbilityEffects.DirectDamage, random.Next(1, 21)),
-                ////new Ability("Frost Nova", "Freeze you at place", AbilityEffects.Freeze, 4)
+                //new Ability("Frost Nova", "Freeze you at place", AbilityEffects.Freeze, 4)
             };
 
             foreach (var enemy in enemies)
@@ -65,20 +63,19 @@
             }
 
             foreach (var monster in enemies)
-            { // Play with stats to test 'em here. - TODO: Generate monster accordingly player's level
-                monster.Attack = random.Next(2, Pesho.Attack * 2);
-                monster.Energy = random.Next(Pesho.Energy / 2, Pesho.Energy * 2);
-                monster.Health = random.Next(Pesho.Attack * 2, (Pesho.Attack * 3) + (3 * Pesho.Level));
+            { // Generate monster accordingly player's level
+                monster.Attack = random.Next(2,  Player.Pesho.Attack * 2);
+                monster.Energy = random.Next(Player.Pesho.Energy / 2, Player.Pesho.Energy * 2);
+                monster.Health = random.Next(Player.Pesho.Attack * 2, (Player.Pesho.Attack * 3) + (3 * Player.Pesho.Level));
                 monster.Initiative = random.Next(1, 6);
                 monster.Name = enemyNames[random.Next(0, enemyNames.Length)];
             }
 
-            // TODO: Battle states engine at combatEngine = new CombatEngine();
-            var currentEnemy = enemies[random.Next(0, enemies.Length)]; // TODO: Player's choice ??
+            var currentEnemy = enemies[random.Next(0, enemies.Length)];
             var awardXp = currentEnemy.Health / 2;
             var startingRows = 35;
-            var currentPlayer = (Pesho.Initiative >= currentEnemy.Initiative) ? Pesho : currentEnemy;
-            var storedAgility = Pesho.Agility; 
+            var currentPlayer = (Player.Pesho.Initiative >= currentEnemy.Initiative) ? Player.Pesho : currentEnemy;
+            var storedAgility = Player.Pesho.Agility; 
 
             Console.Clear();
             DrawHelper.DrawStatsWindow();
@@ -92,7 +89,7 @@
 
             startingRows++;
 
-            while (Pesho.Health > 0)
+            while (Player.Pesho.Health > 0)
             {
                 if (currentPlayer is Character)
                 {
@@ -100,7 +97,7 @@
                 
                     var count = 1;
 
-                    foreach (var ability in Pesho.Abilities)
+                    foreach (var ability in Player.Pesho.Abilities)
                     {
                         Console.WriteLine(
                             DrawHelper.Color(">>", ConsoleColor.Cyan),
@@ -116,7 +113,7 @@
 
                     try
                     {
-                        Pesho.Action(currentEnemy, playerChoice);
+                        Player.Pesho.Action(currentEnemy, playerChoice);
                         currentPlayer = currentEnemy;
                         startingRows++;
                     }
@@ -135,8 +132,8 @@
                         DrawHelper.Color("Your enemy fall dead on the ground.\nYou won!", ConsoleColor.Green);
                         Console.WriteLine(DrawHelper.Color("\nYou gained " + awardXp + " experience!", ConsoleColor.Yellow));
 
-                        Pesho.Agility = storedAgility;
-                        Pesho.Experience += awardXp;
+                        Player.Pesho.Agility = storedAgility;
+                        Player.Pesho.Experience += awardXp;
 
                         DrawHelper.BlockInputAndWaitFor(3);
                         StoryEngine.StateAfterBattle();
@@ -146,12 +143,12 @@
                 {
                     if (currentEnemy.Initiative != 0)
                     {
-                        var result = random.Next(0, 10 - (Pesho.Agility / 10));
+                        var result = random.Next(0, 10 - (Player.Pesho.Agility / 10));
                         Console.SetCursorPosition(0, startingRows++);
                         
                         if (result > 1)
                         {
-                            currentEnemy.Action(Pesho);  
+                            currentEnemy.Action(Player.Pesho);  
                         }
                         else
                         {
@@ -169,11 +166,11 @@
 
                     DrawHelper.ReloadStats(currentEnemy);
                     currentEnemy.Initiative = 1;
-                    currentPlayer = Pesho;
+                    currentPlayer = Player.Pesho;
                 }
 
                 if (enemies.Length == 0)
-                { // TODO: If list of enemies is empty show win game screen and save score
+                { // If list of enemies is empty show win game screen and save score
                     LoadScreen.LoadWinScreen();
                 }
             }

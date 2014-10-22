@@ -247,6 +247,7 @@
                     this.Energy += foodItem.EnergyGained;
                     break;
                 default:
+
                     if (this.items.ContainsKey(key))
                     {
                         this.items.Remove(key);
@@ -254,6 +255,11 @@
 
                     this.items.Add(key, item);
                     break;
+            }
+
+            foreach (KeyValuePair<string, Item> intem in items)
+            {
+                
             }
         }
 

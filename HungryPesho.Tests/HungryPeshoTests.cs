@@ -3,6 +3,7 @@
     using System;
     using HungryPesho.Abilities;
     using HungryPesho.Creatures;
+    using HungryPesho.Engine;
     using HungryPesho.Items;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -24,7 +25,7 @@
         [TestMethod]
         public void TestRandomItemCreation()
         {
-            var item = Engine.ItemsFactory.CreateItem();
+            var item = ItemsFactory.CreateItem();
 
             Assert.IsInstanceOfType(item, typeof(Item));
         }
@@ -59,6 +60,23 @@
             var ability = new Ability("test", "test", AbilityEffects.DirectDamage, 30);
 
             Assert.IsInstanceOfType(ability, typeof(Ability));
+        }
+
+        [TestMethod]
+        public void TestingInitialSoundStatus()
+        {
+            GameSettings.LoadGameSettings();
+
+            Assert.AreEqual(GameSettings.SoundStatus, true);
+        }
+
+        [TestMethod]
+        public void TestingTurningSoundOFF()
+        {
+            GameSettings.LoadGameSettings();
+            GameSettings.SoundStatus = false;
+
+            Assert.AreEqual(GameSettings.SoundStatus, false);
         }
     }
 }

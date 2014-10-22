@@ -212,11 +212,11 @@
 
                     if (selection == 1)
                     {
-                        Engine.Pesho = new Mage();
+                        Player.Pesho = Player.SetPlayer(new Mage());
                     }
                     else
                     {
-                        Engine.Pesho = new Warrior();
+                        Player.Pesho = Player.SetPlayer(new Warrior());
                     }
 
                     StoryEngine.Intro();
@@ -229,14 +229,26 @@
             }
         }
 
-        public static void LoadGameInfoScreen() // TODO: How to play screen
+        public static void LoadGameInfoScreen() // How to play screen
         {
-            Console.WriteLine("How to play goes here");
+
+            const string HowToPlay = @"
+            “Hungry Pesho” is a turn based game, where your character (Pesho)
+            can choose to be either powerful mage or a strong warrior.
+
+            As the game title says, Pesho is hungry and you must help him to find some food,
+            by fighting evil creatures. You can choose from several different zones,
+            where you can fight different creatures to get your food.
+
+            After every defeated opponent your character have a chance to get a weapon or an armor,
+            to increase his stats and chance for survival.";
+
+            DrawHelper.TextAtPosition(HowToPlay, 5, 5, ConsoleColor.Cyan);
 
             DrawHelper.TextAtPosition("Press Esc to go back", GameSettings.GameWidth / 2, GameSettings.GameHeight / 2, ConsoleColor.Yellow);
         }
 
-        public static void LoadOptionsScreen() // TODO: Game options
+        public static void LoadOptionsScreen() // Game options
         {
             DrawHelper.TextAtPosition("Sound", (GameSettings.GameWidth / 3) - 2, 8, ConsoleColor.Green);
 
@@ -295,7 +307,8 @@
 
             Console.Clear();
             Console.Title = "Hugry pesho!  -=-  You LOOSE!";
-            DrawHelper.TextAtPosition(@"
+
+            const string GameOver = @"
 
 
                           ▄████  ▄▄▄       ███▄ ▄███▓▓█████     ▒█████   ██▒   █▓▓█████  ██▀███ 
@@ -323,7 +336,11 @@
                                            /   /     ||--+--|--+-/-|     \   \
                                           |   |     /'\_\_\ | /_/_/`\     |   |
                                            \   \__, \_     `~'     _/ .__/   /
-                                            `-._,-'   `-._______,-'   `-._,-'", 50, 0, ConsoleColor.DarkRed);
+                                            `-._,-'   `-._______,-'   `-._,-'
+
+";
+
+            DrawHelper.TextAtPosition(GameOver, 50, 0, ConsoleColor.DarkRed);
         }
 
         public static void LoadWinScreen() // Win Game screen

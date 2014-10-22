@@ -7,7 +7,7 @@
     {
         public static Item CreateItem()
         {
-            Random randGen = new Random();
+            var randGen = new Random();
             int randomNumber = randGen.Next(1, 11);
 
             switch (randomNumber)
@@ -26,7 +26,7 @@
             var random = new Random();
             var weapon = new Weapon();
 
-            weapon.WeaponDamage = random.Next(1, 100);
+            weapon.WeaponDamage = random.Next(1, 11);
             weapon.Agility = random.Next(1, 11);
             weapon.Intellect = random.Next(1, 11);
             weapon.Stamina = random.Next(1, 11);

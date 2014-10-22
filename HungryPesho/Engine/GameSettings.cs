@@ -57,15 +57,15 @@
                 using (writer)
                 {
                     // writer.WriteLine(Engine.Pesho.Abilities.ToString()); // TODO: If there is a chance to earn abilities
-                    writer.WriteLine(Engine.Pesho.Name);
-                    writer.WriteLine(Engine.Pesho.Level);
-                    writer.WriteLine(Engine.Pesho.Attack);
-                    writer.WriteLine(Engine.Pesho.Energy);
-                    writer.WriteLine(Engine.Pesho.Health);
-                    writer.WriteLine(Engine.Pesho.Initiative);
-                    writer.WriteLine(Engine.Pesho.Agility);
-                    writer.WriteLine(Engine.Pesho.Intellect);
-                    writer.WriteLine(Engine.Pesho.Strength);
+                    writer.WriteLine(Player.Pesho.Name);
+                    writer.WriteLine(Player.Pesho.Level);
+                    writer.WriteLine(Player.Pesho.Attack);
+                    writer.WriteLine(Player.Pesho.Energy);
+                    writer.WriteLine(Player.Pesho.Health);
+                    writer.WriteLine(Player.Pesho.Initiative);
+                    writer.WriteLine(Player.Pesho.Agility);
+                    writer.WriteLine(Player.Pesho.Intellect);
+                    writer.WriteLine(Player.Pesho.Strength);
                 }
             }
             catch (Exception)
@@ -76,7 +76,7 @@
             DrawHelper.TextAtPosition("GAME SAVED!", GameWidth / 3, GameHeight / 3, ConsoleColor.Green);
 
             Thread.Sleep(2000);
-            Engine.StartEngine(); // TODO: Start from current progress
+            Engine.StartEngine();
         }
 
         public static void LoadGame() // Load current game
@@ -90,16 +90,16 @@
                     // Engine.Pesho.Abilities = reader.ReadLine().ToList();
                     if (reader.ReadLine() == "Mage")
                     {
-                        Engine.Pesho = new Mage();
-                        Engine.Pesho.Name = "Mage";
-                        Engine.Pesho.Level = int.Parse(reader.ReadLine());
-                        Engine.Pesho.Attack = int.Parse(reader.ReadLine());
-                        Engine.Pesho.Energy = int.Parse(reader.ReadLine());
-                        Engine.Pesho.Health = int.Parse(reader.ReadLine());
-                        Engine.Pesho.Initiative = int.Parse(reader.ReadLine());
-                        Engine.Pesho.Agility = int.Parse(reader.ReadLine());
-                        Engine.Pesho.Intellect = int.Parse(reader.ReadLine());
-                        Engine.Pesho.Strength = int.Parse(reader.ReadLine());
+                        Player.Pesho = new Mage();
+                        Player.Pesho.Name = "Mage";
+                        Player.Pesho.Level = int.Parse(reader.ReadLine());
+                        Player.Pesho.Attack = int.Parse(reader.ReadLine());
+                        Player.Pesho.Energy = int.Parse(reader.ReadLine());
+                        Player.Pesho.Health = int.Parse(reader.ReadLine());
+                        Player.Pesho.Initiative = int.Parse(reader.ReadLine());
+                        Player.Pesho.Agility = int.Parse(reader.ReadLine());
+                        Player.Pesho.Intellect = int.Parse(reader.ReadLine());
+                        Player.Pesho.Strength = int.Parse(reader.ReadLine());
                     }
                 }
             }
@@ -116,8 +116,8 @@
 
         public static void SaveScore() // Save player's score
         {
-            Console.Write("Enter your nickname: ");
-            Engine.Pesho.Name = Console.ReadLine();
+            DrawHelper.TextAtPosition("Enter your nickname: ", GameWidth / 3, GameHeight - 17, ConsoleColor.Cyan);
+            Player.Pesho.Name = Console.ReadLine();
 
             var score = int.MaxValue;
 
@@ -132,7 +132,7 @@
 
                     if (currnetScore < score)
                     {
-                        scores.Insert(i, Engine.Pesho.Name + " " + score);
+                        scores.Insert(i, Player.Pesho.Name + " " + score);
                         File.WriteAllLines(FilePath + "scores.hup", scores.ToArray());
                         break;
                     }
