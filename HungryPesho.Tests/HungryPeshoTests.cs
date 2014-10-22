@@ -1,8 +1,10 @@
 ﻿namespace HungryPesho.Tests
 {
     using System;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using HungryPesho.Abilities;
     using HungryPesho.Creatures;
+    using HungryPesho.Items;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
     public class HungryPeshoTests
@@ -11,35 +13,52 @@
         public void TestNewCharactersCreation()
         {
             var mage = new Mage();
+            Assert.IsInstanceOfType(mage, typeof(Character));
             Assert.AreEqual(mage.Name, "Mage");
 
             var warrior = new Warrior();
+            Assert.IsInstanceOfType(warrior, typeof(Character));
             Assert.AreEqual(warrior.Name, "Warrior");
         }
 
-        public void TestItemCreation()
+        [TestMethod]
+        public void TestRandomItemCreation()
         {
-            // TODO
+            var item = Engine.ItemsFactory.CreateItem();
+
+            Assert.IsInstanceOfType(item, typeof(Item));
         }
 
+        [TestMethod]
         public void TestWeaponCreation()
         {
-            // TODO
+            var weapon = new Weapon();
+
+            Assert.IsInstanceOfType(weapon, typeof(Item));
         }
 
+        [TestMethod]
         public void TestArmorCreation()
         {
-            // TODO
+            var armor = new Armor();
+
+            Assert.IsInstanceOfType(armor, typeof(StatItem));
         }
 
+        [TestMethod]
         public void TestFoodCreation()
         {
-            // TODO
+            var food = new Food();
+
+            Assert.IsInstanceOfType(food, typeof(EffectItem));
         }
 
+        [TestMethod]
         public void TestAbilityCreation()
         {
-            // TODO
+            var ability = new Ability("test", "test", AbilityEffects.DirectDamage, 30);
+
+            Assert.IsInstanceOfType(ability, typeof(Ability));
         }
     }
 }
