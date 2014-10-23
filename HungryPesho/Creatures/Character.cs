@@ -19,6 +19,7 @@
         private Dictionary<string, Item> items = new Dictionary<string, Item>();
 
         #region Properties
+
         public int Experience
         {
             get

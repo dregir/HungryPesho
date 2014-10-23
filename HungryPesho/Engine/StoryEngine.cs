@@ -38,10 +38,7 @@
 
             Action[] scenarios =
             {
-                Engine.StartEngine
-                // TODO: add find item scenario
-                // TODO: add loose hp scenario
-                // TODO: something else
+                Engine.StartEngine // TODO: add loose hp scenario
             };
 
             const string RealPesho = @"
