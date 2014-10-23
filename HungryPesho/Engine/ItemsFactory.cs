@@ -10,15 +10,17 @@
             var randGen = new Random();
             int randomNumber = randGen.Next(1, 11);
 
-            switch (randomNumber)
-            {
-                case 1:
-                    return CreateWeapon();
-                case 2:
-                    return CreateArmor();
-                default:
-                    return CreateFood();
-            }
+            return CreateWeapon();
+
+            //switch (randomNumber)
+            //{
+            //    case 1:
+            //        return CreateWeapon();
+            //    case 2:
+            //        return CreateArmor();
+            //    default:
+            //        return CreateFood();
+            //}
         }
 
         private static Weapon CreateWeapon()

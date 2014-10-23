@@ -28,7 +28,7 @@
 
             set
             {
-                ApplicationValidator.ValidateNumberValue(value, 0, 100);
+                ApplicationValidator.ValidateNumberValue(value, 0, int.MaxValue);
                 this.experience = value;
             }
         }
@@ -240,7 +240,7 @@
             if (item is Food)
             {
                 Player.Pesho.Health += ((Food)item).HealthGained;
-                Player.Pesho.Health += ((Food)item).EnergyGained;
+                Player.Pesho.Energy += ((Food)item).EnergyGained;
             }
             else
             {
@@ -254,20 +254,20 @@
                 this.items.Add(key, item);
             }
 
-            foreach (KeyValuePair<string, Item> statItem in items)
+            foreach (KeyValuePair<string, Item> statItem in this.items)
             {
                 if (statItem.Value is Weapon)
                 {
-                    Player.Pesho.Attack += ((Weapon)statItem.Value).WeaponDamage;
+                    Player.Pesho.Attack = Player.Pesho.Attack + ((Weapon)statItem.Value).WeaponDamage;
                 }
                 else if (statItem.Value is Armor)
                 {
-                    Player.Pesho.Agility += ((Armor)statItem.Value).ArmorProtection;
+                    Player.Pesho.Agility = Player.Pesho.Agility + ((Armor)statItem.Value).ArmorProtection;
                 }
 
-                Player.Pesho.Agility = ((IStatable)statItem.Value).Agility;
-                Player.Pesho.Strength = ((IStatable)statItem.Value).Strength;
-                Player.Pesho.Intellect = ((IStatable)statItem.Value).Intellect;
+                Player.Pesho.Agility = Player.Pesho.Agility + ((IStatable)statItem.Value).Agility;
+                Player.Pesho.Strength = Player.Pesho.Strength + ((IStatable)statItem.Value).Strength;
+                Player.Pesho.Intellect = Player.Pesho.Intellect + ((IStatable)statItem.Value).Intellect;
             }
         }
 

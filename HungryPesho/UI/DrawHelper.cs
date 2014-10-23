@@ -1,12 +1,11 @@
-﻿using HungryPesho.Items;
-
-namespace HungryPesho.UI
+﻿namespace HungryPesho.UI
 {
     using System;
     using System.Collections.Generic;
     using System.Threading;
     using HungryPesho.Creatures;
     using HungryPesho.Engine;
+    using HungryPesho.Items;
 
     public static class DrawHelper
     {
@@ -248,6 +247,7 @@ namespace HungryPesho.UI
                                                     |/         \|");
             TextAtPosition(statsWindows, 0, 2, ConsoleColor.Red);
         }
+
         public static void DisplayItemDialog(Item item, int rowToDisplay)
         {
             var itemStats = string.Empty;

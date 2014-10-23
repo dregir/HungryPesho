@@ -4,20 +4,22 @@
 
     public class Player
     {
-        private static Character PlayerClass = null;
+        private static Character playerClass = null;
 
-        private Player() { }
-
-        public static Character SetClass(Character character)
-        {
-            if (PlayerClass == null)
-            {
-                PlayerClass = character; 
-            }
-
-            return PlayerClass;
+        private Player() 
+        { 
         }
 
         public static Character Pesho { get; set; }
+
+        public static Character SetClass(Character character)
+        {
+            if (playerClass == null)
+            {
+                playerClass = character;
+            }
+
+            return playerClass;
+        }
     }
 }

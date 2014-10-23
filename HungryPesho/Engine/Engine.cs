@@ -54,7 +54,6 @@
                 new Ability("Fireball", "Fireballs u", AbilityEffects.DirectDamage, 7),
                 new Ability("Fireblast", "Fireblast u", AbilityEffects.DirectDamage, 4),
                 new Ability("Spectral Hit", "Spectral hits u", AbilityEffects.DirectDamage, random.Next(1, 21)),
-                //new Ability("Frost Nova", "Freeze you at place", AbilityEffects.Freeze, 4)
             };
 
             foreach (var enemy in enemies)
