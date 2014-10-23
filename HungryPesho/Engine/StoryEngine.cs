@@ -38,7 +38,9 @@
 
             Action[] scenarios =
             {
-                Engine.StartEngine // TODO: add loose hp scenario
+                Engine.StartEngine,
+                Engine.StartEngine,
+                Engine.StartEngine
             };
 
             const string RealPesho = @"
@@ -94,20 +96,51 @@
         {
             Console.Clear();
 
+            const string Dragon = @"  
+                                     -==\\                         `//~\\   ~~~~`---.___.-~~
+                                ______-==|                         | |  \\           _-~`
+                          __--~~~  ,-/-==\\                        | |   `\        ,'
+                        _-~       /'    |  \\                      / /      \      /
+                      .'        /       |   \\                   /' /        \   /'
+                     /  ____  /         |    \`\.__/-~~ ~ \ _ _/'  /          \/'
+                    /-'~    ~~~~~---__  |     ~-/~         ( )   /'        _--~`
+                                      \_|      /        _)   ;  ),   __--~~
+                                       '~~--_/      _-~/-  / \   '-~ \
+                                       {\__--_/}    / \\_>- )<__\      \
+                                      /'   (_/  _-~  | |__>--<__|      |
+                                     |0  0 _/) )-~     | |__>--<__|     |
+                                     / /~ ,_/       / /__>---<__/      |
+                                    o o _//        /-~_>---<__-~      /
+                                    (^(~          /~_>---<__-      _-~
+                                    ,/|           /__>--<__/     _-~
+                                  ,//('(          |__>--<__|     /                  .----_
+                                  ( ( '))          |__>--<__|    |                 /' _---_~\
+                                 -)) )) (           |__>--<__|    |               /'  /     ~\`\
+                                 ,/,'//( (             \__>--<__\    \            /'  //        ||
+                                ,( ( ((, ))              ~-__>--<_~-_  ~--____---~' _/'/        /'
+                              `~/  )` ) ,/|                 ~-_~>--<_/-__       __-~ _/
+                              ._-~//( )/ )) `                    ~~-'_/_/ /~~~~~~~__--~
+                               ;'( ')/ ,)(                              ~~~~~~~~~~
+
+    ";
+
             const string StoryAfterBattle = "What a fight! I've never seen anyone fight like that before! Erm.. maybe a couple," +
                                             "\n               anyway this didn't satisfy your urge, am I wrong? Naah, I am never wrong, you are still" +
-                                            "\n               hungry as fuck.. Hm lets see if that scary looking monster over there can do the trick," +
+                                            "\n               hungry as fuck.. Hm lets see if that scary looking Dragon over there can do the trick," +
                                             "\n               but before that, is anything else you want to do right now?" +
                                             "\n               It's time to chose MR.Freeman.., I mean Pesho!";
 
-            DrawHelper.TextAtPosition(StoryAfterBattle, 15, 30, ConsoleColor.DarkYellow);
+
+
+            DrawHelper.TextAtPosition(Dragon, 25, 5, ConsoleColor.Cyan);
+            DrawHelper.TextAtPosition(StoryAfterBattle, 15, 32, ConsoleColor.DarkYellow);
 
             Action[] scenarios = { Engine.StartEngine, Engine.StartEngine };
 
             var scenes = new[]
             {
-                "1. Use item from inventory.",
-                "2. Attack the scary monster.",
+                "1. Attack the scary Dragon.",
+                "2. Go find something to eat.",
             };
 
             SetAndDisplayOptions(scenarios, scenes, 40);
