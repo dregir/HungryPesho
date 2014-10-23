@@ -40,10 +40,9 @@
                 new Ability("Prashka", "Stone in your face", AbilityEffects.DirectDamage, 5),
                 new Ability("Fireball", "Fireballs u", AbilityEffects.DirectDamage, 6),
                 new Ability("Fireblast", "Fireblast u", AbilityEffects.DirectDamage, 7),
-                new Ability("Anal Injection", "Inject you with magic", AbilityEffects.DirectDamage, this.random.Next(12, 17)),
-                new Ability("Spectral hit", "Spectral hits u", AbilityEffects.DirectDamage, this.random.Next(1, 21)),
-                new Ability("Roundhouse kick", "Norris kick", AbilityEffects.DirectDamage, this.random.Next(15, 30)),
-                new Ability("Frost Nova", "Freeze you at place", AbilityEffects.Freeze, 4)
+                new Ability("Anal Injection", "Inject you with magic", AbilityEffects.DirectDamage, this.random.Next(8)),
+                new Ability("Spectral hit", "Spectral hits u", AbilityEffects.DirectDamage, this.random.Next(1, 9)),
+                new Ability("Roundhouse kick", "Norris kick", AbilityEffects.DirectDamage, this.random.Next(10)),
             };
 
             this.AddAbilities(abilityList);

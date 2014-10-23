@@ -46,7 +46,7 @@
 
             var nextLevel = Player.Pesho.Level * 10;
             var random = new Random();
-            var awardXp = currentEnemy.Health / 2;
+            var awardXp = (int)Math.Round(currentEnemy.Health / 1.5);
             var startingRows = 35;
             var currentPlayer = (Player.Pesho.Initiative >= currentEnemy.Initiative) ? Player.Pesho : currentEnemy;
             var storedAgility = Player.Pesho.Agility;
@@ -104,27 +104,42 @@
                         var itemDrop = ItemsFactory.CreateItem();
 
                         MediaPlayer.Play(Sound.Win);
-                        Console.SetCursorPosition(0, startingRows);
+                        Console.SetCursorPosition(0, startingRows++);
                         DrawHelper.Color("Your enemy fall dead on the ground.\nYou won!", ConsoleColor.Green);
-                        Console.WriteLine(DrawHelper.Color("\nYou gained " + awardXp + " experience!", ConsoleColor.Yellow));
+                        DrawHelper.TextAtPosition("\nYou gained " + awardXp + " experience!", 0, startingRows++, ConsoleColor.Yellow);
+                        Player.Pesho.Experience += awardXp;
 
                         if (Player.Pesho.Experience >= nextLevel)
-                        {                      
-                            Console.WriteLine(DrawHelper.Color("\nCongratulations you are now " + ++Player.Pesho.Level + " level", ConsoleColor.DarkYellow));
+                        {
+                            DrawHelper.TextAtPosition(
+                                "\nCongratulations you are now " + ++Player.Pesho.Level + " level",
+                                0,
+                                startingRows++,
+                                ConsoleColor.DarkYellow);
+
                             Player.Pesho.Health += 10;
                             Player.Pesho.Energy += 10;
                             Player.Pesho.Attack += 3;
+
+                            if (Player.Pesho.Level == 5)
+                            {
+                                if (Player.Pesho is Mage)
+                                {
+                                    (Player.Pesho as Mage).LoadUltimate();
+                                }
+                                else if (Player.Pesho is Warrior)
+                                {
+                                    (Player.Pesho as Warrior).LoadUltimate();
+                                }
+                            }
                         }
 
                         Console.WriteLine(
-                            DrawHelper.Color("You found a", ConsoleColor.White),
+                            DrawHelper.Color("\nYou found a", ConsoleColor.White),
                             DrawHelper.Color(itemDrop.Name, ConsoleColor.Blue));
-
                         DrawHelper.DisplayItemDialog(itemDrop, startingRows);
 
-                        Player.Pesho.Agility = storedAgility;
-                        Player.Pesho.Experience += awardXp;
-
+                        Player.Pesho.Agility = storedAgility;                    
                         DrawHelper.ReloadStats(currentEnemy);
                         StoryEngine.StateAfterBattle();
                         BossFight = false;

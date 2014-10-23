@@ -31,17 +31,16 @@
             this.Attack = StartingAttack;
             this.Initiative = StartingInitiative;
 
-            this.LoadAbilities();
-        }
-
-        public void LoadAbilities()
-        {
+            //Starting Mage abilities
             this.Abilities.Add(new Ability("Basic Attack", "Normal weapon attack.", AbilityEffects.DirectDamage, 0));
             this.Abilities.Add(new Ability("Frostbolt", "Damages and freezes your opponent for one turn.", AbilityEffects.Freeze, 8));
             this.Abilities.Add(new Ability("Meteor", "Inflicts massive damage to your enemy.", AbilityEffects.DirectDamage, 12));
             this.Abilities.Add(new Ability("Slow Time", "Slows time increasing your chance to evade enemy attacks by 50% for the rest of the battle.", AbilityEffects.Dodge, 4));
             this.Abilities.Add(new Ability("Run!", "Run, Pesho, Run!", AbilityEffects.Speed, 0));
+        }
 
+        public void LoadUltimate()
+        {          
             // Ultimates
             if (this.Level == 5)
             {
