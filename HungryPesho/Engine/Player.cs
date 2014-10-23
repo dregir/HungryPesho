@@ -8,7 +8,7 @@
 
         private Player() { }
 
-        public static Character SetPlayer(Character character)
+        public static Character SetClass(Character character)
         {
             if (PlayerClass == null)
             {

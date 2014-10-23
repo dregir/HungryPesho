@@ -212,11 +212,11 @@
 
                     if (selection == 1)
                     {
-                        Player.Pesho = Player.SetPlayer(new Mage());
+                        Player.Pesho = Player.SetClass(new Mage());
                     }
                     else
                     {
-                        Player.Pesho = Player.SetPlayer(new Warrior());
+                        Player.Pesho = Player.SetClass(new Warrior());
                     }
 
                     StoryEngine.Intro();

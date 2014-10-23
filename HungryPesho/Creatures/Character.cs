@@ -237,29 +237,37 @@
 
         public void AddItem(Item item)
         {
-            string key = this.GetItemKey(item);
-
-            switch (item.GetType().Name)
+            if (item is Food)
             {
-                case "Food":
-                    Food foodItem = item as Food;
-                    this.Health += foodItem.HealthGained;
-                    this.Energy += foodItem.EnergyGained;
-                    break;
-                default:
+                Player.Pesho.Health += ((Food)item).HealthGained;
+                Player.Pesho.Health += ((Food)item).EnergyGained;
+            }
+            else
+            {
+                string key = this.GetType().Name;
 
-                    if (this.items.ContainsKey(key))
-                    {
-                        this.items.Remove(key);
-                    }
+                if (this.items.ContainsKey(key))
+                {
+                    this.items.Remove(key);
+                }
 
-                    this.items.Add(key, item);
-                    break;
+                this.items.Add(key, item);
             }
 
-            foreach (KeyValuePair<string, Item> intem in items)
+            foreach (KeyValuePair<string, Item> statItem in items)
             {
-                
+                if (statItem.Value is Weapon)
+                {
+                    Player.Pesho.Attack += ((Weapon)statItem.Value).WeaponDamage;
+                }
+                else if (statItem.Value is Armor)
+                {
+                    Player.Pesho.Agility += ((Armor)statItem.Value).ArmorProtection;
+                }
+
+                Player.Pesho.Agility = ((IStatable)statItem.Value).Agility;
+                Player.Pesho.Strength = ((IStatable)statItem.Value).Strength;
+                Player.Pesho.Intellect = ((IStatable)statItem.Value).Intellect;
             }
         }
 
@@ -271,24 +279,6 @@
         public override string ToString()
         {
             return string.Format("{0} - Level: {1} \r\nHealth: {2} \r\nEnergy: {3} \r\nAgility: {4} \r\nStrength: {5} \r\nIntellect: {6}", this.GetType().Name, this.Level, this.Health, this.Energy, this.Agility, this.Strength, this.Intellect);
-        }
-
-        private string GetItemKey(Item item)
-        {
-            var result = item.GetType().Name;
-            switch (item.GetType().Name)
-            {
-                case "Armor":
-                    Armor armorItem = item as Armor;
-                    result = "Armor" + armorItem.ArmorType;
-                    break;
-                case "Weapon":
-                    Weapon weaponItem = item as Weapon;
-                    result = "Weapon" + weaponItem.WeaponType;
-                    break;
-            }
-
-            return result;
         }
     }
 }

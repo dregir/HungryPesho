@@ -5,7 +5,7 @@
     using System.Linq;
     using HungryPesho.UI;
 
-    public class StoryEngine
+    public struct StoryEngine
     {
         public static void Intro()
         {

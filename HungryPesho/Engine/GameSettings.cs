@@ -87,20 +87,25 @@
 
                 using (reader)
                 {
-                    // Engine.Pesho.Abilities = reader.ReadLine().ToList();
                     if (reader.ReadLine() == "Mage")
                     {
-                        Player.Pesho = new Mage();
+                        Player.Pesho = Player.SetClass(new Mage());
                         Player.Pesho.Name = "Mage";
-                        Player.Pesho.Level = int.Parse(reader.ReadLine());
-                        Player.Pesho.Attack = int.Parse(reader.ReadLine());
-                        Player.Pesho.Energy = int.Parse(reader.ReadLine());
-                        Player.Pesho.Health = int.Parse(reader.ReadLine());
-                        Player.Pesho.Initiative = int.Parse(reader.ReadLine());
-                        Player.Pesho.Agility = int.Parse(reader.ReadLine());
-                        Player.Pesho.Intellect = int.Parse(reader.ReadLine());
-                        Player.Pesho.Strength = int.Parse(reader.ReadLine());
                     }
+                    else
+                    {
+                        Player.Pesho = Player.SetClass(new Warrior());
+                        Player.Pesho.Name = "Warrior";
+                    }
+
+                    Player.Pesho.Level = int.Parse(reader.ReadLine());
+                    Player.Pesho.Attack = int.Parse(reader.ReadLine());
+                    Player.Pesho.Energy = int.Parse(reader.ReadLine());
+                    Player.Pesho.Health = int.Parse(reader.ReadLine());
+                    Player.Pesho.Initiative = int.Parse(reader.ReadLine());
+                    Player.Pesho.Agility = int.Parse(reader.ReadLine());
+                    Player.Pesho.Intellect = int.Parse(reader.ReadLine());
+                    Player.Pesho.Strength = int.Parse(reader.ReadLine());
                 }
             }
             catch (Exception)
