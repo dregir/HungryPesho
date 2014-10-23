@@ -10,6 +10,7 @@
     public class Engine
     {
         public static bool BossFight { private get; set; }
+
         private static bool AlreadyDied { get; set; } 
  
         public static void StartGame()
@@ -43,7 +44,7 @@
                 currentEnemy = boss;
             }
 
-            var xpPerLvl = Player.Pesho.Level * 10;
+            var nextLevel = Player.Pesho.Level * 10;
             var random = new Random();
             var awardXp = currentEnemy.Health / 2;
             var startingRows = 35;
@@ -107,21 +108,19 @@
                         DrawHelper.Color("Your enemy fall dead on the ground.\nYou won!", ConsoleColor.Green);
                         Console.WriteLine(DrawHelper.Color("\nYou gained " + awardXp + " experience!", ConsoleColor.Yellow));
 
-                        if (Player.Pesho.Experience >= xpPerLvl)
+                        if (Player.Pesho.Experience >= nextLevel)
                         {                      
                             Console.WriteLine(DrawHelper.Color("\nCongratulations you are now " + ++Player.Pesho.Level + " level", ConsoleColor.DarkYellow));
                             Player.Pesho.Health += 10;
                             Player.Pesho.Energy += 10;
                             Player.Pesho.Attack += 3;
                         }
-                          
 
                         Console.WriteLine(
                             DrawHelper.Color("You found a", ConsoleColor.White),
                             DrawHelper.Color(itemDrop.Name, ConsoleColor.Blue));
 
                         DrawHelper.DisplayItemDialog(itemDrop, startingRows);
-
 
                         Player.Pesho.Agility = storedAgility;
                         Player.Pesho.Experience += awardXp;
@@ -166,7 +165,9 @@
                    LoadScreen.LoadWinScreen();
                 }
             }
+
             BossFight = false;
+
             if (!AlreadyDied)
             {
                 DrawHelper.BlockInputAndWaitFor(1);

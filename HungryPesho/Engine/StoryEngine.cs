@@ -130,8 +130,6 @@
                                             "\n               but before that, is anything else you want to do right now?" +
                                             "\n               It's time to chose MR.Freeman.., I mean Pesho!";
 
-
-
             DrawHelper.TextAtPosition(Dragon, 25, 5, ConsoleColor.Cyan);
             DrawHelper.TextAtPosition(StoryAfterBattle, 15, 32, ConsoleColor.DarkYellow);
 

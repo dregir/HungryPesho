@@ -124,7 +124,7 @@
             DrawHelper.TextAtPosition("Enter your nickname: ", GameWidth / 3, GameHeight - 17, ConsoleColor.Cyan);
             Player.Pesho.Name = Console.ReadLine();
 
-            var score = int.MaxValue;
+            var score = Player.Pesho.Level;
 
             try
             {
@@ -135,7 +135,7 @@
                 {
                     currnetScore = int.Parse(scores[i].Split(' ')[1]);
 
-                    if (currnetScore < score)
+                    if (currnetScore <= score)
                     {
                         scores.Insert(i, Player.Pesho.Name + " " + score);
                         File.WriteAllLines(FilePath + "scores.hup", scores.ToArray());

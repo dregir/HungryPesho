@@ -1,9 +1,8 @@
-﻿using HungryPesho.Engine;
-
-namespace HungryPesho.Creatures
+﻿namespace HungryPesho.Creatures
 {
     using System;
     using HungryPesho.Abilities;
+    using HungryPesho.Engine;
     using HungryPesho.Interfaces;
     using HungryPesho.UI;
 
