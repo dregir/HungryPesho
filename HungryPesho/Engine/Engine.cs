@@ -105,11 +105,10 @@
                         MediaPlayer.Play(Sound.Win);
                         Console.SetCursorPosition(0, startingRows);
                         DrawHelper.Color("Your enemy fall dead on the ground.\nYou won!", ConsoleColor.Green);
-                       
+                        Console.WriteLine(DrawHelper.Color("\nYou gained " + awardXp + " experience!", ConsoleColor.Yellow));
 
                         if (Player.Pesho.Experience >= xpPerLvl)
-                        {
-                            Console.WriteLine(DrawHelper.Color("\nYou gained " + awardXp + " experience!", ConsoleColor.Yellow));
+                        {                      
                             Console.WriteLine(DrawHelper.Color("\nCongratulations you are now " + ++Player.Pesho.Level + " level", ConsoleColor.DarkYellow));
                             Player.Pesho.Health += 10;
                             Player.Pesho.Energy += 10;
