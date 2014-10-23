@@ -116,6 +116,7 @@
                             DrawHelper.Color("► You successfully escaped from", ConsoleColor.Green),
                             DrawHelper.Color(target.Name, ConsoleColor.Red));
                         this.Agility = storedAgility;
+                        Engine.BossFight = false;
                         DrawHelper.BlockInputAndWaitFor(3);
                         StoryEngine.StateAfterBattle();
                     }

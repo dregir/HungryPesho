@@ -99,7 +99,7 @@ namespace HungryPesho.Creatures
             {
                 MediaPlayer.Play(Sound.Strike);
 
-                damage = random.Next(2, this.Attack);
+                damage = random.Next(1, this.Attack);
 
                 if (target.Health >= damage)
                 {

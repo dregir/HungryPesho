@@ -143,10 +143,10 @@
                 "2. Go find something to eat.",
             };
 
-            SetAndDisplayOptions(scenarios, scenes, 40);
+            SetAndDisplayOptions(scenarios, scenes, 40, true);
         }
 
-        private static void SetAndDisplayOptions(IList<Action> scenarios, IEnumerable<string> options, int startAtRow = 45)
+        private static void SetAndDisplayOptions(Action[] scenarios, IEnumerable<string> options, int startAtRow = 45, bool bossFight = false)
         {
             foreach (var option in options)
             {
@@ -158,12 +158,17 @@
                 var action = Console.ReadKey(true);
                 var key = (int)action.Key - 49;
 
-                if (key > scenarios.Count - 1 || key < 0)
+                if (key > scenarios.Length - 1 || key < 0)
                 {
-                    DrawHelper.TextAtPosition("Not hungry enough? IMPOSSIBLE!! Why don't you try with " + scenarios.Count + "?", 29, 43, ConsoleColor.DarkGray);
+                    DrawHelper.TextAtPosition("Not hungry enough? IMPOSSIBLE!! Why don't you try with " + scenarios.Length + "?", 29, 43, ConsoleColor.DarkGray);
                 }
                 else
                 {
+                    if (key == 0 && bossFight)
+                    {
+                        Engine.BossFight = true;
+                    }
+
                     scenarios[key]();
                     break;
                 }

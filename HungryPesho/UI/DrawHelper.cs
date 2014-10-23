@@ -54,7 +54,7 @@
 
             while (true)
             {
-                var input = Console.ReadKey(true); // true prevents player from typing in console.
+                var input = Console.ReadKey(true); 
 
                 if (input.Key.Equals(ConsoleKey.DownArrow))
                 {
