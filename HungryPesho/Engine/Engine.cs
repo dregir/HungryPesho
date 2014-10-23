@@ -19,58 +19,7 @@
         {
             Console.Clear();
             var random = new Random();
-
-            // TODO: create ability and enemy factory.
-            // TODO: validate player / enemy health for negative numbers
-
-            // TODO: Initialize all in game enemies here
-            var enemies = new Creature[]
-            {
-                new Enemy()
-            };
-
-            var enemyNames = new[]
-            {
-                "Yeti",
-                "Rabbit Dog",
-                "Grizzly Bear",
-                "Mad Bunny",
-                "Angry French Chef",
-                "Spaska The Dragon",
-                "StackOverflow",
-                "Forest Troll",
-                "Alf",
-                "Joey From Friends",
-                "Garfield",
-                "Uncle Gosho",
-                "Evil Harpy",
-                "Invisible Man"
-            };
-
-            // Initialize all enemy abilities
-            var enemyAbilities = new Ability[]
-            {
-                new Ability("KebapShot", "Throws Kebap at you", AbilityEffects.DirectDamage, 5),
-                new Ability("Fireball", "Fireballs u", AbilityEffects.DirectDamage, 7),
-                new Ability("Fireblast", "Fireblast u", AbilityEffects.DirectDamage, 4),
-                new Ability("Spectral Hit", "Spectral hits u", AbilityEffects.DirectDamage, random.Next(1, 21)),
-            };
-
-            foreach (var enemy in enemies)
-            {
-                enemy.AddAbilities(enemyAbilities);
-            }
-
-            foreach (var monster in enemies)
-            { // Generate monster accordingly player's level
-                monster.Attack = random.Next(2,  Player.Pesho.Attack * 2);
-                monster.Energy = random.Next(Player.Pesho.Energy / 2, Player.Pesho.Energy * 2);
-                monster.Health = random.Next(Player.Pesho.Attack * 2, (Player.Pesho.Attack * 3) + (3 * Player.Pesho.Level));
-                monster.Initiative = random.Next(1, 6);
-                monster.Name = enemyNames[random.Next(0, enemyNames.Length)];
-            }
-
-            var currentEnemy = enemies[random.Next(0, enemies.Length)];
+            var currentEnemy = new Enemy() as Creature;
             var awardXp = currentEnemy.Health / 2;
             var startingRows = 35;
             var currentPlayer = (Player.Pesho.Initiative >= currentEnemy.Initiative) ? Player.Pesho : currentEnemy;
@@ -176,10 +125,10 @@
                     currentPlayer = Player.Pesho;
                 }
 
-                if (enemies.Length == 0)
-                { // If list of enemies is empty show win game screen and save score
-                    LoadScreen.LoadWinScreen();
-                }
+                //if (enemies.Length == 0)
+                //{ // If list of enemies is empty show win game screen and save score
+                //    LoadScreen.LoadWinScreen();
+                //}
             }
 
             Thread.Sleep(1000);

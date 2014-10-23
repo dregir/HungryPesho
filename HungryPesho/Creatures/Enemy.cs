@@ -1,4 +1,6 @@
-﻿namespace HungryPesho.Creatures
+﻿using HungryPesho.Engine;
+
+namespace HungryPesho.Creatures
 {
     using System;
     using HungryPesho.Abilities;
@@ -7,8 +9,50 @@
 
     public class Enemy : Creature
     {
+        private Random random = new Random();
+
         public Enemy()
         {
+            var listOfNames = new[] 
+            {
+                "Yeti",
+                "Rabbit Dog",
+                "Grizzly Bear",
+                "Mad Bunny",
+                "Angry French Chef",
+                "Spaska The Dragon",
+                "StackOverflow",
+                "Forest Troll",
+                "Alf",
+                "Joey from Friends",
+                "Garfield",
+                "Uncle Gosho",
+                "Evil Harpy",
+                "Invisible Man", 
+                "Hercules",
+                "Sandokan",
+                "Flintstone",
+                "Fatal Error"
+            };
+
+            var abilityList = new[]
+            {
+                new Ability("Kebap", "Throws Kebap at you", AbilityEffects.DirectDamage, 4),
+                new Ability("Prashka", "Stone in your face", AbilityEffects.DirectDamage, 5),
+                new Ability("Fireball", "Fireballs u", AbilityEffects.DirectDamage, 6),
+                new Ability("Fireblast", "Fireblast u", AbilityEffects.DirectDamage, 7),
+                new Ability("Anal Injection", "Inject you with magic", AbilityEffects.DirectDamage, this.random.Next(12, 17)),
+                new Ability("Spectral hit", "Spectral hits u", AbilityEffects.DirectDamage, this.random.Next(1, 21)),
+                new Ability("Roundhouse kick", "Norris kick", AbilityEffects.DirectDamage, this.random.Next(15, 30)),
+                new Ability("Frost Nova", "Freeze you at place", AbilityEffects.Freeze, 4)
+            };
+
+            this.AddAbilities(abilityList);
+            this.Attack = this.random.Next(Player.Pesho.Attack / 2, Player.Pesho.Attack * 2);
+            this.Energy = this.random.Next(Player.Pesho.Energy / 2, Player.Pesho.Energy * 2);
+            this.Health = this.random.Next(Player.Pesho.Attack * 2, (Player.Pesho.Attack * 3) + (3 * Player.Pesho.Level));
+            this.Initiative = this.random.Next(1, 10);
+            this.Name = listOfNames[this.random.Next(0, listOfNames.Length)];
         }
 
         public IAbility GetRandomAbility()
